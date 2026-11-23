@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chi4Vodka · Chi</title>
+  <meta name="description" content="Chi (Chi4Vodka) makes indie games and ASCII things. Home of Dead Ringer: Mystery Academy.">
+  <meta property="og:title" content="Chi4Vodka · Chi">
+  <meta property="og:description" content="Indie games, ASCII art & other strong spirits. Home of Dead Ringer: Mystery Academy.">
+  <meta property="og:image" content="https://chi4vodka.github.io/img/dead-ringer-title.png">
+  <meta name="theme-color" content="#1f1f1c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 260'%3E%3Cpath fill='%23d2837f' d='M38 0h24v22H38zM42 22h16v56c0 14 24 22 24 44v122c0 6-4 10-10 10H28c-6 0-10-4-10-10V122c0-22 24-30 24-44z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Unbounded:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#work">Skip to the work</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="bottle-path" d="M42 24H58V78C58 92 82 100 82 122V244Q82 254 72 254H28Q18 254 18 244V122C18 100 42 92 42 78Z"/>
+      <clipPath id="bottle-clip" clipPathUnits="userSpaceOnUse"><use href="#bottle-path"/></clipPath>
+    </defs>
+  </svg>
+
+  <div class="frame-window" aria-hidden="true"></div>
+
+  <header class="frame-top">
+    <a class="logo" href="#top" aria-label="Chi4Vodka, back to top">
+      <svg class="logo-bottle" viewBox="0 0 100 260" aria-hidden="true"><use href="#bottle-path"/></svg>
+      <span>chi<em>4</em>vodka</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#shelf">Shelf</a>
+      <a href="#about">About</a>
+      <a href="#last-call">Last call</a>
+    </nav>
+
+    <a class="frame-cta" href="#last-call">itch.io <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <div class="frame-rail frame-rail--left" aria-hidden="true">
+    <span>Portfolio Est. 2026</span>
+  </div>
+  <div class="frame-rail frame-rail--right" aria-hidden="true">
+    <span>Local time <b id="clock">--:--</b> <i id="clock-icon">☾</i></span><span class="dot">•</span><span id="clock-quip">still up?</span>
+  </div>
+
+  <footer class="frame-bottom">
+    <span class="fb-copy">© 2026 Chi</span>
+    <span class="fb-scroll" aria-hidden="true">scroll <i>↓</i></span>
+    <span class="meter" aria-hidden="true">
+      <svg viewBox="0 0 100 260">
+        <use href="#bottle-path" class="meter-glass"/>
+        <g clip-path="url(#bottle-clip)"><rect id="meter-liquid" x="0" y="90" width="100" height="200"/></g>
+      </svg>
+      <span><b id="meter-pct">100</b>% full</span>
+    </span>
+  </footer>
+
+  <main>
+
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <svg class="badge" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="badge-circle" d="M100 100m-74 0a74 74 0 1 1 148 0a74 74 0 1 1-148 0"/></defs>
+        <g class="badge-spin">
+          <text><textPath href="#badge-circle" textLength="458" lengthAdjust="spacing">CHI4VODKA • INDIE GAMES • ASCII ON THE ROCKS •</textPath></text>
+        </g>
+        <g transform="translate(88 64) scale(.28)"><use href="#bottle-path" class="badge-bottle"/></g>
+      </svg>
+
+      <p class="eyebrow">Portfolio <span>/</span> Vol. 01 <span>/</span> 40% proof</p>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title" class="hero-title">Chi<span class="hero-dot">.</span></h1>
+          <p class="hero-sub">A digital hobbyist with a love of strong spirits.</p>
+        </div>
+
+        <div class="hero-bottle">
+          <button class="bottle-btn" type="button" id="sip" aria-describedby="sip-status">
+            <span class="visually-hidden">Take a sip from the ASCII vodka bottle</span>
+<pre class="ascii" id="ascii" aria-hidden="true">       .-----.
+       |=====|
+       '-----'
+        |   |
+        |   |
+        |   |
+       /~~~~~\
+      /:::::::\
+     /:::::::::\
+    |:::::::::::|
+    |:::::::::::|
+    |===========|
+    |   C H I   |
+    | --------- |
+    |  4 VODKA  |
+    |  40% VOL  |
+    |===========|
+    |:::::::::::|
+    |:::::::::::|
+    |:::::::::::|
+    |:::::::::::|
+    |:::::::::::|
+    '-----------'</pre>
+          </button>
+          <p class="sip-status" id="sip-status" aria-live="polite">click the bottle. go on.</p>
+        </div>
+      </div>
+
+      <div class="hero-foot">
+        <a class="pour-link" href="#work">
+          <span class="pour-tag">Now brewing</span>
+          <span>Dead Ringer: Mystery Academy</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="ticker ticker--wine" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Dead Ringer • Mystery Academy • Now brewing • ASCII on the rocks • Drink responsibly • Play irresponsibly •&nbsp;</span>
+        <span>Dead Ringer • Mystery Academy • Now brewing • ASCII on the rocks • Drink responsibly • Play irresponsibly •&nbsp;</span>
+      </div>
+    </div>
+
+    <section id="work" class="work" aria-labelledby="work-title">
+      <header class="section-head">
+        <h2 id="work-title">Featured work</h2>
+        <span class="section-aside">Batch № 01 / the only bottle open to the public</span>
+      </header>
+
+      <article class="feature">
+        <div class="feature-title reveal">
+          <p class="kicker">A game by Chi</p>
+          <h3>
+            <span class="fill">Dead</span>
+            <span class="outline">Ringer</span>
+          </h3>
+          <p class="feature-sub">Mystery Academy</p>
+        </div>
+
+        <figure class="terminal reveal">
+          <div class="terminal-bar" aria-hidden="true">
+            <i></i><i></i><i></i>
+            <span>dead_ringer — title</span>
+          </div>
+          <button class="shot-open" type="button" data-full="img/dead-ringer-title.png" data-caption="Title screen: the academy, drawn entirely in text.">
+            <img src="img/dead-ringer-title.png" width="610" height="530" alt="Dead Ringer: Mystery Academy title screen, an ASCII drawing of a gothic school building with glowing pink windows. Prompt reads: Enter: begin, Q: quit.">
+          </button>
+        </figure>
+
+        <div class="label-card reveal">
+          <div class="label-top" aria-hidden="true">• Chi4Vodka Distillery •</div>
+          <p class="label-name">Dead Ringer</p>
+          <p class="label-strain">Mystery Academy · Batch 01</p>
+          <p class="label-blurb">
+            Welcome to Campanile Academy! You're going to be staying here for a long while, as there's
+            nothing beyond the premises. Survive by fulfilling your needs, making connections, and keeping
+            your door locked at night. When one of your classmates breaks under the pressure, it's up to
+            you to solve the case.
+          </p>
+          <ul class="label-points">
+            <li><b>A unique academy experience:</b> every run features a procedurally-generated map and NPCs, with handcrafted rooms.</li>
+            <li><b>More than plot devices:</b> Your classmates have their own personalities, hobbies, and drives. Their relationships and life continue without your involvement. Except when they're dead, of course.</li>
+            <li><b>Challenge your logic and attention skills:</b> The longer you last, the trickier the mysteries will be. You can have your very own locked-room mystery to solve, no magic to be found here.</li>
+          </ul>
+
+          <dl class="label-specs">
+            <div><dt>Style</dt><dd>ASCII &amp; tiles</dd></div>
+            <div><dt>Genre</dt><dd>Mystery / sim</dd></div>
+            <div><dt>Status</dt><dd>In development</dd></div>
+            <div><dt>Proof</dt><dd>40% mystery</dd></div>
+          </dl>
+        </div>
+
+        <div class="shots">
+          <div class="shot-slot reveal" aria-hidden="true"></div>
+          <div class="shot-slot reveal" aria-hidden="true"></div>
+          <div class="shot-slot reveal" aria-hidden="true"></div>
+          <div class="shot-slot reveal" aria-hidden="true"></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="shelf" class="shelf" aria-labelledby="shelf-title">
+      <header class="section-head">
+        <h2 id="shelf-title">The shelf</h2>
+      </header>
+
+      <ul class="bottles">
+        <li>
+          <a class="bottle bottle--open" href="#work">
+            <svg viewBox="0 0 100 260" aria-hidden="true">
+              <g clip-path="url(#bottle-clip)"><rect class="liquid" x="0" y="96" width="100" height="170"/></g>
+              <use href="#bottle-path" class="glass"/>
+              <rect class="cap" x="38" y="2" width="24" height="24" rx="3"/>
+              <rect class="label" x="24" y="150" width="52" height="62" rx="3"/>
+              <text x="50" y="172" class="label-l1">DEAD</text>
+              <text x="50" y="186" class="label-l1">RINGER</text>
+              <text x="50" y="202" class="label-l2">№ 01</text>
+            </svg>
+            <span class="bottle-cap-text"><b>Batch 01 · Dead Ringer</b><span>Now brewing</span></span>
+          </a>
+        </li>
+                <li>
+          <div class="bottle bottle--empty" aria-hidden="true">
+            <svg viewBox="0 0 100 260">
+              <use href="#bottle-path" class="glass"/>
+              <rect class="cap" x="38" y="2" width="24" height="24" rx="3"/>
+            </svg>
+          </div>
+        </li>
+        <li>
+          <div class="bottle bottle--empty" aria-hidden="true">
+            <svg viewBox="0 0 100 260">
+              <use href="#bottle-path" class="glass"/>
+              <rect class="cap" x="38" y="2" width="24" height="24" rx="3"/>
+            </svg>
+          </div>
+        </li>
+        <li>
+          <div class="bottle bottle--empty" aria-hidden="true">
+            <svg viewBox="0 0 100 260">
+              <use href="#bottle-path" class="glass"/>
+              <rect class="cap" x="38" y="2" width="24" height="24" rx="3"/>
+            </svg>
+          </div>
+        </li>
+      </ul>
+      <div class="plank" aria-hidden="true"></div>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-title">
+      <header class="section-head">
+        <h2 id="about-title">About</h2>
+        <span class="section-aside">Tasting notes</span>
+      </header>
+
+      <div class="about-grid">
+        <p class="about-hello reveal">Hi, I'm <mark>Chi</mark>.</p>
+        <div class="about-body reveal">
+          <p>
+            I'm a part-time internet lurker that conducts crossover experiments in her basement, and
+            thinks the color pink is for the brave. Online, I'm <b>"Chi4Vodka"</b> because "CheapVodka"
+            gets taken. Occasionally, I like showing glimpses on what I'm cooking, like games.
+          </p>
+          <dl class="notes">
+            <div><dt>Nose</dt><dd>Local mall beauty shops</dd></div>
+            <div><dt>Palate</dt><dd>Kanae Minato books</dd></div>
+            <div><dt>Finish</dt><dd>Long, slightly unsettling, hints of copper</dd></div>
+            <div><dt>Pairs with</dt><dd>A healthy dose of suspicion, cranberry juice</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker ticker--ink" aria-hidden="true">
+      <div class="ticker-track ticker-track--rev">
+        <span>Last call • Last call • Last call • Last call • Last call • Last call • Last call •&nbsp;</span>
+        <span>Last call • Last call • Last call • Last call • Last call • Last call • Last call •&nbsp;</span>
+      </div>
+    </div>
+
+    <section id="last-call" class="last-call" aria-labelledby="links-title">
+      <header class="section-head">
+        <h2 id="links-title">Last call</h2>
+        <span class="section-aside">Where to find me</span>
+      </header>
+
+            <ul class="link-rows">
+        <li><a href="https://chi4vodka.itch.io/" target="_blank" rel="noopener"><span class="lr-name">Itch.io</span><span class="lr-note">Games, media jams</span><span class="lr-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://www.reddit.com/user/Chi4Vodka/" target="_blank" rel="noopener"><span class="lr-name">Reddit</span><span class="lr-note">Encounter me in public</span><span class="lr-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://www.tumblr.com/chi4vodka" target="_blank" rel="noopener"><span class="lr-name">Tumblr</span><span class="lr-note">Talking to oneself</span><span class="lr-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="mailto:chi4vodka@gmail.com"><span class="lr-name">Email</span><span class="lr-note">Say hi, report bugs, get a pen pal</span><span class="lr-arrow" aria-hidden="true">↗</span></a></li>
+      </ul>
+
+      <div class="corner">
+        <div class="corner-card" aria-hidden="true"></div>
+        <div class="corner-card" aria-hidden="true"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Screenshot">
+    <form method="dialog"><button class="lightbox-close" aria-label="Close">✕</button></form>
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-cap"></p>
+  </dialog>
+
+  <script src="main.js"></script>
+</body>
+</html>

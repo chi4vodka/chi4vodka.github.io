@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31">
+  <rect width="88" height="31" fill="#1f1f1c"/>
+  <rect x="0.5" y="0.5" width="87" height="30" fill="none" stroke="#d2837f"/>
+  <rect x="2.5" y="2.5" width="83" height="26" fill="none" stroke="#765551"/>
+  <g transform="translate(7 5) scale(0.08)">
+    <path fill="#d2837f" d="M38 0H62V22H38ZM42 24H58V78C58 92 82 100 82 122V244Q82 254 72 254H28Q18 254 18 244V122C18 100 42 92 42 78Z"/>
+    <rect x="24" y="150" width="52" height="62" fill="#f4e7e2"/>
+  </g>
+  <text x="51" y="15" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="9.5" font-weight="bold" fill="#d2837f">CHI4VODKA</text>
+  <text x="51" y="24" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="6" fill="#f4e7e2">games + ascii</text>
+</svg>
