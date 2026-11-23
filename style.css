@@ -202,10 +202,10 @@ section { position: relative; padding: clamp(56px, 9vw, 120px) var(--pad); }
   position: absolute;
   top: clamp(16px, 3vw, 36px);
   right: clamp(16px, 3vw, 40px);
-  width: clamp(96px, 11vw, 150px);
+  width: clamp(124px, 14vw, 190px);
   height: auto;
 }
-.badge text { font-family: var(--mono); font-size: 14px; font-weight: 600; letter-spacing: .14em; fill: var(--ink); }
+.badge text { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .14em; fill: var(--ink); }
 .badge-spin { transform-origin: 100px 100px; animation: spin 22s linear infinite; }
 .badge-bottle { fill: var(--wine); }
 @keyframes spin { to { transform: rotate(360deg); } }
