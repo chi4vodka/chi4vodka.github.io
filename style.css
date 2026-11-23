@@ -325,6 +325,15 @@ section { position: relative; padding: clamp(56px, 9vw, 120px) var(--pad); }
 .ticker-track--rev { animation-direction: reverse; animation-duration: 30s; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
+.ticker--sprites { padding: clamp(14px, 1.6vw, 22px) 0; }
+.ticker--sprites .ticker-track span { display: inline-flex; align-items: center; }
+.ticker--sprites img {
+  height: clamp(44px, 5.5vw, 72px);
+  width: auto;
+  margin: 0 clamp(22px, 3.5vw, 52px);
+  image-rendering: pixelated;
+}
+
 .work { background: var(--ink); color: var(--rose); }
 
 .feature {
