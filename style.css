@@ -280,7 +280,10 @@ section { position: relative; padding: clamp(56px, 9vw, 120px) var(--pad); }
   font-family: var(--display);
   font-weight: 800;
   font-size: 18px;
-  color: var(--ink);
+  color: var(--cream);
+  background: var(--ink);
+  padding: 4px 10px;
+  border-radius: 99px;
   animation: pop 1s ease-out forwards;
 }
 @keyframes pop { to { transform: translateY(-60px) rotate(-8deg); opacity: 0; } }
