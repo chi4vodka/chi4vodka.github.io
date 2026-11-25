@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<section class="devlog" id="entries">
+  <article class="post-wrap">
+    <h1>{{ page.title }}</h1>
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+    <div class="prose">
+      {{ content }}
+    </div>
+    {% if page.tags.size > 0 %}
+    <nav class="post-tags" aria-label="Tags">
+      {% for t in page.tags %}<a href="/devlog/?tag={{ t }}">{{ site.data.tags[t] }}</a>{% endfor %}
+    </nav>
+    {% endif %}
+  </article>
+</section>

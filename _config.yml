@@ -1,0 +1,5 @@
+title: Chi4Vodka
+permalink: /devlog/:title/
+future: true
+exclude:
+  - README.md

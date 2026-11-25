@@ -1,0 +1,68 @@
+---
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}Chi4Vodka</title>
+  <meta name="theme-color" content="#1f1f1c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 260'%3E%3Cpath fill='%23d2837f' d='M38 0h24v22H38zM42 22h16v56c0 14 24 22 24 44v122c0 6-4 10-10 10H28c-6 0-10-4-10-10V122c0-22 24-30 24-44z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Unbounded:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=8">
+  <link rel="stylesheet" href="/devlog.css?v=1">
+</head>
+<body>
+  <a class="skip" href="#entries">Skip to the entries</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="bottle-path" d="M42 24H58V78C58 92 82 100 82 122V244Q82 254 72 254H28Q18 254 18 244V122C18 100 42 92 42 78Z"/>
+      <clipPath id="bottle-clip" clipPathUnits="userSpaceOnUse"><use href="#bottle-path"/></clipPath>
+    </defs>
+  </svg>
+
+  <div class="frame-window" aria-hidden="true"></div>
+
+  <header class="frame-top">
+    <a class="logo" href="/" aria-label="Chi4Vodka, back to top">
+      <svg class="logo-bottle" viewBox="0 0 100 260" aria-hidden="true"><use href="#bottle-path"/></svg>
+      <span>chi<em>4</em>vodka</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="/#work">Work</a>
+      <a href="/#shelf">Shelf</a>
+      <a href="/#about">About</a>
+      <a href="/#last-call">Last call</a>
+      <a href="/devlog/" class="is-active">Devlog</a>
+    </nav>
+  </header>
+
+  <div class="frame-rail frame-rail--left" aria-hidden="true">
+    <span>Portfolio Est. 2026</span>
+  </div>
+  <div class="frame-rail frame-rail--right" aria-hidden="true">
+    <span>Local time <b id="clock">--:--</b> <i id="clock-icon">☾</i></span><span class="dot">•</span><span id="clock-quip">still up?</span>
+  </div>
+
+  <footer class="frame-bottom">
+    <span class="fb-copy">© 2026 Chi</span>
+    <span class="fb-scroll" aria-hidden="true">scroll <i>↓</i></span>
+    <span class="meter" aria-hidden="true">
+      <svg viewBox="0 0 100 260">
+        <use href="#bottle-path" class="meter-glass"/>
+        <g clip-path="url(#bottle-clip)"><rect id="meter-liquid" x="0" y="90" width="100" height="200"/></g>
+      </svg>
+      <span><b id="meter-pct">100</b>% full</span>
+    </span>
+  </footer>
+
+  <main>
+    {{ content }}
+  </main>
+  <script src="/main.js?v=8"></script>
+  <script src="/devlog.js?v=1"></script>
+</body>
+</html>
