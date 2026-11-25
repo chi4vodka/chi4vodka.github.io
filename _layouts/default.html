@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Unbounded:wght@400;600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css?v=8">
-  <link rel="stylesheet" href="/devlog.css?v=1">
+  <link rel="stylesheet" href="/devlog.css?v=2">
 </head>
 <body>
   <a class="skip" href="#entries">Skip to the entries</a>
@@ -49,7 +49,7 @@
 
   <footer class="frame-bottom">
     <span class="fb-copy">© 2026 Chi</span>
-    <span class="fb-scroll" aria-hidden="true">scroll <i>↓</i></span>
+    <nav class="fb-nav" aria-label="Back">{% unless page.url == "/devlog/" %}<a href="/devlog/">← Devlog</a>{% endunless %}<a href="/">← Portfolio</a></nav>
     <span class="meter" aria-hidden="true">
       <svg viewBox="0 0 100 260">
         <use href="#bottle-path" class="meter-glass"/>

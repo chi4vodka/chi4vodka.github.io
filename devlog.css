@@ -31,3 +31,7 @@
 .post-tags a { padding: 5px 14px; border: 1px solid var(--rose); border-radius: 99px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--rose); text-decoration: none; transition: background .2s, color .2s; }
 .post-tags a:hover { background: var(--rose); color: var(--ink); }
 .empty { margin: 32px 6px; opacity: .7; }
+.fb-nav { display: flex; gap: 24px; }
+.fb-nav a { color: inherit; text-decoration: none; }
+.fb-nav a:hover, .fb-nav a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 860px) { .fb-nav { display: none; } }
