@@ -485,10 +485,14 @@ html:not(.is-index) #innerwrapper{padding:0 4vw 40px}
 .e-author.plain .e-contact{margin:12px 0 0;color:#5d5848}
 .e-author.plain .e-contact a{color:var(--ink)}
 
-/* the typed sheet: punched holes, a red margin rule, the stamps top right */
-.e-sheet{position:relative;min-width:0;background:#e2ddcb;color:var(--ink);padding:22px 34px 24px 70px;box-shadow:5px 6px 0 #000;background-image:linear-gradient(90deg,transparent 47px,rgba(195,34,26,.55) 47px 49px,transparent 49px),radial-gradient(circle at 22px 56px,var(--room) 7px,transparent 8px),radial-gradient(circle at 22px 156px,var(--room) 7px,transparent 8px),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .08 0'/></filter><rect width='200' height='200' filter='url(%23f)'/></svg>")}
-.e-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid rgba(27,27,22,.35)}
-.e-date{font:400 12px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#5d5848;text-decoration:none}
+/* the sheet: a typed transcript on plain office paper, taped to the file */
+.e-sheet{position:relative;min-width:0;background:#ebe7da;color:var(--ink);padding:30px 40px 28px;box-shadow:5px 6px 0 #000;background-image:radial-gradient(ellipse 120px 90px at calc(100% - 30px) calc(100% - 20px),rgba(160,110,60,.13),transparent 70%),radial-gradient(ellipse 70px 50px at 24px 30%,rgba(160,110,60,.08),transparent 70%),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0'/></filter><rect width='200' height='200' filter='url(%23f)'/></svg>")}
+.e-tape{position:absolute;left:50%;top:-11px;width:96px;height:24px;margin-left:-48px;background:rgba(214,200,160,.82);border:1px solid rgba(0,0,0,.1);transform:rotate(-1.5deg);pointer-events:none}
+.e-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:10px 16px;margin:0 0 20px;padding-bottom:12px;border-bottom:3px solid var(--ink)}
+.e-doc{min-width:0}
+.e-kind{display:block;font:700 17px/1.2 var(--type);letter-spacing:.12em;text-transform:uppercase}
+.e-meta{display:flex;flex-wrap:wrap;gap:2px 14px;margin:4px 0 0;font:400 13px/1.35 var(--type);letter-spacing:.08em;text-transform:uppercase;color:#4a473c}
+.e-date{color:#4a473c;text-decoration:none}
 a.e-date:hover{color:var(--red);text-decoration:underline}
 .e-stamps{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
 .e-stamps a{text-decoration:none}
@@ -497,18 +501,20 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
 .e-stamps .st-del .button-small{color:var(--ink)!important;border-color:var(--ink)}
 .e-stamps a:hover .button-small{background:var(--red)!important;color:#fff!important;opacity:1}
 .e-stamps .st-del:hover .button-small{background:var(--ink)!important;color:var(--bone)!important}
-.e-body .postcolor{max-width:68ch}
+.e-body .postcolor{max-width:70ch;font:400 16.5px/1.7 var(--type)}
+.spk{font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.spk.own{display:block;margin:0 0 8px}
 .e-body .postcolor b,.e-body .postcolor strong{font-weight:700}
 .e-body .postcolor a:link,.e-body .postcolor a:visited{color:var(--link)}
 
-/* quotes: a note taped into the file */
-.note{position:relative;max-width:60ch;margin:14px 0 18px 6px;padding:18px 20px 14px;background:#eee4bd;color:#2a2618;box-shadow:3px 4px 0 rgba(0,0,0,.3);transform:rotate(-.7deg)}
-.note::before{content:"";position:absolute;left:50%;top:-9px;width:86px;height:20px;margin-left:-43px;background:rgba(214,196,150,.8);border:1px solid rgba(0,0,0,.12);transform:rotate(2deg)}
+/* quotes: a yellowed excerpt slip, clipped in */
+.note{position:relative;max-width:60ch;margin:18px 0 20px 6px;padding:18px 22px 14px;background:#efe0a8;color:#2a2618;box-shadow:3px 4px 0 rgba(0,0,0,.28);transform:rotate(-.6deg)}
+.note::before{content:"";position:absolute;right:30px;top:-16px;width:12px;height:42px;border:2px solid #8e918b;border-radius:7px;border-bottom-color:transparent;box-shadow:inset 0 0 0 2px #ebe7da,inset 0 0 0 4px #8e918b;transform:rotate(4deg)}
 .note .note{transform:rotate(.9deg);background:#f4ecca;margin:10px 0}
-.note .quotetop{all:unset;display:block;font:400 12px/1.3 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:#6b6553;margin:0 0 6px}
+.note .quotetop{all:unset;display:block;font:400 13px/1.35 var(--type);letter-spacing:.06em;text-transform:uppercase;color:#5c5641;margin:0 0 8px}
 .note .quotetop b{color:#2a2618;font-weight:500}
 .note .q-back{margin-left:6px;text-decoration:none;color:var(--link)}
-.note .quotemain{all:unset;display:block;font:400 15px/1.65 var(--type);overflow-wrap:anywhere}
+.note .quotemain{all:unset;display:block;font:400 15px/1.65 var(--type);text-transform:uppercase;letter-spacing:.02em;overflow-wrap:anywhere}
 /* before the script runs, or with scripts off */
 .quotetop{font:400 12px var(--ui);text-transform:uppercase;letter-spacing:.08em;margin-top:12px}
 .quotemain{border-left:4px solid var(--red);padding:6px 12px;background:#d2ccb7}
@@ -519,12 +525,12 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
 
 /* big pictures become prints; small ones (smilies) stay inline */
 .e-body .postcolor img.ph{display:block;max-width:calc(100% - 8px);height:auto;margin:14px 0 18px 4px;padding:8px 8px 26px;background:#f1ece0;box-shadow:3px 4px 0 rgba(0,0,0,.35);transform:rotate(.5deg)}
-.e-body .edit{display:inline-block;margin-top:18px;padding:3px 10px 2px;border:2px solid #6b6553;color:#6b6553;font:400 12px/1.3 var(--worn);letter-spacing:.1em;text-transform:uppercase;transform:rotate(-1deg)}
-.e-body .edit b{font-weight:400;color:var(--ink)}
+.e-body .edit{display:block;margin-top:20px;font:400 13px/1.4 var(--type);letter-spacing:.08em;text-transform:uppercase;color:#5d5848}
+.e-body .edit b{font-weight:700;color:var(--ink)}
 .e-body .edit span{white-space:nowrap}
 
 /* signature: ballpoint on the tear-off strip */
-.signature{margin:22px 0 0;padding:12px 0 0;border-top:2px dashed rgba(27,27,22,.35);font:400 25px/1.05 var(--hand);color:#233a86;opacity:1;overflow-wrap:anywhere}
+.signature{margin:26px 0 0;padding:12px 0 0;border-top:1px solid rgba(27,27,22,.45);text-align:right;font:400 25px/1.05 var(--hand);color:#233a86;opacity:1;overflow-wrap:anywhere}
 .signature a:link,.signature a:visited{color:#233a86}
 .signature img{max-width:100%;height:auto}
 
@@ -577,8 +583,8 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
   .e-author .subject>.s-faction{margin:0 0 6px;justify-self:start;transform:rotate(-3deg)}
   .e-author .subject>.s-badges,.e-author .subject>.s-links{grid-column:1/-1}
   .e-contact{margin:12px 0 10px}
-  .e-sheet{padding:18px 18px 20px 30px;background-image:linear-gradient(90deg,transparent 17px,rgba(195,34,26,.55) 17px 19px,transparent 19px)}
-  .e-body .postcolor{font-size:16px}
+  .e-sheet{padding:24px 18px 20px}
+  .e-body .postcolor{font-size:15.5px}
   .note{margin-left:0}
   .t-acts{margin-left:0}
   .t-foot form{flex:1 1 100%}
@@ -1021,6 +1027,11 @@ function expMenu(id) { var itm = document.getElementById(id); if (itm && itm.sty
     var m = String(s || '').replace(/\s+/g, ' ').trim().match(/edited by (.+?)(?::| on) (.+)$/i);
     return m ? { name: m[1].trim(), date: m[2].trim() } : null;
   };
+  /* "pid_11" -> "0011": the entry number typed on each transcript */
+  L.entryNo = function (id) {
+    var m = String(id || '').match(/(\d+)$/);
+    return m ? ('000' + m[1]).slice(-Math.max(4, m[1].length)) : '';
+  };
   /* "3 User(s) are reading this topic (1 Guests and 0 Anonymous Users)" */
   L.readers = function (s) {
     var t = String(s || ''), g = t.match(/(\d+)\s*Guests?/i), a = t.match(/(\d+)\s*Anonymous/i);
@@ -1348,15 +1359,20 @@ var OutlastSettings = {
     if (ip && !blank(ip)) { ip.classList.add('e-ip'); contact.appendChild(ip); }
     if (contact.firstChild) side.appendChild(contact);
 
-    /* the sheet: date and stamps, the post, the signature */
-    var sheet = el('div', 'e-sheet'), head = el('div', 'e-head');
+    /* the sheet is a typed transcript: a header block (entry number, when it was logged), the stamps, then the post */
+    var sheet = el('div', 'e-sheet'), head = el('div', 'e-head'), docu = el('div', 'e-doc');
+    var no = L.entryNo(td.id);
+    docu.innerHTML = '<b class="e-kind">Transcript</b>';
+    var meta = el('p', 'e-meta', no ? '<span class="e-no">Entry ' + no + '</span>' : '');
     var when = $('.postdetails', table.rows[0]), link = when && $('a', when);
     if (when) {
       var date = txt(when).replace(/^Posted:?\s*/i, '');
       var d = link || el('span');
       d.className = 'e-date'; d.removeAttribute('style'); d.textContent = date;
-      head.appendChild(d);
+      if (link) d.title = 'Link to this entry';
+      meta.appendChild(d);
     }
+    docu.appendChild(meta); head.appendChild(docu);
     var top = $('.post-buttons-top', table);
     if (top && !blank(top)) {
       var stamps = el('div', 'e-stamps'); moveKids(top, stamps);
@@ -1366,9 +1382,21 @@ var OutlastSettings = {
       });
       head.appendChild(stamps);
     }
+    sheet.appendChild(el('i', 'e-tape'));
     sheet.appendChild(head);
     var body = el('div', 'e-body'); body.id = td.id; td.removeAttribute('id');
     moveKids(td, body); sheet.appendChild(body);
+
+    /* the poster is the speaker: "KIT:" before the first words, or on its own line when the post opens with a quote, code or picture */
+    var pc = $('.postcolor', body), who = name ? txt(name) : '';
+    if (pc && who) {
+      var first = pc.firstChild;
+      while (first && ((first.nodeType === 3 && !first.nodeValue.replace(/[\s\u00a0]+/g, '')) || first.nodeType === 8 || first.nodeName === 'BR')) first = first.nextSibling;
+      var block = first && first.nodeType === 1 && (/^(DIV|TABLE|BLOCKQUOTE|UL|OL|P|CENTER|IMG)$/.test(first.nodeName));
+      var spk = el('b', 'spk' + (block ? ' own' : ''), esc(who) + ':');
+      pc.insertBefore(spk, pc.firstChild);
+      if (!block) pc.insertBefore(doc.createTextNode(' '), spk.nextSibling);
+    }
 
     art.appendChild(side); art.appendChild(sheet);
     wrap.parentNode.insertBefore(art, wrap);
@@ -1382,7 +1410,7 @@ var OutlastSettings = {
       var main = q.nextElementSibling, note = el('div', 'note');
       var h = L.quoteHead(txt(q)), back = $('a', q);
       if (h.name) {
-        q.innerHTML = '<b>' + esc(h.name) + '</b>' + (h.date ? ' <span>' + esc(h.date) + '</span>' : '');
+        q.innerHTML = '(Excerpt from <b>' + esc(h.name) + '</b>' + (h.date ? ', <span>' + esc(h.date) + '</span>' : '') + ')';
         if (back) { back.textContent = '\u2197'; back.setAttribute('aria-label', 'Go to the quoted post'); back.className = 'q-back'; q.appendChild(back); }
       }
       q.parentNode.insertBefore(note, q); note.appendChild(q);
@@ -1390,7 +1418,7 @@ var OutlastSettings = {
     });
     $$('.edit', body).forEach(function (e) {
       var m = L.editLine(txt(e));
-      if (m) e.innerHTML = 'Amended by <b>' + esc(m.name) + '</b> <span>' + esc(m.date) + '</span>';
+      if (m) e.innerHTML = 'Edited for clarity: <b>' + esc(m.name) + '</b>, <span>' + esc(m.date) + '</span>';
     });
     $$('.postcolor img', body).forEach(function (img) {
       function size() { if (img.naturalWidth >= 300) img.classList.add('ph'); }
