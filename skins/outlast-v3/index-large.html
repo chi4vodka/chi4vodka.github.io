@@ -516,6 +516,17 @@ html:not(.is-index) .lens,html:not(.is-index) .tint,html:not(.is-index) .nv{disp
   .trial .forum.on .f-last a{color:#121210}
 }
 
+/* wide screens: the categories keep a readable width (the corridor behind stays full width); very wide screens set
+   two categories side by side, each with its poster and card */
+.cats{max-width:1480px;margin:0 auto}
+.cats>.strip{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+@media(min-width:1900px){
+  .cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:3vw;max-width:2700px;padding:0 3vw}
+  .cats>.strip{display:none}
+  .cats>.strip:first-child{display:block;grid-column:1/-1;margin:0 calc(-3vw - (100vw - 100%) / 2)}
+  .cats>.cat.trial{padding:56px 0 64px}
+}
+
 /* ===== FORUM PAGE: the game's terminal. Film-strip bands; subforums as category tiles on the left; topics as task rows ===== */
 /* the index folder (the index page's forum list) */
 .folder{flex:1;min-width:0;background:#b98e55;padding:18px;box-shadow:5px 6px 0 #000}
@@ -1710,6 +1721,13 @@ var OutlastSettings = {
     if (aff && !$('a', aff)) aff.remove(); else if (aff) $$('a', aff).forEach(function (a) { a.insertAdjacentHTML('afterbegin', '<span>Affiliate</span>'); });
     buildFoot();
     $$('.cat, #boardstats').forEach(function (s) { s.insertAdjacentHTML('beforebegin', '<div class="strip" aria-hidden="true"></div>'); });
+    /* the categories in one block, so wide screens can cap its width or set two side by side */
+    var trials = $$('.cat.trial');
+    if (trials.length) {
+      var wrap = el('div', 'cats'), first = trials[0].previousElementSibling;
+      trials[0].parentNode.insertBefore(wrap, first && first.classList.contains('strip') ? first : trials[0]);
+      trials.forEach(function (c) { var s = c.previousElementSibling; if (s && s.classList.contains('strip')) wrap.appendChild(s); wrap.appendChild(c); });
+    }
   }
   /* ---------- index: the corridor walks forward as you scroll and blurs once the forums start ---------- */
   var room;
