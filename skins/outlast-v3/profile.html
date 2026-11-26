@@ -484,7 +484,7 @@ html:not(.is-index) .lens,html:not(.is-index) .tint,html:not(.is-index) .nv{disp
 .no-topics-row{padding:18px 0;font:400 15px/1.5 var(--ui)}
 
 /* one task row per topic: ringed status circle, title over a black bar, counts, the last poster as the round badge */
-.term{--scratch:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .05 0'/></filter><rect width='260' height='120' filter='url(%23n)'/><g stroke='%23ffffff' stroke-opacity='.06' stroke-width='1'><path d='M12 8l38 104M90 0l-14 70M150 20l30 96M210 4l-22 88M236 30l14 60'/></g></svg>")}
+.term,.pn{--scratch:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .05 0'/></filter><rect width='260' height='120' filter='url(%23n)'/><g stroke='%23ffffff' stroke-opacity='.06' stroke-width='1'><path d='M12 8l38 104M90 0l-14 70M150 20l30 96M210 4l-22 88M236 30l14 60'/></g></svg>")}
 .term .trow{position:relative;display:grid;grid-template-columns:50px minmax(0,1fr) auto 236px;gap:0 22px;align-items:center;margin:0 0 12px;padding:18px 22px 18px 18px;background:#262624 var(--scratch);color:#bab8af;border:0}
 .term .trow.topic-new-post{color:#f4f2ea}
 .term .trow.dim{color:#86847c}
@@ -537,12 +537,12 @@ html:not(.is-index) .lens,html:not(.is-index) .tint,html:not(.is-index) .nv{disp
 .is-forum .t-foot .darkrow2{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;padding:0!important;background:none;border:0;color:#a9a79d;font:400 13px/1.4 var(--ui);text-align:left}
 .is-forum .t-foot .t-sort{flex-basis:100%}
 .is-forum .t-foot .t-sort form{display:block}
-.is-forum #innerwrapper{padding-bottom:84px}
+.is-forum #innerwrapper,.is-panel #innerwrapper{padding-bottom:84px}
 
 /* key prompts, bottom right: round key + label */
 .keys{position:fixed;right:24px;bottom:18px;z-index:40;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}
-.keys a{display:inline-flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;background:rgba(10,10,8,.88);border:1px solid #3d3d38;color:#ecebe3!important;font:500 15px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
-.keys a:hover,.keys a:focus-visible{background:#2c2c29;border-color:#9c9a91}
+.keys a,.keys button{cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;background:rgba(10,10,8,.88);border:1px solid #3d3d38;color:#ecebe3!important;font:500 15px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.keys a:hover,.keys a:focus-visible,.keys button:hover,.keys button:focus-visible{background:#2c2c29;border-color:#9c9a91}
 .kr{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#ecebe3;color:#111;font:700 16px/1 var(--ui);font-style:normal}
 
 @media (max-width:760px){
@@ -567,7 +567,7 @@ html:not(.is-index) .lens,html:not(.is-index) .tint,html:not(.is-index) .nv{disp
   .tr-last .f-av{order:0;width:40px;height:40px;border-width:2px;box-shadow:0 0 0 2px #1b1b19,0 0 0 4px #77756d}
   .tr-mod{justify-self:start}
   .keys{left:10px;right:10px;bottom:10px;justify-content:center;gap:6px}
-  .keys a{padding:4px 10px 4px 4px;font-size:12px;gap:7px}
+  .keys a,.keys button{padding:4px 10px 4px 4px;font-size:12px;gap:7px}
   .kr{width:26px;height:26px;font-size:13px}
 }
 .fr-empty{display:none}
@@ -604,6 +604,178 @@ html:not(.is-index) #innerwrapper{padding:0 4vw 40px}
 /* subforums show in the row wherever the file page is hidden */
 .js .solo .forum>.f-sub,.js .solo .forum>.f-mod{display:block;color:#bdbab0}
 @media(max-width:980px){.js .forum>.f-sub,.js .forum>.f-mod{display:block;color:#bdbab0}}
+
+/* ===== CONTROL PANEL AND MESSENGER: the game's settings screen. Section tabs, setting rows (label box, value box),
+   the help text of the row you are on in the pane on the right, key prompts bottom right ===== */
+/* without the script: Jcink's two columns, dark */
+#ucpmenu,#ucpcontent{background:rgba(9,10,8,.7);color:#cfcdc3;font-family:var(--ui);padding:0 0 14px;border:0}
+#ucpmenu p{margin:0;padding:6px 14px;font-size:14px;line-height:1.8}
+#ucpmenu a,#ucpcontent a{color:#ecebe3}
+.pformstrip{background:none;color:#f1efe8;font:600 15px/1.3 var(--ui);letter-spacing:.06em;text-transform:uppercase;padding:14px 14px 8px}
+.pformleft,.pformright{padding:8px 14px;border:0;background:none;color:inherit}
+
+/* the section tabs; the open section's pages underneath */
+.pn-tabs{margin:0 0 4px}
+.pn-tabs .pt{border:0;background:none;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
+.pn-tabs .pt:hover{color:#fff}
+.pn-subs{margin:0 0 28px}
+.pn-sub{display:flex;flex-wrap:wrap;gap:4px 26px;margin:0;padding:0 20px;list-style:none;font:400 13px/1.4 var(--ui);letter-spacing:.08em;text-transform:uppercase}
+.pn-sub[hidden]{display:none}
+.pn-sub a{display:inline-block;padding:5px 0;border-bottom:2px solid transparent;color:#8f8d84;text-decoration:none}
+.pn-sub a:hover{color:#fff}
+.pn-sub a[aria-current]{color:#f1efe8;border-bottom-color:#e2e0d6}
+
+/* the screen: the list, the pane, each between two thin rules */
+.pn{--frame:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'><path d='M.8 1.2 L46 .7 L99.2 1 L99.3 38.9 L61 39.3 L.7 39 Z' fill='none' stroke='%237a786f' stroke-width='1.3' vector-effect='non-scaling-stroke' stroke-dasharray='40 1 7 1.5 60 1 18 2'/></svg>") 0 0/100% 100% no-repeat;
+  --pale:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='40'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .16 0'/></filter><rect width='300' height='40' filter='url(%23n)'/><g stroke='%23000' stroke-opacity='.13' stroke-width='1'><path d='M14 31l40-3M90 9l60 2M170 30l34-6M230 12l52 3M60 18l22 1'/></g></svg>");
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);gap:0 64px;align-items:start;font-family:var(--ui);color:#d6d4ca}
+.pn-list,.pn-side{min-width:0;padding:24px 0 26px;border-top:2px solid #6b6a62;border-bottom:2px solid #6b6a62}
+.pn-side{position:sticky;top:20px}
+.pn form{display:block}
+.pn table,.pn tbody{display:block;width:100%!important;margin:0;padding:0;border:0;background:none;box-shadow:none}
+.pn tr{display:block}
+.pn td,.pn th{font-family:var(--ui)}
+.pn a:link,.pn a:visited{color:#ecebe3}
+.pn .pn-row a{text-decoration:none}
+.pn .pn-row a:hover{text-decoration:underline}
+.pn .tableborder,.pn .tablebasic{color:inherit;background:none;box-shadow:none;border:0}
+
+/* section headings: DISPLAY, COLORS, QUALITY */
+.pn .pformstrip{display:block;margin:30px 0 12px;padding:0;background:none;border:0;color:#f1efe8;font:600 21px/1.2 var(--ui);letter-spacing:.05em;text-transform:uppercase;text-align:left}
+.pn-list>.pformstrip:first-child,.pn-list>form:first-child>.pformstrip:first-child,.pn tbody>tr:first-child>.pformstrip{margin-top:0}
+
+/* a setting row: the label box and the value box. The row you are on: the label box goes pale and scratched */
+.pn .pn-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:0 36px;margin:0 0 10px}
+.pn .pn-row>.pn-l,.pn .pn-row>.pn-r{display:flex;flex-wrap:wrap;align-items:center;min-width:0;width:auto;min-height:42px;margin:0;padding:8px 20px;background:var(--frame),rgba(8,9,7,.8);border:0;color:#e6e4dc;font:400 15px/1.4 var(--ui);letter-spacing:.03em;text-align:left;overflow-wrap:anywhere}
+.pn .pn-row>.pn-l{display:block;align-content:center}
+.pn .pn-row>.pn-r{justify-content:center;gap:8px;text-align:center}
+.pn .pn-row>.pn-r.pn-left{display:block;align-content:center;text-align:left}
+.pn .pn-row.on>.pn-l{background:var(--pale),#c4c2b8;color:#151512}
+.pn .pn-row.on>.pn-l a:link,.pn .pn-row.on>.pn-l a:visited{color:#151512}
+.pn .pn-row.pn-wide{grid-template-columns:minmax(0,1fr)}
+.pn .pn-gone{display:none!important}
+.pn .pn-label b{font-weight:400}
+.pn-desc{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.pn .pn-static{cursor:default}
+
+/* the pane: the help text, typed */
+.pn-help p{font:400 16.5px/1.75 var(--ui);letter-spacing:.03em;color:#e6e4dc;overflow-wrap:anywhere}
+.pn-help:empty{display:none}
+.pn-help+.pn-box{margin-top:26px}
+.pn-box+.pn-box{margin-top:26px}
+.pn-boxhead{margin:0 0 12px;color:#f1efe8;font:600 17px/1.2 var(--ui);letter-spacing:.05em;text-transform:uppercase}
+.pn-box p{margin:0 0 8px;font-size:14px;line-height:1.6}
+
+/* fields: value boxes with arrows on the choices, dark wells for typing */
+.pn select{-webkit-appearance:none;appearance:none;width:100%;min-width:0;padding:6px 30px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='18'><path d='M8 2L2 9l6 7' fill='none' stroke='%23d6d4ca' stroke-width='1.6'/></svg>") 4px 50%/9px 16px no-repeat,url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='18'><path d='M2 2l6 7-6 7' fill='none' stroke='%23d6d4ca' stroke-width='1.6'/></svg>") calc(100% - 4px) 50%/9px 16px no-repeat;border:0;border-radius:0;color:#f1efe8;font:500 15px/1.3 var(--ui);letter-spacing:.06em;text-transform:uppercase;text-align:center;text-align-last:center;cursor:pointer}
+.pn select:hover{background-color:rgba(255,255,255,.06)}
+.pn select.pn-long{text-transform:none;letter-spacing:0;font-size:14px}
+.pn option{background:#141412;color:#ecebe3;text-transform:none}
+.pn input[type=text],.pn input[type=password],.pn input[type=email],.pn input[type=url],.pn input:not([type]),.pn textarea{width:100%;max-width:100%;min-width:0;padding:8px 12px;background:#050504;border:1px solid #4d4c45;border-radius:0;color:#f1efe8;font:400 15px/1.5 var(--ui);letter-spacing:.02em}
+.pn textarea{min-height:120px;resize:vertical;font:400 16px/1.6 var(--type)}
+.pn textarea.textinput{min-height:300px}
+.pn input::placeholder,.pn textarea::placeholder{color:#77756d}
+.pn input:focus,.pn textarea:focus,.pn select:focus{outline:2px solid #e2e0d6;outline-offset:2px}
+.pn input[type=checkbox],.pn input[type=radio]{-webkit-appearance:none;appearance:none;flex:none;width:20px;height:20px;margin:0 10px 0 0;border:2px solid #a9a79d;border-radius:0;background:#050504;vertical-align:-4px;cursor:pointer}
+.pn input[type=radio]{border-radius:50%}
+.pn input[type=checkbox]:checked,.pn input[type=radio]:checked{background:#ecebe3;border-color:#ecebe3;box-shadow:inset 0 0 0 3px #050504}
+.pn .pn-row.on>.pn-l input[type=radio]{border-color:#151512}
+/* small buttons (Update, Go!, move to, delete, Search for user names) and the code buttons */
+.pn input[type=submit],.pn input[type=button]{padding:7px 13px;background:#ecebe3;border:0;border-radius:2px;color:#111;font:600 12px/1.2 var(--ui);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.pn input[type=submit]:hover,.pn input[type=button]:hover{background:#fff}
+.pn .codebuttons{margin:2px 0;padding:5px 9px;background:#1b1b19;border:1px solid #6b6a62;border-radius:0;color:#ecebe3;font:600 12px/1.2 var(--ui);letter-spacing:.06em}
+.pn input.codebuttons[type=button]:hover{background:#ecebe3;color:#111}
+.pn select.codebuttons{width:auto;padding:5px 24px;background-size:7px 12px,7px 12px;font-size:12px}
+.pn input.codebuttons[readonly]{width:auto;padding:0;background:none;border:0;color:#8f8d84;font:400 12px/1.4 var(--ui)}
+
+/* the notepad in the pane */
+.pn-notes textarea{min-height:200px;margin:0 0 10px;width:100%!important}
+.pn-notes div{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:13px;text-align:left}
+.pn-notes select{width:auto;padding:6px 26px;background-color:rgba(8,9,7,.8);border:1px solid #4d4c45}
+
+/* the clickable smilies, in the pane */
+.pn-box .tablefill{display:block;padding:0;background:none;color:inherit}
+.pn-box .tablefill tr{display:flex;flex-wrap:wrap;gap:4px}
+.pn-box .tablefill td{display:block;padding:4px;font-size:13px}
+.pn-box .tablefill tr:first-child td{padding:0 0 6px;font:600 17px/1.2 var(--ui);letter-spacing:.05em;text-transform:uppercase;color:#f1efe8}
+.pn-box .tablefill tr:first-child b{font-weight:600}
+.pn-box .tablefill td a{display:grid;place-items:center;width:38px;height:38px;background:var(--frame),rgba(8,9,7,.8)}
+.pn-box .tablefill td a:hover{background:var(--pale),#c4c2b8}
+.pn-box .tablefill tr:last-child td a{display:inline;width:auto;height:auto;background:none;font-weight:500}
+.pn-box>a,.pn-box>b{font-size:13px}
+
+/* the inbox: storage meter like the game's slider; messages as rows */
+.pn-meter{display:flex;align-items:center;gap:14px;margin:0 0 10px}
+.pn-meter b{min-width:52px;padding:4px 6px;background:#050504;border:1px solid #6b6a62;color:#f1efe8;font:600 14px/1 var(--ui);text-align:center}
+.pn-meter .bar{position:relative;flex:1;height:4px;margin:0 8px;background:#4d4c45}
+.pn-meter .bar i{position:absolute;left:0;top:0;bottom:0;max-width:100%;background:#ecebe3}
+.pn-meter .bar i::after{content:"";position:absolute;right:-6px;top:-9px;width:10px;height:22px;background:#ecebe3;border:2px solid #050504}
+.pn-count{color:#a9a79d;font-size:13px!important}
+.pn-count i,.pn-tools i{font-style:normal}
+.pn-tools{margin-top:18px;font-size:13px;line-height:2.3;letter-spacing:.04em}
+.pn-tools input{margin-left:6px}
+.pn-tools b{font-weight:400;text-transform:uppercase;letter-spacing:.08em;color:#a9a79d}
+.pn-tools select{width:auto;margin-left:6px;padding:6px 28px;background-color:rgba(8,9,7,.8);border:1px solid #4d4c45}
+.pn-sort span{text-transform:uppercase;letter-spacing:.08em;color:#a9a79d;margin-right:6px}
+.pn .pn-msgs{margin-top:4px}
+.pn .pn-msg{grid-template-columns:40px minmax(0,1fr) minmax(0,.6fr) 28px;gap:0 16px;align-items:stretch}
+.pn .pn-msg>.pn-st,.pn .pn-msg>.pn-x{display:flex;align-items:center;justify-content:center;padding:0;background:none;border:0}
+.pn .pn-msg .st{width:36px;height:36px;font-size:15px}
+.pn .pn-msg>.pn-r{flex-direction:column;gap:2px;font-size:14px}
+.pn .pn-msg.unread>.pn-l a{font-weight:600;color:#fff}
+.pn .pn-msg.on>.pn-l a{color:#151512}
+.pn-when{display:block;color:#8f8d84;font-size:12px;letter-spacing:.05em}
+.pn .pn-empty td{display:block;padding:18px 0;font-size:15px}
+.pn .pn-acts td{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:14px;padding:14px 0 0;background:none;border:0;border-top:1px solid #4d4c45;font-size:13px}
+.pn .pn-acts td>span{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;margin-left:auto}
+.pn .pn-acts input[type=text]{width:auto;flex:1 1 180px}
+.pn .pn-acts select{width:auto;padding:6px 28px;background-color:rgba(8,9,7,.8);border:1px solid #4d4c45}
+.pn-all{display:inline-flex;align-items:center;margin-right:8px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}
+
+/* a message: title, From and Sent as rows, the text typed in a dark box; the sender's card in the pane */
+.pn-pm-title{margin:0 0 16px;color:#f1efe8;font:600 21px/1.3 var(--ui);letter-spacing:.04em;overflow-wrap:anywhere}
+.pn-pm .pn-row{grid-template-columns:140px minmax(0,1fr);gap:0 10px}
+.pn-pm .pn-kv{text-transform:uppercase;letter-spacing:.1em;font-size:13px!important;color:#a9a79d!important}
+.pn-pm .pn-row>.pn-r{justify-content:flex-start;text-align:left}
+.pn .pn-body{max-width:none;margin:16px 0 0;padding:22px 26px;background:var(--frame),rgba(8,9,7,.8);color:#ecebe3;font:400 17px/1.75 var(--type)}
+.pn-card{display:grid;justify-items:start;gap:10px}
+.pn-face{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid #cfcdc3;box-shadow:0 0 0 3px #1b1b19,0 0 0 5px #77756d;background:#141412;filter:grayscale(.45)}
+.pn-ini{display:grid;place-items:center;font:500 28px/1 var(--ui);color:#e9e7df}
+.pn-facts{color:#a9a79d;font-size:13px!important;letter-spacing:.04em}
+
+/* other panel tables Jcink prints (subscriptions and the like): plain dark rows */
+.pn th,.pn .titlemedium{display:none}
+.pn .row1,.pn .row2,.pn .row4,.pn .darkrow1,.pn .darkrow3{background:none;color:inherit;border-bottom:1px solid #3d3d38}
+
+@media (max-width:900px){
+  .pn{display:block}
+  .pn-side{position:static;margin-top:28px}
+  .pn-desc{position:static;display:block;width:auto;height:auto;overflow:visible;clip-path:none;margin-top:3px;font-size:12.5px;line-height:1.45;opacity:.75}
+  .pn-help{display:none}
+  .pn-help+.pn-box{margin-top:0}
+}
+@media (max-width:760px){
+  .pn-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .pn-tabs .pt{flex:none;white-space:nowrap}
+  .pn-sub{padding:0 12px;gap:2px 18px}
+  .pn .pformstrip{font-size:18px;margin-top:24px}
+  .pn .pn-row{grid-template-columns:minmax(0,1fr);gap:6px;margin-bottom:14px}
+  .pn .pn-row>.pn-r{justify-content:flex-start;text-align:left}
+  .pn .pn-msg{grid-template-columns:34px minmax(0,1fr) 24px;gap:6px 10px}
+  .pn .pn-msg>.pn-st{grid-row:1/3}
+  .pn .pn-msg>.pn-r{grid-column:2;grid-row:2;align-items:flex-start;min-height:0;padding:6px 14px}
+  .pn .pn-msg>.pn-x{grid-column:3;grid-row:1/3}
+  .pn .pn-msg .st{width:30px;height:30px;font-size:13px}
+  .pn-pm .pn-row{grid-template-columns:minmax(0,1fr)}
+  .pn .pn-body{padding:16px;font-size:16px}
+  .pn .pn-acts td>span{margin-left:0}
+}
+.pn .st{width:36px;height:36px;box-sizing:border-box;border:3px solid #9c9a91;border-radius:50%;background:#121210;color:#cfcdc3;font:500 15px/1 var(--ui);box-shadow:0 0 0 2px #0b0b0a;transform:none;opacity:1}
+.pn .st-new{background:#f4f2ea;border-color:#f4f2ea;color:#111;font-weight:700}
+.pn .pn-row.pn-stack{grid-template-columns:minmax(0,1fr);gap:8px}
+.pn .pn-row.pn-stack>.pn-r{line-height:2.4}
+.pn .pn-row.pn-wide>.pn-r.pn-left{padding:0;background:none}
+.pn .pn-row.pn-wide>.pn-r.pn-left:has(input[type=checkbox]){padding:10px 20px;background:var(--frame),rgba(8,9,7,.8)}
 
 /* ===== TOPIC VIEW: each post is a file entry, the subject's card clipped beside a typed sheet ===== */
 .is-topic .pagedesc{font:400 15px/1.4 var(--ui);letter-spacing:.06em;text-transform:uppercase;color:#a9a79d;margin:-6px 0 16px;overflow-wrap:anywhere}
@@ -958,6 +1130,35 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
   /* ---------- forum view (the topic list) ---------- */
   L.isForum = function (search) {
     return /(^|[?&])(showforum=\d|act=SF(&|$))/i.test(String(search || ''));
+  };
+
+  /* ---------- control panel and messenger: the settings screen ---------- */
+  L.isPanel = function (search) {
+    return /(^|[?&])act=(UserCP|Msg)(&|$)/i.test(String(search || ''));
+  };
+  function params(s) {
+    var q = String(s || '').replace(/&amp;/g, '&'), i = q.indexOf('?'), out = {};
+    (i < 0 ? q : q.slice(i + 1)).split('#')[0].split('&').forEach(function (kv) {
+      var j = kv.indexOf('='); if (j > 0) out[kv.slice(0, j).toLowerCase()] = kv.slice(j + 1).toLowerCase();
+    });
+    return out;
+  }
+  /* how well a menu link matches the page you are on: 0 another section, 1 same section, 2 same page, 3 same folder too */
+  L.panelScore = function (href, search) {
+    var a = params(href), b = params(search);
+    if (!a.act || a.act !== b.act) return 0;
+    if ((a.code || '') !== (b.code || '')) return 1;
+    return (a.vid || '') === (b.vid || '') ? 3 : 2;
+  };
+  /* a section heading that only repeats the menu link of the page ("Inbox" under "Go to Inbox") */
+  L.isSameLabel = function (a, b) {
+    var x = String(a || '').replace(/\s+/g, ' ').trim().toLowerCase(), y = String(b || '').replace(/\s+/g, ' ').trim().toLowerCase();
+    return !!x && !!y && (x.indexOf(y) > -1 || y.indexOf(x) > -1);
+  };
+  /* "Your folders are 6% full" */
+  L.percentFull = function (s) {
+    var m = String(s || '').match(/(\d+)\s*%/);
+    return m ? Math.min(100, Math.max(0, +m[1])) : null;
   };
 
   /* ---------- topic view ---------- */
@@ -1628,6 +1829,236 @@ var OutlastSettings = {
     if (foot.firstChild) host.parentNode.insertBefore(foot, host.nextSibling);
   }
 
+  /* ---------- control panel and messenger: the game's settings screen ----------
+     the menu's sections become a tab strip with that section's pages under it; form rows become setting rows (label box,
+     value box); the pane on the right shows the help text of the row you are on, and holds the notepad, the storage
+     meter or the sender; the submit buttons become key prompts */
+  function initPanel() {
+    var menu = $('#ucpmenu'), content = $('#ucpcontent'), shell = menu && menu.closest('table');
+    if (!menu || !content || !shell) return;
+    root.classList.add('is-panel');
+
+    /* the menu: Jcink's section strips and the links under each */
+    var groups = [], best = null, bestScore = 1, inboxHref = null;
+    $$('.pformstrip', menu).forEach(function (s) {
+      var g = { name: txt(s), links: [] };
+      for (var n = s.nextElementSibling; n && !n.classList.contains('pformstrip'); n = n.nextElementSibling) {
+        $$('a', n).forEach(function (a) {
+          var l = { text: txt(a), href: a.getAttribute('href') || '#', group: groups.length }, sc = L.panelScore(l.href, location.search);
+          if (sc > bestScore) { best = l; bestScore = sc; }
+          if (!inboxHref && /act=Msg/i.test(l.href) && /CODE=01(?!\d)/.test(l.href) && !/VID=/i.test(l.href)) inboxHref = l.href;
+          g.links.push(l);
+        });
+      }
+      if (g.links.length) groups.push(g);
+    });
+    var tabs = el('nav', 'ptabs pn-tabs'); tabs.setAttribute('aria-label', txt($('.maintitle', menu)) || 'Menu');
+    var subs = el('div', 'pn-subs'), btns = [], lists = [];
+    function open(i) {
+      btns.forEach(function (b, j) { b.classList.toggle('on', j === i); b.setAttribute('aria-expanded', j === i ? 'true' : 'false'); });
+      lists.forEach(function (u, j) { u.hidden = j !== i; });
+    }
+    groups.forEach(function (g, gi) {
+      var b = el('button', 'pt', esc(g.name)); b.type = 'button'; b.setAttribute('aria-controls', 'pn-sub-' + gi);
+      b.addEventListener('click', function () { open(gi); });
+      var ul = el('ul', 'pn-sub'); ul.id = 'pn-sub-' + gi;
+      g.links.forEach(function (l) {
+        var li = el('li'), a = el('a', '', esc(l.text)); a.href = l.href;
+        if (l === best) a.setAttribute('aria-current', 'page');
+        li.appendChild(a); ul.appendChild(li);
+      });
+      tabs.appendChild(b); subs.appendChild(ul); btns.push(b); lists.push(ul);
+    });
+
+    /* the screen: the list on the left, the pane on the right */
+    var pn = el('div', 'pn'), list = el('div', 'pn-list'), side = el('aside', 'pn-side'), help = el('div', 'pn-help');
+    side.setAttribute('aria-label', 'Details');
+    while (content.firstChild) list.appendChild(content.firstChild);
+    var welcome = $$('.maintitle', list).filter(function (m) { return m.parentNode === list; })[0];
+    if (welcome) welcome.remove();
+    side.appendChild(help); pn.appendChild(list); pn.appendChild(side);
+    shell.parentNode.insertBefore(tabs, shell);
+    shell.parentNode.insertBefore(subs, shell);
+    shell.parentNode.insertBefore(pn, shell);
+    shell.remove();
+    open(best ? best.group : 0);
+    /* on a phone the strip scrolls sideways: bring the open section into view */
+    if (btns[best ? best.group : 0]) tabs.scrollLeft = Math.max(0, btns[best ? best.group : 0].offsetLeft - 20);
+    var box = function (title) { var b = el('section', 'pn-box'); if (title) b.appendChild(el('h2', 'pn-boxhead', esc(title))); side.appendChild(b); return b; };
+
+    /* rows: a label box and a value box. A label's text after its first line break is its help, shown in the pane */
+    var select = function (tr) {
+      $$('.pn-row.on', list).forEach(function (r) { r.classList.remove('on'); });
+      tr.classList.add('on');
+      var d = $('.pn-desc', tr);
+      help.innerHTML = d ? '<p>' + d.innerHTML + '</p>' : '';
+    };
+    var makeRow = function (tr, l, r) {
+      tr.classList.add('pn-row'); l.classList.add('pn-l'); r.classList.add('pn-r');
+      if ($('input[type=checkbox],input[type=radio],textarea', r)) r.classList.add('pn-left');
+      /* the code buttons need the width: the mode choice sits above them */
+      if ($('.codebuttons', r)) { tr.classList.add('pn-stack'); r.classList.add('pn-left'); }
+      tr.addEventListener('mouseenter', function () { select(tr); });
+      tr.addEventListener('focusin', function () { select(tr); });
+    };
+    $$('td.pformleft', list).forEach(function (l) {
+      var tr = l.parentNode, r = $('td.pformright', tr);
+      if (!r) return;
+      /* a left cell holding a table (the clickable smilies): its contents go to the pane, the field gets the full row */
+      if ($('table', l)) {
+        var sm = box(''); while (l.firstChild) sm.appendChild(l.firstChild);
+        $$('br', sm).forEach(function (b) { if (b.parentNode === sm) b.remove(); });
+        l.classList.add('pn-gone');
+      } else if (!$('input,select,textarea', l)) {
+        var br = $$('br', l).filter(function (b) { return b.parentNode === l; })[0];
+        if (br) {
+          var lab = el('span', 'pn-label'), desc = el('span', 'pn-desc');
+          while (l.firstChild !== br) lab.appendChild(l.firstChild);
+          br.remove();
+          while (l.firstChild && l.firstChild.nodeName === 'BR') l.firstChild.remove();
+          while (l.firstChild) desc.appendChild(l.firstChild);
+          l.appendChild(lab);
+          if (!L.isBlankText(desc.innerHTML)) l.appendChild(desc);
+        }
+        if (L.isBlankText(l.innerHTML)) l.classList.add('pn-gone');
+      }
+      makeRow(tr, l, r);
+      if (l.classList.contains('pn-gone')) tr.classList.add('pn-wide');
+    });
+    /* plain two-column tables (the account summary): the same rows */
+    $$('table', list).forEach(function (t) {
+      if ($('th,.pformleft,table', t) || t.closest('.pn-box')) return;
+      $$('tr', t).forEach(function (tr) {
+        var c = [].slice.call(tr.cells);
+        if (c.length === 2 && !$('input,select,textarea,img', tr)) { makeRow(tr, c[0], c[1]); c[0].classList.add('pn-kv'); }
+      });
+    });
+
+    /* the notepad: in the pane */
+    var notes = $('textarea[name=notes]', list), nf = notes && notes.closest('form');
+    if (nf) {
+      var ns = nf.previousElementSibling, nb = box(ns && ns.classList.contains('pformstrip') ? txt(ns) : '');
+      if (ns && ns.classList.contains('pformstrip')) ns.remove();
+      nb.classList.add('pn-notes'); nb.appendChild(nf);
+      $$('br', nf).forEach(function (b) { b.remove(); });
+    }
+
+    /* the inbox: storage meter and folder tools in the pane, messages as rows */
+    var meter = $$('table', list).filter(function (t) { return L.percentFull(txt(t)) != null && /full/i.test(txt(t)) && !$('table', t); })[0];
+    if (meter) {
+      var pct = L.percentFull(txt(meter)), outer = meter.parentNode.closest('table'), mb = box('Storage');
+      mb.classList.add('pn-store');
+      mb.appendChild(el('div', 'pn-meter', '<b>' + pct + '%</b><span class="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="Storage used"><i style="width:' + pct + '%"></i></span>'));
+      var tools = outer && outer !== meter ? outer.rows[0].cells[outer.rows[0].cells.length - 1] : null;
+      if (tools && !tools.contains(meter)) {
+        var tb = el('div', 'pn-tools');
+        while (tools.firstChild) tb.appendChild(tools.firstChild);
+        $$('br', tb).forEach(function (b) { var p = b.previousSibling; if (p && p.nodeName === 'BR') b.remove(); });
+        [].slice.call(tb.childNodes).forEach(function (n) { if (n.nodeType === 3 && !n.nodeValue.replace(/[\s\u00a0]+/g, '')) n.remove(); });
+        mb.appendChild(tb);
+      }
+      (outer || meter).remove();
+    }
+    var mt = $$('table', list).filter(function (t) { return $('th', t); })[0];
+    if (mt) {
+      mt.classList.add('pn-msgs');
+      var head = $('tr', mt), all = $('input[type=checkbox]', head), sort = $$('th a', head);
+      $$('tr', mt).forEach(function (tr) {
+        var c = [].slice.call(tr.cells), link = $('a[href*="MSID="]', tr);
+        if (!link || c.length < 5) return;
+        tr.classList.add('pn-row', 'pn-msg');
+        var mk = $('[title]', c[0]); if ($('.st-new', c[0]) || (mk && /unread/i.test(mk.getAttribute('title')))) tr.classList.add('unread');
+        c[0].className = 'pn-st'; c[1].className = 'pn-l'; c[2].className = 'pn-r'; c[4].className = 'pn-x';
+        c[2].appendChild(el('span', 'pn-when', esc(txt(c[3])))); c[3].remove();
+        tr.addEventListener('mouseenter', function () { select(tr); });
+        tr.addEventListener('focusin', function () { select(tr); });
+      });
+      $$('tr', mt).forEach(function (tr) { if (!tr.classList.contains('pn-msg') && tr !== head && tr.cells.length === 1 && !$('input,select', tr)) tr.classList.add('pn-empty'); });
+      var acts = $$('tr', mt).filter(function (tr) { return tr !== head && $('input[type=submit]', tr); })[0];
+      if (acts) {
+        acts.classList.add('pn-acts');
+        $$('[style]', acts).forEach(function (s) { s.removeAttribute('style'); });
+        if (all) { var lab = el('label', 'pn-all'); lab.appendChild(all); lab.appendChild(doc.createTextNode(' Select all')); acts.cells[0].insertBefore(lab, acts.cells[0].firstChild); }
+      }
+      if (sort.length) {
+        var sb = $('.pn-tools', side) || box('');
+        var sp = el('p', 'pn-sort', '<span>Sort by</span> ');
+        sort.forEach(function (a, i) { if (i) sp.appendChild(doc.createTextNode(' \u00b7 ')); sp.appendChild(a); });
+        sb.appendChild(sp);
+      }
+      head.remove();
+    }
+    /* Jcink's legend goes (each mark says what it is); its message count joins the meter */
+    $$('table', list).forEach(function (t) {
+      if (!/maximum storable/i.test(txt(t)) || $('input', t)) return;
+      var it = $('i', t), st = $('.pn-store', side);
+      if (it && st) st.insertBefore(el('p', 'pn-count', esc(txt(it))), $('.pn-meter', st).nextSibling);
+      t.remove();
+    });
+
+    /* a message: the title, who sent it and when as rows, the text in a box; the sender's card in the pane */
+    var pmt = $$('table', list).filter(function (t) { return $('.normalname', t) && $('.postcolor', t); })[0], keyAct = [];
+    if (pmt) {
+      var pm = el('article', 'pn-pm'), title = $('.maintitle', pmt), name = $('.normalname', pmt), det = $$('.postdetails', pmt);
+      var sentCell = det.filter(function (d) { return /sent/i.test(txt(d)); })[0], card = det.filter(function (d) { return d !== sentCell; })[0];
+      if (title) pm.appendChild(el('h2', 'pn-pm-title', title.innerHTML));
+      var kvRow = function (k, v) { var r = el('div', 'pn-row pn-static'); r.appendChild(el('span', 'pn-l pn-kv', esc(k))); var b = el('span', 'pn-r'); if (typeof v === 'string') b.textContent = v; else b.appendChild(v); r.appendChild(b); pm.appendChild(r); };
+      if (name) kvRow('From', name.cloneNode(true));
+      if (sentCell) kvRow('Sent', txt(sentCell).replace(/^sent:\s*/i, ''));
+      var body = $('.postcolor', pmt); body.classList.add('pn-body'); pm.appendChild(body);
+      if (card) {
+        var cb = box(''); cb.classList.add('pn-card');
+        var img = $('img', card), who = txt(name);
+        var face = img && !L.isBlankAvatar(img.getAttribute('src')) ? img : el('span', 'pn-ini', esc(L.initials(who)));
+        face.classList.add('pn-face'); cb.appendChild(face);
+        if (img && face !== img) img.remove();
+        var lines = card.innerHTML.split(/<br\s*\/?>/i).map(function (s) { return s.trim(); }).filter(function (s) { return s && !/<img/i.test(s); });
+        cb.appendChild(el('p', 'pn-facts', lines.join('<br>')));
+      }
+      keyAct = $$('.darkrow3 a', pmt);
+      pmt.parentNode.insertBefore(pm, pmt);
+      pmt.remove();
+    }
+
+    /* the first heading goes when it only repeats the page you are on (Inbox under Go to Inbox) */
+    var lead = $$('.pformstrip', list)[0];
+    if (lead && best && L.isSameLabel(txt(lead), best.text)) (lead.tagName === 'TD' ? lead.parentNode : lead).remove();
+
+    /* a section heading with nothing under it goes (the Inbox strip once its meter moved stays: the rows follow it) */
+    $$('.pformstrip', list).forEach(function (s) { if (s.tagName === 'DIV' && !s.nextElementSibling) s.remove(); });
+
+    /* key prompts, bottom right: the form's buttons (A, X, Y), the message's links, and B to go back */
+    var keys = el('div', 'keys pn-keys'), letters = ['A', 'X', 'Y'], k = 0;
+    var bar = $$('.pformstrip', list).filter(function (s) { return $('input[type=submit]', s); }).pop();
+    if (bar) {
+      $$('input[type=submit]', bar).forEach(function (inp) {
+        var b = el('button', '', '<i class="kr" aria-hidden="true">' + (letters[k++] || '') + '</i>' + esc(inp.value));
+        [].slice.call(inp.attributes).forEach(function (a) { if (!/^(type|class|size)$/i.test(a.name)) b.setAttribute(a.name, a.value); });
+        b.type = 'submit'; keys.appendChild(b); inp.remove();
+      });
+      var form = bar.closest('form') || list;
+      form.appendChild(keys);
+      var row = bar.closest('tr'); (row && row.closest('.pn-list') ? row : bar).remove();
+    }
+    keyAct.slice().reverse().forEach(function (a) {
+      var t = el('a', '', '<i class="kr" aria-hidden="true">' + (letters[k++] || '') + '</i>' + esc(txt(a))); t.href = a.getAttribute('href'); keys.appendChild(t);
+    });
+    var homeHref = (best || (groups[0] && groups[0].links[0]) || { href: 'index.php' }).href.split('?')[0] + '?act=UserCP&CODE=00';
+    var crumbs = $$('#navstrip a'), back;
+    if (pmt && inboxHref) back = ['Back', inboxHref, 'Back to the inbox'];
+    else if (best) back = ['Back', homeHref, 'Back to your control panel'];
+    else if (crumbs.length) back = ['Exit', crumbs[0].getAttribute('href'), 'Back to ' + txt(crumbs[0])];
+    if (back) { var bk = el('a', '', '<i class="kr" aria-hidden="true">B</i>' + esc(back[0])); bk.href = back[1]; bk.title = back[2]; keys.appendChild(bk); }
+    if (!keys.parentNode && keys.firstChild) doc.body.appendChild(keys);
+
+    /* choices with long names (time zones, contacts) drop the capitals so more of the name fits */
+    $$('select', pn).forEach(function (s) { if ($$('option', s).some(function (o) { return txt(o).length > 16; })) s.classList.add('pn-long'); });
+
+    /* the first row starts selected, like the game's cursor */
+    var first = $('.pn-row:not(.pn-static)', list);
+    if (first) select(first);
+  }
+
   function ready(fn) {
     if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', fn); else fn();
   }
@@ -1635,7 +2066,7 @@ var OutlastSettings = {
     $$('#shoutbox').forEach(function (s) { s.remove(); });
     tidyRows();
     fixAvatars();
-    if (root.classList.contains('is-index')) { initIndex(); initCorridor(); initNightVision(); } else { markSolo(); initInner(); if (L.isTopic(location.search)) initTopic(); else if (L.isForum(location.search)) initForum(); }
+    if (root.classList.contains('is-index')) { initIndex(); initCorridor(); initNightVision(); } else { markSolo(); initInner(); if (L.isTopic(location.search)) initTopic(); else if (L.isForum(location.search)) initForum(); else if (L.isPanel(location.search)) initPanel(); }
     initSubjects();
   });
 })();
