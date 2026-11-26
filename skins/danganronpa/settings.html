@@ -306,7 +306,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .thread{margin:0}
 .stmt-wrap{display:block;margin:0 0 40px}
 .stmt-wrap>.darkrow1{display:none}
-table.stmt{display:grid;grid-template-columns:210px minmax(0,1fr);grid-template-areas:"mini head" "mini body" "mini foot" "ip .";grid-template-rows:auto 1fr auto;column-gap:30px;width:100%;border:0;border-spacing:0}
+table.stmt{display:grid;grid-template-columns:250px minmax(0,1fr);grid-template-areas:"mini head" "mini body" "mini foot" "ip .";grid-template-rows:auto 1fr auto;column-gap:30px;width:100%;border:0;border-spacing:0}
 table.stmt>tbody,table.stmt>tbody>tr{display:contents}
 table.stmt>tbody>tr>td{display:block;border:0;min-width:0}
 :where(table.stmt>tbody>tr>td){padding:0}
@@ -516,11 +516,6 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
   .tl-active,.tl-sort,.tl-key{grid-column:1;grid-row:auto}
   table.stmt{grid-template-columns:minmax(0,1fr);grid-template-areas:"mini" "head" "body" "foot" "ip";grid-template-rows:none}
   .s-mini{text-align:left;margin-bottom:22px}
-  .dr-mini{display:grid;grid-template-columns:92px minmax(0,1fr);gap:0 16px;align-items:start}
-  .dr-av{grid-row:1/9}
-  .dr-pic{width:86px;height:86px;border-width:4px;margin:4px 0 0;box-shadow:4px 5px 0 rgba(0,0,0,.55)}
-  .dr-pic.ini{font-size:28px}
-  .dr-talent{margin:4px 0 0}
   .dr-rows{display:flex;flex-wrap:wrap;gap:2px 14px;margin:6px 0 0}
   .dr-rows div{border:0;padding:0;gap:6px}
   .dr-rows dt{line-height:1.7}
@@ -560,6 +555,59 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
   .notice.sticky{bottom:52px}
 }
 
+/* ===== the author panel as V3's talk screen: talent plate and Level bar on a dotted teal panel, the portrait in a
+   tilted cutout, the gold nameplate across its foot, the details in a dark box ===== */
+.s-bar.no-plate{min-height:42px;padding-left:24px}
+.dr-card{position:relative;text-align:left}
+.dr-hud{position:relative;z-index:1;margin:0 -10px -46px -6px;padding:14px 14px 60px 12px;background:radial-gradient(circle,rgba(0,0,0,.5) 1.2px,transparent 1.8px) 0 0/6px 6px,#0d5d6a;clip-path:polygon(0 0,100% 8px,100% 74%,0 100%)}
+.dr-hud::after{content:'';position:absolute;right:10px;top:10px;width:54px;height:30px;background:repeating-linear-gradient(118deg,#f1e21a 0 3px,transparent 3px 9px);opacity:.85}
+.dr-chap{position:relative;z-index:1;display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:0 8px;max-width:calc(100% - 20px);padding:5px 22px 6px 14px;background:#0a090c;box-shadow:inset 0 2px 0 #f1e21a,inset 0 -2px 0 #f1e21a;clip-path:polygon(9px 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.dr-chap small{font:400 11px/1 var(--hud);text-transform:uppercase;color:#f1e21a}
+.dr-chap b{font:800 21px/1.15 var(--sans);color:#fff;overflow-wrap:anywhere}
+.dr-splat{position:absolute;z-index:0;left:52%;top:2px;width:74px;height:52px;background:radial-gradient(circle at 46% 52%,#f1e21a 0 15px,transparent 16px),radial-gradient(circle at 78% 30%,#f1e21a 0 6px,transparent 7px),radial-gradient(circle at 18% 78%,#f1e21a 0 5px,transparent 6px),radial-gradient(circle at 86% 74%,#f1e21a 0 3px,transparent 4px),radial-gradient(circle at 10% 24%,#f1e21a 0 3px,transparent 4px);opacity:.9;pointer-events:none}
+.dr-lv{position:relative;z-index:1;display:flex;align-items:center;gap:8px;width:88%;margin:8px 0 0 6px;padding:3px 12px 3px 10px;background:#f1e21a;color:#111;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.dr-lv b{flex:none;font:700 13px/1.2 var(--sans)}
+.dr-lv .bar{flex:1;height:11px;background:#111;border:2px solid #111}
+.dr-lv .bar i{display:block;height:100%;min-width:3px;background:#fff}
+/* the portrait in its tilted cutout */
+.dr-cutw{position:relative;z-index:2;filter:drop-shadow(7px 9px 0 rgba(0,0,0,.55))}
+.dr-cut{margin:0 2px 0 14px;padding:6px;background:#2c2b31;clip-path:polygon(12% 0,100% 4%,95% 100%,0 96%);transform:rotate(-2deg)}
+.dr-cut .dr-av{display:block}
+.dr-cut .dr-pic{display:block;width:100%;height:auto;aspect-ratio:4/5;margin:0;border:0;transform:none;box-shadow:none;object-fit:cover;background:#d7d4dd;clip-path:polygon(12% 0,100% 4%,95% 100%,0 96%)}
+.dr-cut .dr-pic.ini{display:grid;place-items:center;font-size:64px;background:linear-gradient(135deg,#0d3a44,#18222a)}
+/* the gold nameplate across the foot of the cutout */
+.dr-plate{position:relative;z-index:3;margin:-38px -12px 0 -6px;padding:8px 46px 9px 14px;background:linear-gradient(#fcec7a,#e3bd17 52%,#a8830a);clip-path:polygon(10px 0,100% 0,calc(100% - 14px) 100%,0 100%)}
+.dr-plate::after{content:'';position:absolute;right:16px;top:0;bottom:0;width:28px;background:repeating-linear-gradient(115deg,rgba(40,30,0,.55) 0 3px,transparent 3px 8px)}
+.dr-plate a,.dr-plate>span{display:block;color:#fff;font:800 25px/1.15 var(--sans);text-decoration:none;overflow-wrap:anywhere;text-shadow:2px 0 0 #111,-2px 0 0 #111,0 2px 0 #111,0 -2px 0 #111,2px 2px 0 #111,-2px 2px 0 #111,2px -2px 0 #111,-2px -2px 0 #111,3px 4px 0 #111}
+.dr-plate.long a,.dr-plate.long>span{font-size:21px}
+.dr-plate.longer a,.dr-plate.longer>span{font-size:18px}
+.dr-plate .w{display:inline-block;white-space:nowrap}
+.dr-plate .l{display:inline-block}
+.dr-plate .l:nth-child(even){transform:translateY(-2px)}
+.dr-plate .l:nth-child(3n){transform:translateY(1px)}
+.dr-plate .big{font-size:1.28em;line-height:1}
+.dr-plate .pink{color:#ff8fd1}
+.dr-plate a:hover .w,.dr-plate a:focus-visible .w{text-decoration:underline;text-decoration-color:#111;text-decoration-thickness:3px}
+/* the details in a dark box under the plate */
+.dr-box{position:relative;z-index:1;margin:-6px 0 0 4px;padding:18px 14px 10px;background:rgba(0,0,0,.74);border-left:3px solid #f1e21a}
+.dr-box .dr-title{margin:0 0 6px;font-size:15px;color:#cfe9ee}
+.dr-box .dr-rows{margin:0}
+.dr-box .dr-warn{margin-top:6px}
+@media (max-width:899px){
+  .dr-card{display:grid;grid-template-columns:116px minmax(0,1fr);grid-template-areas:"cut plate" "cut hud" "box box";gap:0 14px;align-items:start}
+  .dr-hud{grid-area:hud;margin:10px 0 0;padding:0;background:none;clip-path:none}
+  .dr-hud::after,.dr-splat{display:none}
+  .dr-chap b{font-size:17px}
+  .dr-lv{width:auto;margin:6px 0 0}
+  .dr-cutw{grid-area:cut}
+  .dr-cut{margin:0}
+  .dr-cut .dr-pic.ini{font-size:32px}
+  .dr-plate{grid-area:plate;margin:2px 0 0 -4px;padding:6px 34px 7px 12px}
+  .dr-plate a,.dr-plate>span{font-size:21px}
+  .dr-plate.long a,.dr-plate.long>span,.dr-plate.longer a,.dr-plate.longer>span{font-size:17px}
+  .dr-box{grid-area:box;margin:14px 0 0}
+}
+
 #switch{position:fixed;left:10px;bottom:10px;z-index:999;font:14px sans-serif;padding:6px;background:#fff;color:#000;border:2px solid #000}</style></head><body>
 <script>history.replaceState(null,'','?act=UserCP&CODE=01'+location.hash);window.FORCE=/motion/.test(location.hash)</script>
 <div class="floor" aria-hidden="true"><div class="tiles"></div><div class="tint"></div></div>
@@ -591,6 +639,8 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
   /* SETTINGS
      images: category ID -> your own picture for that category (replaces the drawn floor map). */
   var CFG = { images: {} };
+  /* posts per level on the author panel's Level bar (Level 1 at 0 posts, Level 2 at this many, and so on) */
+  var LEVEL_EVERY = 50;
 
   var d = document, r = d.documentElement, q = location.search;
   function $(s, c) { return (c || d).querySelector(s); }
@@ -830,6 +880,49 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
   }
 
   /* ---------- topics: every post a class-trial statement ---------- */
+  /* the author panel as V3's talk screen: the talent plate and the Level bar on a dotted panel, the portrait in a tilted
+     cutout, the gold nameplate across its foot (the name leaves the post's header), the details in a dark box */
+  function talkCard(dm, t) {
+    var hud = el('div', 'dr-hud'), tal = $('.dr-talent', dm), tv = txt(tal);
+    if (tv) {
+      var m = tv.match(/^(ultimate)\s+(.+)$/i);
+      hud.appendChild(el('div', 'dr-chap', m ? '<small>' + esc(m[1]) + '</small><b>' + esc(m[2]) + '</b>' : '<b>' + esc(tv) + '</b>'));
+      hud.appendChild(el('i', 'dr-splat'));
+    }
+    if (tal) tal.remove();
+    var pr = $$('.dr-rows > div', dm).filter(function (x) { return /posts/i.test(txt($('dt', x))); })[0];
+    var n = pr ? parseInt(txt($('dd', pr)).replace(/[^\d]/g, ''), 10) : NaN;
+    if (!isNaN(n)) {
+      var lvl = Math.floor(n / LEVEL_EVERY) + 1, left = LEVEL_EVERY - n % LEVEL_EVERY, pct = Math.round(n % LEVEL_EVERY / LEVEL_EVERY * 100);
+      hud.appendChild(el('div', 'dr-lv', '<b>Level ' + lvl + '</b><span class="bar" role="img" aria-label="' + n + ' posts, ' + left + ' more to level ' + (lvl + 1) + '" title="' + left + ' more posts to level ' + (lvl + 1) + '"><i style="width:' + pct + '%"></i></span>'));
+    }
+    var cw = el('div', 'dr-cutw'), cut = el('div', 'dr-cut'), av = $('.dr-av', dm);
+    if (av) cut.appendChild(av);
+    cw.appendChild(cut);
+    /* the nameplate: each word's first letter bigger, the very first one pink, the letters bobbing */
+    var plateEl = $('.plate-name', t), nm = plateEl && ($('a', plateEl) || $('.normalname, .unreg', plateEl)), np = null;
+    if (nm) {
+      var full = txt(nm), words = full.split(/\s+/).filter(Boolean);
+      var html = words.map(function (w, wi) {
+        return '<span class="w" aria-hidden="true">' + Array.from(w).map(function (ch, ci) { return '<span class="l' + (ci ? '' : wi ? ' big' : ' big pink') + '">' + esc(ch) + '</span>'; }).join('') + '</span>';
+      }).join(' ');
+      var tag = el(nm.tagName === 'A' ? 'a' : 'span', '', html);
+      if (nm.tagName === 'A') tag.href = nm.getAttribute('href');
+      tag.setAttribute('aria-label', full);
+      np = el('div', 'dr-plate' + (full.length > 20 ? ' longer' : full.length > 13 ? ' long' : ''));
+      np.appendChild(tag);
+      var bar = plateEl.parentNode; plateEl.remove(); if (bar) bar.classList.add('no-plate');
+    }
+    var box = el('div', 'dr-box');
+    ['.dr-title', '.dr-rows', '.dr-warn'].forEach(function (s) { var e = $(s, dm); if (e) box.appendChild(e); });
+    var card = el('div', 'dr-card');
+    if (hud.firstChild) card.appendChild(hud);
+    card.appendChild(cw);
+    if (np) card.appendChild(np);
+    if (box.firstChild) card.appendChild(box);
+    dm.innerHTML = ''; dm.appendChild(card);
+  }
+
   function initTopic() {
     var banner = $('.banner'), tt = $('.topic-title');
     /* the banner takes the topic's own title and description; Jcink's title bar goes */
@@ -873,6 +966,7 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
         var av = $('.dr-av', dm), img = $('img', av), who = txt($('.plate-name', t));
         if (img) { img.className = 'dr-pic'; img.alt = ''; var src = (img.getAttribute('src') || '').trim(); if (!src || /\/$/.test(src) || (img.complete && !img.naturalWidth)) initials(img, who); }
         else if (av) { var ph = el('img', 'dr-pic'); av.appendChild(ph); initials(ph, who); }
+        talkCard(dm, t);
       }
       /* foot: PM / Email, and back to top */
       if (foot) {
