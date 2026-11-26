@@ -387,6 +387,386 @@ html:not(.is-index) .hero{display:none}
 .topic-list td.row1,.topic-list td.row2{background:var(--navy2);color:var(--cream);border-bottom:1px solid rgba(216,165,49,.3)}
 .topic-list td.row1 a,.topic-list td.row2 a{color:var(--gold2)}
 .topic-list td .desc{color:var(--cream);opacity:.8}
+
+/* =========================================================
+   7. TOPIC VIEW (v3): Jcink's post tables as paper sheets
+   ========================================================= */
+.is-topic #innerwrapper > br, .is-topic .t-posts ~ br { display: none; }
+.t-desc { text-align: center; font: 400 clamp(22px, 2.400vw, 30px)/1.1 var(--hand); color: var(--pink); transform: rotate(-2deg); margin: 0 0 14px; overflow-wrap: anywhere; }
+.is-topic .crumbs { margin-bottom: 34px; }
+.t-posts { background: none; box-shadow: none; margin: 0; }
+
+/* hall-pass tickets: a gold card with a punched hole */
+.button-small {
+  background: linear-gradient(var(--gold) calc(100% - 3px), #9c7012 0); color: var(--navy2) !important; border: 0;
+  font: 400 .78rem/1 var(--title); letter-spacing: .1em; padding: 8px 12px 8px 24px; margin: 0;
+  -webkit-mask: radial-gradient(circle at 11px 50%, transparent 3.5px, #000 4px); mask: radial-gradient(circle at 11px 50%, transparent 3.5px, #000 4px);
+  transition: transform .15s, background .15s;
+}
+.button-small:hover { background: var(--gold2); color: var(--navy2) !important; transform: translateY(-2px); }
+.button-small.danger { background: linear-gradient(#b51f2c calc(100% - 3px), #6e0f18 0); color: #fff !important; }
+/* big tickets: notched both ends, a perforated line inside */
+.button-large, .t-opts > summary {
+  -webkit-mask: radial-gradient(circle at 0 50%, transparent 9px, #000 9.5px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, transparent 9px, #000 9.5px) right / 51% 100% no-repeat;
+  mask: radial-gradient(circle at 0 50%, transparent 9px, #000 9.5px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, transparent 9px, #000 9.5px) right / 51% 100% no-repeat;
+  border: 0; outline: 1px dashed rgba(242,210,122,.6); outline-offset: -6px; padding: 13px 26px; margin: 0;
+}
+.button-large.main, .qr-send input.main { background: var(--gold); color: var(--navy2) !important; outline-color: rgba(14,31,71,.55); }
+.button-large.main:hover, .qr-send input.main:hover { background: var(--gold2); }
+
+/* one toolbar */
+.t-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 10px; margin: 0 0 40px; }
+.t-tools a { text-decoration: none; }
+.t-pages { margin-right: auto; }
+.t-pages .pagination { display: flex; gap: 6px; align-items: stretch; }
+.t-pages .pagination > span { border: 0; background: none; }
+.t-pages .pagination a, .t-pages .pagination_current b { display: block; min-width: 40px; text-align: center; padding: 10px 10px 8px; font: 400 1rem/1 var(--title); text-decoration: none; }
+.t-pages .pagination a:link, .t-pages .pagination a:visited { background: var(--navy2); color: var(--gold2); border: 2px solid var(--gold); }
+.t-pages .pagination a:hover { background: var(--gold); color: var(--navy2); }
+.t-pages .pagination_current { padding: 0 !important; border: 0 !important; background: none !important; }
+.t-pages .pagination_current b { background: var(--cream); color: var(--navy2); border: 2px solid var(--gold); font-weight: 400; }
+.t-opts { position: relative; }
+.t-opts > summary { list-style: none; cursor: pointer; display: inline-block; }
+.t-opts > summary::-webkit-details-marker { display: none; }
+.t-opts > summary::after { content: " \25BE"; }
+.t-opts ul { position: absolute; right: 0; top: calc(100% + 10px); z-index: 20; min-width: 250px; padding: 10px; background: var(--cream); box-shadow: inset 0 0 0 3px var(--cream), inset 0 0 0 5px var(--gold), 8px 8px 0 rgba(0,0,0,.5); }
+.t-opts li a { display: block; padding: 10px 12px; color: #1a140a; text-decoration: none; border-bottom: 1px solid rgba(23,20,12,.15); font-size: 15px; }
+.t-opts li:last-child a { border: 0; }
+.t-opts li a:hover { background: var(--navy2); color: var(--gold2); }
+
+/* a post: one sheet, the author card on the left */
+.bpost { display: block; position: relative; margin: 0 0 46px; }
+.bpost > table { display: block; width: 100%; background: var(--cream); color: #1a140a; box-shadow: inset 0 0 0 3px var(--cream), inset 0 0 0 5px var(--gold), 8px 8px 0 rgba(0,0,0,.5); }
+.bpost > table > tbody { display: grid; grid-template-columns: 240px minmax(0, 1fr); grid-template-rows: auto 1fr auto; }
+.bpost > table > tbody > tr { display: contents; }
+.bpost td { display: block; padding: 0; border: 0; background: none; }
+.bpost td.p-name { grid-column: 1; grid-row: 1; padding: 20px 20px 0; background: var(--navy2); margin: 5px 0 0 5px; }
+.bpost td.miniprofile { grid-column: 1; grid-row: 2 / span 2; padding: 24px 20px 26px; margin: 0 0 5px 5px; background: var(--navy2); color: var(--cream); font-size: .9rem; }
+.js .bpost td.miniprofile { grid-row: 1 / span 3; margin: 5px 0 5px 5px; }
+.bpost .row4 { background: none; border: 0; padding: 0; }
+.bpost td.p-head { grid-column: 2; grid-row: 1; padding: 22px 32px 0; }
+.bpost td.p-head > div { float: none !important; padding: 0 !important; text-align: left; }
+.bpost td.p-body { grid-column: 2; grid-row: 2; padding: 12px 32px 24px; }
+.bpost td.p-foot, .bpost .darkrow3 { background: none; color: #4a4332; font: 400 .9rem var(--body); letter-spacing: 0; text-transform: none; padding: 0; }
+.bpost td.p-foot { grid-column: 2; grid-row: 3; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin: 0 32px 18px; padding-top: 12px; border-top: 1px dashed rgba(23,20,12,.3); }
+.bpost td.p-foot > div { float: none !important; }
+.bpost td.p-foot > div[align="right"] { margin-left: auto; }
+.bpost .p-date, .bpost .p-date:visited { font: 400 .85rem/1 var(--title); letter-spacing: .12em; text-transform: uppercase; color: #1d3570; text-decoration: none; }
+.bpost .p-date:hover { color: #b51f2c; }
+.bpost .post-buttons-top { position: absolute; top: -15px; right: 26px; display: flex; gap: 6px; }
+.bpost .button-small.quiet { background: none; -webkit-mask: none; mask: none; color: #1d3570 !important; padding: 4px 0; margin-right: 14px; font-size: .8rem; }
+.bpost .button-small.quiet:hover { transform: none; text-decoration: underline; }
+.bpost .darkrow3 a, .bpost .p-top { color: #1d3570 !important; }
+.bpost .p-top { text-decoration: none; font-weight: 600; padding: 2px 6px; }
+.bpost .ip_address { font-size: .8rem; opacity: .75; }
+
+/* the yearbook card */
+.yb-photo { position: relative; width: 150px; max-width: 100%; aspect-ratio: 1; margin: 6px auto 16px; padding: 8px; background: #fffdf5; box-shadow: 0 6px 0 rgba(0,0,0,.35); transform: rotate(-2deg); }
+.bpost.alt .yb-photo { transform: rotate(1.6deg); }
+.yb-photo::before { content: ""; position: absolute; left: 50%; top: -11px; width: 64px; height: 20px; margin-left: -32px; background: rgba(255,245,200,.75); transform: rotate(-4deg); }
+.yb-photo img { display: block; width: 100%; height: 100%; object-fit: cover; border: 0; padding: 0; box-shadow: none; background: #24407e; }
+.yb-photo.ini { display: grid; place-items: center; font: 900 2.6rem/1 var(--title); color: var(--gold2); background: #24407e; box-shadow: inset 0 0 0 8px #fffdf5, 0 6px 0 rgba(0,0,0,.35); }
+.bpost .normalname { display: block; text-align: center; font: 400 1.35rem/1.1 var(--title); letter-spacing: .03em; color: var(--gold2); overflow-wrap: anywhere; }
+.bpost .normalname a { color: var(--gold2) !important; text-decoration: none; }
+.bpost .normalname a:hover { color: #fff !important; }
+.bpost .postbit { display: flex; justify-content: space-between; gap: 10px; color: var(--cream); border-bottom: 1px solid rgba(216,165,49,.25); padding: 7px 0; font-size: .9rem; overflow-wrap: anywhere; }
+.bpost .postbit:last-child { border-bottom: 0; }
+.bpost .postbit .pb-label { color: var(--gold2); flex: none; }
+.bpost .postbit img[src*="themes/default"] { display: none; }
+.bpost .postbit.pb-head { display: block; border: 0; text-align: center; padding: 0; }
+.bpost .postbit.pb-head > div { text-align: inherit; }
+.bpost .pb-title { display: block; font: 400 1.35rem/1.1 var(--hand); color: var(--pink); transform: rotate(-3deg); margin: 8px 0 4px; }
+.yb-rows { margin-top: 16px; border-top: 2px solid var(--gold); padding-top: 4px; }
+
+/* post text */
+.postcolor { overflow-wrap: anywhere; }
+.postcolor img, .signature img { max-width: 100%; height: auto; }
+.postcolor b, .postcolor strong { font-weight: 600; color: #0e1f47; }
+.postcolor .edit { display: block; margin-top: 20px; font: italic .85rem/1.4 var(--body); color: #5b5340; }
+.postcolor .edit::before { content: "\270E  "; font-style: normal; }
+.bpost .signature { margin: 24px 0 0; padding: 14px 0 0; border: 0; position: relative; max-width: 72ch; font-size: .92rem; color: #4a4332; }
+.bpost .signature::before { content: ""; position: absolute; left: 0; top: 0; width: 70px; border-top: 5px double var(--gold); }
+
+/* quotes: a lined note, taped in */
+.q-note { position: relative; max-width: 60ch; margin: 20px 0 22px 6px; transform: rotate(-.7deg); box-shadow: 4px 5px 0 rgba(23,20,12,.18); }
+.bpost.alt .q-note { transform: rotate(.6deg); }
+.q-note::before { content: ""; position: absolute; left: 42%; top: -10px; width: 74px; height: 20px; background: rgba(255,245,200,.8); transform: rotate(3deg); z-index: 1; }
+.quotetop, .quotemain { background: linear-gradient(90deg, transparent 40px, rgba(200,55,45,.55) 40px 42px, transparent 42px), #fffdf5; color: #1a140a; }
+.quotetop { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 16px 18px 4px 54px; font: 400 .75rem/1 var(--title); letter-spacing: .1em; text-transform: uppercase; }
+.quotetop .q-who { font: 400 1.4rem/1 var(--hand); letter-spacing: 0; text-transform: none; color: #1d3570; }
+.quotetop .q-when { color: #6b634e; }
+.quotetop .q-back { margin-left: auto; text-decoration: none; color: #1d3570; font-size: 1rem; }
+.quotemain { background: linear-gradient(90deg, transparent 40px, rgba(200,55,45,.55) 40px 42px, transparent 42px), repeating-linear-gradient(#fffdf5 0 27px, #a9bcdc 27px 28px); padding: 0 18px 14px 54px; font: 400 1rem/28px var(--body); }
+/* code: a little chalkboard */
+.codetop, .codemain { max-width: 560px; background: #24412f; color: #eef3e6; border: 10px solid #8a5a2b; }
+.codetop { border-bottom: 0; padding: 10px 16px 0; font: 400 1.2rem/1 var(--hand); color: #dfe8d2; }
+.codemain { border-top: 0; margin-bottom: 18px; padding: 8px 16px 14px; font-family: "Courier New", ui-monospace, monospace; font-size: .95rem; line-height: 1.6; overflow-x: auto; overflow-wrap: anywhere; }
+
+/* the ad stays as Jcink prints it, in a dashed slot */
+.t-ad { margin: 0 0 40px !important; padding: 14px; border: 2px dashed rgba(216,165,49,.6); background: rgba(14,31,71,.6); max-width: 100%; overflow-x: auto; }
+.t-ad td.row4 { background: none; border: 0; padding: 0; }
+.t-ad table { table-layout: fixed; width: 100%; }
+
+/* the reply box: a notebook page */
+.t-reply { margin: 0 0 40px; }
+.t-reply .maintitle { padding: 14px 20px; }
+.t-reply .tablepad { text-align: left; padding: 22px 24px 20px; }
+.t-reply textarea { display: block; width: 100%; min-height: 230px; resize: vertical; border: 0; box-shadow: 4px 5px 0 rgba(23,20,12,.18); padding: 0 18px 0 56px; font: 400 1.05rem/28px var(--body); color: #1a140a; background: linear-gradient(90deg, transparent 40px, rgba(200,55,45,.55) 40px 42px, transparent 42px), repeating-linear-gradient(#fffdf5 0 27px, #a9bcdc 27px 28px); background-attachment: local; }
+.t-reply textarea:focus { outline: 3px solid var(--gold); outline-offset: 2px; }
+.qr-opts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; margin: 16px 0 0; font-size: .9rem; }
+.qr-opts a { color: #1d3570; }
+.qr-opts label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; }
+.qr-opts input[type=checkbox] { width: 18px; height: 18px; padding: 0; accent-color: #1d3570; }
+.qr-send { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 16px; }
+.qr-send input { margin: 0; }
+
+/* the end of the page: who is reading, older/newer topic, jump and search */
+.t-end { background: rgba(14,31,71,.92); border-block: 2px solid var(--gold); padding: 6px 22px; margin: 0 0 30px; }
+.t-end > * { padding: 14px 0; }
+.t-end > * + * { border-top: 1px solid rgba(216,165,49,.3); }
+.t-readers { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font-size: 15px; }
+.t-readers b { font: 400 .9rem/1 var(--title); letter-spacing: .1em; text-transform: uppercase; color: var(--gold2); margin-right: 6px; }
+.t-readers a { text-decoration: none; padding: 4px 10px; border: 1px solid rgba(242,210,122,.55); color: var(--cream); }
+.t-readers a:hover { background: var(--gold); color: var(--navy2); }
+.t-near { display: flex; justify-content: space-between; gap: 12px; }
+.t-near a { font: 400 1rem/1.2 var(--title); letter-spacing: .08em; text-transform: uppercase; color: var(--gold2); text-decoration: none; }
+.t-near a.new { margin-left: auto; }
+.t-near a:hover { color: #fff; }
+.t-find { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
+.t-find form { display: flex; gap: 8px; margin: 0; flex: 1 1 260px; min-width: 0; max-width: 420px; }
+.t-find input[type=text], .t-find select { width: 0; }
+.t-find select, .t-find input[type=text] { flex: 1; min-width: 0; }
+.t-find br { display: none; }
+
+@media (max-width: 720px) {
+  .t-tools { gap: 10px 8px; }
+  .t-pages { flex-basis: 100%; }
+  .t-tools .t-act, .t-opts { flex: 1 1 auto; }
+  .t-tools .button-large, .t-opts > summary { display: block; text-align: center; padding: 12px 16px; font-size: .85rem; }
+  .t-opts ul { left: 0; right: auto; }
+  .bpost > table > tbody { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .js .bpost td.miniprofile, .bpost td.miniprofile { grid-column: 1; grid-row: auto; display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 2px 14px; align-items: center; margin: 5px 5px 0; padding: 18px 16px 14px; width: auto !important; }
+  .bpost td.p-name { grid-row: auto; margin: 5px 5px 0; }
+  .bpost td.miniprofile, .bpost td.p-name { order: -1; }
+  .yb-photo { grid-row: 1 / span 2; width: 70px; margin: 0; padding: 4px; }
+  .yb-photo::before { width: 36px; height: 12px; margin-left: -18px; top: -6px; }
+  .yb-photo.ini { font-size: 1.4rem; box-shadow: inset 0 0 0 4px #fffdf5, 0 4px 0 rgba(0,0,0,.35); }
+  .bpost .normalname { text-align: left; font-size: 1.2rem; align-self: end; }
+  .bpost .postbit.pb-head { text-align: left; align-self: start; }
+  .bpost .pb-title { font-size: 1.1rem; margin: 2px 0 0; transform: none; }
+  .yb-rows { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 2px 16px; margin-top: 12px; padding-top: 8px; border-top-width: 1px; }
+  .yb-rows .postbit { border: 0; padding: 2px 0; gap: 6px; font-size: .82rem; }
+  .bpost td.p-head, .bpost td.p-body, .bpost td.p-foot { grid-column: 1; grid-row: auto; width: auto !important; }
+  .bpost td.p-head { padding: 22px 18px 0; }
+  .bpost td.p-body { padding: 10px 18px 20px; }
+  .bpost td.p-foot { margin: 0 18px 16px; }
+  .bpost .post-buttons-top { right: 12px; }
+  .q-note { margin-left: 0; }
+  .quotetop, .quotemain { background-position: -14px 0, 0 0; padding-left: 40px; }
+  .t-reply .tablepad { padding: 16px 14px; }
+  .t-reply textarea { padding-left: 46px; background-position: -6px 0, 0 0; }
+  .t-end { padding: 4px 16px; }
+}
+
+/* =========================================================
+   8. PROFILE (Main Profiles template): a yearbook spread,
+   the navy card from the posts beside a cream student record
+   ========================================================= */
+.bprofile { margin: 0 0 40px; }
+.is-profile .crumbs { margin-bottom: 34px; }
+/* name and title only show here when the script has not moved them into the page heading */
+.pr-id { text-align: center; margin: 0 0 24px; }
+.pr-name { font: 400 2.4rem/1.1 var(--title); text-transform: uppercase; color: var(--gold2); overflow-wrap: anywhere; }
+.pr-title { font: 400 1.6rem/1.2 var(--hand); color: var(--pink); }
+
+.pr-sheet { display: grid; grid-template-columns: 300px minmax(0, 1fr); padding: 5px; background: var(--cream); color: #1a140a; box-shadow: inset 0 0 0 3px var(--cream), inset 0 0 0 5px var(--gold), 8px 8px 0 rgba(0,0,0,.5); }
+
+/* the card: taped photo, group, who's in, the two tickets */
+.pr-card { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 40px 26px 30px; background: var(--navy2); color: var(--cream); text-align: center; min-width: 0; }
+.pr-photo { position: relative; width: 230px; max-width: 100%; aspect-ratio: 4 / 5; margin: 0 0 10px; padding: 10px; background: #fffdf5; box-shadow: 0 7px 0 rgba(0,0,0,.35); transform: rotate(-2deg); }
+.pr-photo::before { content: ""; position: absolute; left: 50%; top: -12px; width: 84px; height: 24px; margin-left: -42px; background: rgba(255,245,200,.75); transform: rotate(-4deg); }
+.pr-photo img { display: block; width: 100%; height: 100%; object-fit: cover; background: #24407e; border: 0; }
+.pr-photo.ini { display: grid; place-items: center; font: 900 4.2rem/1 var(--title); color: var(--gold2); background: #24407e; box-shadow: inset 0 0 0 10px #fffdf5, 0 7px 0 rgba(0,0,0,.35); }
+.pr-group { font: 400 1.2rem/1.2 var(--title); letter-spacing: .04em; text-transform: uppercase; color: var(--gold2); overflow-wrap: anywhere; }
+.pr-status { display: inline-flex; align-items: center; gap: 8px; font: 400 .8rem/1 var(--title); letter-spacing: .14em; text-transform: uppercase; color: var(--cream); }
+.pr-status::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #7d8aa6; }
+.pr-status.on::before { background: #5fd38a; box-shadow: 0 0 0 3px rgba(95,211,138,.25); }
+.pr-awards { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.pr-awards img { max-width: 100%; height: auto; }
+.pr-acts { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 8px; }
+.pr-acts .button-large { display: block; text-align: center; }
+.pr-find { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; font-size: .9rem; }
+.pr-find a { color: var(--gold2); text-underline-offset: 3px; }
+.pr-find a:hover { color: #fff; }
+
+/* the record: printed labels, values on the line */
+.pr-main { min-width: 0; padding: 36px 44px 38px; }
+.pr-sec + .pr-sec { margin-top: 36px; }
+.pr-sec h3 { display: flex; align-items: center; gap: 14px; margin: 0 0 12px; font: 400 1.05rem/1 var(--title); letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
+.pr-sec h3::after { content: ""; flex: 1; border-top: 5px double var(--gold); }
+.pr-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; margin: 0; }
+.pr-row { display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 11px 0 9px; border-bottom: 1px solid rgba(23,20,12,.2); }
+.pr-row.wide { grid-column: 1 / -1; }
+.pr-row:has(> dd:empty) { display: none; }
+.pr-row dt { font: 400 .76rem/1.3 var(--title); letter-spacing: .12em; text-transform: uppercase; color: #1d3570; }
+.pr-row dd { margin: 0; font-size: 1.02rem; line-height: 1.45; overflow-wrap: anywhere; }
+.pr-row dd a { color: #1d3570; text-underline-offset: 3px; }
+.pr-per { color: #6b634e; font-size: .9rem; }
+
+/* about: a lined page taped in */
+.pr-bio { position: relative; max-width: 70ch; margin: 22px 0 0 4px; padding: 28px 24px 14px 58px; font: 400 1.02rem/28px var(--body); color: #1a140a; background: linear-gradient(90deg, transparent 40px, rgba(200,55,45,.55) 40px 42px, transparent 42px), repeating-linear-gradient(#fffdf5 0 27px, #a9bcdc 27px 28px); box-shadow: 4px 5px 0 rgba(23,20,12,.18); transform: rotate(-.4deg); overflow-wrap: anywhere; }
+.pr-bio::before { content: ""; position: absolute; left: 46%; top: -10px; width: 74px; height: 20px; background: rgba(255,245,200,.85); transform: rotate(3deg); }
+.pr-bio img { max-width: 100%; height: auto; }
+
+/* signature: under the short gold double rule, as on posts */
+.pr-sig { position: relative; margin-top: 36px; padding-top: 14px; font-size: .95rem; color: #4a4332; overflow-wrap: anywhere; }
+.pr-sig::before { content: ""; position: absolute; left: 0; top: 0; width: 70px; border-top: 5px double var(--gold); }
+.pr-sig img { max-width: 100%; height: auto; }
+
+@media (max-width: 720px) {
+  .pr-sheet { grid-template-columns: minmax(0, 1fr); }
+  .pr-card { display: grid; grid-template-columns: 104px minmax(0, 1fr); grid-template-rows: 1fr auto auto 1fr; align-items: center; justify-items: start; gap: 8px 16px; padding: 24px 18px 20px; text-align: left; }
+  .pr-photo { grid-row: 1 / span 4; width: 104px; margin: 0; padding: 6px; }
+  .pr-photo::before { width: 44px; height: 14px; margin-left: -22px; top: -7px; }
+  .pr-photo.ini { font-size: 2rem; box-shadow: inset 0 0 0 6px #fffdf5, 0 5px 0 rgba(0,0,0,.35); }
+  .pr-group { grid-row: 2; grid-column: 2; }
+  .pr-status { grid-row: 3; grid-column: 2; }
+  .pr-awards, .pr-acts, .pr-find { grid-column: 1 / -1; justify-content: flex-start; }
+  .pr-acts { flex-direction: row; margin-top: 10px; }
+  .pr-acts a { flex: 1; }
+  .pr-acts .button-large { padding: 12px 10px; font-size: .85rem; }
+  .pr-main { padding: 26px 18px 28px; }
+  .pr-rows { grid-template-columns: minmax(0, 1fr); }
+  .pr-row { grid-template-columns: 100px minmax(0, 1fr); }
+  .pr-bio { margin-left: 0; padding-left: 46px; background-position: -6px 0, 0 0; }
+}
+
+/* =========================================================
+   9. FORUM PAGE (Topic List Headers + Topic Rows templates):
+   the topic list as a class register on ruled paper
+   ========================================================= */
+.is-forum .crumbs { margin-bottom: 34px; }
+.is-forum form[name="mod_topics"] { margin: 0; }
+
+/* subforums: the forum rows from the index, without the picture */
+.cat.subs { padding: 0 0 40px; }
+.cat.subs .cat-name { justify-content: flex-start; gap: 14px; margin: 0 0 14px; font: 400 1.05rem/1 var(--title); letter-spacing: .14em; color: var(--gold2); -webkit-text-stroke: 0; text-shadow: none; }
+.cat.subs .cat-name::before { display: none; }
+.cat.subs .cat-name::after { height: auto; border-block: 0; border-top: 5px double var(--gold); }
+.cat.subs .cat-body { display: block; }
+.cat.subs .scene { display: none; }
+.cat.subs .forums { grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+.cat.subs .forum { border-right: 1px solid rgba(216,165,49,.3); }
+
+/* the register: cream paper in the gold frame, a red margin line down the left */
+.register { position: relative; padding: 5px 5px 18px; margin: 0; color: #1a140a; background: linear-gradient(90deg, transparent 64px, rgba(200,55,45,.5) 64px 66px, transparent 66px), var(--cream); box-shadow: inset 0 0 0 3px var(--cream), inset 0 0 0 5px var(--gold), 8px 8px 0 rgba(0,0,0,.5); }
+.reg-head, .trow { display: grid; grid-template-columns: 40px minmax(0, 1fr) 110px 250px auto; gap: 0 24px; align-items: start; }
+.reg-head { margin: 5px 0 0; padding: 18px 28px 12px 14px; border-bottom: 5px double var(--gold); font: 400 .78rem/1 var(--title); letter-spacing: .14em; text-transform: uppercase; color: #1d3570; }
+.reg-head span:first-child { grid-column: 2; }
+.reg-head span:nth-child(2) { text-align: right; }
+.reg-sub { display: flex; align-items: center; gap: 14px; margin: 26px 28px 4px 92px; font: 400 .9rem/1 var(--title); letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
+.reg-sub::after { content: ""; flex: 1; border-top: 1px solid rgba(23,20,12,.3); }
+.reg-sub.anno { margin-top: 22px; }
+
+.trow { position: relative; padding: 16px 28px 15px 14px; border-bottom: 1px solid rgba(23,20,12,.16); }
+.trow:last-of-type { border-bottom: 0; }
+.trow:hover { background: rgba(255,250,236,.75); }
+.tr-mark { display: flex; justify-content: center; padding-top: 6px; }
+.tr-main { min-width: 0; padding-left: 12px; }
+.tr-title { font: 600 1.12rem/1.35 var(--body); color: #0e1f47; overflow-wrap: anywhere; }
+.tr-title a { color: inherit; text-decoration: none; }
+.tr-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.trow:not(.topic-new-post) .tr-title { font-weight: 400; }
+.tr-prefix b { display: inline-block; margin: 0 9px 2px 0; padding: 3px 7px 2px; border: 2px solid #b51f2c; color: #b51f2c; font: 400 .68rem/1 var(--title); letter-spacing: .12em; text-transform: uppercase; transform: rotate(-2deg); vertical-align: 2px; }
+.ty-pinned .tr-prefix, .ty-announcement .tr-prefix { display: none; }
+.tr-new a { text-decoration: none; }
+.go-new { display: inline-block; margin-left: 10px; font: 400 1.5rem/.6 var(--hand); color: var(--pink); transform: rotate(-8deg); vertical-align: -1px; }
+.tr-new a:hover .go-new { color: #b51f2c; }
+.tr-desc { margin-top: 3px; font-size: .95rem; font-style: italic; color: #4a4332; overflow-wrap: anywhere; }
+.tr-by { margin-top: 5px; font-size: .85rem; color: #5b5340; }
+.tr-by a { color: #1d3570; text-underline-offset: 3px; }
+.tr-pages { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-top: 8px; }
+.tr-pg { margin-right: 4px; font: 400 .7rem/1 var(--title); letter-spacing: .12em; text-transform: uppercase; color: #5b5340; }
+.tr-pages a { min-width: 26px; padding: 4px 6px 3px; text-align: center; font: 400 .8rem/1 var(--title); color: #1d3570; text-decoration: none; border: 1px solid rgba(29,53,112,.5); }
+.tr-pages a:hover { background: var(--navy2); color: var(--gold2); border-color: var(--navy2); }
+.tr-count { margin: 0; text-align: right; font-size: .82rem; color: #5b5340; }
+.tr-replies { display: block; }
+.tr-replies b { display: block; font: 900 1.45rem/1.05 var(--title); color: var(--navy); }
+.tr-replies b a { color: inherit; text-decoration: none; }
+.tr-replies b a:hover { color: #b51f2c; }
+.tr-views { display: block; margin-top: 3px; opacity: .85; }
+.tr-last { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 1px 12px; align-items: center; font-size: .88rem; min-width: 0; }
+.tr-last .f-av { grid-row: 1 / span 2; width: 40px; height: 40px; }
+.tr-last .f-av.ini { font-size: 13px; background: #24407e; }
+.tr-when { color: #1d3570; text-decoration: none; overflow-wrap: anywhere; }
+.tr-when:hover { text-decoration: underline; text-underline-offset: 3px; }
+.tr-lby { color: #5b5340; overflow-wrap: anywhere; }
+.tr-lby::before { content: "by "; }
+.tr-lby a { color: #1a140a; font-weight: 600; text-decoration: none; }
+.tr-lby a:hover { text-decoration: underline; }
+.tr-mod { padding-top: 6px; }
+.tr-mod:empty { display: none; }
+
+/* pinned: notices pinned to the sheet; announcements: the principal's notice in navy */
+.ty-pinned { background: rgba(255,245,200,.55); }
+.ty-pinned:hover { background: rgba(255,245,200,.9); }
+.ty-announcement { margin: 4px 5px 0; padding-top: 18px; padding-bottom: 17px; background: var(--navy2); color: var(--cream); border: 0; }
+.ty-announcement:hover { background: #142a5a; }
+.ty-announcement .tr-title { color: var(--gold2); font-weight: 600; }
+.ty-announcement .tr-desc, .ty-announcement .tr-by, .ty-announcement .tr-count, .ty-announcement .tr-lby { color: rgba(242,233,208,.85); }
+.ty-announcement .tr-by a, .ty-announcement .tr-when, .ty-announcement .tr-lby a, .ty-announcement .tr-replies b { color: var(--gold2); }
+/* closed and moved topics: still there, quieter */
+.trow:has(.pip.locked) .tr-title, .trow:has(.pip.moved) .tr-title { color: #5b5340; }
+.trow:has(.pip.moved) { opacity: .75; }
+
+/* topic marks (macros B_NEW ... B_MOVED): the diamond from the index, with a few shapes for the rest */
+.pip.hot { border-color: var(--pink); }
+.pip.on.hot { background: var(--gold); border-color: var(--pink); box-shadow: 0 0 0 3px rgba(255,47,134,.22); }
+.pip.poll { transform: none; border-radius: 2px; }
+.pip.poll.on { background: var(--gold); border-color: var(--gold); }
+.pip.pin { transform: none; width: 15px; height: 15px; border-radius: 50%; border: 0; background: radial-gradient(circle at 35% 35%, #e8505c 0 30%, #b51f2c 32%); box-shadow: 2px 3px 0 rgba(23,20,12,.3); }
+.pip.moved { transform: none; width: auto; height: auto; border: 0; font: 400 1.3rem/1 var(--title); color: #6b634e; }
+.pip.moved::before { content: "\2192"; }
+.ty-announcement .pip { border-color: var(--gold); }
+
+/* page links under the list */
+.t-pages-end { display: flex; margin: 22px 0 34px; }
+.t-pages-end .pagination { display: flex; gap: 6px; align-items: stretch; }
+.t-pages-end .pagination > span { border: 0; background: none; }
+.t-pages-end .pagination a, .t-pages-end .pagination_current b { display: block; min-width: 40px; text-align: center; padding: 10px 10px 8px; font: 400 1rem/1 var(--title); text-decoration: none; }
+.t-pages-end .pagination a:link, .t-pages-end .pagination a:visited { background: var(--navy2); color: var(--gold2); border: 2px solid var(--gold); }
+.t-pages-end .pagination a:hover { background: var(--gold); color: var(--navy2); }
+.t-pages-end .pagination_current { padding: 0 !important; border: 0 !important; background: none !important; }
+.t-pages-end .pagination_current b { background: var(--cream); color: var(--navy2); border: 2px solid var(--gold); font-weight: 400; }
+.is-forum .t-end { margin-top: 34px; }
+.t-pages-end + .t-end { margin-top: 0; }
+
+/* the end panel: sorting, the mark-as-read link */
+.f-sort form { margin: 0; }
+.f-sort-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .95rem; color: var(--cream); background: none; padding: 0; }
+.f-sort-line select { padding: 5px 8px; font-size: .9rem; max-width: 100%; }
+.f-sort-line input[type=submit] { margin: 0; padding: 7px 14px; }
+.f-read a { font: 400 .9rem/1.2 var(--title); letter-spacing: .08em; text-transform: uppercase; color: var(--gold2); text-underline-offset: 4px; }
+.f-read a:hover { color: #fff; }
+
+@media (max-width: 720px) {
+  .register { background: linear-gradient(90deg, transparent 36px, rgba(200,55,45,.5) 36px 38px, transparent 38px), var(--cream); }
+  .reg-head { display: none; }
+  .reg-sub { margin: 22px 16px 4px 52px; }
+  .trow { grid-template-columns: 24px minmax(0, 1fr); gap: 0 18px; padding: 14px 16px 14px 6px; }
+  .tr-mark { padding-top: 5px; }
+  .tr-main { padding-left: 4px; }
+  .tr-count, .tr-last, .tr-mod { grid-column: 2; }
+  .tr-count { display: flex; flex-wrap: wrap; gap: 4px 12px; text-align: left; margin-top: 8px; padding-left: 4px; }
+  .tr-replies, .tr-views { display: inline; margin: 0; }
+  .tr-replies b { display: inline; font: 600 .82rem var(--body); color: var(--navy); }
+  .tr-last { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin-top: 8px; padding-left: 4px; font-size: .82rem; }
+  .tr-last .f-av { width: 28px; height: 28px; border-width: 1px; }
+  .tr-last .f-av.ini { font-size: 10px; }
+  .ty-announcement { margin: 4px 4px 0; }
+  .cat.subs .forum { border-right: 0; }
+  .f-sort-line select { flex: 1 1 140px; min-width: 0; }
+}
 </style>
 <script>
 /* before the page paints: mark the index (by address) so the first screen only shows there */
@@ -687,6 +1067,11 @@ html:not(.is-index) .hero{display:none}
   L.isBlankText = function (s) {
     return !String(s == null ? '' : s).replace(/&nbsp;/gi, '').replace(/[\s\u00a0]+/g, '');
   };
+  /* a profile value with nothing to show: blank, or one of Jcink's placeholders */
+  L.isNoInfo = function (s) {
+    var t = String(s == null ? '' : s).replace(/&nbsp;/gi, ' ').replace(/[\s\u00a0]+/g, ' ').trim();
+    return !t || /^(no information|n\/a|no photo)$/i.test(t);
+  };
   L.isBlankAvatar = function (src) {
     var s = String(src == null ? '' : src).trim();
     return !s || /\/$/.test(s) || /no_?avatar|spacer\.gif|blank\.gif/i.test(s);
@@ -706,6 +1091,32 @@ html:not(.is-index) .hero{display:none}
   };
   L.escapeHtml = function (s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+  };
+
+  /* ---------- topic view ---------- */
+  /* "QUOTE (Kit @ Today, 04:12 pm)" -> who and when */
+  L.parseQuoteHead = function (s) {
+    var m = String(s == null ? '' : s).replace(/\s+/g, ' ').match(/\(([\s\S]*)\)/);
+    if (!m) return { name: '', date: '' };
+    var inner = m[1].trim(), at = inner.lastIndexOf(' @ ');
+    return at < 0 ? { name: inner, date: '' } : { name: inner.slice(0, at).trim(), date: inner.slice(at + 3).trim() };
+  };
+  /* "3 User(s) are reading this topic (1 Guests and 0 Anonymous Users)" */
+  L.parseReaders = function (s) {
+    var m = String(s == null ? '' : s).match(/(\d+)\D+?\((\d+)\D+?(\d+)/);
+    return m ? { total: +m[1], guests: +m[2], anon: +m[3] } : null;
+  };
+  /* links that do the same thing share a key: the act plus its type (Track a topic vs Track a forum) */
+  L.linkKey = function (href) {
+    var h = String(href == null ? '' : href).replace(/&amp;/g, '&');
+    var act = (h.match(/[?&]act=([^&#]*)/i) || [])[1] || h, type = (h.match(/[?&]type=([^&#]*)/i) || [])[1] || '';
+    return act.toLowerCase() + '|' + type.toLowerCase();
+  };
+  /* an author-panel line minus its label; '' means the field is empty */
+  L.fieldValue = function (full, label) {
+    var f = String(full == null ? '' : full).replace(/[\s\u00a0]+/g, ' ').trim(), l = String(label == null ? '' : label).replace(/[\s\u00a0]+/g, ' ').trim();
+    if (l && f.indexOf(l) === 0) f = f.slice(l.length);
+    return f.replace(/^[\s:]+/, '').trim();
   };
 
   /* Board name sizing: every split of the words into 1..maxLines lines; the biggest size that fits wins,
@@ -770,10 +1181,17 @@ html:not(.is-index) .hero{display:none}
   });
   /* last poster's avatar; initials when there is none or it fails to load */
   function initials(img) {
-    var last = img.closest('.f-last'), by = last && $('.f-by', last);
+    var last = img.closest('.f-last, .tr-last'), by = last && $('.f-by, .tr-lby', last);
     img.replaceWith(el('span', 'f-av ini', L.initials(txt(by))));
   }
-  d.addEventListener('error', function (e) { if (e.target.classList && e.target.classList.contains('f-av')) initials(e.target); }, true);
+  d.addEventListener('error', function (e) {
+    var t = e.target; if (!t.classList) return;
+    if (t.classList.contains('f-av')) initials(t);
+    var ph = t.closest && t.closest('.yb-photo');
+    if (ph) { var card = ph.parentNode; ph.classList.add('ini'); ph.textContent = L.initials(txt($('.normalname, .unreg', card))); }
+    var pp = t.closest && t.closest('.pr-photo');
+    if (pp) profileInitials(pp);
+  }, true);
   $$('img.f-av').forEach(function (img) { if (L.isBlankAvatar(img.getAttribute('src')) || (img.complete && !img.naturalWidth)) initials(img); });
 
   /* account links from Jcink (members and guests): name, then links with Log Out last */
@@ -840,9 +1258,321 @@ html:not(.is-index) .hero{display:none}
       navi.style.display = 'none';
     }
     $$('#ticker, #extras, #affiliates').forEach(function (x) { x.remove(); });
+    var postTables = $$('#innerwrapper td[id^="pid_"]').map(function (c) { return c.closest('table'); });
+    if (postTables.length) initTopic(postTables);
+    var prof = $('#bprofile'); if (prof) initProfile(prof);
+    var tl = $('#topic-list'); if (tl && !postTables.length) initForum(tl);
     var foot = el('footer', 'foot');
     $$('#delcookiesrow, #skin_selector, .copyright').forEach(function (x) { foot.appendChild(x); });
     $('#innerwrapper').appendChild(foot);
+  }
+
+  /* ---------- forum page: the Topic List templates as a class register ---------- */
+  function initForum(list) {
+    r.classList.add('is-forum');
+    var form = list.closest('form') || list;
+    function precedes(a, b) { return !!(a.compareDocumentPosition(b) & 4); }
+
+    /* subforums: Jcink prints them as a category named after this forum, which the page heading already says */
+    $$('#innerwrapper .cat').forEach(function (c) {
+      if (!precedes(c, form)) return;
+      c.classList.add('subs');
+      var h = $('.cat-name', c); if (h) h.textContent = 'Subforums';
+    });
+    /* the heading was hidden as a repeat of that category name; now the forum name is said only there */
+    var ph = $('.pagehead'); if (ph) ph.classList.remove('vh');
+
+    /* one toolbar: pages, New Poll, New Topic. Jcink prints the same buttons again under the list; that row goes */
+    var btnTables = $$('#innerwrapper table').filter(function (t) { return !t.closest('#topic-list') && !t.closest('.cat') && $('.button-large', t); });
+    var tools = el('div', 't-tools'), seen = {}, acts = [];
+    var pages = btnTables.length ? $('.pagination', btnTables[0]) : null;
+    if (pages && $('a', pages)) { var pg = el('nav', 't-pages'); pg.setAttribute('aria-label', 'Pages'); pg.appendChild(pages); tools.appendChild(pg); } else pages = null;
+    btnTables.forEach(function (t) {
+      $$('a', t).forEach(function (a) {
+        var h = a.getAttribute('href') || '', key = txt(a).toLowerCase();
+        if (!$('.button-large', a) || seen[key]) return;
+        seen[key] = 1;
+        var b = el('a', 't-act', a.innerHTML); b.href = h; if (a.title) b.title = a.title;
+        if (/CODE=00\b/.test(h)) { $('.button-large', b).classList.add('main'); b.classList.add('t-new'); }
+        acts.push(b);
+      });
+    });
+    acts.sort(function (a, b) { return a.classList.contains('t-new') - b.classList.contains('t-new'); }).forEach(function (b) { tools.appendChild(b); });
+    if (tools.firstChild) form.parentNode.insertBefore(tools, form);
+    btnTables.forEach(function (t) { t.remove(); });
+    /* the legend: every mark says what it is on hover and to screen readers, and new topics are labelled */
+    $$('.wrapmini').forEach(function (x) { x.remove(); });
+
+    /* list headings with nothing under them go (Jcink can print a heading for an empty group) */
+    $$('.reg-sub, .topic-title-row', list).forEach(function (h) {
+      var n = h.nextElementSibling;
+      if (!n || !n.classList.contains('trow')) h.remove();
+    });
+
+    /* each topic: empty parts go; prefixes lose their colon; page links get a label */
+    $$('.trow', list).forEach(function (t) {
+      ['.tr-desc', '.tr-pages', '.tr-mod', '.tr-new', '.tr-prefix'].forEach(function (s) { var e = $(s, t); if (e && L.isBlankText(e.innerHTML) && !$('img, input', e)) e.remove(); });
+      var pre = $('.tr-prefix', t); if (pre) $$('b', pre).forEach(function (b) { b.textContent = txt(b).replace(/:\s*$/, ''); });
+      var tp = $('.tr-pages', t);
+      if (tp) {
+        var links = $$('a', tp);
+        if (links.length) { tp.innerHTML = '<span class="tr-pg">Pages</span>'; links.forEach(function (a) { tp.appendChild(a); }); }
+      }
+    });
+
+    /* page links again under the list, so a long page does not need a scroll back up */
+    var after = form.nextSibling;
+    if (pages) { var pb = el('nav', 't-pages t-pages-end'); pb.setAttribute('aria-label', 'Pages'); pb.appendChild(pages.cloneNode(true)); form.parentNode.insertBefore(pb, after); }
+
+    /* who is browsing, sorting, search, forum jump, mark as read: one panel at the end */
+    var end = el('div', 't-end f-end'), foot = $('.reg-foot');
+    var strip = foot && $('.darkrow2', $('.reg-active', foot) || foot);
+    var n = strip && L.parseReaders(txt(strip));
+    if (n) {
+      var who = el('div', 't-readers', '<b>Here now</b>'), names = strip.nextElementSibling;
+      if (names && names.classList.contains('row2')) $$('a', names).forEach(function (a) { var b = el('a', '', L.escapeHtml(txt(a))); b.href = a.getAttribute('href'); who.appendChild(b); });
+      var rest = [n.guests ? n.guests + (n.guests === 1 ? ' guest' : ' guests') : '', n.anon ? n.anon + ' hidden' : ''].filter(Boolean).join(', ');
+      if (rest) who.appendChild(el('span', '', (who.querySelector('a') ? 'and ' : '') + rest));
+      if (who.querySelector('a, span')) end.appendChild(who);
+    }
+    var sort = foot && $('.reg-sort form', foot);
+    if (sort) {
+      var line = $('div', sort); if (line) { line.className = 'f-sort-line'; line.removeAttribute('style'); line.removeAttribute('align'); }
+      var sels = $$('select', sort), names2 = ['Sort by', 'Order', 'From'];
+      sels.forEach(function (s, i) { if (names2[i]) s.setAttribute('aria-label', names2[i]); });
+      var srow = el('div', 'f-sort'); srow.appendChild(sort); end.appendChild(srow);
+    }
+    if (foot) foot.remove();
+    var jump = $('form[name="jumpmenu"]'), search = $('#search-this-forum');
+    if (jump || search) {
+      var holder = (jump || search).parentNode, row = el('div', 't-find');
+      if (search) { var kw = $('input[name="keywords"]', search); if (kw) { kw.setAttribute('aria-label', 'Search this forum'); kw.removeAttribute('onfocus'); } row.appendChild(search); }
+      if (jump) { var sel = $('select', jump); if (sel) sel.setAttribute('aria-label', 'Jump to a forum'); row.appendChild(jump); }
+      end.appendChild(row);
+      if (holder && holder !== d.body && !txt(holder) && !$('form, select, input', holder)) holder.remove();
+    }
+    var read = $('#mark-as-read-subto');
+    if (read) {
+      var rl = el('div', 'f-read'); $$('a', read).forEach(function (a) { rl.appendChild(a); });
+      var rh = read.parentNode; read.remove();
+      if (rh && rh !== d.body && !txt(rh)) rh.remove();
+      if (rl.firstChild) end.appendChild(rl);
+    }
+    if (end.firstChild) form.parentNode.insertBefore(end, after);
+    $$('#innerwrapper > br, #innerwrapper > br[clear]').forEach(function (b) { b.remove(); });
+  }
+
+  /* ---------- profile: the Main Profiles template as a yearbook spread ---------- */
+  function profileInitials(ph) {
+    ph.classList.add('ini'); ph.innerHTML = '';
+    ph.textContent = L.initials(txt($('.pagehead span')) || txt($('.pr-name')));
+  }
+  function initProfile(p) {
+    r.classList.add('is-profile');
+    /* the member's name is the page heading (instead of "Viewing Profile"); the custom title goes under it in pencil */
+    var head = $('.pagehead'), id = $('.pr-id', p), name = txt($('.pr-name', p)), title = txt($('.pr-title', p));
+    if (head && name) {
+      head.classList.remove('vh'); $('span', head).textContent = name;
+      if (!L.isNoInfo(title)) head.insertAdjacentElement('afterend', el('p', 't-desc', L.escapeHtml(title)));
+      if (id) id.remove();
+    }
+    /* photo: the personal photo, else the avatar, else initials */
+    var ph = $('.pr-photo', p);
+    if (ph) {
+      var img = $('img', ph), av = (ph.getAttribute('data-av') || '').trim();
+      if (!img || L.isBlankAvatar(img.getAttribute('src'))) {
+        if (av && !L.isBlankAvatar(av)) { ph.innerHTML = ''; var im = el('img'); im.alt = ''; im.src = av; ph.appendChild(im); }
+        else profileInitials(ph);
+      }
+      img = $('img', ph);
+      if (img) { img.removeAttribute('width'); img.removeAttribute('height'); if (img.complete && !img.naturalWidth) profileInitials(ph); }
+    }
+    /* nothing to show: the row, block or section goes */
+    function empty(n) { return !n || (L.isNoInfo(txt(n)) && !$('img', n)); }
+    $$('.pr-row', p).forEach(function (row) { if (empty($('dd', row))) row.remove(); });
+    var posts = $('.pr-posts dd', p), pday = $('.pr-pday', p);
+    if (posts && pday) { posts.appendChild(el('span', 'pr-per', ' (' + L.escapeHtml(txt($('dd', pday))) + ' a day)')); pday.remove(); }
+    $$('.pr-status, .pr-group, .pr-awards, .pr-sig, .pr-bio', p).forEach(function (n) { if (empty(n)) n.remove(); });
+    var st = $('.pr-status', p); if (st) st.classList.add(/online/i.test(txt(st)) ? 'on' : 'off');
+    $$('.pr-sec', p).forEach(function (s) { if (!$('.pr-row, .pr-bio', s)) s.remove(); });
+    $$('.pr-acts a', p).forEach(function (a) { if (!(a.getAttribute('href') || '').trim()) a.remove(); });
+  }
+
+  /* ---------- topic view: Jcink's post tables become sheets with a yearbook card ---------- */
+  function sentence(s) { s = s.replace(/\s+/g, ' ').trim(); return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase(); }
+  function initTopic(tables) {
+    r.classList.add('is-topic');
+    var box = tables[0].closest('.tableborder'), qr = $('#qr_open');
+    if (box) box.classList.add('t-posts');
+
+    /* the heading is the topic title; its description goes under it in pencil; the plate that said it again goes */
+    var tt = $('.topic-title'), head = $('.pagehead');
+    if (tt && head) {
+      head.classList.remove('vh'); $('span', head).textContent = txt(tt);
+      var desc = txt($('.topic-desc')).replace(/^,\s*/, '');
+      if (desc) head.insertAdjacentElement('afterend', el('p', 't-desc', L.escapeHtml(desc)));
+      var plate = tt.closest('.maintitle'); if (plate) plate.remove();
+    }
+
+    /* one toolbar: pages, the topic buttons once each, topic options, and Reply (which opens onto the reply box) */
+    var tools = el('div', 't-tools'), seen = {}, acts = [];
+    var btnTables = $$('#innerwrapper table').filter(function (t) { return !t.closest('.tableborder') && $('.button-large', t); });
+    var pages = btnTables.length ? $('.pagination', btnTables[0]) : null;
+    if (pages) { var pg = el('nav', 't-pages'); pg.setAttribute('aria-label', 'Pages'); pg.appendChild(pages); tools.appendChild(pg); }
+    btnTables.forEach(function (t) {
+      $$('a', t).forEach(function (a) {
+        var h = a.getAttribute('href') || '', key = txt(a).toLowerCase();
+        if (!$('.button-large', a) || seen[key] || /qr_open|topic_open/.test(h)) return;
+        seen[key] = 1;
+        var b = el('a', 't-act', a.innerHTML); b.href = h; if (a.title) b.title = a.title;
+        if (/CODE=02\b/.test(h)) { b.classList.add('t-reply-btn'); $('.button-large', b).classList.add('main'); if (qr) b.href = '#qr_open'; }
+        acts.push(b);
+      });
+    });
+    var opts = [], keys = {};
+    $$('#topic_open .tablepad a, .postlinksbar a').forEach(function (a) {
+      var k = L.linkKey(a.getAttribute('href')); if (keys[k]) return; keys[k] = 1;
+      var b = el('a', '', L.escapeHtml(sentence(txt(a)))); b.href = a.getAttribute('href'); opts.push(b);
+    });
+    var reply = acts.filter(function (b) { return b.classList.contains('t-reply-btn'); })[0];
+    acts.forEach(function (b) { if (b !== reply) tools.appendChild(b); });
+    if (opts.length) {
+      var det = el('details', 't-opts'), sum = el('summary', 'button-large', 'Topic options'), ul = el('ul');
+      opts.forEach(function (b) { var li = el('li'); li.appendChild(b); ul.appendChild(li); });
+      det.appendChild(sum); det.appendChild(ul); tools.appendChild(det);
+      d.addEventListener('click', function (e) { if (det.open && !det.contains(e.target)) det.open = false; });
+      d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && det.open) { det.open = false; sum.focus(); } });
+    }
+    if (reply) tools.appendChild(reply);
+    if (box && (pages || acts.length || opts.length)) box.parentNode.insertBefore(tools, box);
+    btnTables.forEach(function (t) { t.remove(); });
+    $$('.postlinksbar, #topic_open').forEach(function (x) { x.remove(); });
+
+    /* each post */
+    tables.forEach(function (tbl, i) { post(tbl, i); });
+
+    /* quotes: who and when, on a note */
+    $$('.t-posts .quotetop').forEach(function (q) {
+      var main = q.nextElementSibling, info = L.parseQuoteHead(txt(q)), back = $('a', q);
+      if (info.name) {
+        q.innerHTML = '<span class="q-who">' + L.escapeHtml(info.name) + '</span>' + (info.date ? ' <span class="q-when">' + L.escapeHtml(info.date) + '</span>' : '');
+        if (back) { back.innerHTML = '\u2191<span class="vh"> to the quoted post</span>'; back.className = 'q-back'; q.appendChild(back); }
+      }
+      var note = el('div', 'q-note'); q.parentNode.insertBefore(note, q); note.appendChild(q);
+      if (main && main.classList.contains('quotemain')) note.appendChild(main);
+    });
+
+    /* the reply box, open */
+    var end = el('section', 't-end');
+    if (qr) {
+      qr.style.display = ''; qr.classList.add('t-reply');
+      var mt = $('.maintitle', qr); if (mt) mt.textContent = 'Reply';
+      var pad = $('.tablepad', qr), ta = $('textarea', qr);
+      if (pad && ta) {
+        var o = el('div', 'qr-opts'), send = el('div', 'qr-send');
+        $$('a', pad).forEach(function (a) { o.appendChild(a); });
+        $$('input[type=checkbox]', pad).forEach(function (c) {
+          var t = c.nextSibling, lab = el('label');
+          lab.appendChild(c); if (t && t.nodeType === 3) { lab.appendChild(d.createTextNode(t.nodeValue.replace(/\|/g, '').trim())); t.remove(); }
+          o.appendChild(lab);
+        });
+        $$('input[type=submit], input[type=button]', pad).forEach(function (b) { if (/ShowHide/.test(b.getAttribute('onclick') || '')) b.remove(); else send.appendChild(b); });
+        if (send.firstChild) send.firstChild.classList.add('main');
+        pad.innerHTML = ''; pad.appendChild(ta); pad.appendChild(o); pad.appendChild(send);
+      }
+      $$('#qr_closed').forEach(function (x) { x.remove(); });
+      if (reply) reply.addEventListener('click', function (e) { e.preventDefault(); qr.scrollIntoView({ block: 'start' }); if (ta) ta.focus({ preventScroll: true }); });
+    }
+
+    /* who is reading, older/newer topic, forum jump and search: one panel at the end */
+    var strips = box ? $$('.activeuserstrip', box) : [];
+    strips.forEach(function (s) {
+      var n = L.parseReaders(txt(s));
+      if (n) {
+        var who = el('div', 't-readers', '<b>Reading now</b>'), list = s.nextElementSibling;
+        if (list && list.classList.contains('row2')) { $$('a', list).forEach(function (a) { var b = el('a', '', L.escapeHtml(txt(a))); b.href = a.getAttribute('href'); who.appendChild(b); }); list.remove(); }
+        var rest = [n.guests ? n.guests + (n.guests === 1 ? ' guest' : ' guests') : '', n.anon ? n.anon + ' hidden' : ''].filter(Boolean).join(', ');
+        if (rest) who.appendChild(el('span', '', (who.querySelector('a') ? 'and ' : '') + rest));
+        end.appendChild(who);
+      } else {
+        var old = $('a[href*="view=old"]', s), nu = $('a[href*="view=new"]', s);
+        if (old || nu) {
+          var near = el('nav', 't-near'); near.setAttribute('aria-label', 'Other topics');
+          if (old) { var a1 = el('a', 'old', '\u2190 Older topic'); a1.href = old.getAttribute('href'); near.appendChild(a1); }
+          if (nu) { var a2 = el('a', 'new', 'Newer topic \u2192'); a2.href = nu.getAttribute('href'); near.appendChild(a2); }
+          end.appendChild(near);
+        }
+      }
+      s.remove();
+    });
+    var jump = $('form[name="jumpmenu"]'), search = $('#search-this-topic');
+    if (jump || search) {
+      var holder = (jump || search).parentNode, row = el('div', 't-find');
+      if (jump) { var sel = $('select', jump); if (sel) sel.setAttribute('aria-label', 'Jump to a forum'); row.appendChild(jump); }
+      if (search) { var kw = $('input[name="keywords"]', search); if (kw) kw.setAttribute('aria-label', 'Search this topic'); row.appendChild(search); }
+      end.appendChild(row);
+      if (holder && holder !== d.body && !txt(holder) && !$('form, select, input', holder)) holder.remove();
+    }
+    if (box) {
+      var ad = $('ins, iframe, .mock-ad, script[src*="googlesyndication"]', box);
+      var slot = ad && ad.closest('div[align="center"]'); if (slot) slot.classList.add('t-ad');
+      var after = box.nextSibling;
+      if (qr) box.parentNode.insertBefore(qr, after);
+      if (end.firstChild) box.parentNode.insertBefore(end, qr ? qr.nextSibling : after);
+    }
+  }
+
+  function post(tbl, i) {
+    var wrap = tbl.parentNode;
+    if (!wrap.classList || !wrap.classList.contains('post-normal')) { wrap = el('div', 'post-normal'); tbl.parentNode.insertBefore(wrap, tbl); wrap.appendChild(tbl); }
+    wrap.classList.add('bpost'); if (i % 2) wrap.classList.add('alt');
+    $$(':scope > .darkrow1', wrap).forEach(function (x) { x.remove(); });
+    var rows = tbl.rows; if (rows.length < 2) return;
+    var nameTd = rows[0].cells[0], headTd = rows[0].cells[1], mini = rows[1].cells[0], body = rows[1].cells[1];
+    [[nameTd, 'p-name'], [headTd, 'p-head'], [mini, 'miniprofile'], [body, 'p-body']].forEach(function (p) { if (p[0]) p[0].classList.add(p[1]); });
+    if (rows[2]) {
+      var ip = rows[2].cells[0], foot = rows[2].cells[1];
+      if (foot) {
+        foot.classList.add('p-foot');
+        var addr = ip && $('.ip_address', ip); if (addr && txt(addr)) foot.appendChild(addr);
+        $$('.post-buttons-bottom .button-small', foot).forEach(function (b) { b.classList.add('quiet'); });
+        var up = $('a[href^="javascript:scroll"]', foot); if (up) { up.className = 'p-top'; up.innerHTML = '\u2191<span class="vh"> Back to top</span>'; }
+      }
+      if (ip) ip.remove();
+    }
+    /* date: the date itself becomes the link to the post */
+    var pd = headTd && $('.postdetails', headTd), pl = pd && $('a', pd);
+    if (pl) { var when = txt(pd).replace(/^[^:]*:\s*/, ''); pl.textContent = when; pl.removeAttribute('style'); pl.className = 'p-date'; pd.innerHTML = ''; pd.appendChild(pl); }
+    $$('.post-buttons-top a', headTd).forEach(function (a) { if (/delete_post/.test(a.getAttribute('href') || '')) $$('.button-small', a).forEach(function (s) { s.classList.add('danger'); }); });
+
+    /* the yearbook card: photo, name, the macro's lines with the empty ones dropped */
+    if (!mini) return;
+    var nm = nameTd && $('.normalname, .unreg', nameTd), name = txt(nm);
+    $$(':scope > .postdetails', mini).forEach(function (s) { while (s.firstChild) mini.insertBefore(s.firstChild, s); s.remove(); });
+    $$('img', mini).forEach(function (im) { if (/spacer/.test(im.getAttribute('src') || '') || im.getAttribute('height') === '1') im.remove(); });
+    var photo = $$('img', mini).filter(function (im) { return !/\/themes\/default\//.test(im.getAttribute('src') || ''); })[0];
+    var ph = el('div', 'yb-photo');
+    if (photo && !L.isBlankAvatar(photo.getAttribute('src')) && !(photo.complete && !photo.naturalWidth)) { var holder = photo.closest('.postbit'); ph.appendChild(photo); if (holder) holder.classList.add('pb-head'); }
+    else { if (photo) { var h2 = photo.closest('.postbit'); if (h2) h2.classList.add('pb-head'); photo.remove(); } ph.classList.add('ini'); ph.textContent = L.initials(name); }
+    var rowsBox = el('div', 'yb-rows');
+    [].slice.call(mini.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) { if (!n.nodeValue.trim()) n.remove(); return; }
+      if (n.nodeType !== 1) { n.remove(); return; }
+      if (n.tagName === 'BR') { n.remove(); return; }
+      if (n.classList.contains('postbit')) {
+        var label = $('.pb-label', n);
+        if (!$('img', n) && !L.fieldValue(txt(n), txt(label))) { n.remove(); return; }
+        if (!label && $('.pb-title', n)) n.classList.add('pb-head');
+        if (n.classList.contains('pb-head')) { $$('br', n).forEach(function (b) { b.remove(); }); if (!txt(n)) { n.remove(); return; } return; }
+        rowsBox.appendChild(n); return;
+      }
+      if (!txt(n) && !$('img', n)) { n.remove(); return; }
+      rowsBox.appendChild(n);
+    });
+    mini.insertBefore(ph, mini.firstChild);
+    if (nm) ph.insertAdjacentElement('afterend', nm);
+    if (rowsBox.firstChild) mini.appendChild(rowsBox);
+    if (nameTd) nameTd.remove();
   }
 
   /* ---------- index: first screen ---------- */

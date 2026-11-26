@@ -22,7 +22,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 #logostrip,#submenu,#userlinks,#navi{display:none}
 .pg-list #navi,.pg-topic #navi,.pg-profile #navi,.pg-form #navi{display:block;font-size:14px;color:var(--dim);margin:16px 0 0}
 #navi a{color:var(--dim)}
-#jcink-top>div[align=center]{max-width:1240px;margin:12px auto;padding:0 24px}
+#jcink-top>div[align=center]{max-width:1240px;margin:12px auto;padding:0 24px;overflow-x:auto}
 #jcink-top table{border:0}
 
 /* the band */
@@ -200,28 +200,94 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .k{display:inline-block;width:1.15em;height:1.15em;flex:none;background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
 .k-x{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10.5' fill='none' stroke='%23000' stroke-width='2.2'/%3E%3Cpath d='M8 8l8 8M16 8l-8 8' stroke='%23000' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E")}.k-o{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10.5' fill='none' stroke='%23000' stroke-width='2.2'/%3E%3Ccircle cx='12' cy='12' r='5.2' fill='none' stroke='%23000' stroke-width='2.2'/%3E%3C/svg%3E")}.k-t{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10.5' fill='none' stroke='%23000' stroke-width='2.2'/%3E%3Cpath d='M12 6.5L17.2 15.5H6.8Z' fill='none' stroke='%23000' stroke-width='2.1' stroke-linejoin='round'/%3E%3C/svg%3E")}.k-s{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10.5' fill='none' stroke='%23000' stroke-width='2.2'/%3E%3Crect x='7.3' y='7.3' width='9.4' height='9.4' fill='none' stroke='%23000' stroke-width='2.1'/%3E%3C/svg%3E")}
 
-/* ===== topic lists (pink) ===== */
-.forumhead{margin:0 0 18px}
-.fdesc{margin:0;font-size:17px;color:#d8d6e0}
-.newtopic,.pages{display:none}
-.tl-sec{display:inline-block;margin:18px 0 0;padding:4px 42px 3px 14px;background:var(--acc);color:var(--acc-ink);font:700 15px var(--hud);text-transform:uppercase;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 100%,0 100%)}
-.topic{position:relative;display:grid;grid-template-columns:32px 1fr 150px 170px;gap:16px;align-items:center;padding:12px 18px;background:linear-gradient(90deg,var(--row),var(--row2));border-bottom:1px solid rgba(0,0,0,.7);transition:margin .15s,padding .15s,background .15s}
-.t-st{display:grid;place-items:center;width:30px;height:30px;border:2px solid rgba(255,255,255,.4);font:700 14px var(--hud);color:var(--dim)}
-.topic-new .t-st{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
-.locked{opacity:.75}
+/* ===== forum pages (pink): the topic list as the trial's evidence list ===== */
+.pg-list #innerwrapper>br{display:none}
+.pg-list form[name=mod_topics]{margin:0}
+.tlist{margin:6px 0 34px;padding:0 18px;overflow-x:clip}
+.tl-sec{display:table;margin:28px 0 12px -18px;padding:4px 42px 3px 14px;background:var(--acc);color:var(--acc-ink);font:700 15px var(--hud);text-transform:uppercase;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 100%,0 100%)}
+.tlist>.tl-sec:first-child{margin-top:0}
+.tl-sec.anno{background:#e6d21a;color:#141100}
+/* each topic: a slanted bar; pointing at it slides the pink selection bar in */
+.trow{position:relative;isolation:isolate;display:grid;grid-template-columns:40px minmax(0,1fr) 128px 250px;align-items:center;gap:0 22px;margin:0 0 8px;padding:13px 24px 13px 18px}
+.trow::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--row),var(--row2));border-left:5px solid #4a4552;transform:skewX(-12deg);box-shadow:0 3px 0 rgba(0,0,0,.45)}
+.trow.topic-new-post::before{border-left-color:var(--acc)}
+.t-announcement::before{border-left-color:#e6d21a;background:linear-gradient(90deg,rgba(58,52,14,.95),var(--row2))}
+.trow:has(.mk.locked),.trow:has(.mk.moved){opacity:.7}
+.t-mark{display:grid;place-items:center}
+.mk{display:inline-block;width:32px;height:20px;vertical-align:middle;background:#77728a;--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 20'%3E%3Cpath fill-rule='evenodd' d='M1 4h5v12H1zM8 4h13l10 6-10 6H8z'/%3E%3C/svg%3E");-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.mk.new{background:var(--acc)}
+.topic-new-post .t-mark{filter:drop-shadow(0 0 5px var(--acc))}
+.mk.hot{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 20'%3E%3Cpath fill-rule='evenodd' d='M1 1h3v8H1zM6 1h9l7 4-7 4H6zM8 11h3v8H8zM13 11h9l7 4-7 4h-9z'/%3E%3C/svg%3E")}.mk.poll{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 20'%3E%3Cpath fill-rule='evenodd' d='M5 11h5v8H5zM13 5h5v14h-5zM21 1h5v18h-5z'/%3E%3C/svg%3E")}.mk.locked{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 20'%3E%3Cpath fill-rule='evenodd' d='M10 9V7a6 6 0 0 1 12 0v2h2v10H8V9zM13 9h6V7a3 3 0 0 0-6 0zM15 12h2v4h-2z'/%3E%3C/svg%3E")}.mk.moved{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 20'%3E%3Cpath fill-rule='evenodd' d='M1 8h17V2l13 8-13 8v-6H1z'/%3E%3C/svg%3E")}.mk.pinned{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 20'%3E%3Cpath fill-rule='evenodd' d='M12 1h9v3l-2 1v5l4 3v3h-6v3l-1 1-1-1v-3H9v-3l4-3V5l-2-1z'/%3E%3C/svg%3E");background:#fff}
+.t-announcement .mk{background:#e6d21a}
 .t-main{min-width:0}
-.t-title{display:block;font:500 20px/1.35 var(--sans);text-decoration:none;color:#fff;overflow-wrap:anywhere}
-.t-desc{display:block;font-size:15px;color:#d0cdd8}
-.t-desc:empty{display:none}
-.t-by{display:block;font-size:13px;color:var(--dim)}
-.t-by a,.t-last a{color:#fff;text-decoration:none}
-.t-n{font:400 11px/1.6 var(--hud);text-transform:uppercase;color:var(--dim)}
-.t-n span{display:block}
-.t-n b{font-size:15px;color:#fff;margin-right:6px}
-.t-last{font-size:14px;color:var(--dim);text-align:right}
-.topic:hover,.topic:focus-within{margin-left:-16px;padding-left:34px;background:var(--acc)}
-.topic:hover *,.topic:focus-within *{color:var(--acc-ink)}
-.topic:hover .t-st,.topic:focus-within .t-st{border-color:var(--acc-ink);background:none}
+.t-title{margin:0;font:500 20px/1.35 var(--sans);overflow-wrap:anywhere}
+.t-title>a{color:#c9c6d3;text-decoration:none}
+.topic-new-post .t-title>a,.t-announcement .t-title>a,.t-pinned .t-title>a{color:#fff}
+.t-pre{display:inline-block;margin-right:9px;padding:2px 6px 1px;border:1px solid;font:700 10px var(--hud);text-transform:uppercase;color:#e6d21a;vertical-align:3px}
+.t-go{margin-left:10px}
+.t-go a{text-decoration:none}
+.gonew{display:inline-block;padding:2px 7px 1px;background:var(--acc);color:var(--acc-ink);font:700 10px var(--hud);text-transform:uppercase;vertical-align:3px}
+.gonew::after{content:' \25B8'}
+.t-desc{margin:2px 0 0;font-size:15px;color:#d0cdd8}
+.t-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin:5px 0 0;font-size:13px;color:var(--dim)}
+.t-by::before{content:'Started by '}
+.t-by a,.t-lastby a{color:#fff;text-decoration:none}
+.t-pages{display:inline-flex;flex-wrap:wrap;gap:3px}
+.t-pages a{min-width:22px;padding:2px 5px 1px;border:1px solid rgba(255,255,255,.35);font:700 11px/1.2 var(--hud);color:#fff;text-align:center;text-decoration:none}
+.t-n{display:flex;gap:18px;margin:0}
+.t-n div{display:flex;flex-direction:column}
+.t-n dt{font:400 10px var(--hud);text-transform:uppercase;color:var(--dim)}
+.t-n dd{margin:0;font:700 18px/1.25 var(--sans);color:#fff}
+.t-n dd a{color:#fff;text-decoration:none}
+.t-last{display:flex;align-items:center;gap:12px;min-width:0}
+.t-av{width:44px;height:44px;flex:none;object-fit:cover;border:2px solid #fff;background:#2a2531;transform:rotate(-4deg);box-shadow:3px 3px 0 rgba(0,0,0,.5)}
+.t-av.ini{font-size:14px}
+.t-lt{min-width:0;font-size:14px;line-height:1.4}
+.t-when{display:block;color:#fff;text-decoration:none}
+.t-lastby{display:block;color:var(--dim);overflow-wrap:anywhere}
+.t-lastby::before{content:'by '}
+.t-mod{position:absolute;right:8px;top:6px}
+.trow:hover::before,.trow:focus-within::before{background:var(--acc);border-left-color:#fff}
+.trow:hover,.trow:focus-within{opacity:1}
+.trow:hover :is(.t-title>a,.t-desc,.t-meta,.t-by a,.t-n dt,.t-n dd,.t-n dd a,.t-when,.t-lastby,.t-lastby a),.trow:focus-within :is(.t-title>a,.t-desc,.t-meta,.t-by a,.t-n dt,.t-n dd,.t-n dd a,.t-when,.t-lastby,.t-lastby a){color:var(--acc-ink)}
+.trow:hover .mk,.trow:focus-within .mk{background:#fff}
+.trow:hover .t-mark,.trow:focus-within .t-mark{filter:none}
+.trow:hover .gonew,.trow:focus-within .gonew{background:#000;color:var(--acc)}
+.trow:hover .t-pre,.trow:focus-within .t-pre{color:#fff}
+.trow:hover .t-pages a,.trow:focus-within .t-pages a{border-color:#fff}
+.trow a:hover{text-decoration:underline}
+.move .trow::before{transition:background .12s}
+/* subforums: the same bars, a forum each */
+.subcat{margin:4px 0 30px}
+.subcat>.tab{display:table;margin-bottom:12px}
+.subcat .list{padding:0 18px;overflow-x:clip}
+.subcat .forum{isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) 150px 270px;grid-template-areas:"name count last" "desc count last" "mod count last";align-items:center;gap:0 22px;margin:0 0 8px;padding:12px 24px 12px 20px;background:none;border:0;box-shadow:none}
+.subcat .forum::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--row),var(--row2));border-left:5px solid #4a4552;transform:skewX(-12deg);box-shadow:0 3px 0 rgba(0,0,0,.45)}
+.subcat .forum-new-post::before{border-left-color:var(--acc)}
+.subcat .f-name{grid-area:name}
+.subcat .f-desc{grid-area:desc;font-size:15px}
+.subcat .f-mod{grid-area:mod;margin-top:2px}
+.subcat .f-count{grid-area:count;margin:0}
+.subcat .f-last{grid-area:last;margin:0}
+.subcat .f-by a{text-decoration:none}
+.subcat .f-av{width:40px;height:40px;border-color:#fff;transform:rotate(-4deg)}
+.subcat .forum:hover::before,.subcat .forum:focus-within::before{background:var(--acc);border-left-color:#fff}
+.subcat .forum:hover *,.subcat .forum:focus-within *{color:var(--acc-ink)}
+.subcat .forum:hover .new,.subcat .forum:focus-within .new{background:#000;color:var(--acc)}
+/* under the list: who is browsing; the sort form and the key */
+.tl-foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 34px;align-items:start;margin:0 0 24px}
+.tl-active{grid-column:1;grid-row:1/3;min-width:0}
+.tl-active .readers{margin:0}
+.tl-sort,.tl-key{grid-column:2;min-width:0}
+.tl-sort .tab,.tl-key .tab{display:table}
+.tl-sort form{margin:0}
+.tl-sort .darkrow2{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 14px!important;background:rgba(0,0,0,.72);border-top:3px solid var(--acc);font-size:14px;color:var(--dim);text-align:left}
+.tl-sort .forminput{width:auto}
+.tl-sort select{padding:5px 8px;background:#15121a;color:#fff;border:1px solid rgba(255,255,255,.3);font:14px var(--sans);max-width:100%}
+.tl-sort input[type=submit]{padding:6px 14px;background:var(--acc);color:var(--acc-ink);border:0;font:700 12px var(--hud);text-transform:uppercase;cursor:pointer}
+.key{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0;padding:12px 14px;list-style:none;background:rgba(0,0,0,.72);border-top:3px solid var(--acc);font-size:13px;color:#d0cdd8}
+.key li{display:flex;align-items:center;gap:8px}
+.key .mk{width:26px;height:16px}
 
 /* ===== topics (cyan): every post a class-trial statement ===== */
 .gone,.pg-topic #innerwrapper>br,.pg-topic .postlinksbar{display:none!important}
@@ -348,7 +414,7 @@ table.stmt>tbody>tr>td.s-foot{display:flex;justify-content:space-between;align-i
 .opts li a{color:#fff;text-decoration:none;font-weight:700}
 .opts li a:hover{color:var(--acc)}
 .opts li span{display:block;font-size:13px;color:var(--dim)}
-.t-find .textinput,.t-find select{padding:7px 10px;background:rgba(0,0,0,.7);color:#fff;border:1px solid rgba(255,255,255,.3);font:15px var(--sans);max-width:100%}
+.t-find .textinput,.t-find input[type=text],.t-find select{padding:7px 10px;background:rgba(0,0,0,.7);color:#fff;border:1px solid rgba(255,255,255,.3);font:15px var(--sans);max-width:100%}
 .t-find input[type=submit]{padding:7px 14px;background:var(--acc);color:var(--acc-ink);border:0;font:700 13px var(--hud);text-transform:uppercase;cursor:pointer}
 
 /* ===== profile: the report card (pink) ===== */
@@ -423,11 +489,24 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
   .forum .f-last{margin:8px 0 2px}
   .forum .f-av{width:44px;height:44px}
   .cells{grid-template-columns:1fr}
-  .topic{grid-template-columns:30px 1fr;gap:6px 12px}
-  .t-n,.t-last{grid-column:2;text-align:left}
-  .t-last br{display:none}
-  .t-last{font-size:13px}
-  .topic:hover,.topic:focus-within{margin-left:0;padding-left:18px}
+  .tlist,.subcat .list{padding:0 12px}
+  .tl-sec{margin-left:-12px}
+  .trow{grid-template-columns:30px minmax(0,1fr);grid-template-areas:"mark main" "mark n" "mark last";gap:6px 12px;padding:12px 16px 12px 12px}
+  .trow::before,.subcat .forum::before{transform:skewX(-5deg)}
+  .t-mark{grid-area:mark;align-self:start;padding-top:5px}
+  .t-main{grid-area:main}
+  .t-n{grid-area:n;gap:16px}
+  .t-n div{flex-direction:row;align-items:baseline;gap:6px}
+  .t-n dd{font-size:15px}
+  .t-last{grid-area:last;gap:10px}
+  .t-av{width:32px;height:32px}
+  .t-av.ini{font-size:11px}
+  .t-lt{display:flex;flex-wrap:wrap;gap:0 6px;font-size:13px}
+  .t-title{font-size:18px}
+  .t-mark .mk{width:26px;height:16px}
+  .subcat .forum{grid-template-columns:minmax(0,1fr);grid-template-areas:"name" "desc" "mod" "last" "count";gap:4px;padding:12px 16px}
+  .tl-foot{grid-template-columns:minmax(0,1fr)}
+  .tl-active,.tl-sort,.tl-key{grid-column:1;grid-row:auto}
   table.stmt{grid-template-columns:minmax(0,1fr);grid-template-areas:"mini" "head" "body" "foot" "ip";grid-template-rows:none}
   .s-mini{text-align:left;margin-bottom:22px}
   .dr-mini{display:grid;grid-template-columns:92px minmax(0,1fr);gap:0 16px;align-items:start}
@@ -451,7 +530,7 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
   .trail a{padding:8px 14px;font-size:15px}
   .tools,.t-find{flex-direction:column;align-items:stretch}
   .t-find form{width:100%}
-  .t-find .textinput,.t-find select{flex:1;min-width:0}
+  .t-find .textinput,.t-find input[type=text],.t-find select{flex:1;min-width:0}
   .qr-btns{justify-content:stretch}
   .qr-btns input{flex:1;padding:9px 12px}
   .rc{grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "main" "bio" "sig";gap:0}
@@ -564,8 +643,8 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
     var s = el('span', img.className + ' ini', ((w[0] || '?').charAt(0) + (w.length > 1 ? w[w.length - 1].charAt(0) : '')).toUpperCase());
     img.replaceWith(s);
   }
-  function nameFor(img) { var p = img.closest('.forum, .stmt, .rc'); var n = p && $('.f-by, .plate-name, .normalname, .rc-name', p); return txt(n); }
-  d.addEventListener('error', function (e) { var t = e.target; if (t.tagName === 'IMG' && /\b(f-av|dr-pic|rc-pic)\b/.test(t.className)) initials(t, nameFor(t)); }, true);
+  function nameFor(img) { var p = img.closest('.forum, .stmt, .rc, .trow'); var n = p && $('.f-by, .plate-name, .normalname, .rc-name, .t-lastby', p); return txt(n); }
+  d.addEventListener('error', function (e) { var t = e.target; if (t.tagName === 'IMG' && /\b(f-av|dr-pic|rc-pic|t-av)\b/.test(t.className)) initials(t, nameFor(t)); }, true);
   $$('img.f-av').forEach(function (img) { var s = (img.getAttribute('src') || '').trim(); if (!s || /\/$/.test(s) || (img.complete && !img.naturalWidth)) initials(img, nameFor(img)); });
 
   /* ---------- the button-prompt bar ---------- */
@@ -615,10 +694,133 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
   }
 
   if (page === 'index') initIndex();
-  if (page === 'list') { pager($('.banner')); var nt = $('.newtopic'); if (nt) prompt('x', 'New topic', nt.getAttribute('href')); }
+  if (page === 'list') initList();
   if (page === 'topic') initTopic();
   if (page === 'profile') initProfile();
   if (page === 'form') initForm();
+
+  /* who is here ("3 User(s) are reading this topic" / "browsing this forum", then "2 Members: ..."):
+     a row of silhouettes, the counts under them, a name on hover */
+  function crowd(s, label, verb) {
+    var line = txt(s), guests = +((line.match(/(\d+)\s*Guests?/i) || [])[1] || 0), list = s.nextElementSibling;
+    var named = list && /Members?:/i.test(txt(list)), people = named ? $$('a', list) : [];
+    var sec = el('section', 'readers', '<h2 class="tab">' + label + '</h2><div class="roster"></div><p class="who"></p>'), roster = $('.roster', sec), who = $('.who', sec);
+    var sum = (people.length ? people.length + (people.length === 1 ? ' member' : ' members') : '') + (people.length && guests ? ' and ' : '') + (guests ? guests + (guests === 1 ? ' guest' : ' guests') : '');
+    who.textContent = sum ? sum + ' ' + verb : 'Nobody else is ' + verb;
+    people.forEach(function (a) {
+      var nm = txt(a), f = el('a', 'sil', figure(hash(nm)));
+      f.href = a.getAttribute('href'); f.title = nm; f.setAttribute('aria-label', nm);
+      function on() { who.textContent = nm; } function off() { who.textContent = sum + ' ' + verb; }
+      f.addEventListener('mouseenter', on); f.addEventListener('focus', on); f.addEventListener('mouseleave', off); f.addEventListener('blur', off);
+      roster.appendChild(f);
+    });
+    if (!people.length) roster.remove();
+    s.replaceWith(sec); if (named) list.remove();
+    return sec;
+  }
+
+  /* the New topic / New poll / Reply buttons Jcink prints above and below: their links, and the rows hidden */
+  function buttonLinks() {
+    var links = {};
+    $$('#innerwrapper .button-large').forEach(function (b) {
+      var a = b.closest('a'); if (!a) return;
+      var h = a.getAttribute('href') || '', k = /CODE=02/.test(h) ? 'reply' : /CODE=00/.test(h) ? 'topic' : /CODE=10/.test(h) ? 'poll' : null;
+      if (k && !links[k]) links[k] = h;
+      var tb = a.closest('table'); if (tb) tb.classList.add('gone');
+    });
+    return links;
+  }
+
+  /* search, forum jump: one row of tools under the page */
+  function finder(srch, what) {
+    var find = el('div', 't-find'), jump = $('form[name=jumpmenu]');
+    if (srch) { var kw = $('input[name=keywords]', srch); if (kw) { kw.setAttribute('aria-label', 'Search this ' + what); kw.removeAttribute('onfocus'); } find.appendChild(srch); }
+    if (jump) { var sel = $('select', jump); if (sel) sel.setAttribute('aria-label', 'Jump to a forum'); find.appendChild(jump); }
+    return find;
+  }
+
+  /* one forum row (front page, and subforums on a forum page): empty parts go, subforums become rows, New / outside marks */
+  function tidyForum(f) {
+    ['.f-desc', '.f-sub', '.f-mod'].forEach(function (s) { var e = $(s, f); if (e && !txt(e)) e.remove(); });
+    var l = $('.f-last', f); if (l && !$('.f-topic a', l)) l.remove();
+    var s = $('.f-sub', f);
+    if (s) {
+      var subs = el('div', 'subs');
+      $$('a', s).forEach(function (a) { var b = el('a', 'subrow', esc(txt(a))); b.href = a.getAttribute('href'); b.setAttribute('aria-label', txt(a) + ' (in ' + txt($('.f-name a', f)) + ')'); subs.appendChild(b); });
+      f.parentNode.insertBefore(subs, f.nextSibling); s.remove();
+    }
+    if (f.classList.contains('forum-new-post')) $('.f-name', f).insertAdjacentHTML('beforeend', '<span class="new">New</span>');
+    if (f.classList.contains('redirect')) $('.f-name', f).insertAdjacentHTML('beforeend', '<span class="ext" aria-label="(leaves the board)">&#8599;</span>');
+  }
+
+  /* ---------- forum pages: the topic list as the trial's evidence list ---------- */
+  function initList() {
+    pager($('.banner'));
+    var links = buttonLinks();
+    if (links.topic) prompt('x', 'New topic', links.topic);
+    if (links.poll) prompt('t', 'New poll', links.poll);
+
+    /* subforums: Jcink prints them as a category; here they are one labelled block of rows */
+    $$('#innerwrapper .cat').forEach(function (c) {
+      c.classList.add('subcat');
+      var bar = $('.cat-bar', c); if (bar) bar.replaceWith(el('h2', 'tab', 'Subforums'));
+      var v = $('.view', c); if (v) v.remove();
+      $$('.forum', c).forEach(tidyForum);
+    });
+
+    /* the list: sections with no topics go; each row loses its empty parts */
+    $$('.tl-sec').forEach(function (h) { var n = h.nextElementSibling; if (!n || !n.classList.contains('trow')) h.remove(); });
+    $$('.trow').forEach(function (row) {
+      var pre = $('.t-pre', row);
+      if (pre) {
+        var p = txt(pre).replace(/:\s*$/, '');
+        /* the section already says pinned / announcement */
+        if (!p || /^(pinned|announcement|important)$/i.test(p)) pre.remove(); else pre.textContent = p;
+      }
+      ['.t-desc', '.t-go', '.t-mod'].forEach(function (s) { var e = $(s, row); if (e && !txt(e) && !$('input, img', e)) e.remove(); });
+      var pg = $('.t-pages', row), nums = pg ? $$('a', pg) : [];
+      if (pg) { if (nums.length) { pg.innerHTML = '<span class="vh">Pages: </span>'; nums.forEach(function (a) { pg.appendChild(a); }); } else pg.remove(); }
+      var by = $('.t-by', row); if (by && !txt(by)) by.remove();
+      var meta = $('.t-meta', row); if (meta && !meta.children.length) meta.remove();
+      var av = $('img.t-av', row), src = av && (av.getAttribute('src') || '').trim();
+      if (av && (!src || /\/$/.test(src) || (av.complete && !av.naturalWidth))) initials(av, nameFor(av));
+      var who = $('.t-lastby a', row); if (who) who.setAttribute('aria-label', 'Last post by ' + txt(who));
+      var go = $('.t-go a', row); if (go) go.setAttribute('aria-label', 'Go to the first unread post');
+    });
+
+    /* who is browsing; the sort form */
+    var act = $('.tl-active .darkrow2'); if (act) crowd(act, 'Browsing', 'browsing');
+    var sort = $('.tl-sort');
+    if (sort && $('select', sort)) {
+      sort.insertAdjacentHTML('afterbegin', '<h2 class="tab">Sort</h2>');
+      $$('select', sort).forEach(function (s, i) { s.setAttribute('aria-label', ['Sort by', 'Order', 'Topics from'][i] || 'Sort'); });
+    } else if (sort) sort.remove();
+
+    /* Jcink's key to the marks: one row of mark + words */
+    var keys = $$('.wrapmini');
+    if (keys.length) {
+      var key = el('ul', 'key'); key.setAttribute('aria-label', 'What the marks mean');
+      keys.forEach(function (k) {
+        var cur = null;
+        [].slice.call(k.childNodes).forEach(function (n) {
+          if (n.nodeType === 1 && (n.classList.contains('mk') || n.tagName === 'IMG')) { cur = el('li'); cur.appendChild(n); key.appendChild(cur); }
+          else if (n.nodeType === 3 && cur && n.nodeValue.replace(/[\s ]+/g, '')) cur.appendChild(el('span', '', esc(n.nodeValue.replace(/[\s ]+/g, ' ').trim())));
+        });
+        k.remove();
+      });
+      var kw2 = el('div', 'tl-key', '<h2 class="tab">Key</h2>'); kw2.appendChild(key);
+      var foot = $('.tl-foot'); if (foot) foot.appendChild(kw2);
+    }
+
+    /* mark read, search, forum jump: one row under the list */
+    var tools = el('div', 'tools'), acts = el('div', 't-acts');
+    var mr = $('#mark-as-read-subto a');
+    if (mr) { var m = el('a', 'tbtn', 'Mark this forum read'); m.href = mr.getAttribute('href'); acts.appendChild(m); var holder = mr.closest('div[align="center"]'); if (holder) holder.remove(); }
+    tools.appendChild(acts);
+    var find = finder($('#search-this-forum'), 'forum'); if (find.children.length) tools.appendChild(find);
+    $$('#innerwrapper > div[align="right"]').forEach(function (dv) { if (!$('form, select, input', dv)) dv.remove(); });
+    var after = $('.tl-foot') || $('.tlist'); if (after) after.parentNode.insertBefore(tools, after.nextSibling);
+  }
 
   /* ---------- topics: every post a class-trial statement ---------- */
   function initTopic() {
@@ -690,20 +892,7 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
         if (nw) { var n = el('a', 'newer', 'Newer topic'); n.href = nw.getAttribute('href'); trail.appendChild(n); }
         s.replaceWith(trail); return;
       }
-      var line = txt(s), guests = +((line.match(/(\d+)\s*Guests?/i) || [])[1] || 0), list = s.nextElementSibling;
-      var people = list && /Members?:/i.test(txt(list)) ? $$('a', list) : [];
-      var sec = el('section', 'readers', '<h2 class="tab">Reading</h2><div class="roster"></div><p class="who"></p>'), roster = $('.roster', sec), who = $('.who', sec);
-      var sum = (people.length ? people.length + (people.length === 1 ? ' member' : ' members') : '') + (people.length && guests ? ' and ' : '') + (guests ? guests + (guests === 1 ? ' guest' : ' guests') : '');
-      who.textContent = sum ? sum + ' reading' : 'Nobody else is reading';
-      people.forEach(function (a) {
-        var nm = txt(a), f = el('a', 'sil', figure(hash(nm)));
-        f.href = a.getAttribute('href'); f.title = nm; f.setAttribute('aria-label', nm);
-        function on() { who.textContent = nm; } function off() { who.textContent = sum + ' reading'; }
-        f.addEventListener('mouseenter', on); f.addEventListener('focus', on); f.addEventListener('mouseleave', off); f.addEventListener('blur', off);
-        roster.appendChild(f);
-      });
-      if (!people.length) roster.remove();
-      s.replaceWith(sec); if (people.length || (list && /Members?:/i.test(txt(list)))) list.remove();
+      crowd(s, 'Reading', 'reading');
     });
 
     /* the thread box, and a frame round Jcink's ad (the ad itself is left alone) */
@@ -715,13 +904,7 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
     $$('.postlinksbar').forEach(function (p) { p.classList.add('gone'); });
 
     /* the button tables above and below the thread */
-    var links = {};
-    $$('#innerwrapper .button-large').forEach(function (b) {
-      var a = b.closest('a'); if (!a) return;
-      var h = a.getAttribute('href') || '', k = /CODE=02/.test(h) ? 'reply' : /CODE=00/.test(h) ? 'topic' : /CODE=10/.test(h) ? 'poll' : null;
-      if (k && !links[k]) links[k] = h;
-      var tb = a.closest('table'); if (tb) tb.classList.add('gone');
-    });
+    var links = buttonLinks();
 
     /* fast reply: always open, as your statement box */
     var qr = $('#qr_open'), ta = qr && $('textarea', qr);
@@ -766,9 +949,7 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
       acts.appendChild(det2); to.remove();
     }
     tools.appendChild(acts);
-    var find = el('div', 't-find'), srch = $('#search-this-topic'), jump = $('form[name=jumpmenu]');
-    if (srch) { var kw = $('input[name=keywords]', srch); if (kw) kw.setAttribute('aria-label', 'Search this topic'); find.appendChild(srch); }
-    if (jump) { var sel = $('select', jump); if (sel) sel.setAttribute('aria-label', 'Jump to a forum'); find.appendChild(jump); }
+    var find = finder($('#search-this-topic'), 'topic');
     if (find.children.length) tools.appendChild(find);
     $$('#innerwrapper > div[align="right"]').forEach(function (dv) { if (!$('form, select, input', dv)) dv.remove(); });
     var anchor = qr || thread; if (anchor) anchor.parentNode.insertBefore(tools, anchor.nextSibling);
@@ -819,16 +1000,7 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
       var id = (c.id.match(/\d+/) || [])[0], rows = $$('.forum', c), info = $('.info', c), pic = $('.pic', c);
       rows.forEach(function (f, n) {
         $('.f-name', f).insertAdjacentHTML('afterbegin', '<span class="num" aria-hidden="true">' + (n + 1) + '</span>');
-        ['.f-desc', '.f-sub', '.f-mod'].forEach(function (s) { var e = $(s, f); if (e && !txt(e)) e.remove(); });
-        var l = $('.f-last', f); if (l && !$('.f-topic a', l)) l.remove();
-        var s = $('.f-sub', f);
-        if (s) {
-          var subs = el('div', 'subs');
-          $$('a', s).forEach(function (a) { var b = el('a', 'subrow', esc(txt(a))); b.href = a.getAttribute('href'); b.setAttribute('aria-label', txt(a) + ' (in ' + txt($('.f-name a', f)) + ')'); subs.appendChild(b); });
-          f.parentNode.insertBefore(subs, f.nextSibling); s.remove();
-        }
-        if (f.classList.contains('forum-new-post')) $('.f-name', f).insertAdjacentHTML('beforeend', '<span class="new">New</span>');
-        if (f.classList.contains('redirect')) $('.f-name', f).insertAdjacentHTML('beforeend', '<span class="ext" aria-label="(leaves the board)">&#8599;</span>');
+        tidyForum(f);
       });
       /* the picture: the admin's own image, or a drawn plan with a room per forum */
       var map = null;

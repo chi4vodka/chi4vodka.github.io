@@ -640,6 +640,133 @@ html:not(.is-index) .hero{display:none}
   .pr-row { grid-template-columns: 100px minmax(0, 1fr); }
   .pr-bio { margin-left: 0; padding-left: 46px; background-position: -6px 0, 0 0; }
 }
+
+/* =========================================================
+   9. FORUM PAGE (Topic List Headers + Topic Rows templates):
+   the topic list as a class register on ruled paper
+   ========================================================= */
+.is-forum .crumbs { margin-bottom: 34px; }
+.is-forum form[name="mod_topics"] { margin: 0; }
+
+/* subforums: the forum rows from the index, without the picture */
+.cat.subs { padding: 0 0 40px; }
+.cat.subs .cat-name { justify-content: flex-start; gap: 14px; margin: 0 0 14px; font: 400 1.05rem/1 var(--title); letter-spacing: .14em; color: var(--gold2); -webkit-text-stroke: 0; text-shadow: none; }
+.cat.subs .cat-name::before { display: none; }
+.cat.subs .cat-name::after { height: auto; border-block: 0; border-top: 5px double var(--gold); }
+.cat.subs .cat-body { display: block; }
+.cat.subs .scene { display: none; }
+.cat.subs .forums { grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+.cat.subs .forum { border-right: 1px solid rgba(216,165,49,.3); }
+
+/* the register: cream paper in the gold frame, a red margin line down the left */
+.register { position: relative; padding: 5px 5px 18px; margin: 0; color: #1a140a; background: linear-gradient(90deg, transparent 64px, rgba(200,55,45,.5) 64px 66px, transparent 66px), var(--cream); box-shadow: inset 0 0 0 3px var(--cream), inset 0 0 0 5px var(--gold), 8px 8px 0 rgba(0,0,0,.5); }
+.reg-head, .trow { display: grid; grid-template-columns: 40px minmax(0, 1fr) 110px 250px auto; gap: 0 24px; align-items: start; }
+.reg-head { margin: 5px 0 0; padding: 18px 28px 12px 14px; border-bottom: 5px double var(--gold); font: 400 .78rem/1 var(--title); letter-spacing: .14em; text-transform: uppercase; color: #1d3570; }
+.reg-head span:first-child { grid-column: 2; }
+.reg-head span:nth-child(2) { text-align: right; }
+.reg-sub { display: flex; align-items: center; gap: 14px; margin: 26px 28px 4px 92px; font: 400 .9rem/1 var(--title); letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
+.reg-sub::after { content: ""; flex: 1; border-top: 1px solid rgba(23,20,12,.3); }
+.reg-sub.anno { margin-top: 22px; }
+
+.trow { position: relative; padding: 16px 28px 15px 14px; border-bottom: 1px solid rgba(23,20,12,.16); }
+.trow:last-of-type { border-bottom: 0; }
+.trow:hover { background: rgba(255,250,236,.75); }
+.tr-mark { display: flex; justify-content: center; padding-top: 6px; }
+.tr-main { min-width: 0; padding-left: 12px; }
+.tr-title { font: 600 1.12rem/1.35 var(--body); color: #0e1f47; overflow-wrap: anywhere; }
+.tr-title a { color: inherit; text-decoration: none; }
+.tr-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.trow:not(.topic-new-post) .tr-title { font-weight: 400; }
+.tr-prefix b { display: inline-block; margin: 0 9px 2px 0; padding: 3px 7px 2px; border: 2px solid #b51f2c; color: #b51f2c; font: 400 .68rem/1 var(--title); letter-spacing: .12em; text-transform: uppercase; transform: rotate(-2deg); vertical-align: 2px; }
+.ty-pinned .tr-prefix, .ty-announcement .tr-prefix { display: none; }
+.tr-new a { text-decoration: none; }
+.go-new { display: inline-block; margin-left: 10px; font: 400 1.5rem/.6 var(--hand); color: var(--pink); transform: rotate(-8deg); vertical-align: -1px; }
+.tr-new a:hover .go-new { color: #b51f2c; }
+.tr-desc { margin-top: 3px; font-size: .95rem; font-style: italic; color: #4a4332; overflow-wrap: anywhere; }
+.tr-by { margin-top: 5px; font-size: .85rem; color: #5b5340; }
+.tr-by a { color: #1d3570; text-underline-offset: 3px; }
+.tr-pages { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-top: 8px; }
+.tr-pg { margin-right: 4px; font: 400 .7rem/1 var(--title); letter-spacing: .12em; text-transform: uppercase; color: #5b5340; }
+.tr-pages a { min-width: 26px; padding: 4px 6px 3px; text-align: center; font: 400 .8rem/1 var(--title); color: #1d3570; text-decoration: none; border: 1px solid rgba(29,53,112,.5); }
+.tr-pages a:hover { background: var(--navy2); color: var(--gold2); border-color: var(--navy2); }
+.tr-count { margin: 0; text-align: right; font-size: .82rem; color: #5b5340; }
+.tr-replies { display: block; }
+.tr-replies b { display: block; font: 900 1.45rem/1.05 var(--title); color: var(--navy); }
+.tr-replies b a { color: inherit; text-decoration: none; }
+.tr-replies b a:hover { color: #b51f2c; }
+.tr-views { display: block; margin-top: 3px; opacity: .85; }
+.tr-last { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 1px 12px; align-items: center; font-size: .88rem; min-width: 0; }
+.tr-last .f-av { grid-row: 1 / span 2; width: 40px; height: 40px; }
+.tr-last .f-av.ini { font-size: 13px; background: #24407e; }
+.tr-when { color: #1d3570; text-decoration: none; overflow-wrap: anywhere; }
+.tr-when:hover { text-decoration: underline; text-underline-offset: 3px; }
+.tr-lby { color: #5b5340; overflow-wrap: anywhere; }
+.tr-lby::before { content: "by "; }
+.tr-lby a { color: #1a140a; font-weight: 600; text-decoration: none; }
+.tr-lby a:hover { text-decoration: underline; }
+.tr-mod { padding-top: 6px; }
+.tr-mod:empty { display: none; }
+
+/* pinned: notices pinned to the sheet; announcements: the principal's notice in navy */
+.ty-pinned { background: rgba(255,245,200,.55); }
+.ty-pinned:hover { background: rgba(255,245,200,.9); }
+.ty-announcement { margin: 4px 5px 0; padding-top: 18px; padding-bottom: 17px; background: var(--navy2); color: var(--cream); border: 0; }
+.ty-announcement:hover { background: #142a5a; }
+.ty-announcement .tr-title { color: var(--gold2); font-weight: 600; }
+.ty-announcement .tr-desc, .ty-announcement .tr-by, .ty-announcement .tr-count, .ty-announcement .tr-lby { color: rgba(242,233,208,.85); }
+.ty-announcement .tr-by a, .ty-announcement .tr-when, .ty-announcement .tr-lby a, .ty-announcement .tr-replies b { color: var(--gold2); }
+/* closed and moved topics: still there, quieter */
+.trow:has(.pip.locked) .tr-title, .trow:has(.pip.moved) .tr-title { color: #5b5340; }
+.trow:has(.pip.moved) { opacity: .75; }
+
+/* topic marks (macros B_NEW ... B_MOVED): the diamond from the index, with a few shapes for the rest */
+.pip.hot { border-color: var(--pink); }
+.pip.on.hot { background: var(--gold); border-color: var(--pink); box-shadow: 0 0 0 3px rgba(255,47,134,.22); }
+.pip.poll { transform: none; border-radius: 2px; }
+.pip.poll.on { background: var(--gold); border-color: var(--gold); }
+.pip.pin { transform: none; width: 15px; height: 15px; border-radius: 50%; border: 0; background: radial-gradient(circle at 35% 35%, #e8505c 0 30%, #b51f2c 32%); box-shadow: 2px 3px 0 rgba(23,20,12,.3); }
+.pip.moved { transform: none; width: auto; height: auto; border: 0; font: 400 1.3rem/1 var(--title); color: #6b634e; }
+.pip.moved::before { content: "\2192"; }
+.ty-announcement .pip { border-color: var(--gold); }
+
+/* page links under the list */
+.t-pages-end { display: flex; margin: 22px 0 34px; }
+.t-pages-end .pagination { display: flex; gap: 6px; align-items: stretch; }
+.t-pages-end .pagination > span { border: 0; background: none; }
+.t-pages-end .pagination a, .t-pages-end .pagination_current b { display: block; min-width: 40px; text-align: center; padding: 10px 10px 8px; font: 400 1rem/1 var(--title); text-decoration: none; }
+.t-pages-end .pagination a:link, .t-pages-end .pagination a:visited { background: var(--navy2); color: var(--gold2); border: 2px solid var(--gold); }
+.t-pages-end .pagination a:hover { background: var(--gold); color: var(--navy2); }
+.t-pages-end .pagination_current { padding: 0 !important; border: 0 !important; background: none !important; }
+.t-pages-end .pagination_current b { background: var(--cream); color: var(--navy2); border: 2px solid var(--gold); font-weight: 400; }
+.is-forum .t-end { margin-top: 34px; }
+.t-pages-end + .t-end { margin-top: 0; }
+
+/* the end panel: sorting, the mark-as-read link */
+.f-sort form { margin: 0; }
+.f-sort-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .95rem; color: var(--cream); background: none; padding: 0; }
+.f-sort-line select { padding: 5px 8px; font-size: .9rem; max-width: 100%; }
+.f-sort-line input[type=submit] { margin: 0; padding: 7px 14px; }
+.f-read a { font: 400 .9rem/1.2 var(--title); letter-spacing: .08em; text-transform: uppercase; color: var(--gold2); text-underline-offset: 4px; }
+.f-read a:hover { color: #fff; }
+
+@media (max-width: 720px) {
+  .register { background: linear-gradient(90deg, transparent 36px, rgba(200,55,45,.5) 36px 38px, transparent 38px), var(--cream); }
+  .reg-head { display: none; }
+  .reg-sub { margin: 22px 16px 4px 52px; }
+  .trow { grid-template-columns: 24px minmax(0, 1fr); gap: 0 18px; padding: 14px 16px 14px 6px; }
+  .tr-mark { padding-top: 5px; }
+  .tr-main { padding-left: 4px; }
+  .tr-count, .tr-last, .tr-mod { grid-column: 2; }
+  .tr-count { display: flex; flex-wrap: wrap; gap: 4px 12px; text-align: left; margin-top: 8px; padding-left: 4px; }
+  .tr-replies, .tr-views { display: inline; margin: 0; }
+  .tr-replies b { display: inline; font: 600 .82rem var(--body); color: var(--navy); }
+  .tr-last { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin-top: 8px; padding-left: 4px; font-size: .82rem; }
+  .tr-last .f-av { width: 28px; height: 28px; border-width: 1px; }
+  .tr-last .f-av.ini { font-size: 10px; }
+  .ty-announcement { margin: 4px 4px 0; }
+  .cat.subs .forum { border-right: 0; }
+  .f-sort-line select { flex: 1 1 140px; min-width: 0; }
+}
 </style>
 <script>history.replaceState(null,"","?showuser=2");
 /* before the page paints: mark the index (by address) so the first screen only shows there */
@@ -878,7 +1005,7 @@ html:not(.is-index) .hero{display:none}
   });
   /* last poster's avatar; initials when there is none or it fails to load */
   function initials(img) {
-    var last = img.closest('.f-last'), by = last && $('.f-by', last);
+    var last = img.closest('.f-last, .tr-last'), by = last && $('.f-by, .tr-lby', last);
     img.replaceWith(el('span', 'f-av ini', L.initials(txt(by))));
   }
   d.addEventListener('error', function (e) {
@@ -958,9 +1085,105 @@ html:not(.is-index) .hero{display:none}
     var postTables = $$('#innerwrapper td[id^="pid_"]').map(function (c) { return c.closest('table'); });
     if (postTables.length) initTopic(postTables);
     var prof = $('#bprofile'); if (prof) initProfile(prof);
+    var tl = $('#topic-list'); if (tl && !postTables.length) initForum(tl);
     var foot = el('footer', 'foot');
     $$('#delcookiesrow, #skin_selector, .copyright').forEach(function (x) { foot.appendChild(x); });
     $('#innerwrapper').appendChild(foot);
+  }
+
+  /* ---------- forum page: the Topic List templates as a class register ---------- */
+  function initForum(list) {
+    r.classList.add('is-forum');
+    var form = list.closest('form') || list;
+    function precedes(a, b) { return !!(a.compareDocumentPosition(b) & 4); }
+
+    /* subforums: Jcink prints them as a category named after this forum, which the page heading already says */
+    $$('#innerwrapper .cat').forEach(function (c) {
+      if (!precedes(c, form)) return;
+      c.classList.add('subs');
+      var h = $('.cat-name', c); if (h) h.textContent = 'Subforums';
+    });
+    /* the heading was hidden as a repeat of that category name; now the forum name is said only there */
+    var ph = $('.pagehead'); if (ph) ph.classList.remove('vh');
+
+    /* one toolbar: pages, New Poll, New Topic. Jcink prints the same buttons again under the list; that row goes */
+    var btnTables = $$('#innerwrapper table').filter(function (t) { return !t.closest('#topic-list') && !t.closest('.cat') && $('.button-large', t); });
+    var tools = el('div', 't-tools'), seen = {}, acts = [];
+    var pages = btnTables.length ? $('.pagination', btnTables[0]) : null;
+    if (pages && $('a', pages)) { var pg = el('nav', 't-pages'); pg.setAttribute('aria-label', 'Pages'); pg.appendChild(pages); tools.appendChild(pg); } else pages = null;
+    btnTables.forEach(function (t) {
+      $$('a', t).forEach(function (a) {
+        var h = a.getAttribute('href') || '', key = txt(a).toLowerCase();
+        if (!$('.button-large', a) || seen[key]) return;
+        seen[key] = 1;
+        var b = el('a', 't-act', a.innerHTML); b.href = h; if (a.title) b.title = a.title;
+        if (/CODE=00\b/.test(h)) { $('.button-large', b).classList.add('main'); b.classList.add('t-new'); }
+        acts.push(b);
+      });
+    });
+    acts.sort(function (a, b) { return a.classList.contains('t-new') - b.classList.contains('t-new'); }).forEach(function (b) { tools.appendChild(b); });
+    if (tools.firstChild) form.parentNode.insertBefore(tools, form);
+    btnTables.forEach(function (t) { t.remove(); });
+    /* the legend: every mark says what it is on hover and to screen readers, and new topics are labelled */
+    $$('.wrapmini').forEach(function (x) { x.remove(); });
+
+    /* list headings with nothing under them go (Jcink can print a heading for an empty group) */
+    $$('.reg-sub, .topic-title-row', list).forEach(function (h) {
+      var n = h.nextElementSibling;
+      if (!n || !n.classList.contains('trow')) h.remove();
+    });
+
+    /* each topic: empty parts go; prefixes lose their colon; page links get a label */
+    $$('.trow', list).forEach(function (t) {
+      ['.tr-desc', '.tr-pages', '.tr-mod', '.tr-new', '.tr-prefix'].forEach(function (s) { var e = $(s, t); if (e && L.isBlankText(e.innerHTML) && !$('img, input', e)) e.remove(); });
+      var pre = $('.tr-prefix', t); if (pre) $$('b', pre).forEach(function (b) { b.textContent = txt(b).replace(/:\s*$/, ''); });
+      var tp = $('.tr-pages', t);
+      if (tp) {
+        var links = $$('a', tp);
+        if (links.length) { tp.innerHTML = '<span class="tr-pg">Pages</span>'; links.forEach(function (a) { tp.appendChild(a); }); }
+      }
+    });
+
+    /* page links again under the list, so a long page does not need a scroll back up */
+    var after = form.nextSibling;
+    if (pages) { var pb = el('nav', 't-pages t-pages-end'); pb.setAttribute('aria-label', 'Pages'); pb.appendChild(pages.cloneNode(true)); form.parentNode.insertBefore(pb, after); }
+
+    /* who is browsing, sorting, search, forum jump, mark as read: one panel at the end */
+    var end = el('div', 't-end f-end'), foot = $('.reg-foot');
+    var strip = foot && $('.darkrow2', $('.reg-active', foot) || foot);
+    var n = strip && L.parseReaders(txt(strip));
+    if (n) {
+      var who = el('div', 't-readers', '<b>Here now</b>'), names = strip.nextElementSibling;
+      if (names && names.classList.contains('row2')) $$('a', names).forEach(function (a) { var b = el('a', '', L.escapeHtml(txt(a))); b.href = a.getAttribute('href'); who.appendChild(b); });
+      var rest = [n.guests ? n.guests + (n.guests === 1 ? ' guest' : ' guests') : '', n.anon ? n.anon + ' hidden' : ''].filter(Boolean).join(', ');
+      if (rest) who.appendChild(el('span', '', (who.querySelector('a') ? 'and ' : '') + rest));
+      if (who.querySelector('a, span')) end.appendChild(who);
+    }
+    var sort = foot && $('.reg-sort form', foot);
+    if (sort) {
+      var line = $('div', sort); if (line) { line.className = 'f-sort-line'; line.removeAttribute('style'); line.removeAttribute('align'); }
+      var sels = $$('select', sort), names2 = ['Sort by', 'Order', 'From'];
+      sels.forEach(function (s, i) { if (names2[i]) s.setAttribute('aria-label', names2[i]); });
+      var srow = el('div', 'f-sort'); srow.appendChild(sort); end.appendChild(srow);
+    }
+    if (foot) foot.remove();
+    var jump = $('form[name="jumpmenu"]'), search = $('#search-this-forum');
+    if (jump || search) {
+      var holder = (jump || search).parentNode, row = el('div', 't-find');
+      if (search) { var kw = $('input[name="keywords"]', search); if (kw) { kw.setAttribute('aria-label', 'Search this forum'); kw.removeAttribute('onfocus'); } row.appendChild(search); }
+      if (jump) { var sel = $('select', jump); if (sel) sel.setAttribute('aria-label', 'Jump to a forum'); row.appendChild(jump); }
+      end.appendChild(row);
+      if (holder && holder !== d.body && !txt(holder) && !$('form, select, input', holder)) holder.remove();
+    }
+    var read = $('#mark-as-read-subto');
+    if (read) {
+      var rl = el('div', 'f-read'); $$('a', read).forEach(function (a) { rl.appendChild(a); });
+      var rh = read.parentNode; read.remove();
+      if (rh && rh !== d.body && !txt(rh)) rh.remove();
+      if (rl.firstChild) end.appendChild(rl);
+    }
+    if (end.firstChild) form.parentNode.insertBefore(end, after);
+    $$('#innerwrapper > br, #innerwrapper > br[clear]').forEach(function (b) { b.remove(); });
   }
 
   /* ---------- profile: the Main Profiles template as a yearbook spread ---------- */
