@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="robots" content="noindex">
+<title>Ashgrove Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,700..900;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>history.replaceState(null,"","?showtopic=12");
+/* Runs before the page paints: marks JS support and guesses the index page from the address */
+(function(){
+  var r = document.documentElement;
+  r.className += ' js';
+  if (!/[?&](act|showforum|showtopic|showuser|c)=/.test(location.search)) r.className += ' is-index';
+})();
+</script>
+
+
+</head>
+<body>
+
+<header id="topbar">
+  <a id="brand" href="index.php">Ashgrove Academy</a>
+  <button type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+</header>
+
+<nav id="menu" aria-label="Main menu">
+  <button type="button" id="menu-close">Close</button>
+  <div id="menu-links"></div>
+  <div id="menu-search">
+    <form action="index.php?act=Search&amp;CODE=01" method="post">
+      <input type="hidden" name="forums" value="all">
+      <input type="text" name="keywords" class="search-input" placeholder="Search the board" aria-label="Search">
+      <input type="submit" class="search-button" value="Search">
+    </form>
+  </div>
+</nav>
+
+<div id="wrapper">
+  <h1 id="hero-title">Ashgrove Academy</h1>
+  <table id="userlinks" cellspacing="0" width="100%"><tr><td>Welcome back, <b>Mara Quill</b> &nbsp; <a href="#">Log Out</a></td><td align="right"><a href="#">My Controls</a> &middot; <a href="#">Messages (2)</a> &middot; <a href="#">View New Posts</a> &middot; <a href="#">My Assistant</a></td></tr></table>
+
+  <div id="innerwrapper">
+    <div id="navi">
+      <div id="submenu"><a href="#">Home</a> <a href="#">Members</a> <a href="#">Calendar</a> <a href="#">Help</a> <a href="#">Search</a></div>
+<div id="navstrip"><a href="#">Ashgrove Academy</a> &rarr; <a href="#">Main Campus</a> &rarr; Lecture Halls</div>
+
+    </div>
+    
+    <div class="tableborder"><div class="maintitle">The Midterm Problem</div>
+<table width="100%" cellspacing="0">
+<tr><td class="darkrow1" colspan="2">Posted by <a href="#">Mara Quill</a> on 24 Nov 2026, 9:14 PM</td></tr>
+<tr>
+<td class="post1" width="22%"><span class="normalname"><a href="#">Mara Quill</a></span>
+<div class="postbit"><div align="center"><div style="width:110px;height:110px;margin:6px auto;background:#16346b;border:3px solid #c9a227"></div><span class="pb-title">Junior, Literature</span></div></div>
+<div class="postbit"><span class="pb-label">Group</span>Students</div>
+<div class="postbit"><span class="pb-label">Posts</span>212</div>
+<div class="postbit"><span class="pb-label">Joined</span>3 Feb 2026</div>
+<div class="postbit"><span class="pb-label">Age</span>21</div>
+<div class="postbit"><span class="pb-label">Pronouns</span>she/her</div>
+<div class="postbit"><span class="pb-label">Year</span>Junior</div></td>
+<td class="post1" valign="top"><div class="postcolor">The lecture hall emptied slowly, the way it did when nobody wanted to be the first to leave with a grade like that. Mara kept her eyes on the folded paper in her hand. Professor Hale had written one word at the top in red, and it wasn't a word she had been ready to see.<br><br>
+<div id="QUOTE">"You have until Friday to come and see me," Hale had said. "Bring someone who can vouch for the work."</div><br>
+She slid it into her bag without reading the rest. Outside, the quad was wet and the bell tower had started its half-hour count.</div>
+<div class="signature">Ashgrove, class of 2028</div>
+<div class="postlinksbar"><span class="button-small">Quote</span><span class="button-small">PM</span><span class="button-small">Report</span></div></td></tr>
+<tr><td class="darkrow1" colspan="2">Posted by <a href="#">Theo Vance</a> on 24 Nov 2026, 9:40 PM</td></tr>
+<tr>
+<td class="post2" width="22%"><span class="normalname"><a href="#">Theo Vance</a></span>
+<div class="postbit"><div align="center"><div style="width:110px;height:110px;margin:6px auto;background:#8e1b24;border:3px solid #c9a227"></div><span class="pb-title">Senior, Economics</span></div></div>
+<div class="postbit"><span class="pb-label">Group</span>Students</div>
+<div class="postbit"><span class="pb-label">Posts</span>340</div>
+<div class="postbit"><span class="pb-label">Joined</span>19 Jan 2026</div>
+<div class="postbit"><span class="pb-label">Age</span>22</div>
+<div class="postbit"><span class="pb-label">Pronouns</span>he/him</div>
+<div class="postbit"><span class="pb-label">Year</span>Senior</div></td>
+<td class="post2" valign="top"><div class="postcolor">Theo found her on the steps, which was not a coincidence. He held out a coffee without saying anything, and after a moment she took it.</div>
+<div class="postlinksbar"><span class="button-small">Quote</span><span class="button-small">PM</span></div></td></tr>
+</table></div>
+<div style="margin:0 0 24px"><span class="button-large">Add Reply</span><span class="button-large">New Topic</span><span class="button-large closed">Closed</span></div>
+<div class="tableborder"><div class="maintitle">Fast Reply</div><div class="tablepad"><textarea rows="5" style="width:100%"></textarea><br><input type="submit" value="Post"></div></div>
+
+
+    <!-- ===== EDIT THESE BLOCKS. They only show on the index. ===== -->
+
+    <!-- Ticker: one <span> per line. Index chapter 1. -->
+    <div id="ticker">
+      <span>Midterms start Monday, library closes at nine</span>
+      <span>Student council nominations are open</span>
+      <span>Lost: one house key, North Hall, ask at the front desk</span>
+      <span>Parking lot B is closed for repaving</span>
+    </div>
+
+    <!-- Guidebook buttons. Index chapter 2, above the forums. -->
+    <div id="guidebook">
+      <a href="#">Rules</a>
+      <a href="#">Setting</a>
+      <a href="#">Faculty</a>
+      <a href="#">Clubs</a>
+      <a href="#">Plot</a>
+    </div>
+
+    <!-- Notice board: one .note per notice. Index chapter 2, beside the forums. -->
+    <div id="bulletin">
+      <h3>Notice board</h3>
+      <div class="note"><b>Admissions</b>Spring intake is open. Read the rules before you apply.</div>
+      <div class="note"><b>Midterm week</b>Threads set in class should happen before Friday.</div>
+      <div class="note"><b>Trackers</b>Keep your character profile and plot tracker up to date.</div>
+    </div>
+
+    <!-- Cork board: member notices. With CFG.corkForum set, these sample notes are replaced by that forum's newest topics. -->
+    <div id="corkboard">
+      <h3>Cork board</h3>
+      <div class="cork-notes">
+        <a href="#"><b>Photography club</b><span>Meets Thursdays in the old gym. New members welcome.</span><i>pinned by Wren</i></a>
+        <a href="#"><b>Looking for a study group</b><span>Economics 201, evenings only.</span><i>pinned by Theo</i></a>
+        <a href="#"><b>Need a roommate</b><span>South Hall, second floor, one bed open.</span><i>pinned by Jonah</i></a>
+      </div>
+      <a class="cork-post" href="#">Pin a notice</a>
+    </div>
+
+    <!-- Affiliates: index chapter 3. -->
+    <div id="affiliates">
+      <h3>Affiliates</h3>
+      <a href="#">Partner Forum One</a><br>
+      <a href="#">Partner Forum Two</a>
+    </div>
+
+    <div id="skin_selector">
+      <select class="forminput"><option>Academy</option></select>
+    </div>
+    <div class="copyright">Powered by Jcink Forum Hosting &copy; 2026</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  /* ---------- SETTINGS ----------
+     catColors:   category ID (the number in its showforum or c= link) -> colour name from the
+                  CSS settings block: crimson, gold, forest, slate, plum, rust.
+                  Categories not listed take the next colour from 'cycle'.
+     forumImages: forum ID -> picture URL for its card, for example
+                  4: 'https://i.imgur.com/abc.jpg'. Forums without one get the crest placeholder. */
+  var CFG = {
+    catColors: { /* 3: 'crimson', 7: 'forest' */ },
+    forumImages: { /* 4: 'https://example.com/lecture-halls.jpg' */ },
+    /* Member avatars for the last-post badges, by member name. Members without one get their initials. */
+    avatars: { /* 'Mara Quill': 'https://example.com/mara.jpg' */ },
+    /* Forum ID of the forum where members post their own notices (club ads, looking for threads).
+       Its newest topics appear on the cork board. Leave null to show the sample notes below instead. */
+    corkForum: 4,
+    cycle: ['crimson', 'gold', 'forest', 'slate', 'plum', 'rust']
+  };
+
+  var d = document, root = d.documentElement, body = d.body;
+  function $(s, c) { return (c || d).querySelector(s); }
+  function el(tag, cls, html) { var e = d.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+
+  /* ---------- Monograms and account bar ---------- */
+  function mono(name) {
+    var words = name.replace(/[^\w\s]/g, '').trim().split(/\s+/), h = 0, i;
+    for (i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 6;
+    var m = el('span', 'mono mono-' + h, ((words[0] || '?').charAt(0) + (words.length > 1 ? words[words.length - 1].charAt(0) : '')));
+    if (CFG.avatars[name]) { m.style.backgroundImage = 'url("' + CFG.avatars[name] + '")'; m.className += ' has-img'; }
+    m.title = name;
+    return m;
+  }
+  var ul0 = $('#userlinks');
+  if (ul0) {
+    [].forEach.call(ul0.querySelectorAll('a'), function (a) {
+      if (/\(\d+\)/.test(a.textContent)) a.innerHTML = a.innerHTML.replace(/\((\d+)\)/, '<span class="ul-badge">$1</span>');
+    });
+    var nm = ul0.querySelector('td b');
+    var left = ul0.querySelector('td');
+    if (left) {
+      var who = el('div', 'ul-who');
+      while (left.firstChild) who.appendChild(left.firstChild);
+      if (nm) who.insertBefore(mono(nm.textContent), who.firstChild);
+      left.appendChild(who);
+    }
+  }
+
+  /* ---------- Menu overlay ---------- */
+  var sub = $('#submenu'), links = $('#menu-links');
+  if (sub && links) {
+    [].forEach.call(sub.querySelectorAll('a'), function (a) {
+      var c = a.cloneNode(true);
+      c.className = 'menu-link';
+      c.removeAttribute('style');
+      links.appendChild(c);
+    });
+  }
+  var btn = $('#menu-btn'), closeBtn = $('#menu-close'), menu = $('#menu');
+  function setMenu(open) {
+    body.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) closeBtn.focus(); else btn.focus();
+  }
+  btn.addEventListener('click', function () { setMenu(true); });
+  closeBtn.addEventListener('click', function () { setMenu(false); });
+  menu.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('.menu-link')) body.classList.remove('menu-open'); });
+  d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && body.classList.contains('menu-open')) setMenu(false); });
+
+  /* ---------- Index chapters ---------- */
+  var stats = $('#boardstats');
+  if (!stats || !root.classList.contains('is-index')) { root.classList.remove('is-index'); return; }
+
+  function make(id) {
+    var s = el('section', 'chap'); s.id = id;
+    return s;
+  }
+  var c1 = make('chap1'), c2 = make('chap2'), c3 = make('chap3');
+
+  var host = stats.parentNode;
+  var statsTop = stats;
+  while (statsTop.parentNode !== host) statsTop = statsTop.parentNode;
+
+  /* Chapter 1: board title, emblem, account links, ticker */
+  var h1 = $('#hero-title'), ul = $('#userlinks');
+  var heroRow = el('div', 'hero-row'), heroText = el('div', 'hero-text');
+  var title = el('h1', 'chap-title'); title.textContent = h1 ? h1.textContent : d.title;
+  heroText.appendChild(title);
+  if (ul) heroText.appendChild(ul);
+  var emblem = el('div', 'hero-emblem', '<div class="emblem-art"></div>');
+  heroRow.appendChild(heroText); heroRow.appendChild(emblem);
+  c1.appendChild(heroRow);
+
+  var tick = $('#ticker');
+  if (tick) {
+    var wrap = el('div', 'ticker-wrap'), track = el('div', 'ticker-track');
+    track.innerHTML = tick.innerHTML + tick.innerHTML;   /* doubled for a seamless loop */
+    wrap.appendChild(track); c1.appendChild(wrap);
+    tick.parentNode.removeChild(tick);
+  }
+
+  /* Chapter 2: guidebook, then forums (left) and notice board (right) */
+  var guide = $('#guidebook');
+  if (guide) { guide.className = 'guide-row'; c2.appendChild(guide); }
+  var layout = el('div', 'c2-layout'), mainCol = el('div', 'c2-main'), side = el('aside', 'c2-side');
+  layout.appendChild(mainCol); layout.appendChild(side); c2.appendChild(layout);
+
+  var before = true, rest = [];
+  [].slice.call(host.children).forEach(function (e) {
+    if (e === statsTop) { before = false; return; }
+    if (e.id === 'navi' || e.tagName === 'SCRIPT' || e.id === 'affiliates' || e.id === 'skin_selector' ||
+        e.id === 'hero-title' || e.id === 'bulletin' || e.id === 'corkboard' || e.id === 'guidebook' || e.id === 'ticker') return;
+    if (e.className && /copyright/.test(e.className)) { rest.push(e); return; }
+    if (before) mainCol.appendChild(e); else rest.push(e);
+  });
+  var bulletin = $('#bulletin'); if (bulletin) side.appendChild(bulletin);
+  var cork = $('#corkboard');
+  if (cork) {
+    side.appendChild(cork);
+    if (CFG.corkForum) {
+      var pin = cork.querySelector('.cork-post');
+      if (pin) pin.href = 'index.php?act=Post&CODE=00&f=' + CFG.corkForum;
+      fetch('index.php?showforum=' + CFG.corkForum, { credentials: 'same-origin' })
+        .then(function (r) { return r.text(); })
+        .then(function (t) {
+          var doc = new DOMParser().parseFromString(t, 'text/html'), seen = {}, notes = [];
+          [].forEach.call(doc.querySelectorAll('a[href*="showtopic="]'), function (a) {
+            var href = a.getAttribute('href') || '', m = href.match(/showtopic=(\d+)/);
+            if (!m || seen[m[1]] || /view=|[?&]st=/.test(href) || !a.textContent.trim() || /^\d+$/.test(a.textContent.trim())) return;
+            seen[m[1]] = 1;
+            var row = a.closest('tr'), u = row && row.querySelector('a[href*="showuser="]');
+            var ds = row && row.querySelector('.desc, .forumdesc, [id^="tid-desc"]');
+            var n = d.createElement('a'); n.href = 'index.php?showtopic=' + m[1];
+            var b = d.createElement('b'); b.textContent = a.textContent.trim(); n.appendChild(b);
+            if (ds && ds.textContent.trim()) { var s = d.createElement('span'); s.textContent = ds.textContent.trim(); n.appendChild(s); }
+            if (u) { var i = d.createElement('i'); i.textContent = 'pinned by ' + u.textContent.trim(); n.appendChild(i); }
+            notes.push(n);
+          });
+          var box = cork.querySelector('.cork-notes');
+          if (box && notes.length) { box.innerHTML = ''; notes.slice(0, 6).forEach(function (n) { box.appendChild(n); }); }
+        })
+        .catch(function () { /* keep the sample notes */ });
+    }
+  }
+
+  /* Colour each category and turn its forum rows into cards */
+  function num(td) { var n = parseInt((td.textContent || '').replace(/[^\d]/g, ''), 10); return isNaN(n) ? 0 : n; }
+  function buildCards(cat) {
+    var grid = el('div', 'forum-grid'), made = 0;
+    [].forEach.call(cat.querySelectorAll('tr'), function (tr) {
+      var a = tr.querySelector('a[href*="showforum="]');
+      var tds = [].filter.call(tr.children, function (c) { return c.tagName === 'TD'; });
+      if (!a || tds.length < 4) return;
+      var nameTd = tds.filter(function (t) { return t.contains(a); })[0];
+      var i = tds.indexOf(nameTd);
+      var after = tds.slice(i + 1);
+      if (after.length < 3) return;
+      var id = (a.href.match(/showforum=(\d+)/) || [])[1];
+
+      var clone = nameTd.cloneNode(true);
+      var b = clone.querySelector('b'); if (b) b.parentNode.removeChild(b);
+      var br = clone.querySelector('br'); if (br && !clone.querySelector('.desc, .forumdesc')) br.parentNode.removeChild(br);
+      var descHtml = clone.innerHTML.replace(/^\s*(<br\s*\/?>\s*)+/i, '').trim();
+
+      var card = el('article', 'fcard');
+      var media = el('div', 'fc-media');
+      if (id && CFG.forumImages[id]) media.style.setProperty('--fimg', 'url("' + CFG.forumImages[id] + '")');
+      if (i > 0) media.appendChild(el('div', 'fc-pip', tds[0].innerHTML));
+      var nm = el('div', 'fc-name'); var link = a.cloneNode(true); link.textContent = a.textContent; nm.appendChild(link);
+      media.appendChild(nm);
+      card.appendChild(media);
+      card.appendChild(el('div', 'fc-body', descHtml));
+      card.appendChild(el('div', 'fc-stats',
+        '<div><b>' + num(after[0]) + '</b><span>Topics</span></div><div><b>' + num(after[1]) + '</b><span>Replies</span></div>'));
+      var lastTd = after[after.length - 1], who = [].slice.call(lastTd.querySelectorAll('a[href*="showuser="]')).pop();
+      var last = el('div', 'fc-last');
+      if (who) {
+        var lp = el('div', 'fc-lp'); lp.appendChild(mono(who.textContent));
+        lp.appendChild(el('div', 'fc-lp-text', lastTd.innerHTML)); last.appendChild(lp);
+      } else last.innerHTML = lastTd.innerHTML;
+      card.appendChild(last);
+      grid.appendChild(card); made++;
+    });
+    if (made) {
+      [].forEach.call(cat.querySelectorAll('table'), function (t) { t.style.display = 'none'; });
+      cat.appendChild(grid);
+    }
+  }
+  var n = 0;
+  [].forEach.call(mainCol.children, function (e) {
+    if (!e.querySelector || !e.querySelector('.maintitle')) return;
+    var a = e.querySelector('.maintitle a[href*="showforum="], .maintitle a[href*="c="]');
+    var m = (a && a.href.match(/(?:showforum|c)=(\d+)/)) || (e.id && e.id.match(/(\d+)/));
+    var key = m ? m[1] : null;
+    var color = (key && CFG.catColors[key]) || CFG.cycle[n % CFG.cycle.length];
+    e.classList.add('cat', 'cat-' + color);
+    n++;
+    buildCards(e);
+  });
+
+  /* Chapter 3: stats, affiliates, skin selector, copyright */
+  c3.appendChild(statsTop);
+  var aff = $('#affiliates'); if (aff) c3.appendChild(aff);
+  rest.forEach(function (e) { c3.appendChild(e); });
+  var sk = $('#skin_selector'); if (sk) c3.appendChild(sk);
+
+  var main = el('main'); main.id = 'chapters';
+  main.appendChild(c1); main.appendChild(c2); main.appendChild(c3);
+  $('#wrapper').parentNode.insertBefore(main, $('#wrapper'));
+
+  /* ---------- Cover transition: chapter 1 dims as chapter 2 slides over it ---------- */
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  root.classList.add('cover');
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh - c2.getBoundingClientRect().top) / vh));
+    c1.style.setProperty('--dim', p.toFixed(3));
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>

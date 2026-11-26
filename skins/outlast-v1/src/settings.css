@@ -1,0 +1,12 @@
+/* ===== SETTINGS: edit these ===== */
+:root{
+  --bone:#d8d2bf; --ink:#1b1b16; --room:#0c0d09; --red:#c8372d;
+  --link:#8f1d17; /* links on paper: darker red so they stay readable */
+  --profile:#c8372d; /* header block colour on member profile pages */
+  --core:#7d8088; --special:#c8372d; --endure:#c9a227; --ooc:#3f7c9a;
+  --type:'Special Elite','Courier New',monospace;
+  /* section background images for the index: url("https://...") */
+  --img-1:none; --img-2:none; --img-3:none;
+  --img-feat:none; /* featured news card on the first screen */
+}
+/* ===== END SETTINGS ===== */
