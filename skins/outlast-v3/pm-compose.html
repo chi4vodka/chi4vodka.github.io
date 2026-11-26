@@ -4,7 +4,7 @@
 <head><meta name="robots" content="noindex">
 <title>Kestrel</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Courier+Prime:wght@400;700&family=Reenie+Beanie&family=Special+Elite&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500&family=Courier+Prime:wght@400;700&family=Reenie+Beanie&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
 /* ===== SETTINGS: colours and fonts ===== */
 :root{
@@ -15,6 +15,7 @@
   --type:'Courier Prime','Courier New',monospace;
   --worn:'Special Elite','Courier New',monospace;
   --hand:'Reenie Beanie',cursive;
+  --poster:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
 }
 /* ===== END SETTINGS ===== */
 
@@ -424,6 +425,99 @@ html:not(.is-index) #scrawls{display:none}
 }
 html:not(.is-index) .lens,html:not(.is-index) .tint,html:not(.is-index) .nv{display:none!important}
 .who ul{background:rgba(13,15,10,.82);padding:8px 10px}
+
+/* ===== INDEX CATEGORIES: the game's trial screen. A framed poster with the category as its headline and the forums as
+   "↳" captions along its foot (the selected one is the pale START bar); beside it the selected forum's trial card ===== */
+.trial{--br:#e9e7df;--scuff:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='40'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .18 0'/></filter><rect width='300' height='40' filter='url(%23n)'/><g stroke='%23000' stroke-opacity='.16' stroke-width='1'><path d='M14 31l40-3M90 9l60 2M170 30l34-6M230 12l52 3M60 18l22 1'/></g></svg>")}
+.cat.trial{grid-template-columns:minmax(300px,36%) minmax(0,1fr);gap:4vw;align-items:start}
+
+/* the poster: a tan frame, the art full bleed, the headline across the top */
+.trial .poster{position:relative;top:auto;display:flex;flex-direction:column;aspect-ratio:auto;padding:14px;background:#c9bd92;border:0;outline:0;box-shadow:0 0 0 2px #24231c,0 24px 50px rgba(0,0,0,.6);overflow:visible;container-type:inline-size}
+.trial .pic{inset:14px;filter:saturate(.9) contrast(1.05)}
+.trial .cat-name{position:relative;left:auto;right:auto;bottom:auto;z-index:1;margin:0;padding:0;background:none;font:400 16px/1 var(--poster)}
+.trial .cat-name a{display:block;text-decoration:none}
+.trial .cat-name a:hover .ph-big{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:6px}
+.ph-band{display:block;padding:8px 14px 2px;background:radial-gradient(circle,#2c3f4d 1.1px,transparent 1.5px) 0 0/6px 6px,#4e697b;color:#f1e7a8;font:400 clamp(30px,13cqi,64px)/1 var(--poster);letter-spacing:.03em;text-transform:uppercase}
+.ph-big{display:block;padding:0 4px;color:#7896ab;font:400 min(34cqi,calc(205cqi / var(--len,6)))/.86 var(--poster);letter-spacing:.005em;text-transform:uppercase;text-shadow:0 2px 0 rgba(0,0,0,.25);overflow-wrap:anywhere}
+
+/* the captions: one per forum on a dark band at the poster's foot */
+.trial .p-caps{position:relative;z-index:1;margin-top:clamp(150px,22cqi,300px);padding:18px 6px 6px;background:linear-gradient(rgba(8,8,6,0),rgba(8,8,6,.86) 22px)}
+.trial .forums{display:grid;gap:6px;margin:0}
+.trial .forum{display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:8px;align-items:start;min-height:0;padding:8px 12px 8px 8px;background:none;color:#f1efe8;cursor:pointer;transform:none;box-shadow:none;counter-increment:none}
+.trial .forum::before{content:"\21B3";position:static;grid-row:1/3;width:auto;height:auto;margin-top:1px;border:0;border-radius:0;display:block;font:400 22px/1 var(--ui);color:#d6d4ca}
+.trial .forum::after{display:none}
+.trial .forum .f-name{font:500 17px/1.25 var(--ui);letter-spacing:.04em;text-transform:uppercase}
+.js .trial .forum>.f-count,.trial .forum>.f-count{display:block;grid-column:2;margin:2px 0 0;font:400 12px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#bdbab0}
+.trial .forum>.f-count b{font-weight:400}
+.trial .forum>.f-count span+span::before{content:" \2013  "}
+.trial .forum .f-last,.js .trial .forum>.f-desc,.js .trial .forum>.f-sub,.js .trial .forum>.f-mod{display:none}
+.trial .forum-new-post .f-name::after{content:"!";display:inline-grid;place-items:center;width:18px;height:20px;margin-left:10px;background:#e3c43a;color:#111;font:700 12px/1 var(--ui);border-radius:2px;vertical-align:2px}
+/* the selected caption: the pale, scratched START bar with corner brackets */
+.trial .forum.on,.trial .d-go{background:var(--scuff) 0 0/300px 40px,#d9d7cf;color:#121210}
+.trial .forum.on::before{color:#121210}
+.trial .forum.on>.f-count{color:#3d3d36}
+.trial .forum.on::after,.trial .d-go::after{content:"";display:block;position:absolute;inset:-5px;width:auto;height:auto;border:0;pointer-events:none;background:linear-gradient(var(--br),var(--br)) 0 0/14px 3px no-repeat,linear-gradient(var(--br),var(--br)) 0 0/3px 14px no-repeat,linear-gradient(var(--br),var(--br)) 100% 0/14px 3px no-repeat,linear-gradient(var(--br),var(--br)) 100% 0/3px 14px no-repeat,linear-gradient(var(--br),var(--br)) 0 100%/14px 3px no-repeat,linear-gradient(var(--br),var(--br)) 0 100%/3px 14px no-repeat,linear-gradient(var(--br),var(--br)) 100% 100%/14px 3px no-repeat,linear-gradient(var(--br),var(--br)) 100% 100%/3px 14px no-repeat}
+.trial .forum .f-name a{text-decoration:none}
+
+/* the trial card: a paper sheet in a scuffed black frame */
+.trial .folder{display:block;padding:0 clamp(18px,2.2vw,34px) 26px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .09 0'/></filter><rect width='260' height='260' filter='url(%23n)'/></svg>"),#0e0e0c;border-radius:0;box-shadow:0 0 0 2px #24231c,0 24px 50px rgba(0,0,0,.6)}
+.trial .folder::before{display:none}
+.trial .page.list{display:none}
+.trial .page.detail{margin:62px 0 0;padding:0 clamp(18px,2.4vw,36px) 34px;background:radial-gradient(circle at 92% 8%,rgba(150,30,20,.22) 0 3px,transparent 4px),radial-gradient(circle at 88% 12%,rgba(150,30,20,.16) 0 6px,transparent 7px),radial-gradient(circle at 6% 58%,rgba(150,30,20,.14) 0 4px,transparent 5px),#d8d5cb;color:#1b1b16;box-shadow:6px 7px 0 #b3b0a5}
+.trial .page.detail::after{content:"";position:absolute;left:44%;bottom:-12px;width:96px;height:26px;background:rgba(206,192,150,.82);transform:rotate(-2deg)}
+/* the photo: white border with perforated edges, a paper tag on its corner */
+.trial .photo{position:relative;display:block;float:none;width:auto;aspect-ratio:16/9;margin:0 8% 22px;top:-34px;margin-bottom:-12px;padding:12px 20px;transform:rotate(-1.2deg);background:radial-gradient(circle,#1b1b16 1.7px,transparent 2.2px) 6px 6px/9px 10px repeat-y,radial-gradient(circle,#1b1b16 1.7px,transparent 2.2px) calc(100% - 6px) 6px/9px 10px repeat-y,#f6f4ee;box-shadow:0 8px 18px rgba(0,0,0,.45)}
+.trial .photo::before{inset:12px 20px}
+.trial .photo::after{display:none}
+.d-tag{position:absolute;right:-12px;top:-14px;z-index:2;padding:7px 14px 6px;background:#efece3;border:1px solid #b9b5a7;color:#1b1b16;font:700 16px/1 var(--type);letter-spacing:.04em;text-transform:uppercase;transform:rotate(7deg);box-shadow:1px 2px 4px rgba(0,0,0,.3)}
+.trial .d-title{display:inline-block;margin:26px 0 12px;padding:7px 12px 6px;background:#1c1c19;color:#ecebe3;font:400 22px/1.2 var(--type);text-transform:uppercase}
+.trial .d-title a{color:inherit;text-decoration:none}
+.trial .d-title a:hover{text-decoration:underline}
+.trial .detail .f-count{display:flex;flex-wrap:wrap;gap:0;margin:0 0 12px;font:400 18px/1.3 var(--type);letter-spacing:.02em;text-transform:uppercase}
+.trial .detail .f-count b{margin:0;font:inherit;letter-spacing:inherit}
+.trial .detail .f-count span+span::before{content:"|";margin:0 12px}
+.trial .detail .f-desc{margin:0 0 4px;padding:0 0 1px;border:0;font:400 18px/30px var(--type);background:repeating-linear-gradient(transparent 0 29px,#a8a498 29px 30px)}
+/* section headings: a boxed word between double rules, like REWARDS */
+.d-head{margin:26px 0 18px;text-align:center}
+.d-head span{display:inline-block;padding:6px 12px 5px;border-top:4px double #1b1b16;border-bottom:4px double #1b1b16;font:400 19px/1 var(--type);letter-spacing:.08em;text-transform:uppercase}
+/* the latest entry: the poster's avatar as a stamped coin, bracketed like the selected reward */
+.trial .detail .f-last{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 22px;align-items:center;margin:0 0 8px;padding:0 0 0 12px;font:400 17px/1.35 var(--type)}
+.trial .detail .f-last::before{display:none}
+.trial .detail .f-last>.coin{grid-column:1;grid-row:1/4}
+.trial .detail .f-last>span{grid-column:2}
+.trial .detail .f-topic a{font-weight:700;font-size:19px;color:#1b1b16}
+.coin{position:relative;display:grid;place-items:center;width:96px;height:96px;padding:10px;border:2px solid #34342e;border-radius:50%;background:#dcd9cf;box-shadow:inset 0 0 0 4px #dcd9cf,inset 0 0 0 5px #34342e}
+.coin::before{content:"";position:absolute;inset:6px;border:1.5px dashed #5b5b52;border-radius:50%;pointer-events:none}
+.trial .coin .f-av{grid-column:auto;grid-row:auto;width:100%;height:100%;margin:0;padding:0;border:0;border-radius:50%;object-fit:cover;background:#2a2b24;box-shadow:none;filter:grayscale(.6) sepia(.25) contrast(1.05)}
+.trial .coin .f-av.ini{display:grid;place-items:center;font:700 22px/1 var(--type);color:#e8e4d6}
+.coin b{font:700 24px/1 var(--type);color:#2f4c64;letter-spacing:.02em}
+.trial .f-last>.coin::after,.coins a:hover .coin::after,.coins a:focus-visible .coin::after{content:"";position:absolute;inset:-12px;pointer-events:none;--k:#1b1b16;background:linear-gradient(var(--k),var(--k)) 0 0/16px 4px no-repeat,linear-gradient(var(--k),var(--k)) 0 0/4px 16px no-repeat,linear-gradient(var(--k),var(--k)) 100% 0/16px 4px no-repeat,linear-gradient(var(--k),var(--k)) 100% 0/4px 16px no-repeat,linear-gradient(var(--k),var(--k)) 0 100%/16px 4px no-repeat,linear-gradient(var(--k),var(--k)) 0 100%/4px 16px no-repeat,linear-gradient(var(--k),var(--k)) 100% 100%/16px 4px no-repeat,linear-gradient(var(--k),var(--k)) 100% 100%/4px 16px no-repeat}
+.trial .detail .f-by::before{content:"by ";font-weight:400}
+.trial .detail .f-by a{color:#1b1b16}
+.trial .detail .f-when{color:#55554a;font-size:15px}
+.trial .f-none{margin:0 0 8px;text-align:center;font:400 17px/1.4 var(--type)}
+/* subforums: coins with their initials, the name underneath */
+.coins{display:flex;flex-wrap:wrap;justify-content:center;gap:20px 28px;margin:0 0 8px;padding:0;list-style:none}
+.coins a{display:grid;justify-items:center;gap:8px;width:104px;color:#1b1b16;text-decoration:none}
+.coins .coin{width:78px;height:78px}
+.c-name{font:400 14px/1.25 var(--type);text-align:center;overflow-wrap:anywhere}
+.coins a:hover .c-name{text-decoration:underline}
+.trial .detail .f-mod{margin:18px 0 0;font:400 14px/1.4 var(--type);color:#3d3d36}
+.trial .detail .f-mod a{color:#1b1b16}
+/* Enter: the pale bar, under the sheet */
+.trial .d-go{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;max-width:380px;margin:34px auto 4px;padding:11px 20px;font:500 19px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.trial .d-go .kr{background:#fff;color:#111;box-shadow:0 0 0 2px #111}
+.trial .d-go:hover{background-color:#fff}
+
+@media(max-width:980px){
+  .cat.trial{grid-template-columns:minmax(0,1fr)}
+  .trial .poster{position:relative}
+  .trial .p-caps{margin-top:clamp(120px,30cqi,240px)}
+  .trial .folder{display:none}
+  .trial .forum .f-last{display:flex;grid-column:2;margin-top:6px;font-size:13px;color:#bdbab0;white-space:normal}
+  .trial .forum.on .f-last{color:#3d3d36}
+  .trial .forum.on .f-last a{color:#121210}
+}
 
 /* ===== FORUM PAGE: the game's terminal. Film-strip bands; subforums as category tiles on the left; topics as task rows ===== */
 /* the index folder (the index page's forum list) */
@@ -1238,6 +1332,13 @@ Open Tags:&nbsp;<input type="text" name="tagcount" size="3" maxlength="3" readon
     return m ? Math.min(100, Math.max(0, +m[1])) : null;
   };
 
+  /* ---------- index posters: "Punish Justice" -> the band says Punish, the headline says Justice ---------- */
+  L.posterTitle = function (name) {
+    var w = String(name || '').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+    if (w.length < 2) return { band: '', big: w.join('') };
+    return { band: w[0], big: w.slice(1).join(' ') };
+  };
+
   /* ---------- board messages: the stamp on the notice card ---------- */
   L.stampFor = function (s) {
     var t = String(s || '');
@@ -1379,7 +1480,8 @@ var OutlastSettings = {
     if (news) { var n = el('a', 'news', '<span class="card-tag">Latest news</span><span class="card-line">' + L.escapeHtml(txt(news)) + '</span>'); n.href = news.getAttribute('href'); $('.hero').appendChild(n); }
     $$('.newstext').forEach(function (e) { e.remove(); });
 
-    /* each category: poster, folder list on the left page, the file on the right page */
+    /* each category: the trial screen. A framed poster with the category as its headline and the forums as captions
+       along its foot; beside it the selected forum's card (photo, name, counts, description, latest entry, subforums) */
     var k = 0;
     $$('.cat').forEach(function (c, i) {
       var id = (c.id.match(/\d+/) || [])[0];
@@ -1387,20 +1489,51 @@ var OutlastSettings = {
       pic.classList.add('p-' + L.pickArt(id, i, S.posters, CYCLE));
       var own = L.safeImageUrl((S.images || {})[id]);
       if (own) pic.style.backgroundImage = 'url("' + own + '")';
-      var rows = $$('.forum', c), unread = rows.filter(function (f) { return f.classList.contains('forum-new-post'); }).length;
-      var topics = L.sumCounts(rows.filter(function (f) { return !f.classList.contains('redirect'); }).map(function (f) { var b = $('.f-count b', f); return b ? txt(b) : ''; }));
-      $('.page.list', c).insertAdjacentHTML('afterbegin', '<div class="form"><p><span>Forums:</span> ' + rows.length + '</p><p><span>Topics:</span> ' + topics.toLocaleString() + '</p><div class="rating"><span>Unread</span><b>' + (unread || '&ndash;') + '</b></div></div>');
+      c.classList.add('trial');
+      var rows = $$('.forum', c), poster = $('.poster', c), forums = $('.forums', c);
+      /* the poster headline: first word on the band, the rest big */
+      var nameLink = $('.cat-name a', c) || $('.cat-name', c), pt = L.posterTitle(txt(nameLink));
+      nameLink.innerHTML = (pt.band ? '<span class="ph-band">' + esc(pt.band) + '</span> ' : '') + '<span class="ph-big">' + esc(pt.big) + '</span>';
+      /* the headline shrinks to fit its longest word across the poster */
+      nameLink.style.setProperty('--len', Math.max.apply(null, pt.big.split(' ').map(function (w) { return w.length; }).concat([4])));
+      if (forums && poster) { var cap = el('div', 'p-caps'); cap.appendChild(forums); poster.appendChild(cap); }
       var detail = $('.page.detail', c);
       rows.forEach(function (f) { f.setAttribute('data-pic', PICS[k++ % PICS.length]); f.tabIndex = 0; });
+      var head = function (t) { return el('h4', 'd-head', '<span>' + esc(t) + '</span>'); };
       function show(f) {
         rows.forEach(function (x) { x.classList.toggle('on', x === f); });
         detail.innerHTML = '';
-        if (f.classList.contains('forum-new-post')) detail.appendChild(el('span', 'stamp', 'New posts'));
-        if (f.classList.contains('redirect')) detail.appendChild(el('span', 'stamp ext', 'Leaves the board'));
-        detail.appendChild(el('div', 'photo p-' + f.getAttribute('data-pic')));
+        var go = $('.f-name a', f), isLink = f.classList.contains('redirect');
+        var photo = el('div', 'photo p-' + f.getAttribute('data-pic'));
+        if (f.classList.contains('forum-new-post')) photo.appendChild(el('span', 'd-tag', 'New posts'));
+        if (isLink) photo.appendChild(el('span', 'd-tag', 'Leaves the board'));
+        detail.appendChild(photo);
         var title = el('h3', 'd-title'); title.innerHTML = $('.f-name', f).innerHTML; detail.appendChild(title);
-        ['.f-desc', '.f-last', '.f-count', '.f-sub', '.f-mod'].forEach(function (s) { var e = $(s, f); if (e) detail.appendChild(e.cloneNode(true)); });
-        if (!$('.f-last', f) && !f.classList.contains('redirect')) detail.appendChild(el('p', 'f-none', 'No entries filed yet.'));
+        ['.f-count', '.f-desc'].forEach(function (s) { var e = $(s, f); if (e) detail.appendChild(e.cloneNode(true)); });
+        if (!isLink) {
+          detail.appendChild(head('Latest entry'));
+          var last = $('.f-last', f);
+          if (last) {
+            var lc = last.cloneNode(true), av = $('.f-av', lc), coin = el('span', 'coin');
+            if (av) coin.appendChild(av);
+            lc.insertBefore(coin, lc.firstChild);
+            detail.appendChild(lc);
+          } else detail.appendChild(el('p', 'f-none', 'No entries filed yet.'));
+        }
+        var subs = $$('.f-sub a', f);
+        if (subs.length) {
+          detail.appendChild(head('Subforums'));
+          var ul = el('ul', 'coins');
+          subs.forEach(function (a) {
+            var li = el('li'), s = el('a', '', '<span class="coin"><b>' + esc(L.initials(txt(a))) + '</b></span><span class="c-name">' + esc(txt(a)) + '</span>');
+            s.href = a.getAttribute('href'); li.appendChild(s); ul.appendChild(li);
+          });
+          detail.appendChild(ul);
+        }
+        var mod = $('.f-mod', f); if (mod) detail.appendChild(mod.cloneNode(true));
+        if (go) { var b = el('a', 'd-go', '<i class="kr" aria-hidden="true">A</i>' + (isLink ? 'Visit' : 'Enter')); b.href = go.getAttribute('href'); b.setAttribute('aria-label', (isLink ? 'Visit ' : 'Enter ') + txt(go));
+          /* under the sheet, on the black frame, like the game's Select */
+          var fold = detail.parentNode; $$('.d-go', fold).forEach(function (o) { o.remove(); }); fold.appendChild(b); }
       }
       rows.forEach(function (f) {
         f.addEventListener('mouseenter', function () { show(f); });
