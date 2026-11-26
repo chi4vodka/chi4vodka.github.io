@@ -22,6 +22,13 @@
 *{box-sizing:border-box}
 html{scroll-padding-top:20px}
 body{margin:0;background:var(--room);color:var(--grey);font:400 16px/1.55 var(--type);overflow-x:clip}
+/* scrollbars: a thin pale bar on a dark track, like the terminal's list */
+::-webkit-scrollbar{width:12px;height:12px;background:#0b0c09}
+::-webkit-scrollbar-track{background:#0b0c09}
+::-webkit-scrollbar-thumb{background:#b9b7ad;border:4px solid #0b0c09;border-radius:0;min-height:40px}
+::-webkit-scrollbar-thumb:hover{background:#e2e0d6;border-width:3px}
+::-webkit-scrollbar-corner{background:#0b0c09}
+@supports not selector(::-webkit-scrollbar){html{scrollbar-color:#b9b7ad #0b0c09;scrollbar-width:thin}}
 table,tr,td,th{font-family:var(--type);font-size:15px;color:inherit}
 form{display:inline}
 img{vertical-align:middle;border:0;max-width:100%}
@@ -421,7 +428,7 @@ html:not(.is-index) .lens,html:not(.is-index) .tint,html:not(.is-index) .nv{disp
 /* the index folder (the index page's forum list) */
 .folder{flex:1;min-width:0;background:#b98e55;padding:18px;box-shadow:5px 6px 0 #000}
 
-/* pages: a tab strip between LB and RB keycaps; the current page boxed in a rough frame */
+/* pages: a tab strip; the current page boxed in a rough frame */
 .ptabs{display:flex;flex-wrap:wrap;align-items:center;gap:8px 0;margin:4px 0 26px;font:400 17px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase}
 .ptabs .pt{position:relative;padding:11px 20px;color:#a9a79d;text-decoration:none}
 .ptabs .pt+.pt::before{content:"";position:absolute;left:0;top:50%;height:20px;margin-top:-10px;border-left:1px solid #6b6a60}
@@ -429,9 +436,6 @@ html:not(.is-index) .lens,html:not(.is-index) .tint,html:not(.is-index) .nv{disp
 .ptabs .pt.on{color:#fff;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'><path d='M2 3.5 L40 2.2 L98 3 L97.4 37.5 L55 38.2 L2.6 37 Z' fill='none' stroke='%23e2e0d6' stroke-width='2.4' vector-effect='non-scaling-stroke' stroke-dasharray='22 1.5 9 1 30 1.2'/></svg>") 0 0/100% 100% no-repeat}
 .ptabs .pt.on+.pt::before,.ptabs .pt.on::before{display:none}
 .ptabs .gap{padding:0 6px;color:#6b6a60}
-.kc{display:inline-grid;place-items:center;min-width:36px;height:25px;padding:0 7px;margin:0 10px;border-radius:7px;background:#ecebe3;color:#111!important;font:700 12px/1 var(--ui);letter-spacing:.02em;text-decoration:none}
-a.kc:hover{background:#fff;box-shadow:0 0 0 2px #6b6a60}
-.kc.off{opacity:.3}
 
 /* the panel: translucent, between two film-strip bands */
 .term{position:relative;margin:0 0 34px;padding:48px 0 46px;background:rgba(9,10,8,.52);color:#cfcdc3}
@@ -544,7 +548,6 @@ a.kc:hover{background:#fff;box-shadow:0 0 0 2px #6b6a60}
 @media (max-width:760px){
   .ptabs{margin-bottom:20px;font-size:15px}
   .ptabs .pt{padding:10px 14px}
-  .kc{margin:0 6px}
   .term{padding:36px 0 34px}
   .term.has-tiles{display:block}
   .term-main,.term.has-tiles .term-main{padding:0 12px}
@@ -1625,7 +1628,7 @@ var OutlastSettings = {
     mark.remove();
   }
 
-  /* ---------- forum view: the game's terminal. Subforum tiles beside task rows, pages as an LB / RB tab strip ---------- */
+  /* ---------- forum view: the game's terminal. Subforum tiles beside task rows, pages as a tab strip ---------- */
   function initForum() {
     var list = $('#topic-list');
     if (!list) return;
@@ -1662,18 +1665,10 @@ var OutlastSettings = {
       t.remove();
     });
 
-    /* pages: a tab strip between LB (previous) and RB (next) */
+    /* pages: a tab strip, the current page boxed */
     if (pages && $$('a', pages).length) {
-      var nums = $$('.pagination_page a, .pagination_current', pages), cur = $('.pagination_current', pages);
-      var curN = cur ? parseInt(txt(cur), 10) : 1, prev = $('.pagination_previous a, .pagination_prev a', pages), next = $('.pagination_next a', pages);
-      nums.forEach(function (n) { if (n.tagName === 'A' && parseInt(txt(n), 10) === curN - 1) prev = n; });
-      var kc = function (label, a, title) {
-        var k = a ? el('a', 'kc', label) : el('span', 'kc off', label);
-        if (a) { k.href = a.getAttribute('href'); k.title = title; k.setAttribute('aria-label', title); } else k.setAttribute('aria-hidden', 'true');
-        return k;
-      };
+      var nums = $$('.pagination_page a, .pagination_current', pages);
       var tabs = el('nav', 'ptabs'); tabs.setAttribute('aria-label', 'Pages');
-      tabs.appendChild(kc('LB', prev, 'Previous page'));
       var tab = function (label, a) {
         var t = a ? el('a', 'pt', esc(label)) : el('span', 'pt on', esc(label));
         if (a) t.href = a.getAttribute('href'); else t.setAttribute('aria-current', 'page');
@@ -1685,7 +1680,6 @@ var OutlastSettings = {
       nums.forEach(function (n) { tab(txt(n), n.tagName === 'A' ? n : null); });
       var total = (txt($('.pagination_pagetxt', pages) || el('span')).match(/\((\d+)\)/) || [])[1], last = $('.pagination_last a', pages);
       if (total && last && shown.indexOf(total) < 0) { tabs.appendChild(el('span', 'gap', '\u2026')); tab(total, last); }
-      tabs.appendChild(kc('RB', next, 'Next page'));
       host.parentNode.insertBefore(tabs, host);
     }
 
