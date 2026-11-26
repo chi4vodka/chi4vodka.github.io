@@ -299,8 +299,10 @@ input[type=submit],input[type=button],input[type=reset]{padding:4px 12px;margin:
 .who a{font:400 14px/1.3 var(--ui);color:#bdbab0;text-decoration:none;text-transform:uppercase;letter-spacing:.04em}.who a:hover{color:#fff;text-decoration:underline}
 .who i{font-style:normal;background:var(--red);color:#fff;padding:0 6px;margin-left:4px}
 .face{width:92px;height:104px;flex:none;border:3px solid #6c6b60;outline:3px solid #0d0f0a;background:#1c1e17 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 92 104'%3E%3Cpath fill='%23585a4c' d='M10 104q2-30 26-34v-6q-10-8-10-24 0-26 20-26t20 26q0 16-10 24v6q24 4 26 34z'/%3E%3C/svg%3E") 50% 100%/100% no-repeat}
-.news{position:absolute;left:4vw;bottom:9vh;display:flex;align-items:center;gap:14px;max-width:min(640px,80vw);background:rgba(13,15,10,.88);border:1px solid #4a4a40;padding:12px 18px;color:#e8e4d6;text-decoration:none;font:400 18px/1.3 'Courier Prime',monospace}
-.news span{font:500 13px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;background:#e8e4d6;color:#0d0f0a;padding:5px 7px;flex:none}.news:hover{border-color:#e8e4d6}
+.news{position:absolute;left:4vw;bottom:9vh;display:block;width:min(560px,80vw);padding:34px 34px 24px;background:rgba(4,5,3,.88);color:#f6f4ee;text-align:center;text-decoration:none}
+.news .card-tag{font-size:15px}
+.news .card-line{display:block;font-size:clamp(17px,1.6vw,22px);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:5px}
+.news:hover .card-line,.news:focus-visible .card-line{text-decoration-color:currentColor}
 #jcink-top{position:relative;z-index:1;background:#0b0c08;padding:10px 0;max-width:100%;overflow-x:auto}#jcink-top #submenu,#jcink-top #userlinks,#jcink-top #logostrip{display:none}#jcink-top table{max-width:100%}
 
 /* film strip separators */
@@ -371,7 +373,6 @@ input[type=submit],input[type=button],input[type=reset]{padding:4px 12px;margin:
 #affiliates a{display:flex;flex-direction:column;gap:6px;min-height:150px;border:1px solid #6c6b60;padding:16px;background:rgba(13,15,10,.7);color:#ecebe3;text-decoration:none;font:400 18px/1.25 var(--ui);text-transform:uppercase}
 #affiliates a span{font-size:12px;letter-spacing:.08em;color:#a9a79d}#affiliates a:hover{border-color:#ecebe3;background:rgba(13,15,10,.9)}
 #affiliates a::after{content:"";margin-top:auto;height:54px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 54'%3E%3Crect x='14' y='4' width='34' height='44' fill='%23c9c7bd' transform='rotate(6 30 26)'/%3E%3Crect x='10' y='6' width='34' height='44' fill='%23e8e4d6'/%3E%3Ccircle cx='20' cy='38' r='9' fill='%23333'/%3E%3C/svg%3E") 0 100%/auto 100% no-repeat}
-.foot{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px 28px;padding:20px 4vw 40px;padding-right:260px;font:400 14px/1.4 var(--ui);color:#a9a79d;background:rgba(5,6,4,.9)}
 
 /* night vision as a key prompt */
 .nv{border:1px solid #6c6b60;background:rgba(13,15,10,.9);font:500 15px/1 var(--ui);text-transform:uppercase;letter-spacing:.06em;color:#e8e4d6}
@@ -390,7 +391,7 @@ input[type=submit],input[type=button],input[type=reset]{padding:4px 12px;margin:
  .folder{grid-template-columns:1fr;padding:10px}.folder::before{display:none}.page.list{margin:0}.page.detail{display:none}
  .js .forum>.f-desc,.js .forum>.f-count{display:block;color:#bdbab0}
  .page{padding:22px 16px 26px}
- #boardstats{grid-template-columns:1fr;padding:40px 16px 60px}.foot{padding-right:4vw;padding-bottom:90px}.sc{font-size:40px;white-space:normal}
+ #boardstats{grid-template-columns:1fr;padding:40px 16px 60px}.sc{font-size:40px;white-space:normal}
 }
 .d-title a{color:inherit}
 .tabs{background:rgba(5,6,4,.72);align-self:start;width:max-content;max-width:100%;padding:4px}
@@ -776,6 +777,63 @@ html:not(.is-index) #innerwrapper{padding:0 4vw 40px}
 .pn .pn-row.pn-stack>.pn-r{line-height:2.4}
 .pn .pn-row.pn-wide>.pn-r.pn-left{padding:0;background:none}
 .pn .pn-row.pn-wide>.pn-r.pn-left:has(input[type=checkbox]){padding:10px 20px;background:var(--frame),rgba(8,9,7,.8)}
+
+/* ===== THE ASSIGNMENT CARD: the board footer and Jcink's Board Message. A dark slab between two rough white rules
+   that run past its sides, a white tag on the top rule, one line in capitals, an inked stamp on the corner ===== */
+.card{position:relative;z-index:1;max-width:920px;margin:84px auto 60px;padding:54px 56px 46px;background:rgba(4,5,3,.88);box-shadow:0 0 60px rgba(0,0,0,.45);color:#f1efe8;font-family:var(--ui);text-align:center}
+.card::before,.card::after,.news::before,.news::after{content:"";position:absolute;left:-38px;right:-38px;height:6px;pointer-events:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 6' preserveAspectRatio='none'><path d='M0 2.3L44 1.7L95 2.5L160 1.4L231 2.2L300 1.3L352 2.4L400 1.9L400 4.5L338 4.1L262 4.8L190 4L118 4.7L61 4.1L0 4.6Z' fill='%23d9d7cf'/><path d='M80 2.6h9M214 3.1h5M330 2.8h12' stroke='%23080907' stroke-width='.8'/></svg>") 0 0/100% 100% no-repeat}
+.card::before,.news::before{top:-3px}
+.card::after,.news::after{bottom:-3px}
+.news::before,.news::after{left:-22px;right:-22px}
+.card-tag{position:absolute;left:50%;top:0;z-index:2;max-width:calc(100% - 40px);padding:8px 18px 7px;transform:translate(-50%,-50%);background:#f1efe8;color:#0b0b0a;font:600 19px/1.1 var(--ui);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;clip-path:polygon(1% 7%,31% 0,68% 5%,99% 0,100% 93%,70% 100%,34% 94%,0 100%)}
+.card-line{margin:0;color:#f6f4ee;font:500 clamp(20px,2.3vw,30px)/1.45 var(--ui);letter-spacing:.06em;text-transform:uppercase;overflow-wrap:anywhere;text-wrap:balance}
+.card-note{max-width:62ch;margin:18px auto 0;color:#a9a79d;font:400 14px/1.6 var(--ui)}
+.card-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 24px;margin:24px 0 0;padding:0;list-style:none;color:#a9a79d;font:400 13px/1.4 var(--ui);letter-spacing:.08em;text-transform:uppercase}
+.card-links a:link,.card-links a:visited{color:#d6d4ca;text-decoration:none}
+.card-links a:hover{color:#fff;text-decoration:underline}
+.card-links #skin_selector{margin:0}
+.card-links select{padding:5px 8px;background:#050504;border:1px solid #6b6a62;color:#ecebe3;font:400 13px/1.2 var(--ui)}
+
+/* the stamp: inked, double-framed, knocked crooked onto the corner. A link (Mark all posts as read) straightens on hover */
+.stamp-x{position:absolute;right:-20px;bottom:-34px;z-index:3;display:inline-block;padding:12px 20px 8px;border:3px solid currentColor;color:#5ec43a;font:700 32px/1 var(--type);-webkit-text-stroke:1.2px currentColor;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transform:rotate(-8deg);
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='90'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.4 0 0 0 2.05'/></filter><rect width='180' height='90' filter='url(%23g)'/></svg>") 0 0/180px 90px;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='90'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.4 0 0 0 2.05'/></filter><rect width='180' height='90' filter='url(%23g)'/></svg>") 0 0/180px 90px}
+.stamp-x::before{content:"";position:absolute;inset:4px;border:2px solid currentColor;pointer-events:none}
+.stamp-x.no{color:#e0402f}
+a.stamp-x:link,a.stamp-x:visited{color:#5ec43a}
+a.stamp-x:hover,a.stamp-x:focus-visible{color:#7be055;transform:rotate(-3deg)}
+@media (prefers-reduced-motion:no-preference){a.stamp-x{transition:transform .15s,color .15s}}
+
+/* the footer: Jcink's copyright is the line, its links underneath */
+.card.foot{margin-bottom:70px}
+.foot .card-line{font-size:clamp(14px,1.35vw,18px);line-height:1.8}
+.foot .card-line a:link,.foot .card-line a:visited{color:inherit;text-decoration:underline;text-decoration-color:#6b6a62;text-underline-offset:3px}
+.foot .card-line a:hover{text-decoration-color:currentColor}
+.is-index .card.foot{margin-bottom:130px}
+
+/* the Board Message: the log-in form and the useful links sit in the card */
+.bmsg form{display:block;max-width:540px;margin:30px auto 0;text-align:left}
+.bmsg .tableborder{margin:0;padding:0;background:none;border:0;box-shadow:none;color:inherit}
+.card-sub{margin:0 0 14px;color:#a9a79d;font:600 13px/1.4 var(--ui);letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.bmsg table,.bmsg tbody{display:block;width:100%}
+.bmsg tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:0 14px;margin:0 0 10px}
+.bmsg .pformleft,.bmsg .pformright{display:flex;align-items:center;width:auto;padding:0;background:none;border:0;color:#d6d4ca;font:400 14px/1.3 var(--ui)}
+.bmsg input[type=text],.bmsg input[type=password]{width:100%;padding:9px 12px;background:#050504;border:1px solid #6b6a62;border-radius:0;color:#f1efe8;font:400 15px/1.3 var(--ui)}
+.bmsg .pformstrip{padding:8px 0 0;background:none;border:0;text-align:center}
+.bmsg input[type=submit]{padding:10px 24px;margin:0;background:#f1efe8!important;border:0!important;box-shadow:none!important;color:#0b0b0a!important;font:600 14px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.bmsg input[type=submit]:hover{background:#fff!important;color:#0b0b0a!important}
+.is-notice #innerwrapper{padding-bottom:84px}
+
+@media (max-width:760px){
+  .card{margin:60px 10px 48px;padding:42px 18px 40px}
+  .card::before,.card::after{left:-10px;right:-10px}
+  .card-tag{padding:7px 12px 6px;font-size:15px}
+  .card-line{font-size:19px}
+  .foot .card-line{font-size:13px}
+  .stamp-x{right:-2px;bottom:-26px;padding:9px 14px 6px;font-size:22px;-webkit-text-stroke-width:.8px}
+  .bmsg tr{grid-template-columns:minmax(0,1fr);gap:6px}
+  .is-index .card.foot{margin-bottom:110px}
+}
 
 /* ===== TOPIC VIEW: each post is a file entry, the subject's card clipped beside a typed sheet ===== */
 .is-topic .pagedesc{font:400 15px/1.4 var(--ui);letter-spacing:.06em;text-transform:uppercase;color:#a9a79d;margin:-6px 0 16px;overflow-wrap:anywhere}
@@ -1193,7 +1251,7 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
   <!-- ===== EDIT: affiliates, one link each. Shown at the bottom of the index to everyone; delete the links to hide it. ===== -->
   <div id="affiliates"><a href="#">Harbour</a><a href="#">Nightjar</a><a href="#">The Last Station</a><a href="#">Pale Hours</a><a href="#">Old Salt Road</a><a href="#">Marrow</a></div>
   <div id="skin_selector"><select><option>Outlast</option></select></div>
-  <div class="copyright">Powered by Jcink Forum Hosting</div>
+  <div class="copyright">Powered by <a href="#">Invision Power Board</a> (<a href="#">Jcink.com Forum Hosting</a>) &copy; 2026 <a href="#">IPS, Inc.</a><br>Page creation time: 0.0805 &middot; <a href="#">Mobile Version</a> &middot; <a href="#">Privacy Policy</a></div>
 </div>
 </div>
 <div class="lens"></div><div class="tint"></div>
@@ -1349,6 +1407,14 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
     return m ? Math.min(100, Math.max(0, +m[1])) : null;
   };
 
+  /* ---------- board messages: the stamp on the notice card ---------- */
+  L.stampFor = function (s) {
+    var t = String(s || '');
+    if (/permission|not available|not allowed|log ?in|guests|banned/i.test(t)) return 'Denied';
+    if (/not exist|does not exist|not be found|not found|no longer|out of date|broken/i.test(t)) return 'Missing';
+    return 'Error';
+  };
+
   /* ---------- topic view ---------- */
   L.isTopic = function (search) {
     return /(^|[?&])(showtopic=\d|act=ST(&|$))/i.test(String(search || ''));
@@ -1478,7 +1544,8 @@ var OutlastSettings = {
     buildTabs($('.tabs'), 0);
     buildPlayer($('.player'), true);
     var news = $('.newstext a');
-    if (news) { var n = el('a', 'news', '<span>Latest</span>' + L.escapeHtml(txt(news))); n.href = news.getAttribute('href'); $('.hero').appendChild(n); }
+    /* the board news: a small assignment card, the topic title as its line */
+    if (news) { var n = el('a', 'news', '<span class="card-tag">Latest news</span><span class="card-line">' + L.escapeHtml(txt(news)) + '</span>'); n.href = news.getAttribute('href'); $('.hero').appendChild(n); }
     $$('.newstext').forEach(function (e) { e.remove(); });
 
     /* each category: poster, folder list on the left page, the file on the right page */
@@ -1516,9 +1583,7 @@ var OutlastSettings = {
     if (stats) { var on = $('.online', stats); if (on && !$('a', on)) on.remove(); else if (on) on.insertAdjacentHTML('beforebegin', '<p class="on-label">Online now</p>'); }
     var aff = $('#affiliates');
     if (aff && !$('a', aff)) aff.remove(); else if (aff) $$('a', aff).forEach(function (a) { a.insertAdjacentHTML('afterbegin', '<span>Affiliate</span>'); });
-    var foot = el('footer', 'foot');
-    $$('#delcookiesrow, #skin_selector, .copyright').forEach(function (x) { foot.appendChild(x); });
-    $('#innerwrapper').appendChild(foot);
+    buildFoot();
     $$('.cat, #boardstats').forEach(function (s) { s.insertAdjacentHTML('beforebegin', '<div class="strip" aria-hidden="true"></div>'); });
   }
   /* ---------- index: the corridor walks forward as you scroll and blurs once the forums start ---------- */
@@ -1590,9 +1655,71 @@ var OutlastSettings = {
     bar.appendChild(left);
     var pl = el('aside', 'player'); buildPlayer(pl, false); bar.appendChild(pl);
     $('#wrapper').insertBefore(bar, $('#wrapper').firstChild);
-    var foot = el('footer', 'foot');
-    $$('#delcookiesrow, #skin_selector, .copyright').forEach(function (x) { foot.appendChild(x); });
+    buildFoot();
+  }
+
+  /* ---------- the game's assignment card: a dark slab between two rough white rules, a white tag on the top rule,
+     one line in capitals, an inked stamp on the corner. Used for the board footer and Jcink's Board Message ---------- */
+  function card(cls, tag) {
+    var c = el(cls === 'foot' ? 'footer' : 'section', 'card ' + cls);
+    c.appendChild(el('span', 'card-tag', esc(tag)));
+    return c;
+  }
+  function stamp(text, kind, href) {
+    var s = el(href ? 'a' : 'span', 'stamp-x ' + kind, '<span>' + esc(text) + '</span>');
+    if (href) s.href = href;
+    return s;
+  }
+
+  /* the footer: the board's name on the tag, Jcink's copyright as the line, its links under it;
+     "Mark all posts as read" (index only) is the stamp */
+  function buildFoot() {
+    var name = txt($('#board-name')) || doc.title, foot = card('foot', name);
+    var copy = $('.copyright'), del = $('#delcookiesrow'), skin = $('#skin_selector');
+    if (copy) { copy.classList.add('card-line'); foot.appendChild(copy); }
+    var row = el('div', 'card-links');
+    var mark = del && $$('a', del).filter(function (a) { return /mark all/i.test(txt(a)); })[0];
+    if (del) {
+      $$('a', del).forEach(function (a) { if (a !== mark) row.appendChild(a); });
+      del.remove();
+    }
+    if (skin && $('select', skin)) { $('select', skin).setAttribute('aria-label', 'Board skin'); row.appendChild(skin); } else if (skin) skin.remove();
+    if (row.firstChild) foot.appendChild(row);
+    if (mark) { var st = stamp(txt(mark).replace(/\s+posts\s+as\s+/i, ' '), 'go', mark.getAttribute('href')); st.title = txt(mark); foot.appendChild(st); }
     $('#innerwrapper').appendChild(foot);
+  }
+
+  /* Jcink's Board Message (errors, no permission, broken links): the error is the line, the stamp says which kind;
+     the log-in form and the useful links sit in the card; Go Back is the B key */
+  function initNotice() {
+    var bm = $('#board-message'), fill = bm && $('.tablefill', bm);
+    if (!fill) return;
+    root.classList.add('is-notice');
+    var err = $('.postcolor', fill), title = $('.maintitle', bm), back = $('a[href*="history.go"]', bm);
+    var c = card('bmsg', txt(title) || 'Board Message'), errText = txt(err);
+    c.appendChild(el('p', 'card-line', esc(errText)));
+    /* Jcink's opening sentence, before its first line break */
+    var intro = '';
+    for (var n = fill.firstChild; n && n.nodeName !== 'BR'; n = n.nextSibling) intro += n.nodeType === 3 ? n.nodeValue : txt(n);
+    if (intro.trim()) c.appendChild(el('p', 'card-note', esc(intro.trim())));
+    var form = $('form', fill);
+    if (form) {
+      var t = $('.titlemedium', form); if (t) { t.className = 'card-sub'; }
+      c.appendChild(form);
+    }
+    var links = $$('a', fill).filter(function (a) { return !form || !form.contains(a); });
+    if (links.length) {
+      var ul = el('ul', 'card-links');
+      links.forEach(function (a) { var li = el('li'); li.appendChild(a); ul.appendChild(li); });
+      c.appendChild(ul);
+    }
+    c.appendChild(stamp(L.stampFor(errText), 'no'));
+    bm.innerHTML = '';
+    bm.appendChild(c);
+    if (back) {
+      var keys = el('nav', 'keys'), a = el('a', '', '<i class="kr" aria-hidden="true">B</i>Go back');
+      keys.setAttribute('aria-label', 'Page actions'); a.href = back.getAttribute('href'); keys.appendChild(a); doc.body.appendChild(keys);
+    }
   }
 
   /* category and subforum rows outside the index: folder list only */
@@ -2254,7 +2381,7 @@ var OutlastSettings = {
     $$('#shoutbox').forEach(function (s) { s.remove(); });
     tidyRows();
     fixAvatars();
-    if (root.classList.contains('is-index')) { initIndex(); initCorridor(); initNightVision(); } else { markSolo(); initInner(); if (L.isTopic(location.search)) initTopic(); else if (L.isForum(location.search)) initForum(); else if (L.isPanel(location.search)) initPanel(); }
+    if (root.classList.contains('is-index')) { initIndex(); initCorridor(); initNightVision(); } else { markSolo(); initInner(); if ($('#board-message')) initNotice(); else if (L.isTopic(location.search)) initTopic(); else if (L.isForum(location.search)) initForum(); else if (L.isPanel(location.search)) initPanel(); }
     initSubjects();
   });
 })();
