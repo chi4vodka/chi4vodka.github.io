@@ -387,6 +387,186 @@ html:not(.is-index) .hero{display:none}
 .topic-list td.row1,.topic-list td.row2{background:var(--navy2);color:var(--cream);border-bottom:1px solid rgba(216,165,49,.3)}
 .topic-list td.row1 a,.topic-list td.row2 a{color:var(--gold2)}
 .topic-list td .desc{color:var(--cream);opacity:.8}
+
+/* =========================================================
+   7. TOPIC VIEW (v3): Jcink's post tables as paper sheets
+   ========================================================= */
+.is-topic #innerwrapper > br, .is-topic .t-posts ~ br { display: none; }
+.t-desc { text-align: center; font: 400 clamp(22px, 2.400vw, 30px)/1.1 var(--hand); color: var(--pink); transform: rotate(-2deg); margin: 0 0 14px; overflow-wrap: anywhere; }
+.is-topic .crumbs { margin-bottom: 34px; }
+.t-posts { background: none; box-shadow: none; margin: 0; }
+
+/* hall-pass tickets: a gold card with a punched hole */
+.button-small {
+  background: linear-gradient(var(--gold) calc(100% - 3px), #9c7012 0); color: var(--navy2) !important; border: 0;
+  font: 400 .78rem/1 var(--title); letter-spacing: .1em; padding: 8px 12px 8px 24px; margin: 0;
+  -webkit-mask: radial-gradient(circle at 11px 50%, transparent 3.5px, #000 4px); mask: radial-gradient(circle at 11px 50%, transparent 3.5px, #000 4px);
+  transition: transform .15s, background .15s;
+}
+.button-small:hover { background: var(--gold2); color: var(--navy2) !important; transform: translateY(-2px); }
+.button-small.danger { background: linear-gradient(#b51f2c calc(100% - 3px), #6e0f18 0); color: #fff !important; }
+/* big tickets: notched both ends, a perforated line inside */
+.button-large, .t-opts > summary {
+  -webkit-mask: radial-gradient(circle at 0 50%, transparent 9px, #000 9.5px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, transparent 9px, #000 9.5px) right / 51% 100% no-repeat;
+  mask: radial-gradient(circle at 0 50%, transparent 9px, #000 9.5px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, transparent 9px, #000 9.5px) right / 51% 100% no-repeat;
+  border: 0; outline: 1px dashed rgba(242,210,122,.6); outline-offset: -6px; padding: 13px 26px; margin: 0;
+}
+.button-large.main, .qr-send input.main { background: var(--gold); color: var(--navy2) !important; outline-color: rgba(14,31,71,.55); }
+.button-large.main:hover, .qr-send input.main:hover { background: var(--gold2); }
+
+/* one toolbar */
+.t-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 10px; margin: 0 0 40px; }
+.t-tools a { text-decoration: none; }
+.t-pages { margin-right: auto; }
+.t-pages .pagination { display: flex; gap: 6px; align-items: stretch; }
+.t-pages .pagination > span { border: 0; background: none; }
+.t-pages .pagination a, .t-pages .pagination_current b { display: block; min-width: 40px; text-align: center; padding: 10px 10px 8px; font: 400 1rem/1 var(--title); text-decoration: none; }
+.t-pages .pagination a:link, .t-pages .pagination a:visited { background: var(--navy2); color: var(--gold2); border: 2px solid var(--gold); }
+.t-pages .pagination a:hover { background: var(--gold); color: var(--navy2); }
+.t-pages .pagination_current { padding: 0 !important; border: 0 !important; background: none !important; }
+.t-pages .pagination_current b { background: var(--cream); color: var(--navy2); border: 2px solid var(--gold); font-weight: 400; }
+.t-opts { position: relative; }
+.t-opts > summary { list-style: none; cursor: pointer; display: inline-block; }
+.t-opts > summary::-webkit-details-marker { display: none; }
+.t-opts > summary::after { content: " \25BE"; }
+.t-opts ul { position: absolute; right: 0; top: calc(100% + 10px); z-index: 20; min-width: 250px; padding: 10px; background: var(--cream); box-shadow: inset 0 0 0 3px var(--cream), inset 0 0 0 5px var(--gold), 8px 8px 0 rgba(0,0,0,.5); }
+.t-opts li a { display: block; padding: 10px 12px; color: #1a140a; text-decoration: none; border-bottom: 1px solid rgba(23,20,12,.15); font-size: 15px; }
+.t-opts li:last-child a { border: 0; }
+.t-opts li a:hover { background: var(--navy2); color: var(--gold2); }
+
+/* a post: one sheet, the author card on the left */
+.bpost { display: block; position: relative; margin: 0 0 46px; }
+.bpost > table { display: block; width: 100%; background: var(--cream); color: #1a140a; box-shadow: inset 0 0 0 3px var(--cream), inset 0 0 0 5px var(--gold), 8px 8px 0 rgba(0,0,0,.5); }
+.bpost > table > tbody { display: grid; grid-template-columns: 240px minmax(0, 1fr); grid-template-rows: auto 1fr auto; }
+.bpost > table > tbody > tr { display: contents; }
+.bpost td { display: block; padding: 0; border: 0; background: none; }
+.bpost td.p-name { grid-column: 1; grid-row: 1; padding: 20px 20px 0; background: var(--navy2); margin: 5px 0 0 5px; }
+.bpost td.miniprofile { grid-column: 1; grid-row: 2 / span 2; padding: 24px 20px 26px; margin: 0 0 5px 5px; background: var(--navy2); color: var(--cream); font-size: .9rem; }
+.js .bpost td.miniprofile { grid-row: 1 / span 3; margin: 5px 0 5px 5px; }
+.bpost .row4 { background: none; border: 0; padding: 0; }
+.bpost td.p-head { grid-column: 2; grid-row: 1; padding: 22px 32px 0; }
+.bpost td.p-head > div { float: none !important; padding: 0 !important; text-align: left; }
+.bpost td.p-body { grid-column: 2; grid-row: 2; padding: 12px 32px 24px; }
+.bpost td.p-foot, .bpost .darkrow3 { background: none; color: #4a4332; font: 400 .9rem var(--body); letter-spacing: 0; text-transform: none; padding: 0; }
+.bpost td.p-foot { grid-column: 2; grid-row: 3; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin: 0 32px 18px; padding-top: 12px; border-top: 1px dashed rgba(23,20,12,.3); }
+.bpost td.p-foot > div { float: none !important; }
+.bpost td.p-foot > div[align="right"] { margin-left: auto; }
+.bpost .p-date, .bpost .p-date:visited { font: 400 .85rem/1 var(--title); letter-spacing: .12em; text-transform: uppercase; color: #1d3570; text-decoration: none; }
+.bpost .p-date:hover { color: #b51f2c; }
+.bpost .post-buttons-top { position: absolute; top: -15px; right: 26px; display: flex; gap: 6px; }
+.bpost .button-small.quiet { background: none; -webkit-mask: none; mask: none; color: #1d3570 !important; padding: 4px 0; margin-right: 14px; font-size: .8rem; }
+.bpost .button-small.quiet:hover { transform: none; text-decoration: underline; }
+.bpost .darkrow3 a, .bpost .p-top { color: #1d3570 !important; }
+.bpost .p-top { text-decoration: none; font-weight: 600; padding: 2px 6px; }
+.bpost .ip_address { font-size: .8rem; opacity: .75; }
+
+/* the yearbook card */
+.yb-photo { position: relative; width: 150px; max-width: 100%; aspect-ratio: 1; margin: 6px auto 16px; padding: 8px; background: #fffdf5; box-shadow: 0 6px 0 rgba(0,0,0,.35); transform: rotate(-2deg); }
+.bpost.alt .yb-photo { transform: rotate(1.6deg); }
+.yb-photo::before { content: ""; position: absolute; left: 50%; top: -11px; width: 64px; height: 20px; margin-left: -32px; background: rgba(255,245,200,.75); transform: rotate(-4deg); }
+.yb-photo img { display: block; width: 100%; height: 100%; object-fit: cover; border: 0; padding: 0; box-shadow: none; background: #24407e; }
+.yb-photo.ini { display: grid; place-items: center; font: 900 2.6rem/1 var(--title); color: var(--gold2); background: #24407e; box-shadow: inset 0 0 0 8px #fffdf5, 0 6px 0 rgba(0,0,0,.35); }
+.bpost .normalname { display: block; text-align: center; font: 400 1.35rem/1.1 var(--title); letter-spacing: .03em; color: var(--gold2); overflow-wrap: anywhere; }
+.bpost .normalname a { color: var(--gold2) !important; text-decoration: none; }
+.bpost .normalname a:hover { color: #fff !important; }
+.bpost .postbit { display: flex; justify-content: space-between; gap: 10px; color: var(--cream); border-bottom: 1px solid rgba(216,165,49,.25); padding: 7px 0; font-size: .9rem; overflow-wrap: anywhere; }
+.bpost .postbit:last-child { border-bottom: 0; }
+.bpost .postbit .pb-label { color: var(--gold2); flex: none; }
+.bpost .postbit img[src*="themes/default"] { display: none; }
+.bpost .postbit.pb-head { display: block; border: 0; text-align: center; padding: 0; }
+.bpost .postbit.pb-head > div { text-align: inherit; }
+.bpost .pb-title { display: block; font: 400 1.35rem/1.1 var(--hand); color: var(--pink); transform: rotate(-3deg); margin: 8px 0 4px; }
+.yb-rows { margin-top: 16px; border-top: 2px solid var(--gold); padding-top: 4px; }
+
+/* post text */
+.postcolor { overflow-wrap: anywhere; }
+.postcolor img, .signature img { max-width: 100%; height: auto; }
+.postcolor b, .postcolor strong { font-weight: 600; color: #0e1f47; }
+.postcolor .edit { display: block; margin-top: 20px; font: italic .85rem/1.4 var(--body); color: #5b5340; }
+.postcolor .edit::before { content: "\270E  "; font-style: normal; }
+.bpost .signature { margin: 24px 0 0; padding: 14px 0 0; border: 0; position: relative; max-width: 72ch; font-size: .92rem; color: #4a4332; }
+.bpost .signature::before { content: ""; position: absolute; left: 0; top: 0; width: 70px; border-top: 5px double var(--gold); }
+
+/* quotes: a lined note, taped in */
+.q-note { position: relative; max-width: 60ch; margin: 20px 0 22px 6px; transform: rotate(-.7deg); box-shadow: 4px 5px 0 rgba(23,20,12,.18); }
+.bpost.alt .q-note { transform: rotate(.6deg); }
+.q-note::before { content: ""; position: absolute; left: 42%; top: -10px; width: 74px; height: 20px; background: rgba(255,245,200,.8); transform: rotate(3deg); z-index: 1; }
+.quotetop, .quotemain { background: linear-gradient(90deg, transparent 40px, rgba(200,55,45,.55) 40px 42px, transparent 42px), #fffdf5; color: #1a140a; }
+.quotetop { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 16px 18px 4px 54px; font: 400 .75rem/1 var(--title); letter-spacing: .1em; text-transform: uppercase; }
+.quotetop .q-who { font: 400 1.4rem/1 var(--hand); letter-spacing: 0; text-transform: none; color: #1d3570; }
+.quotetop .q-when { color: #6b634e; }
+.quotetop .q-back { margin-left: auto; text-decoration: none; color: #1d3570; font-size: 1rem; }
+.quotemain { background: linear-gradient(90deg, transparent 40px, rgba(200,55,45,.55) 40px 42px, transparent 42px), repeating-linear-gradient(#fffdf5 0 27px, #a9bcdc 27px 28px); padding: 0 18px 14px 54px; font: 400 1rem/28px var(--body); }
+/* code: a little chalkboard */
+.codetop, .codemain { max-width: 560px; background: #24412f; color: #eef3e6; border: 10px solid #8a5a2b; }
+.codetop { border-bottom: 0; padding: 10px 16px 0; font: 400 1.2rem/1 var(--hand); color: #dfe8d2; }
+.codemain { border-top: 0; margin-bottom: 18px; padding: 8px 16px 14px; font-family: "Courier New", ui-monospace, monospace; font-size: .95rem; line-height: 1.6; overflow-x: auto; overflow-wrap: anywhere; }
+
+/* the ad stays as Jcink prints it, in a dashed slot */
+.t-ad { margin: 0 0 40px !important; padding: 14px; border: 2px dashed rgba(216,165,49,.6); background: rgba(14,31,71,.6); max-width: 100%; overflow-x: auto; }
+.t-ad td.row4 { background: none; border: 0; padding: 0; }
+.t-ad table { table-layout: fixed; width: 100%; }
+
+/* the reply box: a notebook page */
+.t-reply { margin: 0 0 40px; }
+.t-reply .maintitle { padding: 14px 20px; }
+.t-reply .tablepad { text-align: left; padding: 22px 24px 20px; }
+.t-reply textarea { display: block; width: 100%; min-height: 230px; resize: vertical; border: 0; box-shadow: 4px 5px 0 rgba(23,20,12,.18); padding: 0 18px 0 56px; font: 400 1.05rem/28px var(--body); color: #1a140a; background: linear-gradient(90deg, transparent 40px, rgba(200,55,45,.55) 40px 42px, transparent 42px), repeating-linear-gradient(#fffdf5 0 27px, #a9bcdc 27px 28px); background-attachment: local; }
+.t-reply textarea:focus { outline: 3px solid var(--gold); outline-offset: 2px; }
+.qr-opts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; margin: 16px 0 0; font-size: .9rem; }
+.qr-opts a { color: #1d3570; }
+.qr-opts label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; }
+.qr-opts input[type=checkbox] { width: 18px; height: 18px; padding: 0; accent-color: #1d3570; }
+.qr-send { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 16px; }
+.qr-send input { margin: 0; }
+
+/* the end of the page: who is reading, older/newer topic, jump and search */
+.t-end { background: rgba(14,31,71,.92); border-block: 2px solid var(--gold); padding: 6px 22px; margin: 0 0 30px; }
+.t-end > * { padding: 14px 0; }
+.t-end > * + * { border-top: 1px solid rgba(216,165,49,.3); }
+.t-readers { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font-size: 15px; }
+.t-readers b { font: 400 .9rem/1 var(--title); letter-spacing: .1em; text-transform: uppercase; color: var(--gold2); margin-right: 6px; }
+.t-readers a { text-decoration: none; padding: 4px 10px; border: 1px solid rgba(242,210,122,.55); color: var(--cream); }
+.t-readers a:hover { background: var(--gold); color: var(--navy2); }
+.t-near { display: flex; justify-content: space-between; gap: 12px; }
+.t-near a { font: 400 1rem/1.2 var(--title); letter-spacing: .08em; text-transform: uppercase; color: var(--gold2); text-decoration: none; }
+.t-near a.new { margin-left: auto; }
+.t-near a:hover { color: #fff; }
+.t-find { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
+.t-find form { display: flex; gap: 8px; margin: 0; flex: 1 1 260px; min-width: 0; max-width: 420px; }
+.t-find input[type=text], .t-find select { width: 0; }
+.t-find select, .t-find input[type=text] { flex: 1; min-width: 0; }
+.t-find br { display: none; }
+
+@media (max-width: 720px) {
+  .t-tools { gap: 10px 8px; }
+  .t-pages { flex-basis: 100%; }
+  .t-tools .t-act, .t-opts { flex: 1 1 auto; }
+  .t-tools .button-large, .t-opts > summary { display: block; text-align: center; padding: 12px 16px; font-size: .85rem; }
+  .t-opts ul { left: 0; right: auto; }
+  .bpost > table > tbody { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .js .bpost td.miniprofile, .bpost td.miniprofile { grid-column: 1; grid-row: auto; display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 2px 14px; align-items: center; margin: 5px 5px 0; padding: 18px 16px 14px; width: auto !important; }
+  .bpost td.p-name { grid-row: auto; margin: 5px 5px 0; }
+  .bpost td.miniprofile, .bpost td.p-name { order: -1; }
+  .yb-photo { grid-row: 1 / span 2; width: 70px; margin: 0; padding: 4px; }
+  .yb-photo::before { width: 36px; height: 12px; margin-left: -18px; top: -6px; }
+  .yb-photo.ini { font-size: 1.4rem; box-shadow: inset 0 0 0 4px #fffdf5, 0 4px 0 rgba(0,0,0,.35); }
+  .bpost .normalname { text-align: left; font-size: 1.2rem; align-self: end; }
+  .bpost .postbit.pb-head { text-align: left; align-self: start; }
+  .bpost .pb-title { font-size: 1.1rem; margin: 2px 0 0; transform: none; }
+  .yb-rows { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 2px 16px; margin-top: 12px; padding-top: 8px; border-top-width: 1px; }
+  .yb-rows .postbit { border: 0; padding: 2px 0; gap: 6px; font-size: .82rem; }
+  .bpost td.p-head, .bpost td.p-body, .bpost td.p-foot { grid-column: 1; grid-row: auto; width: auto !important; }
+  .bpost td.p-head { padding: 22px 18px 0; }
+  .bpost td.p-body { padding: 10px 18px 20px; }
+  .bpost td.p-foot { margin: 0 18px 16px; }
+  .bpost .post-buttons-top { right: 12px; }
+  .q-note { margin-left: 0; }
+  .quotetop, .quotemain { background-position: -14px 0, 0 0; padding-left: 40px; }
+  .t-reply .tablepad { padding: 16px 14px; }
+  .t-reply textarea { padding-left: 46px; background-position: -6px 0, 0 0; }
+  .t-end { padding: 4px 16px; }
+}
 </style>
 <script>history.replaceState(null,"","?showtopic=1");
 /* before the page paints: mark the index (by address) so the first screen only shows there */
@@ -445,42 +625,276 @@ html:not(.is-index) .hero{display:none}
 </header>
 <div id="jcink-top"><div id="logostrip"><a href="index.php" title="Board Home"></a></div><table width="100%" cellspacing="6" id="submenu"><tbody><tr><td><a href="index.php">Home</a><!--IBF.RULES--></td><td align="right"><img src="https://files.jcink.net/style_images/1/atb_help.gif" border="0" alt="">&nbsp;<a href="?act=Help">Help</a>&nbsp; &nbsp;&nbsp;<img src="https://files.jcink.net/style_images/1/atb_search.gif" border="0" alt="">&nbsp;<a href="?act=Search">Search</a>&nbsp; &nbsp;&nbsp;<img src="https://files.jcink.net/style_images/1/atb_members.gif" border="0" alt="">&nbsp;<a href="?act=Members">Members</a>&nbsp; &nbsp;&nbsp;<img src="https://files.jcink.net/style_images/1/atb_calendar.gif" border="0" alt="">&nbsp;<a href="?act=Calendar">Calendar</a></td></tr></tbody></table><table width="100%" id="userlinks" cellspacing="6"><tbody><tr><td>Logged in as: <a href="?showuser=3">Dorian Vale</a> ( <a href="?act=Login&CODE=03">Log Out</a> )</td><td align="right"><a href="?act=UserCP">My Controls</a> &middot; <a href="?act=Msg">Messenger (2)</a> &middot; <a href="?act=Search&CODE=getnew">View New Posts</a> &middot; <a href="#">My Assistant</a></td></tr></tbody></table></div>
 <div id="innerwrapper">
-  <div id="navi"><div id="navstrip"><a href="#">Kestrel</a> &rarr; <a href="#">Main Campus</a> &rarr; Lecture Halls</div>
-</div>
+  <div id="navi"><div id="navstrip" align="left"> &raquo; &nbsp;<a href="?act=idx">Kestrel</a>&nbsp;&rarr;&nbsp;<a href="?act=SC&c=1">In Character</a>&nbsp;&rarr;&nbsp;<a href="?showforum=1">The Grounds</a></div></div>
   <!-- ===== EDIT: notices under the first screen, one <span> per line. Delete them all to hide the strip. ===== -->
   <div id="ticker"><span>Midterms start Monday, library closes at nine</span><span>Parking lot B is closed for repaving</span></div>
-  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div><div class="tableborder"><div class="maintitle">The Midterm Problem</div>
-<table width="100%" cellspacing="0">
-<tr><td class="darkrow1" colspan="2">Posted by <a href="#">Mara Quill</a> on 24 Nov 2026, 9:14 PM</td></tr>
+  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div><script type="text/javascript">
+<!--
+function select_post(post_id) { }
+function link_to_post(pid) { prompt("Manually copy the direct link to this post below to store the link in your computer's clipboard", location.href.split('#')[0] + "&view=findpost&p=" + pid); return false; }
+function delete_post(theURL) { if (confirm('Are you sure you want to delete this message?')) { window.location.href=theURL; } else { alert ('Ok, no action has been taken'); } }
+function emo_pop() { }
+function ShowHide(id1, id2) { if (id1 != '') expMenu(id1); if (id2 != '') expMenu(id2); }
+function expMenu(id) { var itm = document.getElementById(id); if (itm && itm.style) { itm.style.display = itm.style.display == "none" ? "" : "none"; } }
+//-->
+</script>
+<a name="top"></a>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td class="post1" width="22%"><span class="normalname"><a href="#">Mara Quill</a></span>
-<div class="postbit"><div align="center"><div style="width:110px;height:110px;margin:6px auto;background:#16346b;border:3px solid #c9a227"></div><span class="pb-title">Junior, Literature</span></div></div>
-<div class="postbit"><span class="pb-label">Group</span>Students</div>
-<div class="postbit"><span class="pb-label">Posts</span>212</div>
-<div class="postbit"><span class="pb-label">Joined</span>3 Feb 2026</div>
-<div class="postbit"><span class="pb-label">Age</span>21</div>
-<div class="postbit"><span class="pb-label">Pronouns</span>she/her</div>
-<div class="postbit"><span class="pb-label">Year</span>Junior</div></td>
-<td class="post1" valign="top"><div class="postcolor">The lecture hall emptied slowly, the way it did when nobody wanted to be the first to leave with a grade like that. Mara kept her eyes on the folded paper in her hand. Professor Hale had written one word at the top in red, and it wasn't a word she had been ready to see.<br><br>
-<div id="QUOTE">"You have until Friday to come and see me," Hale had said. "Bring someone who can vouch for the work."</div><br>
-She slid it into her bag without reading the rest. Outside, the quad was wet and the bell tower had started its half-hour count.</div>
-<div class="signature">Ashgrove, class of 2028</div>
-<div class="postlinksbar"><span class="button-small">Quote</span><span class="button-small">PM</span><span class="button-small">Report</span></div></td></tr>
-<tr><td class="darkrow1" colspan="2">Posted by <a href="#">Theo Vance</a> on 24 Nov 2026, 9:40 PM</td></tr>
+ <td align="left" width="20%" nowrap="nowrap"><span class="pagination"><span class="pagination_pagetxt">Pages: (3)</span> <span class="pagination_current"><b>1</b></span> <span class="pagination_page"><a href="index.php?showtopic=1&amp;st=15">2</a></span> <span class="pagination_page"><a href="index.php?showtopic=1&amp;st=30">3</a></span> <span class="pagination_next"><a href="index.php?showtopic=1&amp;st=15" title="Next page">&gt;</a></span> <span class="pagination_last"><a href="index.php?showtopic=1&amp;st=30" title="Go to last page">&raquo;</a></span></span></td>
+ <td align="right" width="80%"><a href="index.php?act=Post&amp;CODE=02&amp;f=1&amp;t=1&amp;st="><div class="button-large">Add Reply</div></a><a href="index.php?act=Post&amp;CODE=00&amp;f=1" title="Start a new topic"><div class="button-large">New Topic</div></a><a href="index.php?act=Post&amp;CODE=10&amp;f=1"><div class="button-large">New Poll</div></a></td>
+</tr>
+</table>
+<br>
+<div class="tableborder">
+ <div class="maintitle"><span class="topic-title-space">&nbsp;</span><span class="topic-title">Fence line</span><span class="topic-desc">, the long way round</span></div>
+ <!--{IBF.POLL}-->
+ <div align="right" class="postlinksbar">
+ <strong><!--{IBF.START_NEW_POLL}--><a href="index.php?act=Track&amp;f=1&amp;t=1">Track This Topic</a> | <a href="index.php?act=Forward&amp;f=1&amp;t=1">Email This Topic</a> | <a href="index.php?act=Print&amp;client=printer&amp;f=1&amp;t=1">Print This Topic</a></strong>
+ </div>
+
+<!--Begin Msg Number 11-->
+<span class="post-normal group3-post-normal">
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
 <tr>
-<td class="post2" width="22%"><span class="normalname"><a href="#">Theo Vance</a></span>
-<div class="postbit"><div align="center"><div style="width:110px;height:110px;margin:6px auto;background:#8e1b24;border:3px solid #c9a227"></div><span class="pb-title">Senior, Economics</span></div></div>
-<div class="postbit"><span class="pb-label">Group</span>Students</div>
-<div class="postbit"><span class="pb-label">Posts</span>340</div>
-<div class="postbit"><span class="pb-label">Joined</span>19 Jan 2026</div>
-<div class="postbit"><span class="pb-label">Age</span>22</div>
-<div class="postbit"><span class="pb-label">Pronouns</span>he/him</div>
-<div class="postbit"><span class="pb-label">Year</span>Senior</div></td>
-<td class="post2" valign="top"><div class="postcolor">Theo found her on the steps, which was not a coincidence. He held out a coffee without saying anything, and after a moment she took it.</div>
-<div class="postlinksbar"><span class="button-small">Quote</span><span class="button-small">PM</span></div></td></tr>
-</table></div>
-<div style="margin:0 0 24px"><span class="button-large">Add Reply</span><span class="button-large">New Topic</span><span class="button-large closed">Closed</span></div>
-<div class="tableborder"><div class="maintitle">Fast Reply</div><div class="tablepad"><textarea rows="5" style="width:100%"></textarea><br><input type="submit" value="Post"></div></div>
+ <td valign="middle" class="row4" width="1%"><a name="entry11"></a><span class="normalname"><a href="index.php?showuser=3">Kit</a></span></td>
+ <td class="row4" valign="top" width="99%">
+ <!-- POSTED DATE DIV -->
+ <div align="left" class="row4" style="float:left;padding-top:4px;padding-bottom:4px">
+ &nbsp;<span class="postdetails"><b><a title="Show the link to this post" href="#" onclick="link_to_post(11); return false;" style="text-decoration:underline">Posted:</a></b> Today, 04:12 pm</span>
+ </div>
+ <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+ <div align="right" class="post-buttons-top">
+ <a href="index.php?act=Post&amp;CODE=06&amp;f=1&amp;t=1&amp;p=11"><span class="button-small">Quote</span></a>
+ </div>
+ </td>
+</tr>
+<tr>
+ <td valign="top" class="post2 miniprofile">
+ <span class="postdetails">
+<div class="postbit"><div align="center"><img src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2080%2080%27%3E%3Crect%20width%3D%2780%27%20height%3D%2780%27%20fill%3D%27%23d9752f%27%2F%3E%3Cpath%20d%3D%27M10%2080q2-22%2020-25h20q18%203%2020%2025z%27%20fill%3D%27%231b1b16%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%2736%27%20rx%3D%2716%27%20ry%3D%2719%27%20fill%3D%27%23e0b48c%27%2F%3E%3Cpath%20d%3D%27M23%2034q-2-24%2017-24t17%2024q-6-12-17-12t-17%2012z%27%20fill%3D%27%23d8501f%27%2F%3E%3C%2Fsvg%3E' border='0' width='150' height='150' alt=''><br><span class="pb-title">Second year</span></div></div><div class="postbit"><span class="pb-label">Group</span>Members</div><div class="postbit"><span class="pb-label">Posts</span>41</div><div class="postbit"><span class="pb-label">Joined</span>2 Nov 2026</div><div class="postbit"><span class="pb-label">Age</span>19</div><div class="postbit"><span class="pb-label">Pronouns</span>she/her</div><div class="postbit"><span class="pb-label">Year</span>Sophomore</div><div style="margin-top:6px"> </div>
+ </span><br>
+ <!--$ author[field_1]--> <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="160" height="1"><br>
+ </td>
+ <td width="100%" valign="top" class="post2" id="pid_11" colspan="2">
+ <!-- THE POST 11 -->
+ <div class="postcolor">
+ The fence was taller in daylight. At night it was just a line of wire against a sky that had given up on stars, and Kit had been walking it for twenty minutes, counting posts, losing count, starting over.<br><br>"You're doing it again," she said, without turning round. "<i>Breathing like you've got something to say.</i>"<br><br>Somewhere behind them a door banged twice in the wind. <b>Neither of them looked.</b>
+ </div>
+ <!--Signature--><div class="signature">Kit &middot; second year &middot; <a href="index.php?showtopic=4">tracker</a></div><!--ESignature-->
+ <!-- THE POST -->
+ </td>
+</tr>
+<tr>
+ <td class="darkrow3" align="left"><span class="ip_address"><b></b></span></td>
+ <td class="darkrow3" nowrap="nowrap" align="left" colspan="2">
+ <!-- PM / EMAIL / WWW / MSGR -->
+ <div align="left" class="darkrow3 post-buttons-bottom" style="float:left;width:auto">
+ <a href="index.php?act=Msg&amp;CODE=04&amp;MID=3"><span class="button-small">PM</span></a><a href="index.php?act=Mail&amp;CODE=00&amp;MID=3"><span class="button-small">Email</span></a>
+ </div>
+ <!-- REPORT / UP -->
+ <div align="right">
+ <a href="javascript:scroll(0,0);">^</a>
+ </div>
+ </td>
+</tr>
+</table>
+<div class="darkrow1" style="height:5px"><!-- --></div>
+</span>
+
+<!--Begin Msg Number 12-->
+<span class="post-normal group3-post-normal">
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+<tr>
+ <td valign="middle" class="row4" width="1%"><a name="entry12"></a><span class="normalname"><a href="index.php?showuser=2">Cass Whitlock-Abernathy</a></span></td>
+ <td class="row4" valign="top" width="99%">
+ <!-- POSTED DATE DIV -->
+ <div align="left" class="row4" style="float:left;padding-top:4px;padding-bottom:4px">
+ &nbsp;<span class="postdetails"><b><a title="Show the link to this post" href="#" onclick="link_to_post(12); return false;" style="text-decoration:underline">Posted:</a></b> Today, 04:30 pm</span>
+ </div>
+ <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+ <div align="right" class="post-buttons-top">
+ <a href="index.php?act=Post&amp;CODE=06&amp;f=1&amp;t=1&amp;p=12"><span class="button-small">Quote</span></a>
+ </div>
+ </td>
+</tr>
+<tr>
+ <td valign="top" class="post1 miniprofile">
+ <span class="postdetails">
+<div class="postbit"><div align="center"><br><span class="pb-title"></span></div></div><div class="postbit"><span class="pb-label">Group</span>Members</div><div class="postbit"><span class="pb-label">Posts</span>212</div><div class="postbit"><span class="pb-label">Joined</span>9 Oct 2026</div><div class="postbit"><span class="pb-label">Age</span></div><div class="postbit"><span class="pb-label">Pronouns</span></div><div class="postbit"><span class="pb-label">Year</span></div><div style="margin-top:6px"> </div>
+ </span><br>
+ <!--$ author[field_1]--> <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="160" height="1"><br>
+ </td>
+ <td width="100%" valign="top" class="post1" id="pid_12" colspan="2">
+ <!-- THE POST 12 -->
+ <div class="postcolor">
+ <!--QuoteBegin-Kit+Today, 04:12 pm--><div class="quotetop">QUOTE (Kit @ Today, 04:12 pm) <a href="index.php?showtopic=1&amp;view=findpost&amp;p=11"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="*" border="0"></a></div><div class="quotemain"><!--QuoteEBegin-->You're doing it again. Breathing like you've got something to say.<!--QuoteEnd--></div><!--QuoteEEnd--><br>"Maybe I'm just out of breath. Some of us don't walk the perimeter for fun."<br><br>Cass caught up, hands in pockets, and looked at the wire like it owed her money. Then, quieter: "I found the list. The one with our names on it. Yours is near the top."<br><br><span class="edit">This post has been edited by <b>Cass Whitlock-Abernathy</b>: Today, 04:41 pm</span>
+ </div>
+ <!-- THE POST -->
+ </td>
+</tr>
+<tr>
+ <td class="darkrow3" align="left"><span class="ip_address"><b></b></span></td>
+ <td class="darkrow3" nowrap="nowrap" align="left" colspan="2">
+ <!-- PM / EMAIL / WWW / MSGR -->
+ <div align="left" class="darkrow3 post-buttons-bottom" style="float:left;width:auto">
+ <a href="index.php?act=Msg&amp;CODE=04&amp;MID=2"><span class="button-small">PM</span></a>
+ </div>
+ <!-- REPORT / UP -->
+ <div align="right">
+ <a href="javascript:scroll(0,0);">^</a>
+ </div>
+ </td>
+</tr>
+</table>
+<div class="darkrow1" style="height:5px"><!-- --></div>
+</span>
+
+<!--Begin Msg Number 13-->
+<span class="post-normal group4-post-normal">
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+<tr>
+ <td valign="middle" class="row4" width="1%"><a name="entry13"></a><span class="normalname"><a href="index.php?showuser=1">Dorian Vale</a></span></td>
+ <td class="row4" valign="top" width="99%">
+ <!-- POSTED DATE DIV -->
+ <div align="left" class="row4" style="float:left;padding-top:4px;padding-bottom:4px">
+ &nbsp;<span class="postdetails"><b><a title="Show the link to this post" href="#" onclick="link_to_post(13); return false;" style="text-decoration:underline">Posted:</a></b> Today, 05:02 pm</span>
+ </div>
+ <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+ <div align="right" class="post-buttons-top">
+ <a href="javascript:delete_post('index.php?act=Mod&amp;CODE=04&amp;f=1&amp;t=1&amp;p=13&amp;st=0')"><span class="button-small">Delete</span></a><a href="index.php?act=Post&amp;CODE=08&amp;f=1&amp;t=1&amp;p=13&amp;st=0"><span class="button-small">Edit</span></a><a href="index.php?act=Post&amp;CODE=06&amp;f=1&amp;t=1&amp;p=13"><span class="button-small">Quote</span></a>
+ </div>
+ </td>
+</tr>
+<tr>
+ <td valign="top" class="post2 miniprofile">
+ <span class="postdetails">
+<div class="postbit"><div align="center"><img src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2080%2080%27%3E%3Crect%20width%3D%2780%27%20height%3D%2780%27%20fill%3D%27%233f7c9a%27%2F%3E%3Cpath%20d%3D%27M10%2080q2-22%2020-25h20q18%203%2020%2025z%27%20fill%3D%27%231b1b16%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%2736%27%20rx%3D%2716%27%20ry%3D%2719%27%20fill%3D%27%23e0b48c%27%2F%3E%3Cpath%20d%3D%27M23%2034q-2-24%2017-24t17%2024q-6-12-17-12t-17%2012z%27%20fill%3D%27%23d8501f%27%2F%3E%3C%2Fsvg%3E' border='0' width='150' height='150' alt=''><br><span class="pb-title">Keeper of the keys</span></div></div><div class="postbit"><span class="pb-label">Group</span>Admin</div><div class="postbit"><span class="pb-label">Posts</span>1337</div><div class="postbit"><span class="pb-label">Joined</span>1 Sep 2026</div><div class="postbit"><span class="pb-label">Age</span>31</div><div class="postbit"><span class="pb-label">Pronouns</span>they/them</div><div class="postbit"><span class="pb-label">Year</span>Staff</div><div style="margin-top:6px"> </div>
+ </span><br>
+ <!--$ author[field_1]--> <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="160" height="1"><br>
+ </td>
+ <td width="100%" valign="top" class="post2" id="pid_13" colspan="2">
+ <!-- THE POST 13 -->
+ <div class="postcolor">
+ <b>OOC:</b> quick housekeeping before you two carry on. The map for this area is up, and the gate code for the scene is below so nobody has to scroll back for it:<br><br><!--c1--><div class="codetop">CODE</div><div class="codemain"><!--ec1-->GATE 7 &rarr; 0417-B<br>OPEN AFTER: 21:00<!--c2--></div><!--ec2--><br>Reference picture for the fence line, if it helps:<br><br><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='300'%3E%3Crect width='900' height='300' fill='%23444'/%3E%3Cpath d='M0 210h900M0 150h900' stroke='%23999' stroke-width='3'/%3E%3Cpath d='M60 90v210M240 90v210M420 90v210M600 90v210M780 90v210' stroke='%23bbb' stroke-width='8'/%3E%3C/svg%3E" border="0" alt="user posted image"><br><br>Long links still need to wrap: <a href="https://example.org/a/really/long/address/that/goes/on/and/on/without/a/single/space/in/it/anywhere">https://example.org/a/really/long/address/that/goes/on/and/on/without/a/single/space/in/it/anywhere</a>
+ </div>
+ <!--Signature--><div class="signature"><i>Dorian Vale</i>, staff. Questions go in the help forum.</div><!--ESignature-->
+ <!-- THE POST -->
+ </td>
+</tr>
+<tr>
+ <td class="darkrow3" align="left"><span class="ip_address"><b></b></span></td>
+ <td class="darkrow3" nowrap="nowrap" align="left" colspan="2">
+ <!-- PM / EMAIL / WWW / MSGR -->
+ <div align="left" class="darkrow3 post-buttons-bottom" style="float:left;width:auto">
+ <a href="index.php?act=Msg&amp;CODE=04&amp;MID=1"><span class="button-small">PM</span></a><a href="index.php?act=Mail&amp;CODE=00&amp;MID=1"><span class="button-small">Email</span></a>
+ </div>
+ <!-- REPORT / UP -->
+ <div align="right">
+ <a href="javascript:scroll(0,0);">^</a>
+ </div>
+ </td>
+</tr>
+</table>
+<div class="darkrow1" style="height:5px"><!-- --></div>
+</span>
+
+<!--Begin Msg Number 14-->
+<span class="post-normal group3-post-normal">
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+<tr>
+ <td valign="middle" class="row4" width="1%"><a name="entry14"></a><span class="normalname"><a href="index.php?showuser=3">Kit</a></span></td>
+ <td class="row4" valign="top" width="99%">
+ <!-- POSTED DATE DIV -->
+ <div align="left" class="row4" style="float:left;padding-top:4px;padding-bottom:4px">
+ &nbsp;<span class="postdetails"><b><a title="Show the link to this post" href="#" onclick="link_to_post(14); return false;" style="text-decoration:underline">Posted:</a></b> Today, 05:20 pm</span>
+ </div>
+ <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+ <div align="right" class="post-buttons-top">
+ <a href="index.php?act=Post&amp;CODE=06&amp;f=1&amp;t=1&amp;p=14"><span class="button-small">Quote</span></a>
+ </div>
+ </td>
+</tr>
+<tr>
+ <td valign="top" class="post1 miniprofile">
+ <span class="postdetails">
+<div class="postbit"><div align="center"><img src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2080%2080%27%3E%3Crect%20width%3D%2780%27%20height%3D%2780%27%20fill%3D%27%23d9752f%27%2F%3E%3Cpath%20d%3D%27M10%2080q2-22%2020-25h20q18%203%2020%2025z%27%20fill%3D%27%231b1b16%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%2736%27%20rx%3D%2716%27%20ry%3D%2719%27%20fill%3D%27%23e0b48c%27%2F%3E%3Cpath%20d%3D%27M23%2034q-2-24%2017-24t17%2024q-6-12-17-12t-17%2012z%27%20fill%3D%27%23d8501f%27%2F%3E%3C%2Fsvg%3E' border='0' width='150' height='150' alt=''><br><span class="pb-title">Second year</span></div></div><div class="postbit"><span class="pb-label">Group</span>Members</div><div class="postbit"><span class="pb-label">Posts</span>41</div><div class="postbit"><span class="pb-label">Joined</span>2 Nov 2026</div><div class="postbit"><span class="pb-label">Age</span>19</div><div class="postbit"><span class="pb-label">Pronouns</span>she/her</div><div class="postbit"><span class="pb-label">Year</span>Sophomore</div><div style="margin-top:6px"> </div>
+ </span><br>
+ <!--$ author[field_1]--> <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="160" height="1"><br>
+ </td>
+ <td width="100%" valign="top" class="post1" id="pid_14" colspan="2">
+ <!-- THE POST 14 -->
+ <div class="postcolor">
+ "Then we'd better be gone before they get to the bottom of it."
+ </div>
+ <!--Signature--><div class="signature">Kit &middot; second year &middot; <a href="index.php?showtopic=4">tracker</a></div><!--ESignature-->
+ <!-- THE POST -->
+ </td>
+</tr>
+<tr>
+ <td class="darkrow3" align="left"><span class="ip_address"><b></b></span></td>
+ <td class="darkrow3" nowrap="nowrap" align="left" colspan="2">
+ <!-- PM / EMAIL / WWW / MSGR -->
+ <div align="left" class="darkrow3 post-buttons-bottom" style="float:left;width:auto">
+ <a href="index.php?act=Msg&amp;CODE=04&amp;MID=3"><span class="button-small">PM</span></a><a href="index.php?act=Mail&amp;CODE=00&amp;MID=3"><span class="button-small">Email</span></a>
+ </div>
+ <!-- REPORT / UP -->
+ <div align="right">
+ <a href="javascript:scroll(0,0);">^</a>
+ </div>
+ </td>
+</tr>
+</table>
+<div class="darkrow1" style="height:5px"><!-- --></div>
+</span>
+
+ <div class="activeuserstrip">3 User(s) are reading this topic (1 Guests and 0 Anonymous Users)</div>
+ <div class="row2" style="padding:6px">2 Members: <a href="index.php?showuser=1">Dorian Vale</a>, <a href="index.php?showuser=3">Kit</a></div>
+ <div class="activeuserstrip" align="center"><!--SOCIAL_BOOKMARKS-->&laquo; <a href="index.php?showtopic=1&amp;view=old">Next Oldest</a> | <strong><a href="index.php?showforum=1">The Grounds</a></strong> | <a href="index.php?showtopic=1&amp;view=new">Next Newest</a> &raquo;</div>
+ <div align="center" style="margin-bottom:3px;"><table width="100%"><tr><td class="row4" align="center"><div class="mock-ad" style="display:inline-block;width:728px;max-width:100%;height:90px;background:#e8e8e8;color:#888;font:12px/90px Arial,sans-serif">Jcink ad (free boards only)</div></td></tr></table></div>
+</div>
+<br>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+ <td align="left" width="20%" nowrap="nowrap"><a href="javascript:$('#topic_open').toggle();void(0);" title="Open Topic Options"><div class="button-large">Topic Options</div></a></td>
+ <td align="right" width="80%"><a href="index.php?act=Post&amp;CODE=02&amp;f=1&amp;t=1&amp;st="><div class="button-large">Add Reply</div></a><a href="javascript:ShowHide('qr_open','qr_closed');" title="Open Fast Reply Window" accesskey="f"><div class="button-large">Fast Reply</div></a><a href="index.php?act=Post&amp;CODE=00&amp;f=1" title="Start a new topic"><div class="button-large">New Topic</div></a><a href="index.php?act=Post&amp;CODE=10&amp;f=1"><div class="button-large">New Poll</div></a></td>
+</tr>
+</table>
+<br>
+<div align="left" id="qr_open" style="display:none;position:relative;">
+<form name="REPLIER" action="index.php?" method="post">
+<input type="hidden" name="act" value="Post"><input type="hidden" name="CODE" value="03"><input type="hidden" name="f" value="1"><input type="hidden" name="t" value="1"><input type="hidden" name="st" value=""><input type="hidden" name="enabletrack" value=""><input type="hidden" name="auth_key" value="0">
+<!-- TITLE DIV -->
+<div class="tableborder">
+<div class="maintitle">&nbsp;Fast Reply</div>
+<div class="tablepad" align="center">
+<textarea cols="70" rows="8" name="Post" class="textinput" tabindex="1"></textarea>
+<br><br>
+<a href="javascript:emo_pop();">Show Smilies Pop Up Window</a> | <input type="checkbox" name="enableemo" value="yes" class="checkbox" checked="checked">&nbsp;Enable Smilies | <input type="checkbox" name="enablesig" value="yes" class="checkbox" checked="checked">&nbsp;Enable Signature
+<br><br>
+<!--POST AS FIELD-->
+<input type="submit" name="submit" value="Add Reply" class="forminput" tabindex="2" accesskey="s">&nbsp;
+<input type="submit" name="preview" value="More Options" class="forminput">
+&nbsp;&nbsp;
+<input type="button" name="qrc" onclick="ShowHide('qr_open','qr_closed');" value="Close Fast Reply" class="forminput">
+</div>
+</div>
+</form>
+</div>
+<div id="topic_open" style="display:none;z-index:2;">
+<div class="tableborder">
+<div class="maintitle">&nbsp;<a href="javascript:$('#topic_open').toggle();void(0);">Close Topic Options</a></div>
+<div class="tablepad">
+<b><a href="index.php?act=Track&amp;f=1&amp;t=1">Track This Topic</a></b><br><span class="desc">Receive email notification when a reply has been made to this topic and you are not active on the board.</span><br><br>
+<b><a href="index.php?act=Track&amp;f=1&amp;type=forum">Subscribe to this forum</a></b><br><span class="desc">Receive email notification when a new topic is posted in this forum and you are not active on the board.</span><br><br>
+<b><a href="index.php?act=Print&amp;client=choose&amp;f=1&amp;t=1">Download / Print this Topic</a></b><br><span class="desc">Download this topic in different formats or view a printer friendly version.</span>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div align="right"><form onsubmit="return false" action="index.php?act=SF" method="get" name="jumpmenu"><input type="hidden" name="act" value="SF"><input type="hidden" name="s" value=""><select name="f" class="forminput"><optgroup label="Site Jump"><option value="sj_home">Forum Home</option><option value="sj_search">Search</option><option value="sj_help">Help</option></optgroup><optgroup label="Forum Jump"><option value="-1">A Category</option><option value="1" selected="selected">&nbsp;&nbsp;- The Grounds</option></optgroup></select>&nbsp;<input type="submit" value="Go" class="forminput"></form><br><br><form onsubmit="return false" action="index.php?" method="post" id="search-this-topic" name="SearchForm"><input type="hidden" name="act" value="Search"><input type="hidden" name="CODE" value="01"><input type="hidden" name="t" value="1"><input type="text" name="keywords" placeholder="Search this topic" size="30" maxlength="60" class="textinput">&nbsp;<input type="submit" value="Go" class="forminput"></form>
+</div><br>
 
   <section id="extras">
     <!-- ===== EDIT: staff notes, one .note each ===== -->
@@ -520,6 +934,32 @@ She slid it into her bag without reading the rest. Outside, the quad was wet and
   };
   L.escapeHtml = function (s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+  };
+
+  /* ---------- topic view ---------- */
+  /* "QUOTE (Kit @ Today, 04:12 pm)" -> who and when */
+  L.parseQuoteHead = function (s) {
+    var m = String(s == null ? '' : s).replace(/\s+/g, ' ').match(/\(([\s\S]*)\)/);
+    if (!m) return { name: '', date: '' };
+    var inner = m[1].trim(), at = inner.lastIndexOf(' @ ');
+    return at < 0 ? { name: inner, date: '' } : { name: inner.slice(0, at).trim(), date: inner.slice(at + 3).trim() };
+  };
+  /* "3 User(s) are reading this topic (1 Guests and 0 Anonymous Users)" */
+  L.parseReaders = function (s) {
+    var m = String(s == null ? '' : s).match(/(\d+)\D+?\((\d+)\D+?(\d+)/);
+    return m ? { total: +m[1], guests: +m[2], anon: +m[3] } : null;
+  };
+  /* links that do the same thing share a key: the act plus its type (Track a topic vs Track a forum) */
+  L.linkKey = function (href) {
+    var h = String(href == null ? '' : href).replace(/&amp;/g, '&');
+    var act = (h.match(/[?&]act=([^&#]*)/i) || [])[1] || h, type = (h.match(/[?&]type=([^&#]*)/i) || [])[1] || '';
+    return act.toLowerCase() + '|' + type.toLowerCase();
+  };
+  /* an author-panel line minus its label; '' means the field is empty */
+  L.fieldValue = function (full, label) {
+    var f = String(full == null ? '' : full).replace(/[\s\u00a0]+/g, ' ').trim(), l = String(label == null ? '' : label).replace(/[\s\u00a0]+/g, ' ').trim();
+    if (l && f.indexOf(l) === 0) f = f.slice(l.length);
+    return f.replace(/^[\s:]+/, '').trim();
   };
 
   /* Board name sizing: every split of the words into 1..maxLines lines; the biggest size that fits wins,
@@ -587,7 +1027,12 @@ She slid it into her bag without reading the rest. Outside, the quad was wet and
     var last = img.closest('.f-last'), by = last && $('.f-by', last);
     img.replaceWith(el('span', 'f-av ini', L.initials(txt(by))));
   }
-  d.addEventListener('error', function (e) { if (e.target.classList && e.target.classList.contains('f-av')) initials(e.target); }, true);
+  d.addEventListener('error', function (e) {
+    var t = e.target; if (!t.classList) return;
+    if (t.classList.contains('f-av')) initials(t);
+    var ph = t.closest && t.closest('.yb-photo');
+    if (ph) { var card = ph.parentNode; ph.classList.add('ini'); ph.textContent = L.initials(txt($('.normalname, .unreg', card))); }
+  }, true);
   $$('img.f-av').forEach(function (img) { if (L.isBlankAvatar(img.getAttribute('src')) || (img.complete && !img.naturalWidth)) initials(img); });
 
   /* account links from Jcink (members and guests): name, then links with Log Out last */
@@ -654,9 +1099,188 @@ She slid it into her bag without reading the rest. Outside, the quad was wet and
       navi.style.display = 'none';
     }
     $$('#ticker, #extras, #affiliates').forEach(function (x) { x.remove(); });
+    var postTables = $$('#innerwrapper td[id^="pid_"]').map(function (c) { return c.closest('table'); });
+    if (postTables.length) initTopic(postTables);
     var foot = el('footer', 'foot');
     $$('#delcookiesrow, #skin_selector, .copyright').forEach(function (x) { foot.appendChild(x); });
     $('#innerwrapper').appendChild(foot);
+  }
+
+  /* ---------- topic view: Jcink's post tables become sheets with a yearbook card ---------- */
+  function sentence(s) { s = s.replace(/\s+/g, ' ').trim(); return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase(); }
+  function initTopic(tables) {
+    r.classList.add('is-topic');
+    var box = tables[0].closest('.tableborder'), qr = $('#qr_open');
+    if (box) box.classList.add('t-posts');
+
+    /* the heading is the topic title; its description goes under it in pencil; the plate that said it again goes */
+    var tt = $('.topic-title'), head = $('.pagehead');
+    if (tt && head) {
+      head.classList.remove('vh'); $('span', head).textContent = txt(tt);
+      var desc = txt($('.topic-desc')).replace(/^,\s*/, '');
+      if (desc) head.insertAdjacentElement('afterend', el('p', 't-desc', L.escapeHtml(desc)));
+      var plate = tt.closest('.maintitle'); if (plate) plate.remove();
+    }
+
+    /* one toolbar: pages, the topic buttons once each, topic options, and Reply (which opens onto the reply box) */
+    var tools = el('div', 't-tools'), seen = {}, acts = [];
+    var btnTables = $$('#innerwrapper table').filter(function (t) { return !t.closest('.tableborder') && $('.button-large', t); });
+    var pages = btnTables.length ? $('.pagination', btnTables[0]) : null;
+    if (pages) { var pg = el('nav', 't-pages'); pg.setAttribute('aria-label', 'Pages'); pg.appendChild(pages); tools.appendChild(pg); }
+    btnTables.forEach(function (t) {
+      $$('a', t).forEach(function (a) {
+        var h = a.getAttribute('href') || '', key = txt(a).toLowerCase();
+        if (!$('.button-large', a) || seen[key] || /qr_open|topic_open/.test(h)) return;
+        seen[key] = 1;
+        var b = el('a', 't-act', a.innerHTML); b.href = h; if (a.title) b.title = a.title;
+        if (/CODE=02\b/.test(h)) { b.classList.add('t-reply-btn'); $('.button-large', b).classList.add('main'); if (qr) b.href = '#qr_open'; }
+        acts.push(b);
+      });
+    });
+    var opts = [], keys = {};
+    $$('#topic_open .tablepad a, .postlinksbar a').forEach(function (a) {
+      var k = L.linkKey(a.getAttribute('href')); if (keys[k]) return; keys[k] = 1;
+      var b = el('a', '', L.escapeHtml(sentence(txt(a)))); b.href = a.getAttribute('href'); opts.push(b);
+    });
+    var reply = acts.filter(function (b) { return b.classList.contains('t-reply-btn'); })[0];
+    acts.forEach(function (b) { if (b !== reply) tools.appendChild(b); });
+    if (opts.length) {
+      var det = el('details', 't-opts'), sum = el('summary', 'button-large', 'Topic options'), ul = el('ul');
+      opts.forEach(function (b) { var li = el('li'); li.appendChild(b); ul.appendChild(li); });
+      det.appendChild(sum); det.appendChild(ul); tools.appendChild(det);
+      d.addEventListener('click', function (e) { if (det.open && !det.contains(e.target)) det.open = false; });
+      d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && det.open) { det.open = false; sum.focus(); } });
+    }
+    if (reply) tools.appendChild(reply);
+    if (box && (pages || acts.length || opts.length)) box.parentNode.insertBefore(tools, box);
+    btnTables.forEach(function (t) { t.remove(); });
+    $$('.postlinksbar, #topic_open').forEach(function (x) { x.remove(); });
+
+    /* each post */
+    tables.forEach(function (tbl, i) { post(tbl, i); });
+
+    /* quotes: who and when, on a note */
+    $$('.t-posts .quotetop').forEach(function (q) {
+      var main = q.nextElementSibling, info = L.parseQuoteHead(txt(q)), back = $('a', q);
+      if (info.name) {
+        q.innerHTML = '<span class="q-who">' + L.escapeHtml(info.name) + '</span>' + (info.date ? ' <span class="q-when">' + L.escapeHtml(info.date) + '</span>' : '');
+        if (back) { back.innerHTML = '\u2191<span class="vh"> to the quoted post</span>'; back.className = 'q-back'; q.appendChild(back); }
+      }
+      var note = el('div', 'q-note'); q.parentNode.insertBefore(note, q); note.appendChild(q);
+      if (main && main.classList.contains('quotemain')) note.appendChild(main);
+    });
+
+    /* the reply box, open */
+    var end = el('section', 't-end');
+    if (qr) {
+      qr.style.display = ''; qr.classList.add('t-reply');
+      var mt = $('.maintitle', qr); if (mt) mt.textContent = 'Reply';
+      var pad = $('.tablepad', qr), ta = $('textarea', qr);
+      if (pad && ta) {
+        var o = el('div', 'qr-opts'), send = el('div', 'qr-send');
+        $$('a', pad).forEach(function (a) { o.appendChild(a); });
+        $$('input[type=checkbox]', pad).forEach(function (c) {
+          var t = c.nextSibling, lab = el('label');
+          lab.appendChild(c); if (t && t.nodeType === 3) { lab.appendChild(d.createTextNode(t.nodeValue.replace(/\|/g, '').trim())); t.remove(); }
+          o.appendChild(lab);
+        });
+        $$('input[type=submit], input[type=button]', pad).forEach(function (b) { if (/ShowHide/.test(b.getAttribute('onclick') || '')) b.remove(); else send.appendChild(b); });
+        if (send.firstChild) send.firstChild.classList.add('main');
+        pad.innerHTML = ''; pad.appendChild(ta); pad.appendChild(o); pad.appendChild(send);
+      }
+      $$('#qr_closed').forEach(function (x) { x.remove(); });
+      if (reply) reply.addEventListener('click', function (e) { e.preventDefault(); qr.scrollIntoView({ block: 'start' }); if (ta) ta.focus({ preventScroll: true }); });
+    }
+
+    /* who is reading, older/newer topic, forum jump and search: one panel at the end */
+    var strips = box ? $$('.activeuserstrip', box) : [];
+    strips.forEach(function (s) {
+      var n = L.parseReaders(txt(s));
+      if (n) {
+        var who = el('div', 't-readers', '<b>Reading now</b>'), list = s.nextElementSibling;
+        if (list && list.classList.contains('row2')) { $$('a', list).forEach(function (a) { var b = el('a', '', L.escapeHtml(txt(a))); b.href = a.getAttribute('href'); who.appendChild(b); }); list.remove(); }
+        var rest = [n.guests ? n.guests + (n.guests === 1 ? ' guest' : ' guests') : '', n.anon ? n.anon + ' hidden' : ''].filter(Boolean).join(', ');
+        if (rest) who.appendChild(el('span', '', (who.querySelector('a') ? 'and ' : '') + rest));
+        end.appendChild(who);
+      } else {
+        var old = $('a[href*="view=old"]', s), nu = $('a[href*="view=new"]', s);
+        if (old || nu) {
+          var near = el('nav', 't-near'); near.setAttribute('aria-label', 'Other topics');
+          if (old) { var a1 = el('a', 'old', '\u2190 Older topic'); a1.href = old.getAttribute('href'); near.appendChild(a1); }
+          if (nu) { var a2 = el('a', 'new', 'Newer topic \u2192'); a2.href = nu.getAttribute('href'); near.appendChild(a2); }
+          end.appendChild(near);
+        }
+      }
+      s.remove();
+    });
+    var jump = $('form[name="jumpmenu"]'), search = $('#search-this-topic');
+    if (jump || search) {
+      var holder = (jump || search).parentNode, row = el('div', 't-find');
+      if (jump) { var sel = $('select', jump); if (sel) sel.setAttribute('aria-label', 'Jump to a forum'); row.appendChild(jump); }
+      if (search) { var kw = $('input[name="keywords"]', search); if (kw) kw.setAttribute('aria-label', 'Search this topic'); row.appendChild(search); }
+      end.appendChild(row);
+      if (holder && holder !== d.body && !txt(holder) && !$('form, select, input', holder)) holder.remove();
+    }
+    if (box) {
+      var ad = $('ins, iframe, .mock-ad, script[src*="googlesyndication"]', box);
+      var slot = ad && ad.closest('div[align="center"]'); if (slot) slot.classList.add('t-ad');
+      var after = box.nextSibling;
+      if (qr) box.parentNode.insertBefore(qr, after);
+      if (end.firstChild) box.parentNode.insertBefore(end, qr ? qr.nextSibling : after);
+    }
+  }
+
+  function post(tbl, i) {
+    var wrap = tbl.parentNode;
+    if (!wrap.classList || !wrap.classList.contains('post-normal')) { wrap = el('div', 'post-normal'); tbl.parentNode.insertBefore(wrap, tbl); wrap.appendChild(tbl); }
+    wrap.classList.add('bpost'); if (i % 2) wrap.classList.add('alt');
+    $$(':scope > .darkrow1', wrap).forEach(function (x) { x.remove(); });
+    var rows = tbl.rows; if (rows.length < 2) return;
+    var nameTd = rows[0].cells[0], headTd = rows[0].cells[1], mini = rows[1].cells[0], body = rows[1].cells[1];
+    [[nameTd, 'p-name'], [headTd, 'p-head'], [mini, 'miniprofile'], [body, 'p-body']].forEach(function (p) { if (p[0]) p[0].classList.add(p[1]); });
+    if (rows[2]) {
+      var ip = rows[2].cells[0], foot = rows[2].cells[1];
+      if (foot) {
+        foot.classList.add('p-foot');
+        var addr = ip && $('.ip_address', ip); if (addr && txt(addr)) foot.appendChild(addr);
+        $$('.post-buttons-bottom .button-small', foot).forEach(function (b) { b.classList.add('quiet'); });
+        var up = $('a[href^="javascript:scroll"]', foot); if (up) { up.className = 'p-top'; up.innerHTML = '\u2191<span class="vh"> Back to top</span>'; }
+      }
+      if (ip) ip.remove();
+    }
+    /* date: the date itself becomes the link to the post */
+    var pd = headTd && $('.postdetails', headTd), pl = pd && $('a', pd);
+    if (pl) { var when = txt(pd).replace(/^[^:]*:\s*/, ''); pl.textContent = when; pl.removeAttribute('style'); pl.className = 'p-date'; pd.innerHTML = ''; pd.appendChild(pl); }
+    $$('.post-buttons-top a', headTd).forEach(function (a) { if (/delete_post/.test(a.getAttribute('href') || '')) $$('.button-small', a).forEach(function (s) { s.classList.add('danger'); }); });
+
+    /* the yearbook card: photo, name, the macro's lines with the empty ones dropped */
+    if (!mini) return;
+    var nm = nameTd && $('.normalname, .unreg', nameTd), name = txt(nm);
+    $$(':scope > .postdetails', mini).forEach(function (s) { while (s.firstChild) mini.insertBefore(s.firstChild, s); s.remove(); });
+    $$('img', mini).forEach(function (im) { if (/spacer/.test(im.getAttribute('src') || '') || im.getAttribute('height') === '1') im.remove(); });
+    var photo = $$('img', mini).filter(function (im) { return !/\/themes\/default\//.test(im.getAttribute('src') || ''); })[0];
+    var ph = el('div', 'yb-photo');
+    if (photo && !L.isBlankAvatar(photo.getAttribute('src')) && !(photo.complete && !photo.naturalWidth)) { var holder = photo.closest('.postbit'); ph.appendChild(photo); if (holder) holder.classList.add('pb-head'); }
+    else { if (photo) { var h2 = photo.closest('.postbit'); if (h2) h2.classList.add('pb-head'); photo.remove(); } ph.classList.add('ini'); ph.textContent = L.initials(name); }
+    var rowsBox = el('div', 'yb-rows');
+    [].slice.call(mini.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) { if (!n.nodeValue.trim()) n.remove(); return; }
+      if (n.nodeType !== 1) { n.remove(); return; }
+      if (n.tagName === 'BR') { n.remove(); return; }
+      if (n.classList.contains('postbit')) {
+        var label = $('.pb-label', n);
+        if (!$('img', n) && !L.fieldValue(txt(n), txt(label))) { n.remove(); return; }
+        if (!label && $('.pb-title', n)) n.classList.add('pb-head');
+        if (n.classList.contains('pb-head')) { $$('br', n).forEach(function (b) { b.remove(); }); if (!txt(n)) { n.remove(); return; } return; }
+        rowsBox.appendChild(n); return;
+      }
+      if (!txt(n) && !$('img', n)) { n.remove(); return; }
+      rowsBox.appendChild(n);
+    });
+    mini.insertBefore(ph, mini.firstChild);
+    if (nm) ph.insertAdjacentElement('afterend', nm);
+    if (rowsBox.firstChild) mini.appendChild(rowsBox);
+    if (nameTd) nameTd.remove();
   }
 
   /* ---------- index: first screen ---------- */

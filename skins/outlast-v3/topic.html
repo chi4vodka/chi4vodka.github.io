@@ -74,7 +74,7 @@ td.darkrow2{display:none}
 
 /* ===== PAGINATION, BUTTONS, FORMS ===== */
 .pagination{margin:10px 0}
-.pagination a:link,.pagination a:visited,.pagination a:active,.pagination .pagination_current,.pagination_first,.pagination_last,.pagination_page{display:inline-block;padding:2px 9px;background:var(--bone);color:var(--ink);border:2px solid var(--ink);border-radius:0;box-shadow:2px 2px 0 #000;margin-right:4px;background-image:none}
+.pagination a:link,.pagination a:visited,.pagination a:active,.pagination .pagination_current{display:inline-block;padding:2px 9px;background:var(--bone);color:var(--ink);border:2px solid var(--ink);border-radius:0;box-shadow:2px 2px 0 #000;margin-right:4px;background-image:none}
 .pagination .pagination_current{background:var(--ink);color:var(--bone)}
 .pagination a:hover{background:var(--red);color:#fff;text-decoration:none}
 .pagination_pagetxt{display:none}
@@ -449,6 +449,142 @@ html:not(.is-index) #innerwrapper{padding:0 4vw 40px}
 .js .solo .forum>.f-sub,.js .solo .forum>.f-mod{display:block;color:#bdbab0}
 @media(max-width:980px){.js .forum>.f-sub,.js .forum>.f-mod{display:block;color:#bdbab0}}
 
+/* ===== TOPIC VIEW: each post is a file entry, the subject's card clipped beside a typed sheet ===== */
+.is-topic .pagedesc{font:400 15px/1.4 var(--ui);letter-spacing:.06em;text-transform:uppercase;color:#a9a79d;margin:-6px 0 16px;overflow-wrap:anywhere}
+/* top bar: pages on the left, the big actions on the right */
+.t-bar,.t-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin:0 0 30px}
+.t-bar .pagination,.t-nav .pagination{margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.t-bar .pagination .pagination_current,.t-nav .pagination .pagination_current{background:var(--red);border-color:var(--red);color:#fff}
+.t-bar .pagination a,.t-nav .pagination a,.t-bar .pagination_current,.t-nav .pagination_current{margin:0}
+.t-acts{display:flex;flex-wrap:wrap;gap:10px;margin-left:auto}
+.t-acts a{text-decoration:none}
+.t-acts .button-large{margin:0}
+.t-acts a:first-child .button-large{background:var(--red)!important;border-color:var(--red);color:#fff!important}
+.t-acts a:first-child .button-large:hover{background:#0a0a08!important;border-color:#0a0a08}
+
+/* the case file: no panel of its own, the entries sit on the corridor */
+.casefile{background:none;border:0;box-shadow:none;margin:0;padding:0;color:var(--grey)}
+.entry{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0 34px;align-items:start;margin:0 0 48px}
+.entry>a[name]{position:absolute}
+.e-author{position:relative;padding-top:16px;min-width:0}
+.e-author .postdetails{font-size:inherit;opacity:1;margin:0}
+.e-author>br{display:none}
+.e-author .subject{margin:0}
+.s-ini{display:flex;align-items:center;justify-content:center;aspect-ratio:1;width:100%;background:#2a2b24;color:var(--bone);font:300 52px/1 var(--ui);letter-spacing:.04em}
+/* Jcink's default author panel, if the skin's macro is not pasted in */
+.e-author.plain{background:var(--bone);color:var(--ink);padding:30px 14px 12px;box-shadow:4px 5px 0 #000;margin-top:16px;font-size:13px;overflow-wrap:anywhere}
+.e-author.plain .normalname,.e-author.plain .unreg{position:absolute;left:12px;top:-14px;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#0a0a08;color:var(--bone);padding:5px 14px 6px;letter-spacing:1px;text-transform:uppercase;font-size:12px;border-bottom:3px solid var(--grey)}
+.e-author.plain .normalname a{color:var(--bone);text-decoration:none}
+.e-author.plain .postbit{padding:3px 0;border-bottom:1px dashed #8b8571}
+.e-author.plain .postbit img{max-width:100%}
+.e-contact{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin:14px 0 0 4px;font:400 12px/1.3 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:#a9a79d}
+.e-contact a{text-decoration:none;color:#c9c7bd}
+.e-contact .button-small{all:unset;cursor:pointer;border-bottom:1px solid #6b6a60;padding-bottom:1px}
+.e-contact a:hover .button-small{color:#fff;border-color:var(--red)}
+.e-ip{flex-basis:100%;opacity:.8}
+.e-author.plain .e-contact{margin:12px 0 0;color:#5d5848}
+.e-author.plain .e-contact a{color:var(--ink)}
+
+/* the typed sheet: punched holes, a red margin rule, the stamps top right */
+.e-sheet{position:relative;min-width:0;background:#e2ddcb;color:var(--ink);padding:22px 34px 24px 70px;box-shadow:5px 6px 0 #000;background-image:linear-gradient(90deg,transparent 47px,rgba(195,34,26,.55) 47px 49px,transparent 49px),radial-gradient(circle at 22px 56px,var(--room) 7px,transparent 8px),radial-gradient(circle at 22px 156px,var(--room) 7px,transparent 8px),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .08 0'/></filter><rect width='200' height='200' filter='url(%23f)'/></svg>")}
+.e-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid rgba(27,27,22,.35)}
+.e-date{font:400 12px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#5d5848;text-decoration:none}
+a.e-date:hover{color:var(--red);text-decoration:underline}
+.e-stamps{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.e-stamps a{text-decoration:none}
+.e-stamps .button-small{background:transparent!important;color:var(--red)!important;border:2px solid var(--red);box-shadow:none;margin:0;padding:3px 10px 2px;font:400 13px/1.2 var(--worn);letter-spacing:.14em;transform:rotate(-2deg);opacity:.9}
+.e-stamps a:nth-child(2n) .button-small{transform:rotate(1.5deg)}
+.e-stamps .st-del .button-small{color:var(--ink)!important;border-color:var(--ink)}
+.e-stamps a:hover .button-small{background:var(--red)!important;color:#fff!important;opacity:1}
+.e-stamps .st-del:hover .button-small{background:var(--ink)!important;color:var(--bone)!important}
+.e-body .postcolor{max-width:68ch}
+.e-body .postcolor b,.e-body .postcolor strong{font-weight:700}
+.e-body .postcolor a:link,.e-body .postcolor a:visited{color:var(--link)}
+
+/* quotes: a note taped into the file */
+.note{position:relative;max-width:60ch;margin:14px 0 18px 6px;padding:18px 20px 14px;background:#eee4bd;color:#2a2618;box-shadow:3px 4px 0 rgba(0,0,0,.3);transform:rotate(-.7deg)}
+.note::before{content:"";position:absolute;left:50%;top:-9px;width:86px;height:20px;margin-left:-43px;background:rgba(214,196,150,.8);border:1px solid rgba(0,0,0,.12);transform:rotate(2deg)}
+.note .note{transform:rotate(.9deg);background:#f4ecca;margin:10px 0}
+.note .quotetop{all:unset;display:block;font:400 12px/1.3 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:#6b6553;margin:0 0 6px}
+.note .quotetop b{color:#2a2618;font-weight:500}
+.note .q-back{margin-left:6px;text-decoration:none;color:var(--link)}
+.note .quotemain{all:unset;display:block;font:400 15px/1.65 var(--type);overflow-wrap:anywhere}
+/* before the script runs, or with scripts off */
+.quotetop{font:400 12px var(--ui);text-transform:uppercase;letter-spacing:.08em;margin-top:12px}
+.quotemain{border-left:4px solid var(--red);padding:6px 12px;background:#d2ccb7}
+
+/* code: a strip of tractor-feed printout */
+.codetop{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.codemain{display:block;margin:12px 0 18px;padding:11px 34px;max-width:100%;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:400 14px/22px var(--ui);color:#1e2a1c;background:radial-gradient(circle at 12px 11px,#c9c3ae 4px,transparent 5px) 0 11px/100% 22px repeat-y,radial-gradient(circle at calc(100% - 12px) 11px,#c9c3ae 4px,transparent 5px) 0 11px/100% 22px repeat-y,repeating-linear-gradient(#fbfaf3 0 44px,#dde9d6 44px 88px) 0 11px;border-left:1px dashed #a8a593;border-right:1px dashed #a8a593;box-shadow:2px 3px 0 rgba(0,0,0,.25)}
+
+/* big pictures become prints; small ones (smilies) stay inline */
+.e-body .postcolor img.ph{display:block;max-width:calc(100% - 8px);height:auto;margin:14px 0 18px 4px;padding:8px 8px 26px;background:#f1ece0;box-shadow:3px 4px 0 rgba(0,0,0,.35);transform:rotate(.5deg)}
+.e-body .edit{display:inline-block;margin-top:18px;padding:3px 10px 2px;border:2px solid #6b6553;color:#6b6553;font:400 12px/1.3 var(--worn);letter-spacing:.1em;text-transform:uppercase;transform:rotate(-1deg)}
+.e-body .edit b{font-weight:400;color:var(--ink)}
+.e-body .edit span{white-space:nowrap}
+
+/* signature: ballpoint on the tear-off strip */
+.signature{margin:22px 0 0;padding:12px 0 0;border-top:2px dashed rgba(27,27,22,.35);font:400 25px/1.05 var(--hand);color:#233a86;opacity:1;overflow-wrap:anywhere}
+.signature a:link,.signature a:visited{color:#233a86}
+.signature img{max-width:100%;height:auto}
+
+/* under the entries: pages again, older / forum / newer */
+.t-nav{margin:-14px 0 34px}
+.t-files{display:flex;flex-wrap:wrap;gap:6px 22px;margin-left:auto;font:400 13px/1.3 var(--ui);letter-spacing:.08em;text-transform:uppercase}
+.t-files a{color:var(--grey);text-decoration:none}
+.t-files a:hover{color:#fff;text-decoration:underline}
+.t-files .to-forum{color:#fff}
+
+/* reply box: a blank sheet with ruled lines */
+.reply{margin:0 0 34px}
+.reply .tableborder{margin:0}
+.reply .tablepad{padding:16px 18px 18px;text-align:left}
+.reply textarea{display:block;width:100%;min-height:220px;resize:vertical;padding:6px 12px;font:400 16px/28px var(--type);background:#efe9d6 repeating-linear-gradient(transparent 0 27px,rgba(63,124,154,.28) 27px 28px) 0 6px/100% 28px local;box-shadow:inset 2px 2px 0 rgba(0,0,0,.12)}
+.qr-opts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;margin:12px 0;font:400 12px/1.3 var(--ui);letter-spacing:.06em;text-transform:uppercase}
+.qr-opts a{color:var(--link)}
+.qr-opts label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.qr-opts input{box-shadow:none;margin:0}
+.qr-go{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.qr-go input{margin:0}
+.qr-go .primary{background:var(--red)!important;border-color:var(--red);color:#fff!important}
+.qr-go input:not(.primary){background:var(--bone)!important;color:var(--ink)!important}
+
+/* the foot: who is reading, topic tools, search and forum jump on one strip */
+.t-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;padding:16px 0;margin:0 0 30px;border-top:1px solid rgba(201,199,189,.25);border-bottom:1px solid rgba(201,199,189,.25);font:400 13px/1.4 var(--ui);color:#a9a79d}
+.readers{flex-basis:100%;overflow-wrap:anywhere}
+.readers span{margin-right:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#e0574f}
+.readers a{color:var(--grey)}
+.t-tools{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;margin:0 auto 0 0;padding:0;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
+.t-tools a{color:var(--grey);text-decoration:none;border-bottom:1px solid #55544b}
+.t-tools a:hover{color:#fff;border-color:var(--red)}
+.t-foot form{display:flex;gap:6px;align-items:center}
+.t-foot .textinput,.t-foot select{background:#16170f;color:var(--grey);border-color:#55544b;box-shadow:none;font:400 13px var(--ui);max-width:100%}
+.t-foot input[type=submit]{margin:0;box-shadow:none;background:#26271f!important;border-color:#55544b}
+
+/* Jcink's ad on free boards: untouched, in its own strip */
+.ad-slot{max-width:100%;overflow:hidden;text-align:center;margin:0 0 30px;padding:10px 0;background:rgba(0,0,0,.35)}
+.ad-slot table{width:100%}
+.ad-slot td.row4{background:none;border:0;padding:0}
+
+@media (max-width:760px){
+  .entry{grid-template-columns:minmax(0,1fr);margin-bottom:36px}
+  .e-author{padding-top:14px}
+  .e-author .subject{display:grid;grid-template-columns:92px minmax(0,1fr);gap:0 14px;max-width:none;transform:none;padding:26px 12px 12px;margin:0 0 -6px}
+  .e-author .subject>*{grid-column:2;min-width:0}
+  .e-author .subject>.s-name{grid-column:auto}
+  .e-author .subject>.s-photo{grid-column:1;grid-row:1/span 6;margin:0;padding:4px 4px 12px;align-self:start}
+  .e-author .subject>.s-photo:before{display:none}
+  .e-author .subject>.s-faction{margin:0 0 6px;justify-self:start;transform:rotate(-3deg)}
+  .e-author .subject>.s-badges,.e-author .subject>.s-links{grid-column:1/-1}
+  .e-contact{margin:12px 0 10px}
+  .e-sheet{padding:18px 18px 20px 30px;background-image:linear-gradient(90deg,transparent 17px,rgba(195,34,26,.55) 17px 19px,transparent 19px)}
+  .e-body .postcolor{font-size:16px}
+  .note{margin-left:0}
+  .t-acts{margin-left:0}
+  .t-foot form{flex:1 1 100%}
+  .t-foot .textinput{flex:1;min-width:0}
+}
+
 </style>
 <script>history.replaceState(null,"","?showtopic=1");
 /* before the page paints: mark the index (by address) so the first screen only shows there */
@@ -475,79 +611,276 @@ html:not(.is-index) #innerwrapper{padding:0 4vw 40px}
 </header>
 <div id="jcink-top"><div id="logostrip"><a href="index.php" title="Board Home"></a></div><table width="100%" cellspacing="6" id="submenu"><tbody><tr><td><a href="index.php">Home</a><!--IBF.RULES--></td><td align="right"><img src="https://files.jcink.net/style_images/1/atb_help.gif" border="0" alt="">&nbsp;<a href="?act=Help">Help</a>&nbsp; &nbsp;&nbsp;<img src="https://files.jcink.net/style_images/1/atb_search.gif" border="0" alt="">&nbsp;<a href="?act=Search">Search</a>&nbsp; &nbsp;&nbsp;<img src="https://files.jcink.net/style_images/1/atb_members.gif" border="0" alt="">&nbsp;<a href="?act=Members">Members</a>&nbsp; &nbsp;&nbsp;<img src="https://files.jcink.net/style_images/1/atb_calendar.gif" border="0" alt="">&nbsp;<a href="?act=Calendar">Calendar</a></td></tr></tbody></table><table width="100%" id="userlinks" cellspacing="6"><tbody><tr><td>Logged in as: <a href="?showuser=3">Dorian Vale</a> ( <a href="?act=Login&CODE=03">Log Out</a> )</td><td align="right"><a href="?act=UserCP">My Controls</a> &middot; <a href="?act=Msg">Messenger (2)</a> &middot; <a href="?act=Search&CODE=getnew">View New Posts</a> &middot; <a href="#">My Assistant</a></td></tr></tbody></table></div>
 <div id="innerwrapper">
-  <div id="navi"><div id="navstrip"> &raquo; <a href="index.html?act=idx">Forum Title</a> &raquo; <a href="index.html?showforum=3">Bambino</a></div></div>
+  <div id="navi"><div id="navstrip" align="left"> &raquo; &nbsp;<a href="?act=idx">Kestrel</a>&nbsp;&rarr;&nbsp;<a href="?act=SC&c=1">In Character</a>&nbsp;&rarr;&nbsp;<a href="?showforum=1">The Grounds</a></div></div>
   <!-- ===== EDIT: night-vision writing, one <span> per line. Shown only under the lens on the index. ===== -->
   <div id="scrawls" hidden><span>it moves when you blink</span><span>count the doors again</span><span>there was no first trial</span><span>play it backwards</span><span>nobody refills the machine</span><span>that chair was empty a minute ago</span></div>
-  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div>
+  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div><script type="text/javascript">
+<!--
+function select_post(post_id) { }
+function link_to_post(pid) { prompt("Manually copy the direct link to this post below to store the link in your computer's clipboard", location.href.split('#')[0] + "&view=findpost&p=" + pid); return false; }
+function delete_post(theURL) { if (confirm('Are you sure you want to delete this message?')) { window.location.href=theURL; } else { alert ('Ok, no action has been taken'); } }
+function emo_pop() { }
+function ShowHide(id1, id2) { if (id1 != '') expMenu(id1); if (id2 != '') expMenu(id2); }
+function expMenu(id) { var itm = document.getElementById(id); if (itm && itm.style) { itm.style.display = itm.style.display == "none" ? "" : "none"; } }
+//-->
+</script>
+<a name="top"></a>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+ <td align="left" width="20%" nowrap="nowrap"><span class="pagination"><span class="pagination_pagetxt">Pages: (3)</span> <span class="pagination_current"><b>1</b></span> <span class="pagination_page"><a href="index.php?showtopic=1&amp;st=15">2</a></span> <span class="pagination_page"><a href="index.php?showtopic=1&amp;st=30">3</a></span> <span class="pagination_next"><a href="index.php?showtopic=1&amp;st=15" title="Next page">&gt;</a></span> <span class="pagination_last"><a href="index.php?showtopic=1&amp;st=30" title="Go to last page">&raquo;</a></span></span></td>
+ <td align="right" width="80%"><a href="index.php?act=Post&amp;CODE=02&amp;f=1&amp;t=1&amp;st="><div class="button-large">Add Reply</div></a><a href="index.php?act=Post&amp;CODE=00&amp;f=1" title="Start a new topic"><div class="button-large">New Topic</div></a><a href="index.php?act=Post&amp;CODE=10&amp;f=1"><div class="button-large">New Poll</div></a></td>
+</tr>
+</table>
+<br>
+<div class="tableborder">
+ <div class="maintitle"><span class="topic-title-space">&nbsp;</span><span class="topic-title">Fence line</span><span class="topic-desc">, the long way round</span></div>
+ <!--{IBF.POLL}-->
+ <div align="right" class="postlinksbar">
+ <strong><!--{IBF.START_NEW_POLL}--><a href="index.php?act=Track&amp;f=1&amp;t=1">Track This Topic</a> | <a href="index.php?act=Forward&amp;f=1&amp;t=1">Email This Topic</a> | <a href="index.php?act=Print&amp;client=printer&amp;f=1&amp;t=1">Print This Topic</a></strong>
+ </div>
 
-<div class="newstext"><b>Forum Title latest news: <a href="#">Welcome</a></b></div>
-<div class="borderwrap" style="margin-bottom:12px"><div class="maintitle">Re: Test thread</div><table class="tablebasic"><tr><td class="post1 postbit-col" valign="top" width="200"><span class="normalname"><a href="#">Subject_0417</a></span><div class="subject">
-<div class="s-name"></div>
-<div class="s-photo"><div class="s-av"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect width='160' height='160' fill='%23555'/></svg>" width="160" height="160"></div></div>
-<div class="s-faction"></div>
-<div class="s-row s-age"></div>
-<div class="s-row s-pron"></div>
-<div class="s-badges"></div>
-<ul class="s-links"></ul>
-<div class="s-warn"> </div>
-<div class="s-raw" hidden>
-<span class="f-age">29</span>
-<span class="f-pronouns">they/them</span>
-<span class="f-faction">Reunion</span>
-<span class="f-badges">Survivor|http://127.0.0.1:8123/mock/b1.svg|Survived the first trial;Medic|http://127.0.0.1:8123/mock/b2.svg|Patched up three subjects</span>
-<span class="f-profile">https://example.org/profile</span>
-<span class="f-tracker">https://example.org/tracker</span>
-<span class="f-link1Label">Playlist</span><span class="f-link1Url">https://example.org/playlist</span>
-<span class="f-link2Label">Pinterest</span><span class="f-link2Url">https://example.org/pin</span>
-<span class="f-link3Label"></span><span class="f-link3Url">https://another.example.net/x</span>
-<span class="f-link4Label"></span><span class="f-link4Url"></span>
+<!--Begin Msg Number 11-->
+<span class="post-normal group3-post-normal">
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+<tr>
+ <td valign="middle" class="row4" width="1%"><a name="entry11"></a><span class="normalname"><a href="index.php?showuser=3">Kit</a></span></td>
+ <td class="row4" valign="top" width="99%">
+ <!-- POSTED DATE DIV -->
+ <div align="left" class="row4" style="float:left;padding-top:4px;padding-bottom:4px">
+ &nbsp;<span class="postdetails"><b><a title="Show the link to this post" href="#" onclick="link_to_post(11); return false;" style="text-decoration:underline">Posted:</a></b> Today, 04:12 pm</span>
+ </div>
+ <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+ <div align="right" class="post-buttons-top">
+ <a href="index.php?act=Post&amp;CODE=06&amp;f=1&amp;t=1&amp;p=11"><span class="button-small">Quote</span></a>
+ </div>
+ </td>
+</tr>
+<tr>
+ <td valign="top" class="post2 miniprofile">
+ <span class="postdetails">
+<div class="subject"> <div class="s-name"></div> <div class="s-photo"><div class="s-av"><img src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2080%2080%27%3E%3Crect%20width%3D%2780%27%20height%3D%2780%27%20fill%3D%27%23d9752f%27%2F%3E%3Cpath%20d%3D%27M10%2080q2-22%2020-25h20q18%203%2020%2025z%27%20fill%3D%27%231b1b16%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%2736%27%20rx%3D%2716%27%20ry%3D%2719%27%20fill%3D%27%23e0b48c%27%2F%3E%3Cpath%20d%3D%27M23%2034q-2-24%2017-24t17%2024q-6-12-17-12t-17%2012z%27%20fill%3D%27%23d8501f%27%2F%3E%3C%2Fsvg%3E' border='0' width='150' height='150' alt=''></div></div> <div class="s-faction"></div> <div class="s-row s-age"></div> <div class="s-row s-pron"></div> <div class="s-badges"></div> <ul class="s-links"></ul> <div class="s-warn"> </div> <div class="s-raw" hidden> <span class="f-age">19</span> <span class="f-pronouns">she/her</span> <span class="f-faction">Reunion</span> <span class="f-badges">Survivor|https://chi4vodka.github.io/skins/outlast-v1/b1.svg|Survived the first trial</span> <span class="f-profile">https://example.org/profile/3</span> <span class="f-tracker">https://example.org/tracker/3</span> <span class="f-link1Label">Playlist</span><span class="f-link1Url">https://example.org/playlist</span> <span class="f-link2Label"></span><span class="f-link2Url"></span> <span class="f-link3Label"></span><span class="f-link3Url"></span> <span class="f-link4Label"></span><span class="f-link4Url"></span> </div> </div>
+ </span><br>
+ <!--$ author[field_1]--> <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="160" height="1"><br>
+ </td>
+ <td width="100%" valign="top" class="post2" id="pid_11" colspan="2">
+ <!-- THE POST 11 -->
+ <div class="postcolor">
+ The fence was taller in daylight. At night it was just a line of wire against a sky that had given up on stars, and Kit had been walking it for twenty minutes, counting posts, losing count, starting over.<br><br>"You're doing it again," she said, without turning round. "<i>Breathing like you've got something to say.</i>"<br><br>Somewhere behind them a door banged twice in the wind. <b>Neither of them looked.</b>
+ </div>
+ <!--Signature--><div class="signature">Kit &middot; second year &middot; <a href="index.php?showtopic=4">tracker</a></div><!--ESignature-->
+ <!-- THE POST -->
+ </td>
+</tr>
+<tr>
+ <td class="darkrow3" align="left"><span class="ip_address"><b></b></span></td>
+ <td class="darkrow3" nowrap="nowrap" align="left" colspan="2">
+ <!-- PM / EMAIL / WWW / MSGR -->
+ <div align="left" class="darkrow3 post-buttons-bottom" style="float:left;width:auto">
+ <a href="index.php?act=Msg&amp;CODE=04&amp;MID=3"><span class="button-small">PM</span></a><a href="index.php?act=Mail&amp;CODE=00&amp;MID=3"><span class="button-small">Email</span></a>
+ </div>
+ <!-- REPORT / UP -->
+ <div align="right">
+ <a href="javascript:scroll(0,0);">^</a>
+ </div>
+ </td>
+</tr>
+</table>
+<div class="darkrow1" style="height:5px"><!-- --></div>
+</span>
+
+<!--Begin Msg Number 12-->
+<span class="post-normal group3-post-normal">
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+<tr>
+ <td valign="middle" class="row4" width="1%"><a name="entry12"></a><span class="normalname"><a href="index.php?showuser=2">Cass Whitlock-Abernathy</a></span></td>
+ <td class="row4" valign="top" width="99%">
+ <!-- POSTED DATE DIV -->
+ <div align="left" class="row4" style="float:left;padding-top:4px;padding-bottom:4px">
+ &nbsp;<span class="postdetails"><b><a title="Show the link to this post" href="#" onclick="link_to_post(12); return false;" style="text-decoration:underline">Posted:</a></b> Today, 04:30 pm</span>
+ </div>
+ <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+ <div align="right" class="post-buttons-top">
+ <a href="index.php?act=Post&amp;CODE=06&amp;f=1&amp;t=1&amp;p=12"><span class="button-small">Quote</span></a>
+ </div>
+ </td>
+</tr>
+<tr>
+ <td valign="top" class="post1 miniprofile">
+ <span class="postdetails">
+<div class="subject"> <div class="s-name"></div> <div class="s-photo"><div class="s-av"></div></div> <div class="s-faction"></div> <div class="s-row s-age"></div> <div class="s-row s-pron"></div> <div class="s-badges"></div> <ul class="s-links"></ul> <div class="s-warn"> </div> <div class="s-raw" hidden> <span class="f-age"></span> <span class="f-pronouns"></span> <span class="f-faction"></span> <span class="f-badges"></span> <span class="f-profile"></span> <span class="f-tracker"></span> <span class="f-link1Label"></span><span class="f-link1Url"></span> <span class="f-link2Label"></span><span class="f-link2Url"></span> <span class="f-link3Label"></span><span class="f-link3Url"></span> <span class="f-link4Label"></span><span class="f-link4Url"></span> </div> </div>
+ </span><br>
+ <!--$ author[field_1]--> <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="160" height="1"><br>
+ </td>
+ <td width="100%" valign="top" class="post1" id="pid_12" colspan="2">
+ <!-- THE POST 12 -->
+ <div class="postcolor">
+ <!--QuoteBegin-Kit+Today, 04:12 pm--><div class="quotetop">QUOTE (Kit @ Today, 04:12 pm) <a href="index.php?showtopic=1&amp;view=findpost&amp;p=11"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="*" border="0"></a></div><div class="quotemain"><!--QuoteEBegin-->You're doing it again. Breathing like you've got something to say.<!--QuoteEnd--></div><!--QuoteEEnd--><br>"Maybe I'm just out of breath. Some of us don't walk the perimeter for fun."<br><br>Cass caught up, hands in pockets, and looked at the wire like it owed her money. Then, quieter: "I found the list. The one with our names on it. Yours is near the top."<br><br><span class="edit">This post has been edited by <b>Cass Whitlock-Abernathy</b>: Today, 04:41 pm</span>
+ </div>
+ <!-- THE POST -->
+ </td>
+</tr>
+<tr>
+ <td class="darkrow3" align="left"><span class="ip_address"><b></b></span></td>
+ <td class="darkrow3" nowrap="nowrap" align="left" colspan="2">
+ <!-- PM / EMAIL / WWW / MSGR -->
+ <div align="left" class="darkrow3 post-buttons-bottom" style="float:left;width:auto">
+ <a href="index.php?act=Msg&amp;CODE=04&amp;MID=2"><span class="button-small">PM</span></a>
+ </div>
+ <!-- REPORT / UP -->
+ <div align="right">
+ <a href="javascript:scroll(0,0);">^</a>
+ </div>
+ </td>
+</tr>
+</table>
+<div class="darkrow1" style="height:5px"><!-- --></div>
+</span>
+
+<!--Begin Msg Number 13-->
+<span class="post-normal group4-post-normal">
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+<tr>
+ <td valign="middle" class="row4" width="1%"><a name="entry13"></a><span class="normalname"><a href="index.php?showuser=1">Dorian Vale</a></span></td>
+ <td class="row4" valign="top" width="99%">
+ <!-- POSTED DATE DIV -->
+ <div align="left" class="row4" style="float:left;padding-top:4px;padding-bottom:4px">
+ &nbsp;<span class="postdetails"><b><a title="Show the link to this post" href="#" onclick="link_to_post(13); return false;" style="text-decoration:underline">Posted:</a></b> Today, 05:02 pm</span>
+ </div>
+ <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+ <div align="right" class="post-buttons-top">
+ <a href="javascript:delete_post('index.php?act=Mod&amp;CODE=04&amp;f=1&amp;t=1&amp;p=13&amp;st=0')"><span class="button-small">Delete</span></a><a href="index.php?act=Post&amp;CODE=08&amp;f=1&amp;t=1&amp;p=13&amp;st=0"><span class="button-small">Edit</span></a><a href="index.php?act=Post&amp;CODE=06&amp;f=1&amp;t=1&amp;p=13"><span class="button-small">Quote</span></a>
+ </div>
+ </td>
+</tr>
+<tr>
+ <td valign="top" class="post2 miniprofile">
+ <span class="postdetails">
+<div class="subject"> <div class="s-name"></div> <div class="s-photo"><div class="s-av"><img src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2080%2080%27%3E%3Crect%20width%3D%2780%27%20height%3D%2780%27%20fill%3D%27%233f7c9a%27%2F%3E%3Cpath%20d%3D%27M10%2080q2-22%2020-25h20q18%203%2020%2025z%27%20fill%3D%27%231b1b16%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%2736%27%20rx%3D%2716%27%20ry%3D%2719%27%20fill%3D%27%23e0b48c%27%2F%3E%3Cpath%20d%3D%27M23%2034q-2-24%2017-24t17%2024q-6-12-17-12t-17%2012z%27%20fill%3D%27%23d8501f%27%2F%3E%3C%2Fsvg%3E' border='0' width='150' height='150' alt=''></div></div> <div class="s-faction"></div> <div class="s-row s-age"></div> <div class="s-row s-pron"></div> <div class="s-badges"></div> <ul class="s-links"></ul> <div class="s-warn"> </div> <div class="s-raw" hidden> <span class="f-age">31</span> <span class="f-pronouns">they/them</span> <span class="f-faction">Staff</span> <span class="f-badges">Survivor|https://chi4vodka.github.io/skins/outlast-v1/b1.svg|Survived the first trial;Medic|https://chi4vodka.github.io/skins/outlast-v1/b2.svg|Patched up three subjects</span> <span class="f-profile">https://example.org/profile/1</span> <span class="f-tracker">https://example.org/tracker/1</span> <span class="f-link1Label">Playlist</span><span class="f-link1Url">https://example.org/playlist</span> <span class="f-link2Label">Staff notes</span><span class="f-link2Url">https://example.org/notes</span> <span class="f-link3Label"></span><span class="f-link3Url"></span> <span class="f-link4Label"></span><span class="f-link4Url"></span> </div> </div>
+ </span><br>
+ <!--$ author[field_1]--> <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="160" height="1"><br>
+ </td>
+ <td width="100%" valign="top" class="post2" id="pid_13" colspan="2">
+ <!-- THE POST 13 -->
+ <div class="postcolor">
+ <b>OOC:</b> quick housekeeping before you two carry on. The map for this area is up, and the gate code for the scene is below so nobody has to scroll back for it:<br><br><!--c1--><div class="codetop">CODE</div><div class="codemain"><!--ec1-->GATE 7 &rarr; 0417-B<br>OPEN AFTER: 21:00<!--c2--></div><!--ec2--><br>Reference picture for the fence line, if it helps:<br><br><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='300'%3E%3Crect width='900' height='300' fill='%23444'/%3E%3Cpath d='M0 210h900M0 150h900' stroke='%23999' stroke-width='3'/%3E%3Cpath d='M60 90v210M240 90v210M420 90v210M600 90v210M780 90v210' stroke='%23bbb' stroke-width='8'/%3E%3C/svg%3E" border="0" alt="user posted image"><br><br>Long links still need to wrap: <a href="https://example.org/a/really/long/address/that/goes/on/and/on/without/a/single/space/in/it/anywhere">https://example.org/a/really/long/address/that/goes/on/and/on/without/a/single/space/in/it/anywhere</a>
+ </div>
+ <!--Signature--><div class="signature"><i>Dorian Vale</i>, staff. Questions go in the help forum.</div><!--ESignature-->
+ <!-- THE POST -->
+ </td>
+</tr>
+<tr>
+ <td class="darkrow3" align="left"><span class="ip_address"><b></b></span></td>
+ <td class="darkrow3" nowrap="nowrap" align="left" colspan="2">
+ <!-- PM / EMAIL / WWW / MSGR -->
+ <div align="left" class="darkrow3 post-buttons-bottom" style="float:left;width:auto">
+ <a href="index.php?act=Msg&amp;CODE=04&amp;MID=1"><span class="button-small">PM</span></a><a href="index.php?act=Mail&amp;CODE=00&amp;MID=1"><span class="button-small">Email</span></a>
+ </div>
+ <!-- REPORT / UP -->
+ <div align="right">
+ <a href="javascript:scroll(0,0);">^</a>
+ </div>
+ </td>
+</tr>
+</table>
+<div class="darkrow1" style="height:5px"><!-- --></div>
+</span>
+
+<!--Begin Msg Number 14-->
+<span class="post-normal group3-post-normal">
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+<tr>
+ <td valign="middle" class="row4" width="1%"><a name="entry14"></a><span class="normalname"><a href="index.php?showuser=3">Kit</a></span></td>
+ <td class="row4" valign="top" width="99%">
+ <!-- POSTED DATE DIV -->
+ <div align="left" class="row4" style="float:left;padding-top:4px;padding-bottom:4px">
+ &nbsp;<span class="postdetails"><b><a title="Show the link to this post" href="#" onclick="link_to_post(14); return false;" style="text-decoration:underline">Posted:</a></b> Today, 05:20 pm</span>
+ </div>
+ <!-- REPORT / DELETE / EDIT / QUOTE DIV -->
+ <div align="right" class="post-buttons-top">
+ <a href="index.php?act=Post&amp;CODE=06&amp;f=1&amp;t=1&amp;p=14"><span class="button-small">Quote</span></a>
+ </div>
+ </td>
+</tr>
+<tr>
+ <td valign="top" class="post1 miniprofile">
+ <span class="postdetails">
+<div class="subject"> <div class="s-name"></div> <div class="s-photo"><div class="s-av"><img src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2080%2080%27%3E%3Crect%20width%3D%2780%27%20height%3D%2780%27%20fill%3D%27%23d9752f%27%2F%3E%3Cpath%20d%3D%27M10%2080q2-22%2020-25h20q18%203%2020%2025z%27%20fill%3D%27%231b1b16%27%2F%3E%3Cellipse%20cx%3D%2740%27%20cy%3D%2736%27%20rx%3D%2716%27%20ry%3D%2719%27%20fill%3D%27%23e0b48c%27%2F%3E%3Cpath%20d%3D%27M23%2034q-2-24%2017-24t17%2024q-6-12-17-12t-17%2012z%27%20fill%3D%27%23d8501f%27%2F%3E%3C%2Fsvg%3E' border='0' width='150' height='150' alt=''></div></div> <div class="s-faction"></div> <div class="s-row s-age"></div> <div class="s-row s-pron"></div> <div class="s-badges"></div> <ul class="s-links"></ul> <div class="s-warn"> </div> <div class="s-raw" hidden> <span class="f-age">19</span> <span class="f-pronouns">she/her</span> <span class="f-faction">Reunion</span> <span class="f-badges">Survivor|https://chi4vodka.github.io/skins/outlast-v1/b1.svg|Survived the first trial</span> <span class="f-profile">https://example.org/profile/3</span> <span class="f-tracker">https://example.org/tracker/3</span> <span class="f-link1Label">Playlist</span><span class="f-link1Url">https://example.org/playlist</span> <span class="f-link2Label"></span><span class="f-link2Url"></span> <span class="f-link3Label"></span><span class="f-link3Url"></span> <span class="f-link4Label"></span><span class="f-link4Url"></span> </div> </div>
+ </span><br>
+ <!--$ author[field_1]--> <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="160" height="1"><br>
+ </td>
+ <td width="100%" valign="top" class="post1" id="pid_14" colspan="2">
+ <!-- THE POST 14 -->
+ <div class="postcolor">
+ "Then we'd better be gone before they get to the bottom of it."
+ </div>
+ <!--Signature--><div class="signature">Kit &middot; second year &middot; <a href="index.php?showtopic=4">tracker</a></div><!--ESignature-->
+ <!-- THE POST -->
+ </td>
+</tr>
+<tr>
+ <td class="darkrow3" align="left"><span class="ip_address"><b></b></span></td>
+ <td class="darkrow3" nowrap="nowrap" align="left" colspan="2">
+ <!-- PM / EMAIL / WWW / MSGR -->
+ <div align="left" class="darkrow3 post-buttons-bottom" style="float:left;width:auto">
+ <a href="index.php?act=Msg&amp;CODE=04&amp;MID=3"><span class="button-small">PM</span></a><a href="index.php?act=Mail&amp;CODE=00&amp;MID=3"><span class="button-small">Email</span></a>
+ </div>
+ <!-- REPORT / UP -->
+ <div align="right">
+ <a href="javascript:scroll(0,0);">^</a>
+ </div>
+ </td>
+</tr>
+</table>
+<div class="darkrow1" style="height:5px"><!-- --></div>
+</span>
+
+ <div class="activeuserstrip">3 User(s) are reading this topic (1 Guests and 0 Anonymous Users)</div>
+ <div class="row2" style="padding:6px">2 Members: <a href="index.php?showuser=1">Dorian Vale</a>, <a href="index.php?showuser=3">Kit</a></div>
+ <div class="activeuserstrip" align="center"><!--SOCIAL_BOOKMARKS-->&laquo; <a href="index.php?showtopic=1&amp;view=old">Next Oldest</a> | <strong><a href="index.php?showforum=1">The Grounds</a></strong> | <a href="index.php?showtopic=1&amp;view=new">Next Newest</a> &raquo;</div>
+ <div align="center" style="margin-bottom:3px;"><table width="100%"><tr><td class="row4" align="center"><div class="mock-ad" style="display:inline-block;width:728px;max-width:100%;height:90px;background:#e8e8e8;color:#888;font:12px/90px Arial,sans-serif">Jcink ad (free boards only)</div></td></tr></table></div>
+</div>
+<br>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+ <td align="left" width="20%" nowrap="nowrap"><a href="javascript:$('#topic_open').toggle();void(0);" title="Open Topic Options"><div class="button-large">Topic Options</div></a></td>
+ <td align="right" width="80%"><a href="index.php?act=Post&amp;CODE=02&amp;f=1&amp;t=1&amp;st="><div class="button-large">Add Reply</div></a><a href="javascript:ShowHide('qr_open','qr_closed');" title="Open Fast Reply Window" accesskey="f"><div class="button-large">Fast Reply</div></a><a href="index.php?act=Post&amp;CODE=00&amp;f=1" title="Start a new topic"><div class="button-large">New Topic</div></a><a href="index.php?act=Post&amp;CODE=10&amp;f=1"><div class="button-large">New Poll</div></a></td>
+</tr>
+</table>
+<br>
+<div align="left" id="qr_open" style="display:none;position:relative;">
+<form name="REPLIER" action="index.php?" method="post">
+<input type="hidden" name="act" value="Post"><input type="hidden" name="CODE" value="03"><input type="hidden" name="f" value="1"><input type="hidden" name="t" value="1"><input type="hidden" name="st" value=""><input type="hidden" name="enabletrack" value=""><input type="hidden" name="auth_key" value="0">
+<!-- TITLE DIV -->
+<div class="tableborder">
+<div class="maintitle">&nbsp;Fast Reply</div>
+<div class="tablepad" align="center">
+<textarea cols="70" rows="8" name="Post" class="textinput" tabindex="1"></textarea>
+<br><br>
+<a href="javascript:emo_pop();">Show Smilies Pop Up Window</a> | <input type="checkbox" name="enableemo" value="yes" class="checkbox" checked="checked">&nbsp;Enable Smilies | <input type="checkbox" name="enablesig" value="yes" class="checkbox" checked="checked">&nbsp;Enable Signature
+<br><br>
+<!--POST AS FIELD-->
+<input type="submit" name="submit" value="Add Reply" class="forminput" tabindex="2" accesskey="s">&nbsp;
+<input type="submit" name="preview" value="More Options" class="forminput">
+&nbsp;&nbsp;
+<input type="button" name="qrc" onclick="ShowHide('qr_open','qr_closed');" value="Close Fast Reply" class="forminput">
 </div>
 </div>
-</td><td class="post1" valign="top"><div class="postdetails">Posted: today</div><div class="postcolor">Normal post text, readable at length. <br><br>Second paragraph that goes on a little so line height can be judged properly across a few lines of typewriter type.</div></td></tr></table></div><div class="borderwrap" style="margin-bottom:12px"><div class="maintitle">Re: Test thread</div><table class="tablebasic"><tr><td class="post1 postbit-col" valign="top" width="200"><span class="normalname"><a href="#">Subject_0102</a></span><div class="subject">
-<div class="s-name"></div>
-<div class="s-photo"><div class="s-av"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect width='160' height='160' fill='%23555'/></svg>" width="160" height="160"></div></div>
-<div class="s-faction"></div>
-<div class="s-row s-age"></div>
-<div class="s-row s-pron"></div>
-<div class="s-badges"></div>
-<ul class="s-links"></ul>
-<div class="s-warn"> </div>
-<div class="s-raw" hidden>
-<span class="f-age">34</span>
-<span class="f-pronouns"></span>
-<span class="f-faction"></span>
-<span class="f-badges"></span>
-<span class="f-profile"></span>
-<span class="f-tracker"></span>
-<span class="f-link1Label"></span><span class="f-link1Url"></span>
-<span class="f-link2Label"></span><span class="f-link2Url"></span>
-<span class="f-link3Label"></span><span class="f-link3Url"></span>
-<span class="f-link4Label"></span><span class="f-link4Url"></span>
+</form>
+</div>
+<div id="topic_open" style="display:none;z-index:2;">
+<div class="tableborder">
+<div class="maintitle">&nbsp;<a href="javascript:$('#topic_open').toggle();void(0);">Close Topic Options</a></div>
+<div class="tablepad">
+<b><a href="index.php?act=Track&amp;f=1&amp;t=1">Track This Topic</a></b><br><span class="desc">Receive email notification when a reply has been made to this topic and you are not active on the board.</span><br><br>
+<b><a href="index.php?act=Track&amp;f=1&amp;type=forum">Subscribe to this forum</a></b><br><span class="desc">Receive email notification when a new topic is posted in this forum and you are not active on the board.</span><br><br>
+<b><a href="index.php?act=Print&amp;client=choose&amp;f=1&amp;t=1">Download / Print this Topic</a></b><br><span class="desc">Download this topic in different formats or view a printer friendly version.</span>
 </div>
 </div>
-</td><td class="post2" valign="top"><div class="postdetails">Posted: today</div><div class="postcolor">Unbroken: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div></td></tr></table></div><div class="borderwrap" style="margin-bottom:12px"><div class="maintitle">Re: Test thread</div><table class="tablebasic"><tr><td class="post1 postbit-col" valign="top" width="200"><span class="normalname"><a href="#">Subject_0388</a></span><div class="subject">
-<div class="s-name"></div>
-<div class="s-photo"><div class="s-av"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect width='160' height='160' fill='%23555'/></svg>" width="160" height="160"></div></div>
-<div class="s-faction"></div>
-<div class="s-row s-age"></div>
-<div class="s-row s-pron"></div>
-<div class="s-badges"></div>
-<ul class="s-links"></ul>
-<div class="s-warn"> </div>
-<div class="s-raw" hidden>
-<span class="f-age">41</span>
-<span class="f-pronouns">&lt;img src=x onerror=alert(1)&gt;</span>
-<span class="f-faction">Evil "faction"</span>
-<span class="f-badges">Bad|javascript:alert(1)|x;Good|http://127.0.0.1:8123/mock/g.svg|say "hi" &lt;b&gt;bold&lt;/b&gt;</span>
-<span class="f-profile">javascript:alert(1)</span>
-<span class="f-tracker"></span>
-<span class="f-link1Label">&lt;img src=x onerror=alert(2)&gt;</span><span class="f-link1Url">https://example.org/ok</span>
-<span class="f-link2Label"></span><span class="f-link2Url"></span>
-<span class="f-link3Label"></span><span class="f-link3Url"></span>
-<span class="f-link4Label"></span><span class="f-link4Url"></span>
 </div>
-</div>
-</td><td class="post1" valign="top"><div class="postdetails">Posted: today</div><div class="postcolor"><div id="QUOTE">Quoted line</div><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='2400' height='300'><rect width='2400' height='300' fill='%23777'/></svg>"><br><div id="CODE">code sample</div></div></td></tr></table></div><div class="pagination"><a href="#">1</a> <span class="pagination_current">2</span> <a href="#">3</a></div>
+<br>
+<br>
+<div align="right"><form onsubmit="return false" action="index.php?act=SF" method="get" name="jumpmenu"><input type="hidden" name="act" value="SF"><input type="hidden" name="s" value=""><select name="f" class="forminput"><optgroup label="Site Jump"><option value="sj_home">Forum Home</option><option value="sj_search">Search</option><option value="sj_help">Help</option></optgroup><optgroup label="Forum Jump"><option value="-1">A Category</option><option value="1" selected="selected">&nbsp;&nbsp;- The Grounds</option></optgroup></select>&nbsp;<input type="submit" value="Go" class="forminput"></form><br><br><form onsubmit="return false" action="index.php?" method="post" id="search-this-topic" name="SearchForm"><input type="hidden" name="act" value="Search"><input type="hidden" name="CODE" value="01"><input type="hidden" name="t" value="1"><input type="text" name="keywords" placeholder="Search this topic" size="30" maxlength="60" class="textinput">&nbsp;<input type="submit" value="Go" class="forminput"></form>
+</div><br>
 
   <!-- ===== EDIT: affiliates, one link each. Shown at the bottom of the index to everyone; delete the links to hide it. ===== -->
   <div id="affiliates"><a href="#">Affiliate A</a><a href="#">Affiliate B</a></div>
@@ -672,6 +1005,49 @@ html:not(.is-index) #innerwrapper{padding:0 4vw 40px}
       if (/showuser=\d+/.test(links[i].href || '') && String(links[i].text || '').trim()) return String(links[i].text).trim();
     }
     return null;
+  };
+
+  /* ---------- topic view ---------- */
+  L.isTopic = function (search) {
+    return /(^|[?&])(showtopic=\d|act=ST(&|$))/i.test(String(search || ''));
+  };
+  /* "QUOTE (Kit @ Today, 04:12 pm)" */
+  L.quoteHead = function (s) {
+    var m = String(s || '').replace(/\s+/g, ' ').match(/\(\s*([^@)]*?)\s*(?:@\s*([^)]*?)\s*)?\)/);
+    return m ? { name: m[1], date: m[2] || '' } : { name: '', date: '' };
+  };
+  /* "This post has been edited by Cass: Today, 04:41 pm" (or "... by Cass on date") */
+  L.editLine = function (s) {
+    var m = String(s || '').replace(/\s+/g, ' ').trim().match(/edited by (.+?)(?::| on) (.+)$/i);
+    return m ? { name: m[1].trim(), date: m[2].trim() } : null;
+  };
+  /* "3 User(s) are reading this topic (1 Guests and 0 Anonymous Users)" */
+  L.readers = function (s) {
+    var t = String(s || ''), g = t.match(/(\d+)\s*Guests?/i), a = t.match(/(\d+)\s*Anonymous/i);
+    return { guests: g ? +g[1] : 0, anon: a ? +a[1] : 0 };
+  };
+  /* the Track / Email / Print bar and the Topic Options box list the same things: keep each once */
+  var TOOLS = [
+    { test: /act=Track[^#]*type=forum/i, text: 'Subscribe to this forum', order: 2 },
+    { test: /act=Track/i, text: 'Track this topic', order: 0 },
+    { test: /act=Forward/i, text: 'Email this topic', order: 1 },
+    { test: /act=Print/i, text: 'Print or download', order: 3, prefer: /client=choose/i }
+  ];
+  L.topicTools = function (links) {
+    var known = [], extra = [], seen = {};
+    (links || []).forEach(function (l) {
+      var href = String(l.href || '').trim(), text = String(l.text || '').replace(/\s+/g, ' ').trim();
+      if (!href || href === '#' || /^javascript:/i.test(href)) return;
+      for (var i = 0; i < TOOLS.length; i++) {
+        var t = TOOLS[i];
+        if (!t.test.test(href)) continue;
+        if (!known[t.order]) known[t.order] = { text: t.text, href: href };
+        else if (t.prefer && t.prefer.test(href)) known[t.order].href = href;
+        return;
+      }
+      if (text && !seen[href]) { seen[href] = 1; extra.push({ text: text, href: href }); }
+    });
+    return known.filter(Boolean).concat(extra);
   };
 
   root.OutlastLogic = L;
@@ -921,6 +1297,10 @@ var OutlastSettings = {
   function renderSubject(sub) {
     var raw = readFields(sub), m = L.subjectModel(raw), age = ageOf(raw);
     moveName(sub);
+    /* no avatar (or a broken one): the initials on a dark print instead of an empty frame */
+    var av = $('.s-av', sub), who = txt($('.s-name', sub)) || txt($('.normalname', sub.closest('.entry') || sub));
+    function ini() { var i = $('img', av); if (i) i.remove(); if (!$('.s-ini', av)) av.appendChild(el('span', 's-ini', esc(L.initials(who)))); }
+    if (av) { var im = $('img', av); if (!im || L.isBlankAvatar(im.getAttribute('src')) || (im.complete && !im.naturalWidth)) ini(); else im.addEventListener('error', ini); }
     fillIn(sub, '.s-age', age ? '<span>Age</span>' + esc(age) : '');
     fillIn(sub, '.s-pron', m.pronouns ? '<span>Pronouns</span>' + esc(m.pronouns) : '');
     fillIn(sub, '.s-faction', m.faction ? esc(m.faction) : '');
@@ -945,6 +1325,202 @@ var OutlastSettings = {
   }
 
 
+  /* ---------- topic view: Jcink prints each post as a three-row table; reshape it into a file entry.
+     Nodes are moved, never copied, so ids (pid_N), anchors (entryN) and Jcink's quick edit keep working. ---------- */
+  function before(a, b) { return !!(a.compareDocumentPosition(b) & 4); }
+  function moveKids(from, to) { while (from && from.firstChild) to.appendChild(from.firstChild); }
+  function blank(n) { return !n || (L.isBlankText(n.innerHTML) && !$('img,input,select', n)); }
+
+  function buildEntry(td) {
+    var table = td.closest('table'), wrap = table.parentNode;
+    if (!(wrap.tagName === 'SPAN' && /\bpost-/.test(wrap.className))) wrap = table;
+    var art = el('article', 'entry' + (wrap !== table ? ' ' + wrap.className : ''));
+    var anchor = $('a[name^="entry"]', table); if (anchor) art.appendChild(anchor);
+
+    /* the author: Jcink's author panel macro, then the contact buttons from the bottom row */
+    var side = el('aside', 'e-author'), name = $('.normalname,.unreg', table), mini = $('.miniprofile', table) || td.previousElementSibling;
+    if (name) side.appendChild(name);
+    if (mini && mini !== td) moveKids(mini, side);
+    $$('img', side).forEach(function (i) { if (i.getAttribute('height') === '1' || /spacer\.gif/.test(i.src)) i.remove(); });
+    if (!$('.subject', side)) side.classList.add('plain');
+    var contact = el('div', 'e-contact'), bottom = $('.post-buttons-bottom', table), ip = $('.ip_address', table);
+    if (bottom) moveKids(bottom, contact);
+    if (ip && !blank(ip)) { ip.classList.add('e-ip'); contact.appendChild(ip); }
+    if (contact.firstChild) side.appendChild(contact);
+
+    /* the sheet: date and stamps, the post, the signature */
+    var sheet = el('div', 'e-sheet'), head = el('div', 'e-head');
+    var when = $('.postdetails', table.rows[0]), link = when && $('a', when);
+    if (when) {
+      var date = txt(when).replace(/^Posted:?\s*/i, '');
+      var d = link || el('span');
+      d.className = 'e-date'; d.removeAttribute('style'); d.textContent = date;
+      head.appendChild(d);
+    }
+    var top = $('.post-buttons-top', table);
+    if (top && !blank(top)) {
+      var stamps = el('div', 'e-stamps'); moveKids(top, stamps);
+      $$('a', stamps).forEach(function (a) {
+        var h = a.getAttribute('href') || '';
+        a.classList.add(/delete_post|CODE=04/.test(h) ? 'st-del' : /CODE=08/.test(h) ? 'st-edit' : /CODE=06/.test(h) ? 'st-quote' : 'st-other');
+      });
+      head.appendChild(stamps);
+    }
+    sheet.appendChild(head);
+    var body = el('div', 'e-body'); body.id = td.id; td.removeAttribute('id');
+    moveKids(td, body); sheet.appendChild(body);
+
+    art.appendChild(side); art.appendChild(sheet);
+    wrap.parentNode.insertBefore(art, wrap);
+    wrap.remove();
+    return art;
+  }
+
+  /* inside a post: quote headers, edit lines, big pictures */
+  function dressPost(body) {
+    $$('.quotetop', body).forEach(function (q) {
+      var main = q.nextElementSibling, note = el('div', 'note');
+      var h = L.quoteHead(txt(q)), back = $('a', q);
+      if (h.name) {
+        q.innerHTML = '<b>' + esc(h.name) + '</b>' + (h.date ? ' <span>' + esc(h.date) + '</span>' : '');
+        if (back) { back.textContent = '\u2197'; back.setAttribute('aria-label', 'Go to the quoted post'); back.className = 'q-back'; q.appendChild(back); }
+      }
+      q.parentNode.insertBefore(note, q); note.appendChild(q);
+      if (main && main.classList.contains('quotemain')) note.appendChild(main);
+    });
+    $$('.edit', body).forEach(function (e) {
+      var m = L.editLine(txt(e));
+      if (m) e.innerHTML = 'Amended by <b>' + esc(m.name) + '</b> <span>' + esc(m.date) + '</span>';
+    });
+    $$('.postcolor img', body).forEach(function (img) {
+      function size() { if (img.naturalWidth >= 300) img.classList.add('ph'); }
+      if (img.complete) size(); else img.addEventListener('load', size);
+    });
+  }
+
+  function initTopic() {
+    var posts = $$('td[id^="pid_"]');
+    if (!posts.length) return;
+    root.classList.add('is-topic');
+    var box = posts[0].closest('.tableborder'), title = $('.topic-title'), desc = $('.topic-desc');
+
+    /* the topic title is the page heading; its description sits under it */
+    var ph = $('.pagehead');
+    if (ph && title && txt(title)) {
+      ph.textContent = txt(title);
+      var d = desc ? txt(desc).replace(/^[,\s]+/, '') : '';
+      if (d) ph.insertAdjacentElement('afterend', el('p', 'pagedesc', esc(d)));
+    }
+    doc.title = (title ? txt(title) + ' \u00b7 ' : '') + doc.title;
+
+    posts.forEach(function (td) { dressPost(buildEntry(td)); });
+
+    /* the case file: entries only. Title and the Track / Email / Print bar move out */
+    var tools = $$('.postlinksbar a, #topic_open a').map(function (a) { return { text: txt(a), href: a.getAttribute('href') }; });
+    if (box) {
+      box.classList.add('casefile');
+      $$('.maintitle', box).forEach(function (m) { if ($('.topic-title', m)) m.remove(); });
+      $$('.postlinksbar', box).forEach(function (n) { n.remove(); });
+    }
+
+    /* button rows: Jcink prints one above and one below. Keep the top one with the pages; the reply box replaces the bottom one */
+    var rows = $$('.button-large').map(function (b) { return b.closest('table'); })
+      .filter(function (t, i, a) { return t && a.indexOf(t) === i && (!box || !box.contains(t)); });
+    var bar = el('div', 't-bar'), pages = null;
+    rows.forEach(function (t) {
+      if (box && before(t, box)) {
+        pages = $('.pagination', t);
+        var left = el('div', 't-pages'), acts = el('div', 't-acts');
+        if (pages) left.appendChild(pages);
+        $$('a', t).forEach(function (a) { if ($('.button-large', a)) acts.appendChild(a); });
+        bar.appendChild(left); bar.appendChild(acts);
+        t.parentNode.insertBefore(bar, t);
+      }
+      t.remove();
+    });
+    if (box) $$('br', box.parentNode).forEach(function (b) { if (b.parentNode === box.parentNode) b.remove(); });
+
+    /* under the entries: pages again, then older / forum / newer */
+    var strips = box ? $$('.activeuserstrip', box) : [], nav = el('nav', 't-nav');
+    nav.setAttribute('aria-label', 'Topic pages');
+    if (pages) nav.appendChild(pages.cloneNode(true));
+    var files = el('div', 't-files');
+    strips.forEach(function (s) {
+      var older = $('a[href*="view=old"]', s), newer = $('a[href*="view=new"]', s), forum = $('a[href*="showforum="]', s);
+      if (!older && !newer) return;
+      if (older) { older.textContent = '\u2190 Older topic'; older.rel = 'prev'; files.appendChild(older); }
+      if (forum) { forum.className = 'to-forum'; files.appendChild(forum); }
+      if (newer) { newer.textContent = 'Newer topic \u2192'; newer.rel = 'next'; files.appendChild(newer); }
+      s.remove();
+    });
+    if (files.firstChild) nav.appendChild(files);
+
+    /* who is reading: one line, names first */
+    var readers = null;
+    strips.forEach(function (s) {
+      if (!s.parentNode || !/reading/i.test(txt(s))) return;
+      var c = L.readers(txt(s)), list = s.nextElementSibling, names = list && !list.classList.contains('activeuserstrip') ? $$('a', list) : [];
+      readers = el('p', 'readers', '<span>Reading now</span> ');
+      names.forEach(function (a, i) { if (i) readers.appendChild(doc.createTextNode(', ')); readers.appendChild(a); });
+      var more = [];
+      if (c.guests) more.push(c.guests + (c.guests === 1 ? ' guest' : ' guests'));
+      if (c.anon) more.push(c.anon + ' anonymous');
+      if (more.length) readers.appendChild(doc.createTextNode((names.length ? ', ' : '') + more.join(', ')));
+      if (list && list !== s && !list.classList.contains('activeuserstrip')) list.remove();
+      s.remove();
+    });
+
+    /* the ad (free boards): left as it is, in its own strip */
+    var ad = null;
+    if (box) $$('ins, iframe, .mock-ad', box).forEach(function (n) {
+      if (ad) return;
+      var c = n; while (c.parentNode !== box) c = c.parentNode;
+      if (!c.classList.contains('entry')) { ad = el('div', 'ad-slot'); ad.appendChild(c); }
+    });
+
+    /* the reply box: always open for members, with the options on one line */
+    var qr = $('#qr_open');
+    if (qr) {
+      qr.style.display = ''; qr.classList.add('reply');
+      $$('[onclick*="qr_open"], a[href*="qr_open"]', doc).forEach(function (b) { if (!qr.contains(b) || b.tagName === 'INPUT') b.remove(); });
+      var pad = $('.tablepad', qr), ta = pad && $('textarea', pad);
+      if (pad && ta) {
+        var opts = el('div', 'qr-opts'), go = el('div', 'qr-go');
+        $$('input[type=checkbox]', pad).forEach(function (cb) {
+          var lab = el('label'), t = cb.nextSibling;
+          cb.parentNode.insertBefore(lab, cb); lab.appendChild(cb);
+          if (t && t.nodeType === 3) { lab.appendChild(doc.createTextNode(' ' + t.nodeValue.replace(/[\s\u00a0|]+/g, ' ').trim())); t.remove(); }
+          opts.appendChild(lab);
+        });
+        var emo = $('a[href*="emo_pop"]', pad); if (emo) { emo.textContent = 'Smilies'; opts.insertBefore(emo, opts.firstChild); }
+        $$('input[type=submit], input[type=button], select, input[type=text]', pad).forEach(function (i) { go.appendChild(i); });
+        var main = $('input[name=submit]', go); if (main) main.classList.add('primary');
+        pad.innerHTML = ''; pad.appendChild(ta); pad.appendChild(opts); pad.appendChild(go);
+      }
+    }
+
+    /* tools, search, forum jump: one strip at the foot */
+    var foot = el('div', 't-foot'), list = L.topicTools(tools);
+    if (readers) foot.appendChild(readers);
+    if (list.length) {
+      var ul = el('ul', 't-tools');
+      list.forEach(function (t) { var li = el('li'), a = el('a', '', esc(t.text)); a.href = t.href; li.appendChild(a); ul.appendChild(li); });
+      foot.appendChild(ul);
+    }
+    $$('.postlinksbar, #topic_open').forEach(function (n) { n.remove(); });
+    var search = $('#search-this-topic'), jump = $('form[name=jumpmenu]'), holder = (search || jump) && (search || jump).parentNode;
+    [search, jump].forEach(function (f) { if (f) [].slice.call(f.childNodes).forEach(function (n) { if (n.nodeType === 3 && !n.nodeValue.replace(/[\s\u00a0]+/g, '')) n.remove(); }); });
+    if (search) { var kw = $('input[name=keywords]', search); if (kw) { kw.removeAttribute('onfocus'); kw.setAttribute('aria-label', 'Search this topic'); } foot.appendChild(search); }
+    if (jump) { var sel = $('select', jump); if (sel) sel.setAttribute('aria-label', 'Jump to a forum'); foot.appendChild(jump); }
+    if (holder && holder !== doc.body && !$('form,input,select', holder)) holder.remove();
+
+    /* order under the entries */
+    var after = box || bar, mark = doc.createComment('');
+    after.parentNode.insertBefore(mark, after.nextSibling);
+    [nav, qr, foot, ad].forEach(function (n) { if (n && (n !== nav || nav.firstChild)) mark.parentNode.insertBefore(n, mark); });
+    mark.remove();
+  }
+
   function ready(fn) {
     if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', fn); else fn();
   }
@@ -952,7 +1528,7 @@ var OutlastSettings = {
     $$('#shoutbox').forEach(function (s) { s.remove(); });
     tidyRows();
     fixAvatars();
-    if (root.classList.contains('is-index')) { initIndex(); initCorridor(); initNightVision(); } else { markSolo(); initInner(); }
+    if (root.classList.contains('is-index')) { initIndex(); initCorridor(); initNightVision(); } else { markSolo(); initInner(); if (L.isTopic(location.search)) initTopic(); }
     initSubjects();
   });
 })();

@@ -203,7 +203,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 /* ===== topic lists (pink) ===== */
 .forumhead{margin:0 0 18px}
 .fdesc{margin:0;font-size:17px;color:#d8d6e0}
-.newtopic,.reply,.pages,.topicbar{display:none}
+.newtopic,.pages{display:none}
 .tl-sec{display:inline-block;margin:18px 0 0;padding:4px 42px 3px 14px;background:var(--acc);color:var(--acc-ink);font:700 15px var(--hud);text-transform:uppercase;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 100%,0 100%)}
 .topic{position:relative;display:grid;grid-template-columns:32px 1fr 150px 170px;gap:16px;align-items:center;padding:12px 18px;background:linear-gradient(90deg,var(--row),var(--row2));border-bottom:1px solid rgba(0,0,0,.7);transition:margin .15s,padding .15s,background .15s}
 .t-st{display:grid;place-items:center;width:30px;height:30px;border:2px solid rgba(255,255,255,.4);font:700 14px var(--hud);color:var(--dim)}
@@ -223,28 +223,133 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .topic:hover *,.topic:focus-within *{color:var(--acc-ink)}
 .topic:hover .t-st,.topic:focus-within .t-st{border-color:var(--acc-ink);background:none}
 
-/* ===== topics (cyan) ===== */
-.post{display:grid;grid-template-columns:200px 1fr;gap:28px;margin:0 0 28px}
-.mini{text-align:center}
-.m-av{display:block;width:176px;height:176px;margin:6px auto 0;object-fit:cover;border:6px solid #f2f2f2;transform:rotate(-3deg);box-shadow:7px 9px 0 rgba(0,0,0,.55);background:#18222a}
-.m-av.ini{display:grid;place-items:center;font:700 52px var(--hud);color:#fff}
-.m-name{position:relative;display:block;width:fit-content;max-width:100%;margin:-16px auto 0;padding:6px 16px;background:var(--acc);color:var(--acc-ink);font:700 19px/1.3 var(--sans);text-decoration:none;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);overflow-wrap:anywhere}
-.m-rows{margin:14px 0 0;text-align:left}
-.m-rows div{display:flex;justify-content:space-between;gap:10px;padding:4px 4px;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px}
-.m-rows dt{font:400 11px/1.9 var(--hud);text-transform:uppercase;color:var(--dim)}
-.m-rows dd{margin:0}
-.p-main{min-width:0;padding:16px 28px 16px;background:rgba(3,7,11,.92);border-top:3px solid var(--acc);box-shadow:0 14px 34px rgba(0,0,0,.5)}
-.p-head{display:flex;justify-content:space-between;margin-bottom:14px;font:400 12px var(--hud);text-transform:uppercase;color:var(--dim)}
-.p-head a{color:var(--acc);text-decoration:none}
-.postcolor{font-size:18px;line-height:1.75;max-width:72ch;overflow-wrap:anywhere}
-.signature{margin-top:22px;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--acc) 35%,transparent);font-size:14px;color:var(--dim)}
-.p-btns{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px 22px;margin-top:16px}
-.p-btns a{display:inline-flex;align-items:center;gap:7px;font-size:15px;text-decoration:none}
-.p-btns a:hover{color:var(--acc)}
-.qr{margin:10px 0 0 228px;padding:0 0 18px}
-.qr label{display:inline-block;padding:4px 42px 3px 14px;background:var(--acc);color:var(--acc-ink);font:700 15px var(--hud);text-transform:uppercase;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 100%,0 100%)}
-.qr textarea{display:block;width:100%;margin:0 0 12px;padding:14px;background:rgba(3,7,11,.92);color:#fff;border:0;border-top:3px solid var(--acc);font:17px/1.6 var(--sans);resize:vertical}
-.qr button{float:right;padding:9px 26px;background:var(--acc);color:var(--acc-ink);border:0;font:700 17px var(--sans);cursor:pointer;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+/* ===== topics (cyan): every post a class-trial statement ===== */
+.gone,.pg-topic #innerwrapper>br,.pg-topic .postlinksbar{display:none!important}
+.tdesc{display:block;margin-top:2px;font:400 15px/1.4 var(--sans);color:#cfe9ee}
+.pgno a,.pgno b,.pgno .gap{display:inline-block;min-width:24px;margin:6px 2px 0;padding:3px 5px 2px;font:700 12px/1 var(--hud);text-decoration:none;color:var(--dim)}
+.pgno a{border:1px solid rgba(255,255,255,.3);color:#fff}
+.pgno a:hover,.pgno a:focus-visible{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.pgno b{background:var(--acc);color:var(--acc-ink)}
+.thread{margin:0}
+.stmt-wrap{display:block;margin:0 0 40px}
+.stmt-wrap>.darkrow1{display:none}
+table.stmt{display:grid;grid-template-columns:210px minmax(0,1fr);grid-template-areas:"mini head" "mini body" "mini foot" "ip .";grid-template-rows:auto 1fr auto;column-gap:30px;width:100%;border:0;border-spacing:0}
+table.stmt>tbody,table.stmt>tbody>tr{display:contents}
+table.stmt>tbody>tr>td{display:block;border:0;min-width:0}
+:where(table.stmt>tbody>tr>td){padding:0}
+.s-head{grid-area:head}.s-mini{grid-area:mini}.s-body{grid-area:body}.s-foot{grid-area:foot}.s-ip{grid-area:ip;padding-top:10px!important;font-size:12px;color:var(--dim)}
+.s-head,.s-body,.s-foot{background:rgba(3,7,11,.93)}
+/* head: the speaker's name plate on the box, date, buttons, post number */
+.s-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding:0 20px 0 0;border-top:3px solid var(--acc)}
+.plate-name{position:relative;align-self:stretch;display:flex;align-items:center;margin:-14px 0 0 -10px;padding:7px 28px 6px 20px;background:var(--acc);clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);box-shadow:0 0 0 2px #000}
+.plate-name a,.plate-name span{color:var(--acc-ink);font:800 21px/1.2 var(--sans);text-decoration:none;overflow-wrap:anywhere}
+.plate-name a:hover{text-decoration:underline}
+.when{font:400 12px var(--hud);text-transform:uppercase;color:var(--dim);padding-top:6px}
+.post-buttons-top{display:flex;flex-wrap:wrap;gap:4px 18px;margin-left:auto;padding-top:6px}
+.post-buttons-top a,.s-foot a{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;font-size:15px}
+.post-buttons-top a:hover,.post-buttons-top a:focus-visible,.s-foot a:hover,.s-foot a:focus-visible{color:var(--acc)}
+.button-small{all:unset}
+.pnum{padding-top:6px;font:700 12px var(--hud);color:var(--acc);text-decoration:none}
+.pnum:hover{text-decoration:underline}
+/* the speech box */
+.s-body{position:relative;padding:20px 28px 10px}
+.s-body::before{content:'';position:absolute;left:-14px;top:26px;border:14px solid transparent;border-left:0;border-right-color:rgba(3,7,11,.93)}
+.postcolor{font-size:18px;line-height:1.75;max-width:74ch;overflow-wrap:anywhere}
+.postcolor b,.postcolor strong{font-weight:800;color:#fff}
+.postcolor a{color:var(--acc)}
+.postcolor img{max-width:100%;height:auto}
+.edit{display:block;margin-top:18px;font-size:13px;color:var(--dim)}
+.edit b{font-weight:500;color:#cfe9ee}
+.signature{max-width:74ch;margin-top:24px;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--acc) 35%,transparent);font-size:14px;color:var(--dim);overflow-wrap:anywhere}
+.signature img{max-width:100%;height:auto}
+/* quotes: evidence cards */
+.quotetop{display:flex;align-items:center;gap:12px;max-width:74ch;margin:6px 0 0;padding:6px 12px 5px 0;background:#000;font-size:14px}
+.quotetop::before{content:'';flex:none;width:30px;height:12px;margin-left:12px;background:var(--acc);border-radius:0 7px 7px 0;box-shadow:inset 6px 0 0 rgba(0,0,0,.35)}
+.ev-who{color:#fff;font-weight:700}
+.ev-when{font:400 11px var(--hud);text-transform:uppercase;color:var(--dim)}
+.ev-go{margin-left:auto;color:var(--acc)!important;text-decoration:none;font-size:16px}
+.quotemain{max-width:74ch;margin:0 0 6px;padding:12px 18px 14px;background:#eaf6f8;color:#0c1215;border-left:6px solid var(--acc);font-size:16px;line-height:1.6;clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%)}
+.quotemain a{color:#04606d}
+.quotemain .quotemain{background:#d3ebef}
+/* code */
+.codetop{display:inline-block;margin:6px 0 0;padding:3px 26px 2px 10px;background:var(--acc);color:var(--acc-ink);font:700 11px var(--hud);text-transform:uppercase;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%)}
+.codemain{max-width:74ch;max-height:420px;overflow:auto;margin:0 0 6px;padding:12px 16px;background:#000;border:2px dashed color-mix(in srgb,var(--acc) 55%,transparent);font:15px/1.6 ui-monospace,Consolas,monospace;color:#d8f6fb;overflow-wrap:normal}
+/* foot: PM / Email, back to top */
+.s-foot{padding:6px 20px 12px 28px;border-bottom:1px solid color-mix(in srgb,var(--acc) 40%,transparent)}
+.post-buttons-bottom{display:flex;gap:4px 18px;float:none!important;background:none}
+.s-foot a{font:400 12px var(--hud);text-transform:uppercase;color:var(--dim)}
+table.stmt>tbody>tr>td.s-foot{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.s-foot>div[align=right]{margin-left:auto}
+.s-foot .up{display:grid;place-items:center;width:26px;height:22px;border:1px solid rgba(255,255,255,.3)}
+.s-foot .up::before{content:'';border:6px solid transparent;border-top:0;border-bottom:8px solid currentColor}
+/* the author panel: portrait, talent, rows */
+.s-mini{text-align:center}
+.s-mini>br,.s-mini>img,.s-mini>.postdetails~br{display:none}
+.s-mini .postdetails{display:block;font-size:14px}
+.dr-av{display:block}
+.dr-pic{display:block;width:180px;height:180px;margin:4px auto 0;object-fit:cover;border:6px solid #f2f2f2;transform:rotate(-3deg);box-shadow:7px 9px 0 rgba(0,0,0,.55);background:#18222a}
+.dr-pic.ini{display:grid;place-items:center;font:800 58px var(--sans);letter-spacing:.02em;color:#fff;background:linear-gradient(135deg,#0d3a44,#18222a)}
+.dr-talent{margin:18px 0 0;font:700 14px/1.3 var(--hud);text-transform:uppercase;color:#f1e21a;overflow-wrap:anywhere}
+.dr-title{margin-top:3px;font-size:14px;color:#cfe9ee}
+.dr-rows{margin:12px 0 0;text-align:left}
+.dr-rows div{display:flex;justify-content:space-between;gap:10px;padding:4px 4px;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px}
+.dr-rows dt{font:400 11px/1.9 var(--hud);text-transform:uppercase;color:var(--dim)}
+.dr-rows dd{margin:0;text-align:right;overflow-wrap:anywhere;min-width:0}
+.dr-warn{margin-top:8px;font-size:13px}
+/* Jcink's default author panel, if the macro isn't changed */
+.s-mini .postbit{padding:3px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.s-mini .postbit img{max-width:100%;height:auto}
+/* who is reading */
+.readers{margin:0 0 24px}
+.readers .tab{display:table}
+.readers .roster{display:inline-flex;vertical-align:bottom;min-height:0;min-width:120px;max-width:100%;padding:10px 26px 0;border-width:4px}
+.readers .sil{width:24px;height:72px}
+.readers .who{display:inline-block;vertical-align:bottom;margin:0 0 6px 14px;font-size:12px}
+/* older / newer topic */
+.trail{display:flex;justify-content:space-between;gap:12px;margin:0 0 26px}
+.trail a{display:inline-flex;align-items:center;gap:10px;padding:8px 20px;background:#050407;border:2px solid var(--acc);color:#fff;text-decoration:none;font:500 17px var(--sans);transform:skewX(-14deg)}
+.trail a>*,.trail a{text-shadow:none}
+.trail .newer{margin-left:auto}
+.trail .older::before,.trail .newer::after{content:'';border:6px solid transparent}
+.trail .older::before{border-left:0;border-right:8px solid var(--acc)}
+.trail .newer::after{border-right:0;border-left:8px solid var(--acc)}
+.trail a:hover,.trail a:focus-visible{background:var(--acc);color:var(--acc-ink)}
+.trail a:hover::before,.trail a:hover::after{border-left-color:transparent;border-right-color:transparent}
+/* Jcink's ad, framed but untouched */
+.adframe{margin:0 0 30px;padding:10px;overflow-x:auto;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.12)}
+.adframe table{width:100%;table-layout:fixed;border:0}
+/* fast reply: your statement */
+#qr_open.qr{margin:0 0 26px}
+.qr .tableborder{background:none;border:0}
+.qr .tablepad{padding:0;text-align:left}
+.qr textarea{display:block;width:100%;min-height:190px;margin:0;padding:16px 18px;background:rgba(3,7,11,.93);color:#fff;border:0;border-top:3px solid var(--acc);font:17px/1.65 var(--sans);resize:vertical}
+.qr-opts{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;padding:10px 18px;background:rgba(0,0,0,.7);font-size:14px;color:var(--dim)}
+.qr-opts a{color:#fff}
+.qr-opts label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.qr-opts input{accent-color:var(--acc);width:16px;height:16px;margin:0}
+.qr-btns{display:flex;justify-content:flex-end;gap:14px;margin-top:12px}
+.qr-btns input,.t-find .forminput{width:auto}
+.qr-btns input{padding:9px 26px;border:0;font:700 17px var(--sans);cursor:pointer;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.qr-btns .go{background:var(--acc);color:var(--acc-ink)}
+.qr-btns .alt{background:#2a3439;color:#fff}
+.qr-btns input:hover,.qr-btns input:focus-visible{background:#fff;color:#000}
+/* tools: new topic / poll, options, search, jump */
+.tools{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:14px 24px;margin:0 0 20px}
+.t-acts,.t-find{display:flex;flex-wrap:wrap;align-items:flex-start;gap:10px;min-width:0;max-width:100%}
+.t-find form{display:flex;gap:6px;margin:0}
+.t-find br{display:none}
+.tbtn{display:inline-block;padding:7px 16px;background:#050407;border:1px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;font:500 15px var(--sans);cursor:pointer;list-style:none}
+.tbtn::-webkit-details-marker{display:none}
+.tbtn:hover,.tbtn:focus-visible,.opts[open]>.tbtn{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.opts{position:relative}
+.opts ul{position:absolute;z-index:5;left:0;top:calc(100% + 6px);width:min(340px,86vw);margin:0;padding:6px 0;list-style:none;background:#050407;border:2px solid var(--acc);box-shadow:0 14px 30px rgba(0,0,0,.6)}
+.opts li{padding:8px 14px}
+.opts li+li{border-top:1px solid rgba(255,255,255,.1)}
+.opts li a{color:#fff;text-decoration:none;font-weight:700}
+.opts li a:hover{color:var(--acc)}
+.opts li span{display:block;font-size:13px;color:var(--dim)}
+.t-find .textinput,.t-find select{padding:7px 10px;background:rgba(0,0,0,.7);color:#fff;border:1px solid rgba(255,255,255,.3);font:15px var(--sans);max-width:100%}
+.t-find input[type=submit]{padding:7px 14px;background:var(--acc);color:var(--acc-ink);border:0;font:700 13px var(--hud);text-transform:uppercase;cursor:pointer}
 
 /* ===== profile: the report card (pink) ===== */
 .card{display:grid;grid-template-columns:1fr 340px;grid-template-areas:"plate photo" "group photo" "cells photo";grid-template-rows:auto auto 1fr;gap:0 30px;margin:28px 0 40px}
@@ -308,15 +413,32 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
   .t-last br{display:none}
   .t-last{font-size:13px}
   .topic:hover,.topic:focus-within{margin-left:0;padding-left:18px}
-  .post{grid-template-columns:1fr;gap:0}
-  .mini{display:grid;grid-template-columns:96px 1fr;gap:0 16px;align-items:center;text-align:left;margin-bottom:-4px}
-  .m-av{width:88px;height:88px;border-width:4px;grid-row:1/3;margin:0}
-  .m-av.ini{font-size:28px}
-  .m-name{margin:0}
-  .m-rows{display:flex;flex-wrap:wrap;gap:0 14px;margin:6px 0 0}
-  .m-rows div{border:0;padding:0}
-  .p-main{padding:16px 18px;margin-top:14px}
-  .qr{margin-left:0}
+  table.stmt{grid-template-columns:minmax(0,1fr);grid-template-areas:"mini" "head" "body" "foot" "ip";grid-template-rows:none}
+  .s-mini{text-align:left;margin-bottom:22px}
+  .dr-mini{display:grid;grid-template-columns:92px minmax(0,1fr);gap:0 16px;align-items:start}
+  .dr-av{grid-row:1/9}
+  .dr-pic{width:86px;height:86px;border-width:4px;margin:4px 0 0;box-shadow:4px 5px 0 rgba(0,0,0,.55)}
+  .dr-pic.ini{font-size:28px}
+  .dr-talent{margin:4px 0 0}
+  .dr-rows{display:flex;flex-wrap:wrap;gap:2px 14px;margin:6px 0 0}
+  .dr-rows div{border:0;padding:0;gap:6px}
+  .dr-rows dt{line-height:1.7}
+  .s-mini .postdetails{display:flex;flex-wrap:wrap;gap:0 14px}
+  .s-body::before{display:none}
+  .s-bar{padding-right:14px;gap:4px 14px}
+  .plate-name a,.plate-name span{font-size:19px}
+  .post-buttons-top{margin-left:0;width:100%;order:4;padding:4px 0 2px 12px}
+  .pnum{margin-left:auto}
+  .s-body{padding:16px 16px 8px}
+  .s-foot{padding:6px 14px 12px 16px}
+  .postcolor{font-size:17px}
+  .quotemain{padding:10px 14px 12px}
+  .trail a{padding:8px 14px;font-size:15px}
+  .tools,.t-find{flex-direction:column;align-items:stretch}
+  .t-find form{width:100%}
+  .t-find .textinput,.t-find select{flex:1;min-width:0}
+  .qr-btns{justify-content:stretch}
+  .qr-btns input{flex:1;padding:9px 12px}
   .card{grid-template-columns:1fr;grid-template-areas:"photo" "plate" "group" "cells"}
   .card-photo img{width:100%;height:300px}
   .card-plate{margin:-60px 0 0;padding:14px 16px}
@@ -423,9 +545,9 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
     var s = el('span', img.className + ' ini', ((w[0] || '?').charAt(0) + (w.length > 1 ? w[w.length - 1].charAt(0) : '')).toUpperCase());
     img.replaceWith(s);
   }
-  function nameFor(img) { var p = img.closest('.forum, .post, .card'); var n = p && $('.f-by, .m-name, .card-name', p); return txt(n); }
-  d.addEventListener('error', function (e) { var t = e.target; if (t.tagName === 'IMG' && /\b(f-av|m-av)\b/.test(t.className)) initials(t, nameFor(t)); }, true);
-  $$('img.f-av, img.m-av').forEach(function (img) { var s = (img.getAttribute('src') || '').trim(); if (!s || /\/$/.test(s) || (img.complete && !img.naturalWidth)) initials(img, nameFor(img)); });
+  function nameFor(img) { var p = img.closest('.forum, .stmt, .card'); var n = p && $('.f-by, .plate-name, .normalname, .card-name', p); return txt(n); }
+  d.addEventListener('error', function (e) { var t = e.target; if (t.tagName === 'IMG' && /\b(f-av|dr-pic)\b/.test(t.className)) initials(t, nameFor(t)); }, true);
+  $$('img.f-av').forEach(function (img) { var s = (img.getAttribute('src') || '').trim(); if (!s || /\/$/.test(s) || (img.complete && !img.naturalWidth)) initials(img, nameFor(img)); });
 
   /* ---------- the button-prompt bar ---------- */
   var prompts = $('.prompts');
@@ -446,26 +568,196 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
     if (page !== 'profile') prompt('o', 'Return', back ? back.getAttribute('href') : 'index.php');
   }
 
-  /* pagination as L1 / R1 around the banner */
+  /* pagination: L1 / R1 around the banner, and the page numbers under its title.
+     Reads Jcink's .pagination (topics) or the topic list's .pages. */
   function pager(banner) {
-    var cur = $('.pages b'); if (!cur || !banner) return;
-    var prev = cur.previousElementSibling, next = cur.nextElementSibling;
+    if (!banner) return;
+    var box = $('.pagination') || $('.pages'); if (!box) return;
+    var items = $$('.pagination_current, .pagination_page a, b, a', box).filter(function (e, i, all) {
+      return /^\d+$/.test(txt(e)) && all.indexOf(e.parentNode) < 0 && !(e.tagName === 'B' && e.parentNode.classList.contains('pagination_current'));
+    });
+    var at = -1; items.forEach(function (e, i) { if (e.tagName !== 'A') at = i; });
+    if (at < 0) return;
     function cap(lbl, a) { var c = el(a ? 'a' : 'span', 'cap' + (a ? '' : ' off'), lbl); if (a) { c.href = a.getAttribute('href'); c.setAttribute('aria-label', lbl === 'L1' ? 'Previous page' : 'Next page'); } return c; }
-    banner.insertBefore(cap('L1', prev && prev.tagName === 'A' ? prev : null), banner.firstChild);
-    banner.appendChild(cap('R1', next && next.tagName === 'A' ? next : null));
-    var last = Math.max.apply(0, $$('.pages a, .pages b').map(function (a) { return parseInt(txt(a), 10) || 0; }));
-    $('.ttl', banner).appendChild(el('span', 'pgno', 'Page ' + txt(cur) + ' / ' + last));
+    banner.insertBefore(cap('L1', items[at - 1]), banner.firstChild);
+    banner.appendChild(cap('R1', items[at + 1]));
+    var nav = el('nav', 'pgno'); nav.setAttribute('aria-label', 'Pages');
+    var total = (txt($('.pagination_pagetxt', box)).match(/\((\d+)\)/) || [])[1];
+    var shown = items.map(function (e) { return +txt(e); });
+    if (total && shown.indexOf(+total) < 0) { var lastA = $('.pagination_last a', box); if (lastA) { var lp = el('a', '', total); lp.href = lastA.getAttribute('href'); items.push(lp); } }
+    items.forEach(function (e, i) {
+      if (i && +txt(e) - +txt(items[i - 1]) > 1) nav.appendChild(el('span', 'gap', '&hellip;'));
+      var n = el(i === at ? 'b' : 'a', '', esc(txt(e)));
+      if (i === at) n.setAttribute('aria-current', 'page'); else n.href = e.getAttribute('href');
+      nav.appendChild(n);
+    });
+    $('.ttl', banner).appendChild(nav);
+    if (box.classList.contains('pagination')) box.remove();
   }
 
   if (page === 'index') initIndex();
   if (page === 'list') { pager($('.banner')); var nt = $('.newtopic'); if (nt) prompt('x', 'New topic', nt.getAttribute('href')); }
-  if (page === 'topic') {
-    pager($('.banner'));
-    var rp = $('.reply'); if (rp) prompt('x', 'Reply', rp.getAttribute('href'));
-    $$('.p-btns a').forEach(function (a, i) { var k = { Quote: 't', Edit: 's', Report: 'x' }[txt(a)] || 'o'; a.insertAdjacentHTML('afterbegin', '<i class="k k-' + k + '" aria-hidden="true"></i>'); });
-  }
+  if (page === 'topic') initTopic();
   if (page === 'profile') initProfile();
   if (page === 'form') initForm();
+
+  /* ---------- topics: every post a class-trial statement ---------- */
+  function initTopic() {
+    var banner = $('.banner'), tt = $('.topic-title');
+    /* the banner takes the topic's own title and description; Jcink's title bar goes */
+    if (tt && banner) {
+      $('.ttl', banner).textContent = txt(tt);
+      var ds = txt($('.topic-desc')).replace(/^,\s*/, '');
+      if (ds) $('.ttl', banner).appendChild(el('span', 'tdesc', esc(ds)));
+      var mt = tt.closest('.maintitle'); if (mt) mt.remove();
+    }
+    pager(banner);
+
+    var st = +((q.match(/[?&]st=(\d+)/) || [])[1] || 0), tid = (q.match(/showtopic=(\d+)/i) || [])[1];
+    var keys = { quote: 't', edit: 's', 'delete': 'o' };
+    $$('td[id^="pid_"]').forEach(function (body, i) {
+      var t = body.closest('table'), rows = t.rows; if (rows.length < 2) return;
+      t.classList.add('stmt'); t.parentNode.classList.add('stmt-wrap');
+      var nameCell = rows[0].cells[0], head = rows[0].cells[1], mini = rows[1].cells[0];
+      var foot = rows[2] && rows[2].cells[1], ip = rows[2] && rows[2].cells[0], pid = body.id.slice(4);
+      body.classList.add('s-body'); mini.classList.add('s-mini');
+      /* head: name plate, date, the post's buttons and its number */
+      if (head && nameCell) {
+        nameCell.classList.add('gone'); head.classList.add('s-head');
+        var name = $('.normalname, .unreg', nameCell), plate = el('span', 'plate-name');
+        if (name) plate.appendChild(name);
+        var det = $('.postdetails', head), when = el('span', 'when');
+        if (det) { var lab = $('b', det); if (lab) lab.remove(); when.textContent = txt(det); }
+        var btns = $('.post-buttons-top', head) || el('div', 'post-buttons-top');
+        $$('a', btns).forEach(function (a) { a.insertAdjacentHTML('afterbegin', '<i class="k k-' + (keys[txt(a).toLowerCase()] || 'x') + '" aria-hidden="true"></i>'); });
+        var num = el('a', 'pnum', '#' + (st + i + 1));
+        num.href = 'index.php?showtopic=' + (tid || '') + '&view=findpost&p=' + pid; num.title = 'Link to this post';
+        var bar = el('div', 's-bar'); bar.appendChild(plate); bar.appendChild(when); bar.appendChild(btns); bar.appendChild(num);
+        head.innerHTML = ''; head.appendChild(bar);
+      }
+      /* the author panel */
+      var dm = $('.dr-mini', mini);
+      if (dm) {
+        $$('.dr-rows > div', dm).forEach(function (r) { if (!txt($('dd', r))) r.remove(); });
+        ['.dr-title', '.dr-warn'].forEach(function (s) { var e = $(s, dm); if (e && !txt(e) && !$('img', e)) e.remove(); });
+        var tal = $('.dr-talent', dm);
+        if (tal) { var tv = txt(tal); if (!tv) tal.remove(); else tal.textContent = /^ultimate\b/i.test(tv) ? tv : 'Ultimate ' + tv; }
+        var av = $('.dr-av', dm), img = $('img', av), who = txt($('.plate-name', t));
+        if (img) { img.className = 'dr-pic'; img.alt = ''; var src = (img.getAttribute('src') || '').trim(); if (!src || /\/$/.test(src) || (img.complete && !img.naturalWidth)) initials(img, who); }
+        else if (av) { var ph = el('img', 'dr-pic'); av.appendChild(ph); initials(ph, who); }
+      }
+      /* foot: PM / Email, and back to top */
+      if (foot) {
+        foot.classList.add('s-foot');
+        $$('a', foot).forEach(function (a) { if (/^javascript:scroll/i.test(a.getAttribute('href') || '')) { a.className = 'up'; a.textContent = ''; a.setAttribute('aria-label', 'Back to top'); a.title = 'Back to top'; } });
+      }
+      if (ip) { ip.classList.add('s-ip'); if (!txt(ip)) ip.classList.add('gone'); }
+    });
+
+    /* quotes: evidence cards with who said it and when */
+    $$('.quotetop').forEach(function (qt) {
+      var m = txt(qt).match(/^QUOTE\s*\((.*?)\s*@\s*(.*?)\)/i), back = $('a', qt);
+      qt.innerHTML = m ? '<b class="ev-who">' + esc(m[1]) + '</b><span class="ev-when">' + esc(m[2]) + '</span>' : '<b class="ev-who">Quote</b>';
+      if (back) { back.className = 'ev-go'; back.innerHTML = '&#8599;'; back.setAttribute('aria-label', 'Go to the quoted post'); back.title = 'Go to the quoted post'; qt.appendChild(back); }
+    });
+    $$('.codetop').forEach(function (c) { c.textContent = 'Code'; });
+
+    /* who is reading, and the older / newer topic links */
+    $$('.activeuserstrip').forEach(function (s) {
+      var old = $('a[href*="view=old"]', s), nw = $('a[href*="view=new"]', s);
+      if (old || nw) {
+        var trail = el('nav', 'trail'); trail.setAttribute('aria-label', 'Other topics');
+        if (old) { var o = el('a', 'older', 'Older topic'); o.href = old.getAttribute('href'); trail.appendChild(o); }
+        if (nw) { var n = el('a', 'newer', 'Newer topic'); n.href = nw.getAttribute('href'); trail.appendChild(n); }
+        s.replaceWith(trail); return;
+      }
+      var line = txt(s), guests = +((line.match(/(\d+)\s*Guests?/i) || [])[1] || 0), list = s.nextElementSibling;
+      var people = list && /Members?:/i.test(txt(list)) ? $$('a', list) : [];
+      var sec = el('section', 'readers', '<h2 class="tab">Reading</h2><div class="roster"></div><p class="who"></p>'), roster = $('.roster', sec), who = $('.who', sec);
+      var sum = (people.length ? people.length + (people.length === 1 ? ' member' : ' members') : '') + (people.length && guests ? ' and ' : '') + (guests ? guests + (guests === 1 ? ' guest' : ' guests') : '');
+      who.textContent = sum ? sum + ' reading' : 'Nobody else is reading';
+      people.forEach(function (a) {
+        var nm = txt(a), f = el('a', 'sil', figure(hash(nm)));
+        f.href = a.getAttribute('href'); f.title = nm; f.setAttribute('aria-label', nm);
+        function on() { who.textContent = nm; } function off() { who.textContent = sum + ' reading'; }
+        f.addEventListener('mouseenter', on); f.addEventListener('focus', on); f.addEventListener('mouseleave', off); f.addEventListener('blur', off);
+        roster.appendChild(f);
+      });
+      if (!people.length) roster.remove();
+      s.replaceWith(sec); if (people.length || (list && /Members?:/i.test(txt(list)))) list.remove();
+    });
+
+    /* the thread box, and a frame round Jcink's ad (the ad itself is left alone) */
+    var thread = $('td[id^="pid_"]'); thread = thread && thread.closest('.tableborder');
+    if (thread) {
+      thread.classList.add('thread');
+      $$(':scope > div[align="center"]', thread).forEach(function (a) { if ($('td.row4', a)) a.classList.add('adframe'); });
+    }
+    $$('.postlinksbar').forEach(function (p) { p.classList.add('gone'); });
+
+    /* the button tables above and below the thread */
+    var links = {};
+    $$('#innerwrapper .button-large').forEach(function (b) {
+      var a = b.closest('a'); if (!a) return;
+      var h = a.getAttribute('href') || '', k = /CODE=02/.test(h) ? 'reply' : /CODE=00/.test(h) ? 'topic' : /CODE=10/.test(h) ? 'poll' : null;
+      if (k && !links[k]) links[k] = h;
+      var tb = a.closest('table'); if (tb) tb.classList.add('gone');
+    });
+
+    /* fast reply: always open, as your statement box */
+    var qr = $('#qr_open'), ta = qr && $('textarea', qr);
+    if (qr) {
+      qr.style.display = ''; qr.classList.add('qr');
+      var qt2 = $('.maintitle', qr); if (qt2) qt2.className = 'tab';
+      var pad = $('.tablepad', qr);
+      if (pad && ta) {
+        ta.setAttribute('aria-label', 'Your reply'); ta.removeAttribute('cols');
+        var opts = el('div', 'qr-opts'), go = el('div', 'qr-btns');
+        var sm = $$('a', pad).filter(function (a) { return /emo_pop/.test(a.getAttribute('href') || ''); })[0];
+        if (sm) { sm.textContent = 'Smilies'; opts.appendChild(sm); }
+        $$('input[type=checkbox]', pad).forEach(function (c) {
+          var tn = c.nextSibling, lb = el('label'); lb.appendChild(c);
+          if (tn && tn.nodeType === 3) { lb.appendChild(d.createTextNode(' ' + tn.textContent.replace(/ /g, ' ').replace(/\|\s*$/, '').trim())); tn.remove(); }
+          opts.appendChild(lb);
+        });
+        $$('input[type=submit], input[type=button]', pad).forEach(function (b) {
+          if (b.name === 'qrc') b.remove(); else { b.classList.add(b.name === 'submit' ? 'go' : 'alt'); go.appendChild(b); }
+        });
+        [].slice.call(pad.childNodes).forEach(function (n) { if (n.nodeType !== 1 || n.tagName === 'BR') n.remove(); });
+        pad.appendChild(opts); pad.appendChild(go);
+      }
+    }
+
+    /* everything else about the topic in one row: new topic / poll, options, search, jump */
+    var tools = el('div', 'tools'), acts = el('div', 't-acts');
+    if (links.topic) { var a1 = el('a', 'tbtn', 'New topic'); a1.href = links.topic; acts.appendChild(a1); }
+    if (links.poll) { var a2 = el('a', 'tbtn', 'New poll'); a2.href = links.poll; acts.appendChild(a2); }
+    var to = $('#topic_open');
+    if (to) {
+      var det2 = el('details', 'opts', '<summary class="tbtn">Topic options</summary><ul></ul>'), ul = $('ul', det2), seen = {};
+      $$('.tablepad b > a', to).forEach(function (a) {
+        var dsc = a.parentNode.nextElementSibling && a.parentNode.nextElementSibling.nextElementSibling;
+        var li = el('li', '', '<a href="' + esc(a.getAttribute('href')) + '">' + esc(txt(a)) + '</a>' + (dsc && dsc.classList.contains('desc') ? '<span>' + esc(txt(dsc)) + '</span>' : ''));
+        ul.appendChild(li); seen[(a.getAttribute('href').match(/act=(\w+)/) || [])[1]] = 1;
+      });
+      $$('.postlinksbar a').forEach(function (a) {
+        var act = (a.getAttribute('href').match(/act=(\w+)/) || [])[1];
+        if (act && !seen[act]) { ul.appendChild(el('li', '', '<a href="' + esc(a.getAttribute('href')) + '">' + esc(txt(a)) + '</a>')); seen[act] = 1; }
+      });
+      acts.appendChild(det2); to.remove();
+    }
+    tools.appendChild(acts);
+    var find = el('div', 't-find'), srch = $('#search-this-topic'), jump = $('form[name=jumpmenu]');
+    if (srch) { var kw = $('input[name=keywords]', srch); if (kw) kw.setAttribute('aria-label', 'Search this topic'); find.appendChild(srch); }
+    if (jump) { var sel = $('select', jump); if (sel) sel.setAttribute('aria-label', 'Jump to a forum'); find.appendChild(jump); }
+    if (find.children.length) tools.appendChild(find);
+    $$('#innerwrapper > div[align="right"]').forEach(function (dv) { if (!$('form, select, input', dv)) dv.remove(); });
+    var anchor = qr || thread; if (anchor) anchor.parentNode.insertBefore(tools, anchor.nextSibling);
+
+    /* the prompt bar: Reply goes to the reply box when there is one */
+    if (ta) prompt('x', 'Reply', null, function () { ta.scrollIntoView({ block: 'center', behavior: still ? 'auto' : 'smooth' }); ta.focus({ preventScroll: true }); });
+    else if (links.reply) prompt('x', 'Reply', links.reply);
+  }
 
   /* ---------- the floor map: a drawn plan with one room per forum ---------- */
   function drawMap(n, seed) {
