@@ -149,6 +149,7 @@ input[type=submit],input[type=button],input[type=reset]{padding:4px 12px;margin:
 .pf-pic img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover}
 .pf-ini{display:flex;align-items:center;justify-content:center;aspect-ratio:1;width:100%;background:#2a2b24;color:var(--bone);font:300 64px/1 var(--ui);letter-spacing:.04em}
 .pf-clip{position:absolute;right:34px;top:-20px;width:13px;height:50px;border:2px solid #8e918b;border-radius:7px;border-bottom-color:transparent;box-shadow:inset 0 0 0 2px #f1ece0,inset 0 0 0 4px #8e918b;transform:rotate(5deg);z-index:1}
+.pf-clip-sheet{left:46px;right:auto;top:-24px;width:15px;height:58px;box-shadow:inset 0 0 0 2px #ebe7da,inset 0 0 0 4px #8e918b;transform:rotate(-4deg)}
 .pf-title{margin:10px 4px 0;text-align:center;font:400 27px/1.05 var(--hand);color:#233a86;overflow-wrap:anywhere}
 .pf-faction{display:inline-block;margin:26px 0 0 10px;padding:5px 14px 3px;border:3px solid var(--red);color:var(--red);font:400 19px/1.1 var(--worn);letter-spacing:.2em;text-transform:uppercase;transform:rotate(-5deg);opacity:.88;overflow-wrap:anywhere;max-width:calc(100% - 20px)}
 .pf-badges{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
@@ -187,6 +188,7 @@ input[type=submit],input[type=button],input[type=reset]{padding:4px 12px;margin:
   .pf-flap{display:grid;grid-template-columns:118px minmax(0,1fr);gap:4px 18px;align-items:start;margin:0 6px 26px}
   .pf-photo{grid-row:1/span 3;padding:6px 6px 8px}
   .pf-clip{right:16px;top:-14px;height:38px}
+  .pf-clip-sheet{left:24px;right:auto;top:-18px;height:44px}
   .pf-ini{font-size:38px}
   .pf-title{font-size:22px}
   .pf-faction{margin:4px 0 0;justify-self:start;font-size:15px}
@@ -668,7 +670,7 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
 <div class="pf-awards"></div>
 </div>
 <div class="pf-sheet">
-<i class="e-tape"></i>
+<i class="pf-clip pf-clip-sheet"></i>
 <div class="pf-head">
 <b class="pf-kind">Subject file</b>
 <p class="pf-meta"><span class="pf-no">No. 2</span><span class="pf-status">Offline</span></p>
