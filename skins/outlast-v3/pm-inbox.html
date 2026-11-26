@@ -1106,105 +1106,139 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
   <div id="navi"><div id="navstrip" align="left"> &raquo; &nbsp;<a href="?act=idx">Kestrel</a>&nbsp;&rarr;&nbsp;Your control panel</div></div>
   <!-- ===== EDIT: night-vision writing, one <span> per line. Shown only under the lens on the index. ===== -->
   <div id="scrawls" hidden><span>it moves when you blink</span><span>count the doors again</span><span>there was no first trial</span><span>play it backwards</span><span>nobody refills the machine</span><span>that chair was empty a minute ago</span></div>
-  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
-<td id="ucpmenu" valign="top">
-<div class="maintitle">Menu</div>
-<div class="pformstrip">Messenger</div>
-<p>
-&middot; <a href="index.php?act=Msg&amp;CODE=04"><b>Compose New Message</b></a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=01"><b>Go to Inbox</b></a><br>
-&nbsp;&nbsp;'&mdash; <a href="index.php?act=Msg&amp;CODE=01&amp;VID=sent">Sent Items</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=delete">Empty PM Folders</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=07">Edit Storage Folders</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=02">My Friends/Contacts</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=14">Archive Messages</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=01&amp;VID=unsent">Saved (Unsent) PMs</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=30">Message Tracker</a><br>
-</p>
-<div class="pformstrip">Subscriptions</div>
-<p>
-&middot; <a href="index.php?act=UserCP&amp;CODE=26">View Topics</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=50">View Forums</a><br>
-</p>
-<div class="pformstrip">Personal Profile</div>
-<p>
-&middot; <a href="index.php?act=UserCP&amp;CODE=01">Edit Profile info</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=22">Edit Signature</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=24">Edit Avatar Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=dname">Change Username</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=photo">Change Personal Photo</a><br>
-</p>
-<div class="pformstrip">Options</div>
-<p>
-&middot; <a href="index.php?act=UserCP&amp;CODE=alerts">Alert Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=02">Email Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=04">Board Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=shout">Shoutbox Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=06">Skin and Languages</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=08">Change Email Address</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=28">Change Password</a><br>
-</p>
-</td>
-<td style="padding:2px"><!-- --></td>
-<td id="ucpcontent" valign="top">
-<div class="maintitle">Welcome to your control panel</div>
-<form action="index.php?act=Msg&amp;CODE=06&amp;VID=in" name="mutliact" method="post">
+  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div><table cellspacing="0" cellpadding="0" width='100%'>
+<tr>
+ <td id="ucpmenu" valign="top">
+    <div class='maintitle'>Menu</div>
+     <!--IBF.TSLLINKS-->
+	 <!-- Messenger -->
+	 <div class='pformstrip'>Messenger</div>
+	 <p>
+	 &middot; <a href='index.php?act=Msg&amp;CODE=04'><strong>Compose New Message</strong></a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=01'><strong>Go to Inbox</strong></a><br />
+	 &nbsp; &#039;&#8212 <a href='index.php?act=Msg&amp;CODE=01&amp;VID=sent'>Sent Items</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=delete'>Empty PM Folders</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=07'>Edit Storage Folders</a><br />
+	 &middot; <a href="javascript:window.open('index.php?showuser=1&amp;CODE=friends','Friends','width=620,height=460,resizable=yes,scrollbars=yes');void(0);">My Friends/Contacts</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=14'>Archive Messages</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=20'>Saved (Unsent) PMs</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=30'>Message Tracker</a><br />
+	 </p>
+	 <!-- End Messenger -->
+	 <!-- Topic Tracker -->
+	 <div class='pformstrip'>Subscriptions</div>
+	 <p>
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=26'>View Topics</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=50'>View Forums</a><br />
+	 </p>
+	 <!-- Profile -->
+	 <div class='pformstrip'>Personal Profile</div>
+	 <p>
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=01'>Edit Profile info</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=22'>Edit Signature</a><br />
+	 <!--JFB.SUB_ACCOUNTS-->
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=24'>Edit Avatar Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=52'>Change Username</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=photo'>Change Personal Photo</a><br />
+	 </p>
+	 <!-- Options -->
+	 <div class='pformstrip'>Options</div>
+	 <p>
+	 <!--IBF.OPTION_LINKS-->
+	 &middot; <a href='index.php?act=UserCP&CODE=alerts_settings'>Alert Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=02'>Email Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=04'>Board Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&CODE=40'>Shoutbox Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=06'>Skin and Languages</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=08'>Change Email Address</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=28'>Change Password</a>
+	 </p>
+ </td>
+ <td style='padding:2px'><!-- --></td>
+<!-- Start main CP area -->
+ <td id="ucpcontent" valign="top">
+  <div class='maintitle'>Welcome to your control panel </div>
+<!-- inbox folder -->
 <div class="pformstrip">Inbox</div>
-<table width="100%" border="0" cellspacing="0" cellpadding="4"><tbody><tr>
-<td valign="middle">
-<table width="250" border="0" cellspacing="1" cellpadding="4" class="tableborder"><tbody>
-<tr><td class="row1" colspan="3">Your folders are 6% full</td></tr>
-<tr><td class="row1" colspan="3"><img src="//files.jcink.net/style_images/1/bar_left.gif" border="0" width="4" height="11" alt=""><img src="//files.jcink.net/style_images/1/bar.gif" border="0" width="15" height="11" alt=""><img src="//files.jcink.net/style_images/1/bar_right.gif" border="0" width="4" height="11" alt=""></td></tr>
-<tr><td class="row1" width="33%">0%</td><td class="row1" width="33%" align="center">50%</td><td class="row1" width="33%" align="right">100%</td></tr>
-</tbody></table>
-</td>
-<td align="right" valign="middle">
-Pages: <a href="index.php?act=Msg&amp;CODE=01&amp;VID=in&amp;st=all">View all</a><br><br>
-<a href="javascript:select_read()">Select read messages</a> :: <a href="javascript:unselect_all()">Unselect all</a><br><br>
-<b>Jump to folder:</b> <select name="VID" class="forminput"><option value="in" selected="selected">Inbox</option><option value="sent">Sent Items</option></select> <input type="button" value="Go!" class="forminput" onclick="goto_folder()">
-</td>
-</tr></tbody></table>
-<table width="100%" border="0" cellspacing="1" cellpadding="4" class="tableborder"><tbody>
+<table width="100%" style="padding:6px">
 <tr>
-<th class="titlemedium" width="5%">&nbsp;</th>
-<th class="titlemedium" width="40%"><a href="index.php?act=Msg&amp;CODE=01&amp;VID=in&amp;sort=title">Message Title</a></th>
-<th class="titlemedium" width="25%"><a href="index.php?act=Msg&amp;CODE=01&amp;VID=in&amp;sort=name">Sender</a></th>
-<th class="titlemedium" width="25%"><a href="index.php?act=Msg&amp;CODE=01&amp;VID=in&amp;sort=date">Date</a></th>
-<th class="titlemedium" width="5%"><input type="checkbox" name="allbox" value="Check All" onclick="CheckAll();"></th>
+ <td valign="middle">
+  <!-- LEFT -->
+  <table style="width:250px" cellspacing="1" class="tableborder">
+   <tr>
+	<td class='row1' align='left' colspan='3'>Your folders are 6% full</td>
+   </tr>
+   <tr>
+	<td align='left' valign='middle' class='row2' colspan='3'><img src='style_images/1/bar_left.gif' border='0' width='4' height='11' align='middle' alt='' /><img src='style_images/1/bar.gif' border='0' width='14.399999999999999' height='11' align='middle' alt='' /><img src='style_images/1/bar_right.gif' border='0' width='4' height='11' align='middle' alt='' /></td>
+   </tr>
+   <tr>
+	 <td class='row1' width='33%' align='left' valign='middle'>0%</td>
+	 <td class='row1' width='33%' align='center' valign='middle'>50%</td>
+	 <td class='row1' width='33%' align='right' valign='middle'>100%</td>
+   </tr>
+  </table>
+ </td>
+ <!-- RIGHT -->
+ <td align="right" valign="bottom" style="line-height:100%;">
+  <br /><br />
+  <a href='javascript:select_read()'>Select read messages</a> :: <a href='javascript:unselect_all()'>Unselect all</a><br /><br />
+  <form action="index.php?CODE=01&amp;act=Msg" name='jump' method="post">
+  <b>Jump to folder: </b>&nbsp; <select name='VID' class='forminput'>
+<option value='in' selected='selected'>Inbox</option>
+<option value='sent'>Sent Items</option>
+<!--EXTRA--></select>
+ <input type='submit' name='submit' value='Go!' class='forminput' />
+  </form>
+ </td>
 </tr>
-<tr>
-<td class="row2" align="center" valign="middle"><span class='st st-new' title='Unread Message'>!</span></td>
-<td class="row2" valign="middle"><a href="index.php?act=Msg&amp;CODE=03&amp;VID=in&amp;MSID=21">About the east wing</a></td>
-<td class="row2" valign="middle"><a href="index.php?showuser=2">Cass Whitlock-Abernathy</a></td>
-<td class="row2" valign="middle">Today, 04:12 PM</td>
-<td class="row2" align="center" valign="middle"><input type="checkbox" name="msgid_21" value="yes" class="forminput"></td>
+</table>
+<!-- INBOX TABLE -->
+<form action="index.php?CODE=06&amp;act=Msg" name='mutliact' method="post">
+<div class="tableborder">
+  <table cellpadding='4' cellspacing='1' width="100%">
+  <tr>
+	<th width='5%'  class='titlemedium'>&nbsp;</th>
+	<th width='35%' class='titlemedium'><a href='index.php?act=Msg&amp;CODE=01&amp;VID=in&amp;sort=title&amp;st='><b>Message Title</b></a></th>
+	<th width='30%' class='titlemedium'><a href='index.php?act=Msg&amp;CODE=01&amp;VID=in&amp;sort=name&amp;st='><b>Sender</b></a></th>
+	<th width='25%' class='titlemedium'><a href='index.php?act=Msg&amp;CODE=01&amp;VID=in&amp;sort=msg_date&amp;st='><b>Date</b></a></th>
+	<th width='5%'  class='titlemedium'><input name="allbox" type="checkbox" value="Check All" onclick="CheckAll();" /></th>
+  </tr>  <tr class="dlight">
+	<td align="center" valign='middle'><span class='st st-new' title='Unread Message'>!</span></td>
+	<td><a href='index.php?act=Msg&amp;CODE=03&amp;VID=in&amp;MSID=21'>About the east wing</a></td>
+	<td><a href='index.php?showuser=2'>Cass Whitlock-Abernathy</a></td>
+	<td>Today, 04:12 PM</td>
+	<td align="center"><input type='hidden' name='21' value='0' /><input type='checkbox' name='msgid_21' value='yes' class='forminput' onclick="cca(this);" /></td>
+  </tr>  <tr class="dlight">
+	<td align="center" valign='middle'><span class='st st-new' title='Unread Message'>!</span></td>
+	<td><a href='index.php?act=Msg&amp;CODE=03&amp;VID=in&amp;MSID=19'>Re: Night shift swap</a></td>
+	<td><a href='index.php?showuser=4'>Nadia</a></td>
+	<td>Yesterday, 11:40 PM</td>
+	<td align="center"><input type='hidden' name='19' value='0' /><input type='checkbox' name='msgid_19' value='yes' class='forminput' onclick="cca(this);" /></td>
+  </tr>  <tr class="dlight">
+	<td align="center" valign='middle'><span class='st st-read' title='Read Message'>&#10003;</span></td>
+	<td><a href='index.php?act=Msg&amp;CODE=03&amp;VID=in&amp;MSID=12'>Welcome to the board! Here is everything you need to know about getting started</a></td>
+	<td><a href='index.php?showuser=1'>Dorian Vale</a></td>
+	<td>Nov 2 2026, 02:05 PM</td>
+	<td align="center"><input type='hidden' name='12' value='1' /><input type='checkbox' name='msgid_12' value='yes' class='forminput' onclick="cca(this);" /></td>
+  </tr>  <tr>
+   <td align='right' class='titlemedium' colspan='5'>
+	<div style="float: left;"><input type='text' name='search' placeholder='Search this folder...' size='20' maxlength='60' class='textinput' onfocus="this.value=''" />&nbsp;<input type='submit' name='go_search_folder' value='Go' class='forminput' /></div>
+	 <input type='submit' name='move' value='move to' class='forminput' /> <select name='VID' class='forminput'>
+<option value='in' selected='selected'>Inbox</option>
+<option value='sent'>Sent Items</option>
+<!--EXTRA--></select>
+ or <input type='submit' name='delete' value='delete' class='forminput' /> the selected messages
+  </td>
 </tr>
-<tr>
-<td class="row2" align="center" valign="middle"><span class='st st-new' title='Unread Message'>!</span></td>
-<td class="row2" valign="middle"><a href="index.php?act=Msg&amp;CODE=03&amp;VID=in&amp;MSID=19">Re: Night shift swap</a></td>
-<td class="row2" valign="middle"><a href="index.php?showuser=4">Nadia</a></td>
-<td class="row2" valign="middle">Yesterday, 11:40 PM</td>
-<td class="row2" align="center" valign="middle"><input type="checkbox" name="msgid_19" value="yes" class="forminput"></td>
-</tr>
-<tr>
-<td class="row2" align="center" valign="middle"><span class='st st-read' title='Read Message'>&#10003;</span></td>
-<td class="row2" valign="middle"><a href="index.php?act=Msg&amp;CODE=03&amp;VID=in&amp;MSID=12">Welcome to the board! Here is everything you need to know about getting started</a></td>
-<td class="row2" valign="middle"><a href="index.php?showuser=1">Dorian Vale</a></td>
-<td class="row2" valign="middle">Nov 2 2026, 02:05 PM</td>
-<td class="row2" align="center" valign="middle"><input type="checkbox" name="msgid_12" value="yes" class="forminput"></td>
-</tr>
-<tr><td class="darkrow1" colspan="5">
-<input type="text" name="search_folder" value="" placeholder="Search this folder..." class="forminput"> <input type="button" value="Go" class="forminput" onclick="search_folder()">
-<span style="float:right"><input type="submit" name="move" value="move to" class="forminput"> <select name="MOVE_ID" class="forminput"><option value="in">Inbox</option><option value="sent">Sent Items</option></select> or <input type="submit" name="delete" value="delete" class="forminput"> the selected messages</span>
-</td></tr>
-</tbody></table>
+</table>
+</div>
 </form>
-<table width="100%" border="0" cellspacing="0" cellpadding="4"><tbody><tr>
-<td valign="middle"><span class='st st-read' title='Read Message'>&#10003;</span>&nbsp;Read messages<br><span class='st st-new' title='Unread Message'>!</span>&nbsp;Unread messages</td>
-<td align="right" valign="middle">Pages: <a href="index.php?act=Msg&amp;CODE=01&amp;VID=in&amp;st=all">View all</a><br><i>You have 3 messages out of 50 maximum storable messages</i></td>
-</tr></tbody></table>
-</td>
-</tr></tbody></table><script>function select_read(){}function unselect_all(){}function goto_folder(){}function CheckAll(){}function search_folder(){}function find_users(){}function simpletag(){}function alterfont(){}function closeall(){}function setmode(){}function emoticon(){}function emo_pop(){}function CheckLength(){}function ValidateForm(){return false}</script>
+<div class="wrapmini" style="padding:6px"><span class='st st-read' title='Read Message'>&#10003;</span>&nbsp;Read messages<br /><span class='st st-new' title='Unread Message'>!</span>&nbsp;Unread messages</div>
+<div align="right" style="padding:6px"><br /><i>You have 3 messages out of 50 maximum storable messages</i></div>
+ </td>
+</tr>
+</table>
+<!-- end main CP area --><script>function select_read(){}function unselect_all(){}function CheckAll(){}function cca(){}function find_users(){}function simpletag(){}function alterfont(){}function closeall(){}function setmode(){}function hstat(){}function tag_url(){}function tag_image(){}function tag_list(){}function emoticon(){}function emo_pop(){}function CheckLength(){}function ValidateForm(){return false}function PopUp(){}</script>
   <!-- ===== EDIT: affiliates, one link each. Shown at the bottom of the index to everyone; delete the links to hide it. ===== -->
   <div id="affiliates"><a href="#">Affiliate A</a><a href="#">Affiliate B</a></div>
   <div id="skin_selector"><select><option>Outlast</option></select></div>
@@ -1256,6 +1290,11 @@ Pages: <a href="index.php?act=Msg&amp;CODE=01&amp;VID=in&amp;st=all">View all</a
   /* Jcink sometimes prints whitespace or &nbsp; inside an "empty" tag */
   L.isBlankText = function (s) {
     return !String(s == null ? '' : s).replace(/&nbsp;/gi, '').replace(/[\s\u00a0]+/g, '');
+  };
+  /* Jcink's paragraph of fields (Board Settings' time zone) separates each field with two line breaks */
+  L.splitFieldChunks = function (html) {
+    return String(html == null ? '' : html).split(/<br\s*\/?>\s*<br\s*\/?>/i)
+      .map(function (s) { return s.trim(); }).filter(function (s) { return !L.isBlankText(s); });
   };
   L.isBlankAvatar = function (src) {
     var s = String(src == null ? '' : src).trim();
@@ -2216,46 +2255,79 @@ var OutlastSettings = {
       tr.addEventListener('mouseenter', function () { select(tr); });
       tr.addEventListener('focusin', function () { select(tr); });
     };
+    /* a label: its text up to the first line break; the rest (Jcink's help, or a span.desc) is the description */
+    var splitLabel = function (l) {
+      var br = $$('br', l).filter(function (b) { return b.parentNode === l; })[0], sd = $('.desc', l);
+      if (!br && !sd) return;
+      var lab = el('span', 'pn-label'), desc = el('span', 'pn-desc');
+      while (l.firstChild && l.firstChild !== br && l.firstChild !== sd) lab.appendChild(l.firstChild);
+      if (br) br.remove();
+      while (l.firstChild && l.firstChild.nodeName === 'BR') l.firstChild.remove();
+      while (l.firstChild) desc.appendChild(l.firstChild);
+      l.appendChild(lab);
+      if (!L.isBlankText(desc.innerHTML)) l.appendChild(desc);
+    };
+    var control = 'select,textarea,input:not([type=hidden]):not([type=submit]):not([type=button])';
     $$('td.pformleft', list).forEach(function (l) {
       var tr = l.parentNode, r = $('td.pformright', tr);
       if (!r) return;
+      /* a row with nothing to fill in (the address book of a member with no contacts) goes */
+      if (L.isBlankText(r.innerHTML) && !$('input,select,textarea,img', r)) { tr.remove(); return; }
       /* a left cell holding a table (the clickable smilies): its contents go to the pane, the field gets the full row */
       if ($('table', l)) {
         var sm = box(''); while (l.firstChild) sm.appendChild(l.firstChild);
         $$('br', sm).forEach(function (b) { if (b.parentNode === sm) b.remove(); });
         l.classList.add('pn-gone');
       } else if (!$('input,select,textarea', l)) {
-        var br = $$('br', l).filter(function (b) { return b.parentNode === l; })[0];
-        if (br) {
-          var lab = el('span', 'pn-label'), desc = el('span', 'pn-desc');
-          while (l.firstChild !== br) lab.appendChild(l.firstChild);
-          br.remove();
-          while (l.firstChild && l.firstChild.nodeName === 'BR') l.firstChild.remove();
-          while (l.firstChild) desc.appendChild(l.firstChild);
-          l.appendChild(lab);
-          if (!L.isBlankText(desc.innerHTML)) l.appendChild(desc);
-        }
+        splitLabel(l);
         if (L.isBlankText(l.innerHTML)) l.classList.add('pn-gone');
       }
       makeRow(tr, l, r);
       if (l.classList.contains('pn-gone')) tr.classList.add('pn-wide');
     });
-    /* plain two-column tables (the account summary): the same rows */
+    /* plain two-column tables: the account summary (text both sides) and the board settings (a question and its choice) */
     $$('table', list).forEach(function (t) {
       if ($('th,.pformleft,table', t) || t.closest('.pn-box')) return;
       $$('tr', t).forEach(function (tr) {
         var c = [].slice.call(tr.cells);
-        if (c.length === 2 && !$('input,select,textarea,img', tr)) { makeRow(tr, c[0], c[1]); c[0].classList.add('pn-kv'); }
+        if (c.length !== 2 || $('input,select,textarea,img', c[0])) return;
+        if (!$('input,select,textarea,img', c[1])) { makeRow(tr, c[0], c[1]); c[0].classList.add('pn-kv'); }
+        else if ($(control, c[1])) { splitLabel(c[0]); makeRow(tr, c[0], c[1]); }
       });
     });
+    /* a paragraph of fields (the time zone): each field a row, the words before it (or after a tick box) its label */
+    $$('p', list).forEach(function (p) {
+      if (!$(control, p) || p.closest('.pn-box,form[name=notepad]')) return;
+      L.splitFieldChunks(p.innerHTML).forEach(function (h) {
+        var tmp = el('div', '', h), c = $(control, tmp);
+        if (!c) { if (!L.isBlankText(h)) p.parentNode.insertBefore(el('p', '', h), p); return; }
+        var row = el('div'), l = el('div'), r = el('div');
+        if (/^(checkbox|radio)$/i.test(c.type) && tmp.firstElementChild === c) {
+          r.appendChild(c);
+          while (tmp.firstChild && tmp.firstChild.nodeType === 3 && L.isBlankText(tmp.firstChild.nodeValue)) tmp.firstChild.remove();
+        } else {
+          var after = c.nextSibling; r.appendChild(c);
+          while (after) { var nx = after.nextSibling; r.appendChild(after); after = nx; }
+        }
+        while (tmp.firstChild) l.appendChild(tmp.firstChild);
+        while (l.lastChild && (l.lastChild.nodeName === 'BR' || (l.lastChild.nodeType === 3 && L.isBlankText(l.lastChild.nodeValue)))) l.lastChild.remove();
+        splitLabel(l);
+        row.appendChild(l); row.appendChild(r);
+        p.parentNode.insertBefore(row, p);
+        makeRow(row, l, r);
+      });
+      p.remove();
+    });
 
-    /* the notepad: in the pane */
+    /* the notepad: in the pane, under the heading that came before it */
     var notes = $('textarea[name=notes]', list), nf = notes && notes.closest('form');
     if (nf) {
-      var ns = nf.previousElementSibling, nb = box(ns && ns.classList.contains('pformstrip') ? txt(ns) : '');
+      var host = nf; while (host.parentNode && host.parentNode !== list) host = host.parentNode;
+      var ns = host.previousElementSibling, nb = box(ns && ns.classList.contains('pformstrip') ? txt(ns) : '');
       if (ns && ns.classList.contains('pformstrip')) ns.remove();
       nb.classList.add('pn-notes'); nb.appendChild(nf);
       $$('br', nf).forEach(function (b) { b.remove(); });
+      if (host !== nf && host.parentNode && !$('input,select,textarea,img', host) && L.isBlankText(txt(host))) host.remove();
     }
 
     /* the inbox: storage meter and folder tools in the pane, messages as rows */
@@ -2304,23 +2376,30 @@ var OutlastSettings = {
       head.remove();
     }
     /* Jcink's legend goes (each mark says what it is); its message count joins the meter */
-    $$('table', list).forEach(function (t) {
-      if (!/maximum storable/i.test(txt(t)) || $('input', t)) return;
-      var it = $('i', t), st = $('.pn-store', side);
-      if (it && st) st.insertBefore(el('p', 'pn-count', esc(txt(it))), $('.pn-meter', st).nextSibling);
-      t.remove();
+    [].slice.call(list.children).forEach(function (t) {
+      if ($('input,select,textarea', t)) return;
+      var tx = txt(t);
+      if (/maximum storable/i.test(tx)) {
+        var it = $('i', t), st = $('.pn-store', side);
+        if (it && st) st.insertBefore(el('p', 'pn-count', esc(txt(it))), $('.pn-meter', st).nextSibling);
+        t.remove();
+      } else if (/\bread messages/i.test(tx) && /unread messages/i.test(tx) && tx.length < 80) t.remove();
     });
 
-    /* a message: the title, who sent it and when as rows, the text in a box; the sender's card in the pane */
+    /* a message: the title, who sent it and when as rows, the text in a box; the sender's card in the pane.
+       Jcink prints it like a post: name and "<b>title</b>, date" on top, the mini profile and the text below */
     var pmt = $$('table', list).filter(function (t) { return $('.normalname', t) && $('.postcolor', t); })[0], keyAct = [];
     if (pmt) {
-      var pm = el('article', 'pn-pm'), title = $('.maintitle', pmt), name = $('.normalname', pmt), det = $$('.postdetails', pmt);
-      var sentCell = det.filter(function (d) { return /sent/i.test(txt(d)); })[0], card = det.filter(function (d) { return d !== sentCell; })[0];
-      if (title) pm.appendChild(el('h2', 'pn-pm-title', title.innerHTML));
+      var pm = el('article', 'pn-pm'), name = $('.normalname', pmt), det = $$('.postdetails', pmt);
+      var card = $('.miniprofile .postdetails', pmt), head = det.filter(function (d) { return d !== card && $('b', d); })[0];
+      var tb = head && $('b', head), title = tb ? txt(tb) : '';
+      if (title) pm.appendChild(el('h2', 'pn-pm-title', esc(title)));
       var kvRow = function (k, v) { var r = el('div', 'pn-row pn-static'); r.appendChild(el('span', 'pn-l pn-kv', esc(k))); var b = el('span', 'pn-r'); if (typeof v === 'string') b.textContent = v; else b.appendChild(v); r.appendChild(b); pm.appendChild(r); };
       if (name) kvRow('From', name.cloneNode(true));
-      if (sentCell) kvRow('Sent', txt(sentCell).replace(/^sent:\s*/i, ''));
+      if (head) kvRow('Sent', txt(head).slice(title.length).replace(/^[\s,]+/, ''));
       var body = $('.postcolor', pmt); body.classList.add('pn-body'); pm.appendChild(body);
+      var sig = $('div.signature', pmt);
+      if (sig && !L.isBlankText(sig.innerHTML)) { sig.classList.add('pn-sig'); body.appendChild(sig); }
       if (card) {
         var cb = box(''); cb.classList.add('pn-card');
         var img = $('img', card), who = txt(name);
@@ -2330,9 +2409,19 @@ var OutlastSettings = {
         var lines = card.innerHTML.split(/<br\s*\/?>/i).map(function (s) { return s.trim(); }).filter(function (s) { return s && !/<img/i.test(s); });
         cb.appendChild(el('p', 'pn-facts', lines.join('<br>')));
       }
-      keyAct = $$('.darkrow3 a', pmt);
-      pmt.parentNode.insertBefore(pm, pmt);
-      pmt.remove();
+      /* the keys: Delete from above the message, Forward PM and Reply from the [ Forward PM | Reply ] bars */
+      var pick = function (re) { return $$('a', list).filter(function (a) { return re.test(a.getAttribute('href') || '') && !a.closest('.pn-pm'); })[0]; };
+      keyAct = [pick(/CODE=05/i), pick(/fwd=1/i), pick(/CODE=04(?!.*fwd=1)/i)].filter(Boolean);
+      var wrap = pmt.closest('.tableborder') || pmt;
+      wrap.parentNode.insertBefore(pm, wrap);
+      wrap.remove();
+      /* the bars go (their links are keys now); the title strip goes (the title heads the message); the folder jump joins the pane */
+      [].slice.call(list.children).forEach(function (n) {
+        if (n === pm) return;
+        if ($('a[href*="fwd=1"]', n) && !$('form', n)) n.remove();
+        else if (n.classList.contains('pformstrip') && title && txt(n) === title) n.remove();
+        else if ($('form[name=jump]', n)) { var fb = box(''); fb.classList.add('pn-tools'); fb.appendChild($('form[name=jump]', n)); n.remove(); }
+      });
     }
 
     /* the first heading goes when it only repeats the page you are on (Inbox under Go to Inbox) */
@@ -2340,7 +2429,7 @@ var OutlastSettings = {
     if (lead && best && L.isSameLabel(txt(lead), best.text)) (lead.tagName === 'TD' ? lead.parentNode : lead).remove();
 
     /* a section heading with nothing under it goes (the Inbox strip once its meter moved stays: the rows follow it) */
-    $$('.pformstrip', list).forEach(function (s) { if (s.tagName === 'DIV' && !s.nextElementSibling) s.remove(); });
+    $$('.pformstrip', list).forEach(function (s) { if (s.tagName === 'DIV' && !s.nextElementSibling && !$('input,select', s)) s.remove(); });
 
     /* key prompts, bottom right: the form's buttons (A, X, Y), the message's links, and B to go back */
     var keys = el('div', 'keys pn-keys'), letters = ['A', 'X', 'Y'], k = 0;

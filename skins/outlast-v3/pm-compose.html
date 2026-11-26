@@ -1106,81 +1106,205 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
   <div id="navi"><div id="navstrip" align="left"> &raquo; &nbsp;<a href="?act=idx">Kestrel</a>&nbsp;&rarr;&nbsp;Your control panel</div></div>
   <!-- ===== EDIT: night-vision writing, one <span> per line. Shown only under the lens on the index. ===== -->
   <div id="scrawls" hidden><span>it moves when you blink</span><span>count the doors again</span><span>there was no first trial</span><span>play it backwards</span><span>nobody refills the machine</span><span>that chair was empty a minute ago</span></div>
-  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
-<td id="ucpmenu" valign="top">
-<div class="maintitle">Menu</div>
-<div class="pformstrip">Messenger</div>
-<p>
-&middot; <a href="index.php?act=Msg&amp;CODE=04"><b>Compose New Message</b></a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=01"><b>Go to Inbox</b></a><br>
-&nbsp;&nbsp;'&mdash; <a href="index.php?act=Msg&amp;CODE=01&amp;VID=sent">Sent Items</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=delete">Empty PM Folders</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=07">Edit Storage Folders</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=02">My Friends/Contacts</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=14">Archive Messages</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=01&amp;VID=unsent">Saved (Unsent) PMs</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=30">Message Tracker</a><br>
-</p>
-<div class="pformstrip">Subscriptions</div>
-<p>
-&middot; <a href="index.php?act=UserCP&amp;CODE=26">View Topics</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=50">View Forums</a><br>
-</p>
-<div class="pformstrip">Personal Profile</div>
-<p>
-&middot; <a href="index.php?act=UserCP&amp;CODE=01">Edit Profile info</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=22">Edit Signature</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=24">Edit Avatar Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=dname">Change Username</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=photo">Change Personal Photo</a><br>
-</p>
-<div class="pformstrip">Options</div>
-<p>
-&middot; <a href="index.php?act=UserCP&amp;CODE=alerts">Alert Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=02">Email Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=04">Board Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=shout">Shoutbox Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=06">Skin and Languages</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=08">Change Email Address</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=28">Change Password</a><br>
-</p>
+  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div><table cellspacing="0" cellpadding="0" width='100%'>
+<tr>
+ <td id="ucpmenu" valign="top">
+    <div class='maintitle'>Menu</div>
+     <!--IBF.TSLLINKS-->
+	 <!-- Messenger -->
+	 <div class='pformstrip'>Messenger</div>
+	 <p>
+	 &middot; <a href='index.php?act=Msg&amp;CODE=04'><strong>Compose New Message</strong></a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=01'><strong>Go to Inbox</strong></a><br />
+	 &nbsp; &#039;&#8212 <a href='index.php?act=Msg&amp;CODE=01&amp;VID=sent'>Sent Items</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=delete'>Empty PM Folders</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=07'>Edit Storage Folders</a><br />
+	 &middot; <a href="javascript:window.open('index.php?showuser=1&amp;CODE=friends','Friends','width=620,height=460,resizable=yes,scrollbars=yes');void(0);">My Friends/Contacts</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=14'>Archive Messages</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=20'>Saved (Unsent) PMs</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=30'>Message Tracker</a><br />
+	 </p>
+	 <!-- End Messenger -->
+	 <!-- Topic Tracker -->
+	 <div class='pformstrip'>Subscriptions</div>
+	 <p>
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=26'>View Topics</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=50'>View Forums</a><br />
+	 </p>
+	 <!-- Profile -->
+	 <div class='pformstrip'>Personal Profile</div>
+	 <p>
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=01'>Edit Profile info</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=22'>Edit Signature</a><br />
+	 <!--JFB.SUB_ACCOUNTS-->
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=24'>Edit Avatar Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=52'>Change Username</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=photo'>Change Personal Photo</a><br />
+	 </p>
+	 <!-- Options -->
+	 <div class='pformstrip'>Options</div>
+	 <p>
+	 <!--IBF.OPTION_LINKS-->
+	 &middot; <a href='index.php?act=UserCP&CODE=alerts_settings'>Alert Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=02'>Email Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=04'>Board Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&CODE=40'>Shoutbox Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=06'>Skin and Languages</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=08'>Change Email Address</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=28'>Change Password</a>
+	 </p>
+ </td>
+ <td style='padding:2px'><!-- --></td>
+<!-- Start main CP area -->
+ <td id="ucpcontent" valign="top">
+  <div class='maintitle'>Welcome to your control panel </div>
+<form action="index.php?" method="post" name='REPLIER' onsubmit='return ValidateForm(1)'>
+<input type='hidden' name='act' value='Msg' />
+<input type='hidden' name='CODE' value='04' />
+<input type='hidden' name='MODE' value='01' />
+<input type='hidden' name='OID'  value='' />
+<input type='hidden' name='auth_key' value='' />
+<table width="100%" cellspacing="0">
+<tr>
+  <td colspan='2' class='pformstrip'>Recipients Name</td>
+</tr>
+<tr>
+  <td class="pformleft"><b>Choose from your address book</b></td>
+  <td class="pformright">&nbsp;</td>
+</tr>
+<tr>
+  <td class="pformleft"><b><u>OR</u> Enter the members name here</b></td>
+  <td class="pformright"><input type='text' name='entered_name' size='50' value='' tabindex="1" class='forminput' /></td>
+</tr>
+<tr>
+<td colspan='2' class='pformstrip'>Carbon copy to other members</td>
+</tr>
+<tr>
+<td class="pformleft"><b>You may enter up to 6 names in the carbon copy box</b>.<br /><br />One line per name.</td>
+<td class='pformright'>
+ <textarea name='carbon_copy' rows='5' cols='40' class='textinput'></textarea><br />
+ <input type='button' class='forminput' name='findusers' onclick='find_users()' value='Search for user names' />
 </td>
-<td style="padding:2px"><!-- --></td>
-<td id="ucpcontent" valign="top">
-<div class="maintitle">Welcome to your control panel</div>
-<form name="REPLIER" action="index.php" method="post" onsubmit="return ValidateForm(1)">
-<input type="hidden" name="act" value="Msg"><input type="hidden" name="CODE" value="04"><input type="hidden" name="MODE" value="01">
-<table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody>
-<tr><td class="pformstrip" colspan="2">Recipients Name</td></tr>
-<tr><td class="pformleft">Choose from your address book</td><td class="pformright"><select name="from_contact" class="forminput"><option value="-">-- Select a contact --</option><option value="2">Cass Whitlock-Abernathy</option><option value="4">Nadia</option></select></td></tr>
-<tr><td class="pformleft"><u>OR</u> Enter the members name here</td><td class="pformright"><input type="text" name="entered_name" size="50" value="" tabindex="1" class="forminput"></td></tr>
-<tr><td class="pformstrip" colspan="2">Carbon copy to other members</td></tr>
-<tr><td class="pformleft">You may enter up to 6 names in the carbon copy box.<br><br>One line per name.</td><td class="pformright"><textarea name="carbon_copy" rows="5" cols="40" class="forminput"></textarea><br><input type="button" value="Search for user names" class="forminput" onclick="find_users()"></td></tr>
-<tr><td class="pformstrip" colspan="2">Enter your message. (Privacy Warning: PM contents may be logged or monitored)</td></tr>
-<tr><td class="pformleft">Message Title</td><td class="pformright"><input type="text" name="msg_title" size="40" maxlength="40" value="" tabindex="2" class="forminput"></td></tr>
-<tr><td class="pformstrip" colspan="2">Code Buttons</td></tr>
-<tr><td class="pformleft"><input type="radio" name="bbmode" value="ezmode" onclick="setmode(this.value)" class="forminput"> Guided Mode<br><input type="radio" name="bbmode" value="normal" onclick="setmode(this.value)" class="forminput" checked="checked"> Normal Mode</td><td class="pformright"><input type="button" value=" B " onclick="simpletag('B')" class="codebuttons" name="B" style="font-weight:bold"> <input type="button" value=" I " onclick="simpletag('I')" class="codebuttons" name="I" style="font-style:italic"> <input type="button" value=" U " onclick="simpletag('U')" class="codebuttons" name="U" style="text-decoration:underline"> <select name="ffont" class="codebuttons" onchange="alterfont(this.options[this.selectedIndex].value, 'FFONT')"><option value="0">FONT</option><option value="Arial">Arial</option><option value="Times">Times</option><option value="Courier">Courier</option><option value="Impact">Impact</option><option value="Geneva">Geneva</option><option value="Optima">Optima</option></select> <select name="fsize" class="codebuttons" onchange="alterfont(this.options[this.selectedIndex].value, 'FSIZE')"><option value="0">SIZE</option><option value="Small">Small</option><option value="Large">Large</option><option value="Largest">Largest</option></select> <select name="fcolor" class="codebuttons" onchange="alterfont(this.options[this.selectedIndex].value, 'FCOLOR')"><option value="0">COLOR</option><option value="blue">blue</option><option value="red">red</option><option value="purple">purple</option><option value="orange">orange</option><option value="yellow">yellow</option><option value="gray">gray</option><option value="green">green</option></select> &nbsp;<a href="javascript:closeall();">Close all Tags</a><br>
-<input type="button" value=" LINK " onclick="simpletag('url')" class="codebuttons" name="url"> <input type="button" value=" IMG " onclick="simpletag('img')" class="codebuttons" name="img"> <input type="button" value=" QUOTE " onclick="simpletag('QUOTE')" class="codebuttons" name="QUOTE"> <input type="button" value=" CODE " onclick="simpletag('CODE')" class="codebuttons" name="CODE"> <input type="button" value=" LIST " onclick="simpletag('LIST')" class="codebuttons" name="LIST"><br>
-Open Tags:&nbsp;<input type="text" name="tagcount" size="3" maxlength="3" readonly="readonly" class="codebuttons" value="0" style="border:0;font-weight:bold"> &nbsp;<input type="text" name="helpbox" size="50" maxlength="120" readonly="readonly" class="codebuttons" value="Hint: Use Guided Mode for helpful prompts" style="border:0"></td></tr>
-<tr><td class="pformstrip" colspan="2">Enter your Post</td></tr>
-<tr><td class="pformleft" align="center" valign="top">
-<table class="tablefill" cellpadding="4" align="center"><tbody>
-<tr><td align="center" colspan="3"><b>Clickable Smilies</b></td></tr>
-<tr><td align="center" valign="middle"><a href="javascript:emoticon(':)')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2012q4%204%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":)" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':(')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2013q4%201%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":(" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':D')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2014q4%20-2%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":D" width="20" height="20"></a></td></tr>
-<tr><td align="center" valign="middle"><a href="javascript:emoticon(';)')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2012q4%204%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=";)" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':o')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2013q4%201%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":o" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':P')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2014q4%20-2%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":P" width="20" height="20"></a></td></tr>
-<tr><td align="center" valign="middle"><a href="javascript:emoticon('B)')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2012q4%204%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt="B)" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':huh:')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2013q4%201%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":huh:" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':wub:')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2014q4%20-2%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":wub:" width="20" height="20"></a></td></tr>
-<tr><td align="center" valign="middle"><a href="javascript:emoticon(':angry:')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2012q4%204%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":angry:" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':unsure:')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2013q4%201%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":unsure:" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':blink:')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2014q4%20-2%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":blink:" width="20" height="20"></a></td></tr>
-<tr><td align="center" valign="middle"><a href="javascript:emoticon(':ph34r:')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2012q4%204%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":ph34r:" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':lol:')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2013q4%201%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":lol:" width="20" height="20"></a></td><td align="center" valign="middle"><a href="javascript:emoticon(':rolleyes:')"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'9'%20fill%3D'%23f5c81e'%20stroke%3D'%23a8831a'%2F%3E%3Ccircle%20cx%3D'7'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Ccircle%20cx%3D'13'%20cy%3D'8'%20r%3D'1.3'%2F%3E%3Cpath%20d%3D'M6%2014q4%20-2%208%200'%20fill%3D'none'%20stroke%3D'%23000'%20stroke-width%3D'1.3'%2F%3E%3C%2Fsvg%3E" border="0" alt=":rolleyes:" width="20" height="20"></a></td></tr>
-<tr><td align="center" colspan="3"><b><a href="javascript:emo_pop()">Show All</a></b></td></tr>
-</tbody></table><br>(<a href="javascript:CheckLength()">Check Post Length</a>)
-</td><td class="pformright" valign="top"><textarea cols="80" rows="15" name="Post" tabindex="3" class="textinput"></textarea></td></tr>
-<tr><td class="pformstrip" colspan="2">Options</td></tr>
-<tr><td class="pformleft">&nbsp;</td><td class="pformright"><input type="checkbox" name="add_sent" value="yes" class="forminput"> <b>Add a copy of this message to my sent items folder</b><br><input type="checkbox" name="add_tracking" value="1" class="forminput"> <b>Track this message?</b></td></tr>
-<tr><td class="pformstrip" colspan="2" align="center"><input type="submit" value="Send Message" tabindex="4" accesskey="s" class="forminput" name="submit"> <input type="submit" value="Preview Message" tabindex="5" class="forminput" name="preview"> <input type="submit" value="Save (Send later)" tabindex="6" class="forminput" name="save"></td></tr>
-</tbody></table>
+</tr>
+<tr>
+  <td colspan='2' class='pformstrip'>Enter your message. (Privacy Warning: PM contents may be logged or monitored)</td>
+</tr>
+<tr>
+  <td class="pformleft"><b>Message Title</b></td>
+  <td class="pformright"><input type='text' name='msg_title' size='40' tabindex="2" maxlength='40' value='' class='forminput' /></td>
+</tr> <tr id='code-buttons-header'>
+ <td class='pformstrip' colspan="2">Code Buttons</td>
+ </tr>
+ <tr id='code-buttons'>
+   <td class='pformleft'>
+	   <input type='radio' name='bbmode' class='radiobutton' value='ezmode' onclick='setmode(this.value)' />&nbsp;<b>Guided Mode</b><br />
+	   <input type='radio' name='bbmode' class='radiobutton' value='normal' onclick='setmode(this.value)' checked="checked" />&nbsp;<b>Normal Mode</b>
+   </td>
+   <td class='pformright'>
+	<span id='bbcode-buttons'>
+	   <input type='button' accesskey='b' value=' B '       onclick='simpletag("B")' class='codebuttons' name='B' style="font-weight:bold" onmouseover="hstat('bold')" />
+	   <input type='button' accesskey='i' value=' I '       onclick='simpletag("I")' class='codebuttons' name='I' style="font-style:italic" onmouseover="hstat('italic')" />
+	   <input type='button' accesskey='u' value=' U '       onclick='simpletag("U")' class='codebuttons' name='U' style="text-decoration:underline" onmouseover="hstat('under')" />
+	   <select name='ffont' class='codebuttons' onchange="alterfont(this.options[this.selectedIndex].value, 'FONT')"  onmouseover="hstat('font')">
+	   <option value='0'>FONT</option>
+	   <option value='Arial' style='font-family:Arial'>Arial</option>
+	   <option value='Times' style='font-family:Times'>Times</option>
+	   <option value='Courier' style='font-family:Courier'>Courier</option>
+	   <option value='Impact' style='font-family:Impact'>Impact</option>
+	   <option value='Geneva' style='font-family:Geneva'>Geneva</option>
+	   <option value='Optima' style='font-family:Optima'>Optima</option>
+	   </select><select name='fsize' class='codebuttons' onchange="alterfont(this.options[this.selectedIndex].value, 'SIZE')" onmouseover="hstat('size')">
+	   <option value='0'>SIZE</option>
+	   <option value='1'>Small</option>
+	   <option value='7'>Large</option>
+	   <option value='14'>Largest</option>
+	   </select><select name='fcolor' class='codebuttons' onchange="alterfont(this.options[this.selectedIndex].value, 'COLOR')" onmouseover="hstat('color')">
+	   <option value='0'>COLOR</option>
+	   <option value='blue' style='color:blue'>Blue</option>
+	   <option value='red' style='color:red'>Red</option>
+	   <option value='purple' style='color:purple'>Purple</option>
+	   <option value='orange' style='color:orange'>Orange</option>
+	   <option value='yellow' style='color:yellow'>Yellow</option>
+	   <option value='gray' style='color:gray'>Gray</option>
+	   <option value='green' style='color:green'>Green</option>
+	   </select>
+	   &nbsp; <a href='javascript:closeall();' onmouseover="hstat('close')">Close all Tags</a>
+	   <br />
+	   <input type='button' accesskey='h' value=' LINK ' onclick='tag_url()'            class='codebuttons' name='url' onmouseover="hstat('url')" />
+	   <input type='button' accesskey='g' value=' IMG '     onclick='tag_image()'          class='codebuttons' name='img' onmouseover="hstat('img')" />
+	   <input type='button' accesskey='q' value=' QUOTE '   onclick='simpletag("QUOTE")'   class='codebuttons' name='QUOTE' onmouseover="hstat('quote')" />
+	   <input type='button' accesskey='p' value=' CODE '    onclick='simpletag("CODE")'    class='codebuttons' name='CODE' onmouseover="hstat('code')" />
+	   <input type='button' accesskey='l' value=' LIST '     onclick='tag_list()'          class='codebuttons' name="LIST" onmouseover="hstat('list')" />
+	   </span>
+	   <br />
+	   Open Tags:&nbsp;<input type='text' name='tagcount' size='3' maxlength='3' style='font-size:10px;font-family:verdana,arial;border:0px;font-weight:bold;' readonly="readonly" class='row1' value="0" />
+	   &nbsp;<input type='text' name='helpbox' size='50' maxlength='120' style='width:auto;font-size:10px;font-family:verdana,arial;border:0px' readonly="readonly" class='row1' value="Hint: Use Guided Mode for helpful prompts" />
+	</td>
+   </tr>
+   <tr id='enter-your-post-header'>
+     <td colspan="2" class='pformstrip'>Enter your Post</td>
+   </tr>
+   <tr>
+     <td class='pformleft'>
+	   <table class='tablefill' cellpadding='4' align='center' id='smilies-table'>
+<tr>
+<td align="center" colspan="3"><b>Clickable Smilies</b></td>
+</tr>
+<tr align='center'><td><a href="javascript:emoticon(':huh:')"><img src="//files.jcink.net/html/emoticons/huh.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon(':o')"><img src="//files.jcink.net/html/emoticons/ohmy.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon(';)')"><img src="//files.jcink.net/html/emoticons/wink.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+</tr>
+<tr align='center'><td><a href="javascript:emoticon(':P')"><img src="//files.jcink.net/html/emoticons/tongue.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon(':D')"><img src="//files.jcink.net/html/emoticons/biggrin.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon(':lol:')"><img src="//files.jcink.net/html/emoticons/laugh.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+</tr>
+<tr align='center'><td><a href="javascript:emoticon('B)')"><img src="//files.jcink.net/html/emoticons/cool.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon(':rolleyes:')"><img src="//files.jcink.net/html/emoticons/rolleyes.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon('&lt;_&lt;')"><img src="//files.jcink.net/html/emoticons/dry.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+</tr>
+<tr align='center'><td><a href="javascript:emoticon(':)')"><img src="//files.jcink.net/html/emoticons/smile.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon(':angry:')"><img src="//files.jcink.net/html/emoticons/mad.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon(':(')"><img src="//files.jcink.net/html/emoticons/sad.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+</tr>
+<tr align='center'><td><a href="javascript:emoticon(':unsure:')"><img src="//files.jcink.net/html/emoticons/unsure.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon(':blink:')"><img src="//files.jcink.net/html/emoticons/blink.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+<td><a href="javascript:emoticon(':ph34r:')"><img src="//files.jcink.net/html/emoticons/ph34r.gif" alt='smilie' border='0' /></a>&nbsp;</td>
+</tr>
+<tr align='center'><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td align="center" colspan="3"><b><a href='javascript:emo_pop()'>Show All</a></b></td>
+</tr>
+</table>
+	   <br />
+	   (<a href='javascript:CheckLength()'>Check Post Length</a>)
+     </td>
+     <td class="pformright" valign='top'><textarea cols='70' rows='15' name='Post' tabindex='3' class='textinput'></textarea></td>
+   </tr><tr>
+ <td colspan='2' class='pformstrip'>Options</td>
+</tr>
+<tr>
+ <td class="pformleft">&nbsp;</td>
+ <td class="pformright">
+	<input type='checkbox' name='add_sent' value='yes' />&nbsp;<b>Add a copy of this message to my sent items folder</b>
+	<br /><input type='checkbox' name='add_tracking' value='1' />&nbsp;<b>Track this message?</b>
+ </td>
+</tr>
+<tr>
+ <td class='pformstrip' align='center' colspan='2'>
+  <input type="submit" value="Send Message" tabindex="4" accesskey="s" class='forminput' name='submit' />
+  <input type="submit" value="Preview Message" tabindex="5" class='forminput' name='preview' />
+  <input type="submit" value="Save (Send later)" tabindex="6" class='forminput' name='save' />
+ </td>
+</tr>
+</table>
 </form>
-</td>
-</tr></tbody></table><script>function select_read(){}function unselect_all(){}function goto_folder(){}function CheckAll(){}function search_folder(){}function find_users(){}function simpletag(){}function alterfont(){}function closeall(){}function setmode(){}function emoticon(){}function emo_pop(){}function CheckLength(){}function ValidateForm(){return false}</script>
+ </td>
+</tr>
+</table>
+<!-- end main CP area --><script>function select_read(){}function unselect_all(){}function CheckAll(){}function cca(){}function find_users(){}function simpletag(){}function alterfont(){}function closeall(){}function setmode(){}function hstat(){}function tag_url(){}function tag_image(){}function tag_list(){}function emoticon(){}function emo_pop(){}function CheckLength(){}function ValidateForm(){return false}function PopUp(){}</script>
   <!-- ===== EDIT: affiliates, one link each. Shown at the bottom of the index to everyone; delete the links to hide it. ===== -->
   <div id="affiliates"><a href="#">Affiliate A</a><a href="#">Affiliate B</a></div>
   <div id="skin_selector"><select><option>Outlast</option></select></div>
@@ -1232,6 +1356,11 @@ Open Tags:&nbsp;<input type="text" name="tagcount" size="3" maxlength="3" readon
   /* Jcink sometimes prints whitespace or &nbsp; inside an "empty" tag */
   L.isBlankText = function (s) {
     return !String(s == null ? '' : s).replace(/&nbsp;/gi, '').replace(/[\s\u00a0]+/g, '');
+  };
+  /* Jcink's paragraph of fields (Board Settings' time zone) separates each field with two line breaks */
+  L.splitFieldChunks = function (html) {
+    return String(html == null ? '' : html).split(/<br\s*\/?>\s*<br\s*\/?>/i)
+      .map(function (s) { return s.trim(); }).filter(function (s) { return !L.isBlankText(s); });
   };
   L.isBlankAvatar = function (src) {
     var s = String(src == null ? '' : src).trim();
@@ -2192,46 +2321,79 @@ var OutlastSettings = {
       tr.addEventListener('mouseenter', function () { select(tr); });
       tr.addEventListener('focusin', function () { select(tr); });
     };
+    /* a label: its text up to the first line break; the rest (Jcink's help, or a span.desc) is the description */
+    var splitLabel = function (l) {
+      var br = $$('br', l).filter(function (b) { return b.parentNode === l; })[0], sd = $('.desc', l);
+      if (!br && !sd) return;
+      var lab = el('span', 'pn-label'), desc = el('span', 'pn-desc');
+      while (l.firstChild && l.firstChild !== br && l.firstChild !== sd) lab.appendChild(l.firstChild);
+      if (br) br.remove();
+      while (l.firstChild && l.firstChild.nodeName === 'BR') l.firstChild.remove();
+      while (l.firstChild) desc.appendChild(l.firstChild);
+      l.appendChild(lab);
+      if (!L.isBlankText(desc.innerHTML)) l.appendChild(desc);
+    };
+    var control = 'select,textarea,input:not([type=hidden]):not([type=submit]):not([type=button])';
     $$('td.pformleft', list).forEach(function (l) {
       var tr = l.parentNode, r = $('td.pformright', tr);
       if (!r) return;
+      /* a row with nothing to fill in (the address book of a member with no contacts) goes */
+      if (L.isBlankText(r.innerHTML) && !$('input,select,textarea,img', r)) { tr.remove(); return; }
       /* a left cell holding a table (the clickable smilies): its contents go to the pane, the field gets the full row */
       if ($('table', l)) {
         var sm = box(''); while (l.firstChild) sm.appendChild(l.firstChild);
         $$('br', sm).forEach(function (b) { if (b.parentNode === sm) b.remove(); });
         l.classList.add('pn-gone');
       } else if (!$('input,select,textarea', l)) {
-        var br = $$('br', l).filter(function (b) { return b.parentNode === l; })[0];
-        if (br) {
-          var lab = el('span', 'pn-label'), desc = el('span', 'pn-desc');
-          while (l.firstChild !== br) lab.appendChild(l.firstChild);
-          br.remove();
-          while (l.firstChild && l.firstChild.nodeName === 'BR') l.firstChild.remove();
-          while (l.firstChild) desc.appendChild(l.firstChild);
-          l.appendChild(lab);
-          if (!L.isBlankText(desc.innerHTML)) l.appendChild(desc);
-        }
+        splitLabel(l);
         if (L.isBlankText(l.innerHTML)) l.classList.add('pn-gone');
       }
       makeRow(tr, l, r);
       if (l.classList.contains('pn-gone')) tr.classList.add('pn-wide');
     });
-    /* plain two-column tables (the account summary): the same rows */
+    /* plain two-column tables: the account summary (text both sides) and the board settings (a question and its choice) */
     $$('table', list).forEach(function (t) {
       if ($('th,.pformleft,table', t) || t.closest('.pn-box')) return;
       $$('tr', t).forEach(function (tr) {
         var c = [].slice.call(tr.cells);
-        if (c.length === 2 && !$('input,select,textarea,img', tr)) { makeRow(tr, c[0], c[1]); c[0].classList.add('pn-kv'); }
+        if (c.length !== 2 || $('input,select,textarea,img', c[0])) return;
+        if (!$('input,select,textarea,img', c[1])) { makeRow(tr, c[0], c[1]); c[0].classList.add('pn-kv'); }
+        else if ($(control, c[1])) { splitLabel(c[0]); makeRow(tr, c[0], c[1]); }
       });
     });
+    /* a paragraph of fields (the time zone): each field a row, the words before it (or after a tick box) its label */
+    $$('p', list).forEach(function (p) {
+      if (!$(control, p) || p.closest('.pn-box,form[name=notepad]')) return;
+      L.splitFieldChunks(p.innerHTML).forEach(function (h) {
+        var tmp = el('div', '', h), c = $(control, tmp);
+        if (!c) { if (!L.isBlankText(h)) p.parentNode.insertBefore(el('p', '', h), p); return; }
+        var row = el('div'), l = el('div'), r = el('div');
+        if (/^(checkbox|radio)$/i.test(c.type) && tmp.firstElementChild === c) {
+          r.appendChild(c);
+          while (tmp.firstChild && tmp.firstChild.nodeType === 3 && L.isBlankText(tmp.firstChild.nodeValue)) tmp.firstChild.remove();
+        } else {
+          var after = c.nextSibling; r.appendChild(c);
+          while (after) { var nx = after.nextSibling; r.appendChild(after); after = nx; }
+        }
+        while (tmp.firstChild) l.appendChild(tmp.firstChild);
+        while (l.lastChild && (l.lastChild.nodeName === 'BR' || (l.lastChild.nodeType === 3 && L.isBlankText(l.lastChild.nodeValue)))) l.lastChild.remove();
+        splitLabel(l);
+        row.appendChild(l); row.appendChild(r);
+        p.parentNode.insertBefore(row, p);
+        makeRow(row, l, r);
+      });
+      p.remove();
+    });
 
-    /* the notepad: in the pane */
+    /* the notepad: in the pane, under the heading that came before it */
     var notes = $('textarea[name=notes]', list), nf = notes && notes.closest('form');
     if (nf) {
-      var ns = nf.previousElementSibling, nb = box(ns && ns.classList.contains('pformstrip') ? txt(ns) : '');
+      var host = nf; while (host.parentNode && host.parentNode !== list) host = host.parentNode;
+      var ns = host.previousElementSibling, nb = box(ns && ns.classList.contains('pformstrip') ? txt(ns) : '');
       if (ns && ns.classList.contains('pformstrip')) ns.remove();
       nb.classList.add('pn-notes'); nb.appendChild(nf);
       $$('br', nf).forEach(function (b) { b.remove(); });
+      if (host !== nf && host.parentNode && !$('input,select,textarea,img', host) && L.isBlankText(txt(host))) host.remove();
     }
 
     /* the inbox: storage meter and folder tools in the pane, messages as rows */
@@ -2280,23 +2442,30 @@ var OutlastSettings = {
       head.remove();
     }
     /* Jcink's legend goes (each mark says what it is); its message count joins the meter */
-    $$('table', list).forEach(function (t) {
-      if (!/maximum storable/i.test(txt(t)) || $('input', t)) return;
-      var it = $('i', t), st = $('.pn-store', side);
-      if (it && st) st.insertBefore(el('p', 'pn-count', esc(txt(it))), $('.pn-meter', st).nextSibling);
-      t.remove();
+    [].slice.call(list.children).forEach(function (t) {
+      if ($('input,select,textarea', t)) return;
+      var tx = txt(t);
+      if (/maximum storable/i.test(tx)) {
+        var it = $('i', t), st = $('.pn-store', side);
+        if (it && st) st.insertBefore(el('p', 'pn-count', esc(txt(it))), $('.pn-meter', st).nextSibling);
+        t.remove();
+      } else if (/\bread messages/i.test(tx) && /unread messages/i.test(tx) && tx.length < 80) t.remove();
     });
 
-    /* a message: the title, who sent it and when as rows, the text in a box; the sender's card in the pane */
+    /* a message: the title, who sent it and when as rows, the text in a box; the sender's card in the pane.
+       Jcink prints it like a post: name and "<b>title</b>, date" on top, the mini profile and the text below */
     var pmt = $$('table', list).filter(function (t) { return $('.normalname', t) && $('.postcolor', t); })[0], keyAct = [];
     if (pmt) {
-      var pm = el('article', 'pn-pm'), title = $('.maintitle', pmt), name = $('.normalname', pmt), det = $$('.postdetails', pmt);
-      var sentCell = det.filter(function (d) { return /sent/i.test(txt(d)); })[0], card = det.filter(function (d) { return d !== sentCell; })[0];
-      if (title) pm.appendChild(el('h2', 'pn-pm-title', title.innerHTML));
+      var pm = el('article', 'pn-pm'), name = $('.normalname', pmt), det = $$('.postdetails', pmt);
+      var card = $('.miniprofile .postdetails', pmt), head = det.filter(function (d) { return d !== card && $('b', d); })[0];
+      var tb = head && $('b', head), title = tb ? txt(tb) : '';
+      if (title) pm.appendChild(el('h2', 'pn-pm-title', esc(title)));
       var kvRow = function (k, v) { var r = el('div', 'pn-row pn-static'); r.appendChild(el('span', 'pn-l pn-kv', esc(k))); var b = el('span', 'pn-r'); if (typeof v === 'string') b.textContent = v; else b.appendChild(v); r.appendChild(b); pm.appendChild(r); };
       if (name) kvRow('From', name.cloneNode(true));
-      if (sentCell) kvRow('Sent', txt(sentCell).replace(/^sent:\s*/i, ''));
+      if (head) kvRow('Sent', txt(head).slice(title.length).replace(/^[\s,]+/, ''));
       var body = $('.postcolor', pmt); body.classList.add('pn-body'); pm.appendChild(body);
+      var sig = $('div.signature', pmt);
+      if (sig && !L.isBlankText(sig.innerHTML)) { sig.classList.add('pn-sig'); body.appendChild(sig); }
       if (card) {
         var cb = box(''); cb.classList.add('pn-card');
         var img = $('img', card), who = txt(name);
@@ -2306,9 +2475,19 @@ var OutlastSettings = {
         var lines = card.innerHTML.split(/<br\s*\/?>/i).map(function (s) { return s.trim(); }).filter(function (s) { return s && !/<img/i.test(s); });
         cb.appendChild(el('p', 'pn-facts', lines.join('<br>')));
       }
-      keyAct = $$('.darkrow3 a', pmt);
-      pmt.parentNode.insertBefore(pm, pmt);
-      pmt.remove();
+      /* the keys: Delete from above the message, Forward PM and Reply from the [ Forward PM | Reply ] bars */
+      var pick = function (re) { return $$('a', list).filter(function (a) { return re.test(a.getAttribute('href') || '') && !a.closest('.pn-pm'); })[0]; };
+      keyAct = [pick(/CODE=05/i), pick(/fwd=1/i), pick(/CODE=04(?!.*fwd=1)/i)].filter(Boolean);
+      var wrap = pmt.closest('.tableborder') || pmt;
+      wrap.parentNode.insertBefore(pm, wrap);
+      wrap.remove();
+      /* the bars go (their links are keys now); the title strip goes (the title heads the message); the folder jump joins the pane */
+      [].slice.call(list.children).forEach(function (n) {
+        if (n === pm) return;
+        if ($('a[href*="fwd=1"]', n) && !$('form', n)) n.remove();
+        else if (n.classList.contains('pformstrip') && title && txt(n) === title) n.remove();
+        else if ($('form[name=jump]', n)) { var fb = box(''); fb.classList.add('pn-tools'); fb.appendChild($('form[name=jump]', n)); n.remove(); }
+      });
     }
 
     /* the first heading goes when it only repeats the page you are on (Inbox under Go to Inbox) */
@@ -2316,7 +2495,7 @@ var OutlastSettings = {
     if (lead && best && L.isSameLabel(txt(lead), best.text)) (lead.tagName === 'TD' ? lead.parentNode : lead).remove();
 
     /* a section heading with nothing under it goes (the Inbox strip once its meter moved stays: the rows follow it) */
-    $$('.pformstrip', list).forEach(function (s) { if (s.tagName === 'DIV' && !s.nextElementSibling) s.remove(); });
+    $$('.pformstrip', list).forEach(function (s) { if (s.tagName === 'DIV' && !s.nextElementSibling && !$('input,select', s)) s.remove(); });
 
     /* key prompts, bottom right: the form's buttons (A, X, Y), the message's links, and B to go back */
     var keys = el('div', 'keys pn-keys'), letters = ['A', 'X', 'Y'], k = 0;

@@ -1106,68 +1106,139 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
   <div id="navi"><div id="navstrip" align="left"> &raquo; &nbsp;<a href="?act=idx">Kestrel</a>&nbsp;&rarr;&nbsp;Your control panel</div></div>
   <!-- ===== EDIT: night-vision writing, one <span> per line. Shown only under the lens on the index. ===== -->
   <div id="scrawls" hidden><span>it moves when you blink</span><span>count the doors again</span><span>there was no first trial</span><span>play it backwards</span><span>nobody refills the machine</span><span>that chair was empty a minute ago</span></div>
-  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr>
-<td id="ucpmenu" valign="top">
-<div class="maintitle">Menu</div>
-<div class="pformstrip">Messenger</div>
+  <div class="tableborder" id="shoutbox"><div class="maintitle">Latest Shouts In The Shoutbox</div><div id="cat_-1"><iframe name="dsb" id="shoutbox-iframe" width="100%" height="100"></iframe></div></div><table cellspacing="0" cellpadding="0" width='100%'>
+<tr>
+ <td id="ucpmenu" valign="top">
+    <div class='maintitle'>Menu</div>
+     <!--IBF.TSLLINKS-->
+	 <!-- Messenger -->
+	 <div class='pformstrip'>Messenger</div>
+	 <p>
+	 &middot; <a href='index.php?act=Msg&amp;CODE=04'><strong>Compose New Message</strong></a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=01'><strong>Go to Inbox</strong></a><br />
+	 &nbsp; &#039;&#8212 <a href='index.php?act=Msg&amp;CODE=01&amp;VID=sent'>Sent Items</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=delete'>Empty PM Folders</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=07'>Edit Storage Folders</a><br />
+	 &middot; <a href="javascript:window.open('index.php?showuser=1&amp;CODE=friends','Friends','width=620,height=460,resizable=yes,scrollbars=yes');void(0);">My Friends/Contacts</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=14'>Archive Messages</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=20'>Saved (Unsent) PMs</a><br />
+	 &middot; <a href='index.php?act=Msg&amp;CODE=30'>Message Tracker</a><br />
+	 </p>
+	 <!-- End Messenger -->
+	 <!-- Topic Tracker -->
+	 <div class='pformstrip'>Subscriptions</div>
+	 <p>
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=26'>View Topics</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=50'>View Forums</a><br />
+	 </p>
+	 <!-- Profile -->
+	 <div class='pformstrip'>Personal Profile</div>
+	 <p>
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=01'>Edit Profile info</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=22'>Edit Signature</a><br />
+	 <!--JFB.SUB_ACCOUNTS-->
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=24'>Edit Avatar Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=52'>Change Username</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=photo'>Change Personal Photo</a><br />
+	 </p>
+	 <!-- Options -->
+	 <div class='pformstrip'>Options</div>
+	 <p>
+	 <!--IBF.OPTION_LINKS-->
+	 &middot; <a href='index.php?act=UserCP&CODE=alerts_settings'>Alert Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=02'>Email Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=04'>Board Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&CODE=40'>Shoutbox Settings</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=06'>Skin and Languages</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=08'>Change Email Address</a><br />
+	 &middot; <a href='index.php?act=UserCP&amp;CODE=28'>Change Password</a>
+	 </p>
+ </td>
+ <td style='padding:2px'><!-- --></td>
+<!-- Start main CP area -->
+ <td id="ucpcontent" valign="top">
+  <div class='maintitle'>Welcome to your control panel </div>
+<form action="index.php?auth_key=" method="post">
+<input type='hidden' name='act' value='UserCP' />
+<input type='hidden' name='CODE' value='05' />
+<div class="pformstrip">Time Zone</div>
 <p>
-&middot; <a href="index.php?act=Msg&amp;CODE=04"><b>Compose New Message</b></a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=01"><b>Go to Inbox</b></a><br>
-&nbsp;&nbsp;'&mdash; <a href="index.php?act=Msg&amp;CODE=01&amp;VID=sent">Sent Items</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=delete">Empty PM Folders</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=07">Edit Storage Folders</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=02">My Friends/Contacts</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=14">Archive Messages</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=01&amp;VID=unsent">Saved (Unsent) PMs</a><br>
-&middot; <a href="index.php?act=Msg&amp;CODE=30">Message Tracker</a><br>
-</p>
-<div class="pformstrip">Subscriptions</div>
-<p>
-&middot; <a href="index.php?act=UserCP&amp;CODE=26">View Topics</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=50">View Forums</a><br>
-</p>
-<div class="pformstrip">Personal Profile</div>
-<p>
-&middot; <a href="index.php?act=UserCP&amp;CODE=01">Edit Profile info</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=22">Edit Signature</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=24">Edit Avatar Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=dname">Change Username</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=photo">Change Personal Photo</a><br>
-</p>
-<div class="pformstrip">Options</div>
-<p>
-&middot; <a href="index.php?act=UserCP&amp;CODE=alerts">Alert Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=02">Email Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=04">Board Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=shout">Shoutbox Settings</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=06">Skin and Languages</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=08">Change Email Address</a><br>
-&middot; <a href="index.php?act=UserCP&amp;CODE=28">Change Password</a><br>
-</p>
-</td>
-<td style="padding:2px"><!-- --></td>
-<td id="ucpcontent" valign="top">
-<div class="maintitle">Welcome to your control panel</div>
-<form action="index.php" method="post" name="theForm">
-<input type="hidden" name="act" value="UserCP"><input type="hidden" name="CODE" value="05">
-<table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody>
-<tr><td class="pformstrip" colspan="2">Board Settings</td></tr>
-<tr><td class="pformleft"><b>Time zone</b><br>All times on the board will be shown in this time zone. The time is now: Nov 26 2026, 05:31 PM</td><td class="pformright"><select name="u_timezone" class="forminput"><option value="-8">(GMT -8:00) Pacific Time (US &amp; Canada)</option><option value="-5" selected="selected">(GMT -5:00) Eastern Time (US &amp; Canada)</option><option value="0">(GMT) Western Europe Time, London</option><option value="1">(GMT +1:00) Central Europe Time</option><option value="9">(GMT +9:00) Tokyo, Seoul</option></select></td></tr>
-<tr><td class="pformleft"><b>Daylight saving time</b><br>Tick if daylight saving time is in effect where you are.</td><td class="pformright"><input type="checkbox" name="DST" value="1" class="forminput" checked="checked"> Daylight saving time is in effect</td></tr>
-<tr><td class="pformstrip" colspan="2">Reading topics</td></tr>
-<tr><td class="pformleft"><b>View signatures</b><br>Show each member's signature under their posts.</td><td class="pformright"><select name="VIEW_SIGS" class="forminput"><option value="1" selected="selected">Yes</option><option value="0">No</option></select></td></tr>
-<tr><td class="pformleft"><b>View images in posts</b><br>Show pictures posted in topics. Choose No to see links instead.</td><td class="pformright"><select name="VIEW_IMG" class="forminput"><option value="1" selected="selected">Yes</option><option value="0">No</option></select></td></tr>
-<tr><td class="pformleft"><b>View avatars</b><br>Show each member's avatar beside their posts.</td><td class="pformright"><select name="VIEW_AVS" class="forminput"><option value="1" selected="selected">Yes</option><option value="0">No</option></select></td></tr>
-<tr><td class="pformleft"><b>Posts per page</b><br>How many posts to show on each page of a topic.</td><td class="pformright"><select name="postpage" class="forminput"><option value="-1" selected="selected">Use board default</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="30">30</option><option value="40">40</option></select></td></tr>
-<tr><td class="pformleft"><b>Topics per page</b><br>How many topics to show on each page of a forum.</td><td class="pformright"><select name="topicpage" class="forminput"><option value="-1" selected="selected">Use board default</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="30">30</option><option value="40">40</option></select></td></tr>
-<tr><td class="pformstrip" colspan="2">Messenger</td></tr>
-<tr><td class="pformleft"><b>Pop-up for new messages</b><br>Open a small window when a new private message arrives.</td><td class="pformright"><select name="DO_POPUP" class="forminput"><option value="1">Yes</option><option value="0" selected="selected">No</option></select></td></tr>
-<tr><td class="pformleft"><b>Hide editor buttons</b><br>Hide the code buttons and clickable smilies on posting forms.</td><td class="pformright"><select name="hide_buttons" class="forminput"><option value="1">Yes</option><option value="0" selected="selected">No</option></select></td></tr>
-<tr><td class="pformstrip" colspan="2" align="center"><input type="submit" value="Update my board settings" class="forminput"></td></tr>
-</tbody></table>
+<b>You may adjust the base time zone</b><br />The time (including your current adjustment) is:&nbsp;Nov 26 2026, 05:31 PM
+<br />
+<select name='u_timezone' class='forminput'><option value='-12'>(GMT - 12:00 hours) Enitwetok, Kwajalien</option><option value='-11'>(GMT - 11:00 hours) Midway Island, Samoa</option><option value='-10'>(GMT - 10:00 hours) Hawaii</option><option value='-9'>(GMT - 9:00 hours) Alaska</option><option value='-8'>(GMT - 8:00 hours) Pacific Time (US &amp; Canada)</option><option value='-7'>(GMT - 7:00 hours) Mountain Time (US &amp; Canada)</option><option value='-6'>(GMT - 6:00 hours) Central Time (US &amp; Canada), Mexico City</option><option value='-5' selected='selected'>(GMT - 5:00 hours) Eastern Time (US &amp; Canada), Bogota, Lima, Quito</option><option value='-4'>(GMT - 4:00 hours) Atlantic Time (Canada), Caracas, La Paz</option><option value='-3.5'>(GMT - 3:30 hours) Newfoundland</option><option value='-3'>(GMT - 3:00 hours) Brazil, Buenos Aires, Georgetown, Falkland Is.</option><option value='-2'>(GMT - 2:00 hours) Mid-Atlantic, Ascention Is., St Helena</option><option value='-1'>(GMT - 1:00 hours) Azores, Cape Verde Islands</option><option value='0'>(GMT) Casablanca, Dublin, Edinburgh, London, Lisbon, Monrovia</option><option value='1'>(GMT + 1:00 hours) Berlin, Brussels, Copenhagen, Madrid, Paris, Rome</option><option value='2'>(GMT + 2:00 hours) Kaliningrad, South Africa, Warsaw</option><option value='3'>(GMT + 3:00 hours) Baghdad, Riyadh, Moscow, Nairobi</option><option value='3.5'>(GMT + 3:30 hours) Tehran</option><option value='4'>(GMT + 4:00 hours) Abu Dhabi, Baku, Muscat, Tbilisi</option><option value='4.5'>(GMT + 4:30 hours) Kabul</option><option value='5'>(GMT + 5:00 hours) Ekaterinburg, Islamabad, Karachi, Tashkent</option><option value='5.5'>(GMT + 5:30 hours) Bombay, Calcutta, Madras, New Delhi</option><option value='6'>(GMT + 6:00 hours) Almaty, Colomba, Dhakra</option><option value='7'>(GMT + 7:00 hours) Bangkok, Hanoi, Jakarta</option><option value='8'>(GMT + 8:00 hours) Beijing, Hong Kong, Perth, Singapore, Taipei</option><option value='9'>(GMT + 9:00 hours) Osaka, Sapporo, Seoul, Tokyo, Yakutsk</option><option value='9.5'>(GMT + 9:30 hours) Adelaide, Darwin</option><option value='10'>(GMT + 10:00 hours) Melbourne, Papua New Guinea, Sydney, Vladivostok</option><option value='11'>(GMT + 11:00 hours) Magadan, New Caledonia, Solomon Islands</option><option value='12'>(GMT + 12:00 hours) Auckland, Wellington, Fiji, Marshall Island</option></select>
+<br /><br />
+<input type='checkbox' class='forminput' name='DST' value='1'  /> &nbsp;<b>Is daylight savings time in effect?</b><br />(If you have selected the correct time zone and the clock appears an hour out, check or uncheck box to suit)
+</p><div class='pformstrip'>Board Display Settings</div>
+<table width="100%" cellpadding="4">
+<tr>
+  <td width='70%'>Do you wish to use quick edit if enabled on this forum?</td>
+  <td align='left'><select name='USE_QE' class='forminput'><option value='1' selected='selected'>Yes</option>
+<option value='0'>No</option></select></td>
+</tr>
+<tr>
+  <td width='70%'>Do you wish to view members signatures when reading topics?</td>
+  <td align='left'><select name='VIEW_SIGS' class='forminput'><option value='1' selected='selected'>Yes</option>
+<option value='0'>No</option></select></td>
+</tr>
+<tr>
+  <td>Do you wish to view images in posts, such as smilies and posted images?</td>
+  <td align='left'><select name='VIEW_IMG' class='forminput'><option value='1' selected='selected'>Yes</option>
+<option value='0'>No</option></select></td>
+</tr>
+<tr>
+  <td>Do you wish to view members avatars when reading topics?</td>
+  <td align='left'><select name='VIEW_AVS' class='forminput'><option value='1' selected='selected'>Yes</option>
+<option value='0'>No</option></select></td>
+</tr>
+<tr>
+  <td>Do you wish to get a pop up notification when you get a new private message?</td>
+  <td align='left'><select name='DO_POPUP' class='forminput'><option value='1' selected='selected'>Yes</option>
+<option value='0'>No</option></select></td>
+</tr>
+<!--<tr>
+  <td>Do you wish to hide your session id in the links? *<br/ ><span class='desc'>Choosing 'no' may cause problems when sharing links with people on the same proxy as you.</span></td>
+  <td align='left'><select name='HIDE_SESS' class='forminput'><option value='1'>Yes</option>
+<option value='0' selected='selected'>No</option></select></td>
+</tr>-->
+<tr>
+  <td>Open Fast Reply automatically when available? *<br/ ></td>
+  <td align='left'><select name='OPEN_QR' class='forminput'><option value='1'>Yes</option>
+<option value='0' selected='selected'>No</option></select></td>
+</tr>
+<tr>
+  <td>Number of posts to show for each topic page</td>
+  <td align='left'><select name='postpage' class='forminput'><option value='-1' selected='selected'>Use forum default
+<option value='5'>5
+<option value='10'>10
+<option value='15'>15
+<option value='20'>20
+<option value='25'>25
+<option value='30'>30
+<option value='35'>35
+<option value='40'>40
+</select></td>
+</tr>
+<tr>
+  <td>Number of topics to show for each forum page</td>
+  <td align='left'><select name='topicpage' class='forminput'><option value='-1' selected='selected'>Use forum default
+<option value='5'>5
+<option value='10'>10
+<option value='15'>15
+<option value='20'>20
+<option value='25'>25
+<option value='30'>30
+<option value='35'>35
+<option value='40'>40
+</select></td>
+</tr>
+</table>
+&nbsp;<span class='desc'>* Note, these functions use cookies</span>
+<div class="pformstrip" align='center'><input type='submit' name='submit' value='Change my Account Options' class='forminput' /></div>
 </form>
-</td>
-</tr></tbody></table><script>function select_read(){}function unselect_all(){}function goto_folder(){}function CheckAll(){}function search_folder(){}function find_users(){}function simpletag(){}function alterfont(){}function closeall(){}function setmode(){}function emoticon(){}function emo_pop(){}function CheckLength(){}function ValidateForm(){return false}</script>
+ </td>
+</tr>
+</table>
+<!-- end main CP area --><script>function select_read(){}function unselect_all(){}function CheckAll(){}function cca(){}function find_users(){}function simpletag(){}function alterfont(){}function closeall(){}function setmode(){}function hstat(){}function tag_url(){}function tag_image(){}function tag_list(){}function emoticon(){}function emo_pop(){}function CheckLength(){}function ValidateForm(){return false}function PopUp(){}</script>
   <!-- ===== EDIT: affiliates, one link each. Shown at the bottom of the index to everyone; delete the links to hide it. ===== -->
   <div id="affiliates"><a href="#">Affiliate A</a><a href="#">Affiliate B</a></div>
   <div id="skin_selector"><select><option>Outlast</option></select></div>
@@ -1219,6 +1290,11 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
   /* Jcink sometimes prints whitespace or &nbsp; inside an "empty" tag */
   L.isBlankText = function (s) {
     return !String(s == null ? '' : s).replace(/&nbsp;/gi, '').replace(/[\s\u00a0]+/g, '');
+  };
+  /* Jcink's paragraph of fields (Board Settings' time zone) separates each field with two line breaks */
+  L.splitFieldChunks = function (html) {
+    return String(html == null ? '' : html).split(/<br\s*\/?>\s*<br\s*\/?>/i)
+      .map(function (s) { return s.trim(); }).filter(function (s) { return !L.isBlankText(s); });
   };
   L.isBlankAvatar = function (src) {
     var s = String(src == null ? '' : src).trim();
@@ -2179,46 +2255,79 @@ var OutlastSettings = {
       tr.addEventListener('mouseenter', function () { select(tr); });
       tr.addEventListener('focusin', function () { select(tr); });
     };
+    /* a label: its text up to the first line break; the rest (Jcink's help, or a span.desc) is the description */
+    var splitLabel = function (l) {
+      var br = $$('br', l).filter(function (b) { return b.parentNode === l; })[0], sd = $('.desc', l);
+      if (!br && !sd) return;
+      var lab = el('span', 'pn-label'), desc = el('span', 'pn-desc');
+      while (l.firstChild && l.firstChild !== br && l.firstChild !== sd) lab.appendChild(l.firstChild);
+      if (br) br.remove();
+      while (l.firstChild && l.firstChild.nodeName === 'BR') l.firstChild.remove();
+      while (l.firstChild) desc.appendChild(l.firstChild);
+      l.appendChild(lab);
+      if (!L.isBlankText(desc.innerHTML)) l.appendChild(desc);
+    };
+    var control = 'select,textarea,input:not([type=hidden]):not([type=submit]):not([type=button])';
     $$('td.pformleft', list).forEach(function (l) {
       var tr = l.parentNode, r = $('td.pformright', tr);
       if (!r) return;
+      /* a row with nothing to fill in (the address book of a member with no contacts) goes */
+      if (L.isBlankText(r.innerHTML) && !$('input,select,textarea,img', r)) { tr.remove(); return; }
       /* a left cell holding a table (the clickable smilies): its contents go to the pane, the field gets the full row */
       if ($('table', l)) {
         var sm = box(''); while (l.firstChild) sm.appendChild(l.firstChild);
         $$('br', sm).forEach(function (b) { if (b.parentNode === sm) b.remove(); });
         l.classList.add('pn-gone');
       } else if (!$('input,select,textarea', l)) {
-        var br = $$('br', l).filter(function (b) { return b.parentNode === l; })[0];
-        if (br) {
-          var lab = el('span', 'pn-label'), desc = el('span', 'pn-desc');
-          while (l.firstChild !== br) lab.appendChild(l.firstChild);
-          br.remove();
-          while (l.firstChild && l.firstChild.nodeName === 'BR') l.firstChild.remove();
-          while (l.firstChild) desc.appendChild(l.firstChild);
-          l.appendChild(lab);
-          if (!L.isBlankText(desc.innerHTML)) l.appendChild(desc);
-        }
+        splitLabel(l);
         if (L.isBlankText(l.innerHTML)) l.classList.add('pn-gone');
       }
       makeRow(tr, l, r);
       if (l.classList.contains('pn-gone')) tr.classList.add('pn-wide');
     });
-    /* plain two-column tables (the account summary): the same rows */
+    /* plain two-column tables: the account summary (text both sides) and the board settings (a question and its choice) */
     $$('table', list).forEach(function (t) {
       if ($('th,.pformleft,table', t) || t.closest('.pn-box')) return;
       $$('tr', t).forEach(function (tr) {
         var c = [].slice.call(tr.cells);
-        if (c.length === 2 && !$('input,select,textarea,img', tr)) { makeRow(tr, c[0], c[1]); c[0].classList.add('pn-kv'); }
+        if (c.length !== 2 || $('input,select,textarea,img', c[0])) return;
+        if (!$('input,select,textarea,img', c[1])) { makeRow(tr, c[0], c[1]); c[0].classList.add('pn-kv'); }
+        else if ($(control, c[1])) { splitLabel(c[0]); makeRow(tr, c[0], c[1]); }
       });
     });
+    /* a paragraph of fields (the time zone): each field a row, the words before it (or after a tick box) its label */
+    $$('p', list).forEach(function (p) {
+      if (!$(control, p) || p.closest('.pn-box,form[name=notepad]')) return;
+      L.splitFieldChunks(p.innerHTML).forEach(function (h) {
+        var tmp = el('div', '', h), c = $(control, tmp);
+        if (!c) { if (!L.isBlankText(h)) p.parentNode.insertBefore(el('p', '', h), p); return; }
+        var row = el('div'), l = el('div'), r = el('div');
+        if (/^(checkbox|radio)$/i.test(c.type) && tmp.firstElementChild === c) {
+          r.appendChild(c);
+          while (tmp.firstChild && tmp.firstChild.nodeType === 3 && L.isBlankText(tmp.firstChild.nodeValue)) tmp.firstChild.remove();
+        } else {
+          var after = c.nextSibling; r.appendChild(c);
+          while (after) { var nx = after.nextSibling; r.appendChild(after); after = nx; }
+        }
+        while (tmp.firstChild) l.appendChild(tmp.firstChild);
+        while (l.lastChild && (l.lastChild.nodeName === 'BR' || (l.lastChild.nodeType === 3 && L.isBlankText(l.lastChild.nodeValue)))) l.lastChild.remove();
+        splitLabel(l);
+        row.appendChild(l); row.appendChild(r);
+        p.parentNode.insertBefore(row, p);
+        makeRow(row, l, r);
+      });
+      p.remove();
+    });
 
-    /* the notepad: in the pane */
+    /* the notepad: in the pane, under the heading that came before it */
     var notes = $('textarea[name=notes]', list), nf = notes && notes.closest('form');
     if (nf) {
-      var ns = nf.previousElementSibling, nb = box(ns && ns.classList.contains('pformstrip') ? txt(ns) : '');
+      var host = nf; while (host.parentNode && host.parentNode !== list) host = host.parentNode;
+      var ns = host.previousElementSibling, nb = box(ns && ns.classList.contains('pformstrip') ? txt(ns) : '');
       if (ns && ns.classList.contains('pformstrip')) ns.remove();
       nb.classList.add('pn-notes'); nb.appendChild(nf);
       $$('br', nf).forEach(function (b) { b.remove(); });
+      if (host !== nf && host.parentNode && !$('input,select,textarea,img', host) && L.isBlankText(txt(host))) host.remove();
     }
 
     /* the inbox: storage meter and folder tools in the pane, messages as rows */
@@ -2267,23 +2376,30 @@ var OutlastSettings = {
       head.remove();
     }
     /* Jcink's legend goes (each mark says what it is); its message count joins the meter */
-    $$('table', list).forEach(function (t) {
-      if (!/maximum storable/i.test(txt(t)) || $('input', t)) return;
-      var it = $('i', t), st = $('.pn-store', side);
-      if (it && st) st.insertBefore(el('p', 'pn-count', esc(txt(it))), $('.pn-meter', st).nextSibling);
-      t.remove();
+    [].slice.call(list.children).forEach(function (t) {
+      if ($('input,select,textarea', t)) return;
+      var tx = txt(t);
+      if (/maximum storable/i.test(tx)) {
+        var it = $('i', t), st = $('.pn-store', side);
+        if (it && st) st.insertBefore(el('p', 'pn-count', esc(txt(it))), $('.pn-meter', st).nextSibling);
+        t.remove();
+      } else if (/\bread messages/i.test(tx) && /unread messages/i.test(tx) && tx.length < 80) t.remove();
     });
 
-    /* a message: the title, who sent it and when as rows, the text in a box; the sender's card in the pane */
+    /* a message: the title, who sent it and when as rows, the text in a box; the sender's card in the pane.
+       Jcink prints it like a post: name and "<b>title</b>, date" on top, the mini profile and the text below */
     var pmt = $$('table', list).filter(function (t) { return $('.normalname', t) && $('.postcolor', t); })[0], keyAct = [];
     if (pmt) {
-      var pm = el('article', 'pn-pm'), title = $('.maintitle', pmt), name = $('.normalname', pmt), det = $$('.postdetails', pmt);
-      var sentCell = det.filter(function (d) { return /sent/i.test(txt(d)); })[0], card = det.filter(function (d) { return d !== sentCell; })[0];
-      if (title) pm.appendChild(el('h2', 'pn-pm-title', title.innerHTML));
+      var pm = el('article', 'pn-pm'), name = $('.normalname', pmt), det = $$('.postdetails', pmt);
+      var card = $('.miniprofile .postdetails', pmt), head = det.filter(function (d) { return d !== card && $('b', d); })[0];
+      var tb = head && $('b', head), title = tb ? txt(tb) : '';
+      if (title) pm.appendChild(el('h2', 'pn-pm-title', esc(title)));
       var kvRow = function (k, v) { var r = el('div', 'pn-row pn-static'); r.appendChild(el('span', 'pn-l pn-kv', esc(k))); var b = el('span', 'pn-r'); if (typeof v === 'string') b.textContent = v; else b.appendChild(v); r.appendChild(b); pm.appendChild(r); };
       if (name) kvRow('From', name.cloneNode(true));
-      if (sentCell) kvRow('Sent', txt(sentCell).replace(/^sent:\s*/i, ''));
+      if (head) kvRow('Sent', txt(head).slice(title.length).replace(/^[\s,]+/, ''));
       var body = $('.postcolor', pmt); body.classList.add('pn-body'); pm.appendChild(body);
+      var sig = $('div.signature', pmt);
+      if (sig && !L.isBlankText(sig.innerHTML)) { sig.classList.add('pn-sig'); body.appendChild(sig); }
       if (card) {
         var cb = box(''); cb.classList.add('pn-card');
         var img = $('img', card), who = txt(name);
@@ -2293,9 +2409,19 @@ var OutlastSettings = {
         var lines = card.innerHTML.split(/<br\s*\/?>/i).map(function (s) { return s.trim(); }).filter(function (s) { return s && !/<img/i.test(s); });
         cb.appendChild(el('p', 'pn-facts', lines.join('<br>')));
       }
-      keyAct = $$('.darkrow3 a', pmt);
-      pmt.parentNode.insertBefore(pm, pmt);
-      pmt.remove();
+      /* the keys: Delete from above the message, Forward PM and Reply from the [ Forward PM | Reply ] bars */
+      var pick = function (re) { return $$('a', list).filter(function (a) { return re.test(a.getAttribute('href') || '') && !a.closest('.pn-pm'); })[0]; };
+      keyAct = [pick(/CODE=05/i), pick(/fwd=1/i), pick(/CODE=04(?!.*fwd=1)/i)].filter(Boolean);
+      var wrap = pmt.closest('.tableborder') || pmt;
+      wrap.parentNode.insertBefore(pm, wrap);
+      wrap.remove();
+      /* the bars go (their links are keys now); the title strip goes (the title heads the message); the folder jump joins the pane */
+      [].slice.call(list.children).forEach(function (n) {
+        if (n === pm) return;
+        if ($('a[href*="fwd=1"]', n) && !$('form', n)) n.remove();
+        else if (n.classList.contains('pformstrip') && title && txt(n) === title) n.remove();
+        else if ($('form[name=jump]', n)) { var fb = box(''); fb.classList.add('pn-tools'); fb.appendChild($('form[name=jump]', n)); n.remove(); }
+      });
     }
 
     /* the first heading goes when it only repeats the page you are on (Inbox under Go to Inbox) */
@@ -2303,7 +2429,7 @@ var OutlastSettings = {
     if (lead && best && L.isSameLabel(txt(lead), best.text)) (lead.tagName === 'TD' ? lead.parentNode : lead).remove();
 
     /* a section heading with nothing under it goes (the Inbox strip once its meter moved stays: the rows follow it) */
-    $$('.pformstrip', list).forEach(function (s) { if (s.tagName === 'DIV' && !s.nextElementSibling) s.remove(); });
+    $$('.pformstrip', list).forEach(function (s) { if (s.tagName === 'DIV' && !s.nextElementSibling && !$('input,select', s)) s.remove(); });
 
     /* key prompts, bottom right: the form's buttons (A, X, Y), the message's links, and B to go back */
     var keys = el('div', 'keys pn-keys'), letters = ['A', 'X', 'Y'], k = 0;

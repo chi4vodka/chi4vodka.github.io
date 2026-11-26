@@ -1125,7 +1125,7 @@ function contact_admin() {
   <br><br>
   <span class="postcolor" style="padding:10px">Sorry, the link that brought you to this page seems to be out of date or broken.</span>
   <br><br>
-  
+  <!--IBF.LOG_IN_TABLE-->
   <!--IBF.POST_TEXTAREA-->
   <br><br>
   <b>Useful Links</b>
@@ -1190,6 +1190,11 @@ function contact_admin() {
   /* Jcink sometimes prints whitespace or &nbsp; inside an "empty" tag */
   L.isBlankText = function (s) {
     return !String(s == null ? '' : s).replace(/&nbsp;/gi, '').replace(/[\s\u00a0]+/g, '');
+  };
+  /* Jcink's paragraph of fields (Board Settings' time zone) separates each field with two line breaks */
+  L.splitFieldChunks = function (html) {
+    return String(html == null ? '' : html).split(/<br\s*\/?>\s*<br\s*\/?>/i)
+      .map(function (s) { return s.trim(); }).filter(function (s) { return !L.isBlankText(s); });
   };
   L.isBlankAvatar = function (src) {
     var s = String(src == null ? '' : src).trim();
@@ -2150,46 +2155,79 @@ var OutlastSettings = {
       tr.addEventListener('mouseenter', function () { select(tr); });
       tr.addEventListener('focusin', function () { select(tr); });
     };
+    /* a label: its text up to the first line break; the rest (Jcink's help, or a span.desc) is the description */
+    var splitLabel = function (l) {
+      var br = $$('br', l).filter(function (b) { return b.parentNode === l; })[0], sd = $('.desc', l);
+      if (!br && !sd) return;
+      var lab = el('span', 'pn-label'), desc = el('span', 'pn-desc');
+      while (l.firstChild && l.firstChild !== br && l.firstChild !== sd) lab.appendChild(l.firstChild);
+      if (br) br.remove();
+      while (l.firstChild && l.firstChild.nodeName === 'BR') l.firstChild.remove();
+      while (l.firstChild) desc.appendChild(l.firstChild);
+      l.appendChild(lab);
+      if (!L.isBlankText(desc.innerHTML)) l.appendChild(desc);
+    };
+    var control = 'select,textarea,input:not([type=hidden]):not([type=submit]):not([type=button])';
     $$('td.pformleft', list).forEach(function (l) {
       var tr = l.parentNode, r = $('td.pformright', tr);
       if (!r) return;
+      /* a row with nothing to fill in (the address book of a member with no contacts) goes */
+      if (L.isBlankText(r.innerHTML) && !$('input,select,textarea,img', r)) { tr.remove(); return; }
       /* a left cell holding a table (the clickable smilies): its contents go to the pane, the field gets the full row */
       if ($('table', l)) {
         var sm = box(''); while (l.firstChild) sm.appendChild(l.firstChild);
         $$('br', sm).forEach(function (b) { if (b.parentNode === sm) b.remove(); });
         l.classList.add('pn-gone');
       } else if (!$('input,select,textarea', l)) {
-        var br = $$('br', l).filter(function (b) { return b.parentNode === l; })[0];
-        if (br) {
-          var lab = el('span', 'pn-label'), desc = el('span', 'pn-desc');
-          while (l.firstChild !== br) lab.appendChild(l.firstChild);
-          br.remove();
-          while (l.firstChild && l.firstChild.nodeName === 'BR') l.firstChild.remove();
-          while (l.firstChild) desc.appendChild(l.firstChild);
-          l.appendChild(lab);
-          if (!L.isBlankText(desc.innerHTML)) l.appendChild(desc);
-        }
+        splitLabel(l);
         if (L.isBlankText(l.innerHTML)) l.classList.add('pn-gone');
       }
       makeRow(tr, l, r);
       if (l.classList.contains('pn-gone')) tr.classList.add('pn-wide');
     });
-    /* plain two-column tables (the account summary): the same rows */
+    /* plain two-column tables: the account summary (text both sides) and the board settings (a question and its choice) */
     $$('table', list).forEach(function (t) {
       if ($('th,.pformleft,table', t) || t.closest('.pn-box')) return;
       $$('tr', t).forEach(function (tr) {
         var c = [].slice.call(tr.cells);
-        if (c.length === 2 && !$('input,select,textarea,img', tr)) { makeRow(tr, c[0], c[1]); c[0].classList.add('pn-kv'); }
+        if (c.length !== 2 || $('input,select,textarea,img', c[0])) return;
+        if (!$('input,select,textarea,img', c[1])) { makeRow(tr, c[0], c[1]); c[0].classList.add('pn-kv'); }
+        else if ($(control, c[1])) { splitLabel(c[0]); makeRow(tr, c[0], c[1]); }
       });
     });
+    /* a paragraph of fields (the time zone): each field a row, the words before it (or after a tick box) its label */
+    $$('p', list).forEach(function (p) {
+      if (!$(control, p) || p.closest('.pn-box,form[name=notepad]')) return;
+      L.splitFieldChunks(p.innerHTML).forEach(function (h) {
+        var tmp = el('div', '', h), c = $(control, tmp);
+        if (!c) { if (!L.isBlankText(h)) p.parentNode.insertBefore(el('p', '', h), p); return; }
+        var row = el('div'), l = el('div'), r = el('div');
+        if (/^(checkbox|radio)$/i.test(c.type) && tmp.firstElementChild === c) {
+          r.appendChild(c);
+          while (tmp.firstChild && tmp.firstChild.nodeType === 3 && L.isBlankText(tmp.firstChild.nodeValue)) tmp.firstChild.remove();
+        } else {
+          var after = c.nextSibling; r.appendChild(c);
+          while (after) { var nx = after.nextSibling; r.appendChild(after); after = nx; }
+        }
+        while (tmp.firstChild) l.appendChild(tmp.firstChild);
+        while (l.lastChild && (l.lastChild.nodeName === 'BR' || (l.lastChild.nodeType === 3 && L.isBlankText(l.lastChild.nodeValue)))) l.lastChild.remove();
+        splitLabel(l);
+        row.appendChild(l); row.appendChild(r);
+        p.parentNode.insertBefore(row, p);
+        makeRow(row, l, r);
+      });
+      p.remove();
+    });
 
-    /* the notepad: in the pane */
+    /* the notepad: in the pane, under the heading that came before it */
     var notes = $('textarea[name=notes]', list), nf = notes && notes.closest('form');
     if (nf) {
-      var ns = nf.previousElementSibling, nb = box(ns && ns.classList.contains('pformstrip') ? txt(ns) : '');
+      var host = nf; while (host.parentNode && host.parentNode !== list) host = host.parentNode;
+      var ns = host.previousElementSibling, nb = box(ns && ns.classList.contains('pformstrip') ? txt(ns) : '');
       if (ns && ns.classList.contains('pformstrip')) ns.remove();
       nb.classList.add('pn-notes'); nb.appendChild(nf);
       $$('br', nf).forEach(function (b) { b.remove(); });
+      if (host !== nf && host.parentNode && !$('input,select,textarea,img', host) && L.isBlankText(txt(host))) host.remove();
     }
 
     /* the inbox: storage meter and folder tools in the pane, messages as rows */
@@ -2238,23 +2276,30 @@ var OutlastSettings = {
       head.remove();
     }
     /* Jcink's legend goes (each mark says what it is); its message count joins the meter */
-    $$('table', list).forEach(function (t) {
-      if (!/maximum storable/i.test(txt(t)) || $('input', t)) return;
-      var it = $('i', t), st = $('.pn-store', side);
-      if (it && st) st.insertBefore(el('p', 'pn-count', esc(txt(it))), $('.pn-meter', st).nextSibling);
-      t.remove();
+    [].slice.call(list.children).forEach(function (t) {
+      if ($('input,select,textarea', t)) return;
+      var tx = txt(t);
+      if (/maximum storable/i.test(tx)) {
+        var it = $('i', t), st = $('.pn-store', side);
+        if (it && st) st.insertBefore(el('p', 'pn-count', esc(txt(it))), $('.pn-meter', st).nextSibling);
+        t.remove();
+      } else if (/\bread messages/i.test(tx) && /unread messages/i.test(tx) && tx.length < 80) t.remove();
     });
 
-    /* a message: the title, who sent it and when as rows, the text in a box; the sender's card in the pane */
+    /* a message: the title, who sent it and when as rows, the text in a box; the sender's card in the pane.
+       Jcink prints it like a post: name and "<b>title</b>, date" on top, the mini profile and the text below */
     var pmt = $$('table', list).filter(function (t) { return $('.normalname', t) && $('.postcolor', t); })[0], keyAct = [];
     if (pmt) {
-      var pm = el('article', 'pn-pm'), title = $('.maintitle', pmt), name = $('.normalname', pmt), det = $$('.postdetails', pmt);
-      var sentCell = det.filter(function (d) { return /sent/i.test(txt(d)); })[0], card = det.filter(function (d) { return d !== sentCell; })[0];
-      if (title) pm.appendChild(el('h2', 'pn-pm-title', title.innerHTML));
+      var pm = el('article', 'pn-pm'), name = $('.normalname', pmt), det = $$('.postdetails', pmt);
+      var card = $('.miniprofile .postdetails', pmt), head = det.filter(function (d) { return d !== card && $('b', d); })[0];
+      var tb = head && $('b', head), title = tb ? txt(tb) : '';
+      if (title) pm.appendChild(el('h2', 'pn-pm-title', esc(title)));
       var kvRow = function (k, v) { var r = el('div', 'pn-row pn-static'); r.appendChild(el('span', 'pn-l pn-kv', esc(k))); var b = el('span', 'pn-r'); if (typeof v === 'string') b.textContent = v; else b.appendChild(v); r.appendChild(b); pm.appendChild(r); };
       if (name) kvRow('From', name.cloneNode(true));
-      if (sentCell) kvRow('Sent', txt(sentCell).replace(/^sent:\s*/i, ''));
+      if (head) kvRow('Sent', txt(head).slice(title.length).replace(/^[\s,]+/, ''));
       var body = $('.postcolor', pmt); body.classList.add('pn-body'); pm.appendChild(body);
+      var sig = $('div.signature', pmt);
+      if (sig && !L.isBlankText(sig.innerHTML)) { sig.classList.add('pn-sig'); body.appendChild(sig); }
       if (card) {
         var cb = box(''); cb.classList.add('pn-card');
         var img = $('img', card), who = txt(name);
@@ -2264,9 +2309,19 @@ var OutlastSettings = {
         var lines = card.innerHTML.split(/<br\s*\/?>/i).map(function (s) { return s.trim(); }).filter(function (s) { return s && !/<img/i.test(s); });
         cb.appendChild(el('p', 'pn-facts', lines.join('<br>')));
       }
-      keyAct = $$('.darkrow3 a', pmt);
-      pmt.parentNode.insertBefore(pm, pmt);
-      pmt.remove();
+      /* the keys: Delete from above the message, Forward PM and Reply from the [ Forward PM | Reply ] bars */
+      var pick = function (re) { return $$('a', list).filter(function (a) { return re.test(a.getAttribute('href') || '') && !a.closest('.pn-pm'); })[0]; };
+      keyAct = [pick(/CODE=05/i), pick(/fwd=1/i), pick(/CODE=04(?!.*fwd=1)/i)].filter(Boolean);
+      var wrap = pmt.closest('.tableborder') || pmt;
+      wrap.parentNode.insertBefore(pm, wrap);
+      wrap.remove();
+      /* the bars go (their links are keys now); the title strip goes (the title heads the message); the folder jump joins the pane */
+      [].slice.call(list.children).forEach(function (n) {
+        if (n === pm) return;
+        if ($('a[href*="fwd=1"]', n) && !$('form', n)) n.remove();
+        else if (n.classList.contains('pformstrip') && title && txt(n) === title) n.remove();
+        else if ($('form[name=jump]', n)) { var fb = box(''); fb.classList.add('pn-tools'); fb.appendChild($('form[name=jump]', n)); n.remove(); }
+      });
     }
 
     /* the first heading goes when it only repeats the page you are on (Inbox under Go to Inbox) */
@@ -2274,7 +2329,7 @@ var OutlastSettings = {
     if (lead && best && L.isSameLabel(txt(lead), best.text)) (lead.tagName === 'TD' ? lead.parentNode : lead).remove();
 
     /* a section heading with nothing under it goes (the Inbox strip once its meter moved stays: the rows follow it) */
-    $$('.pformstrip', list).forEach(function (s) { if (s.tagName === 'DIV' && !s.nextElementSibling) s.remove(); });
+    $$('.pformstrip', list).forEach(function (s) { if (s.tagName === 'DIV' && !s.nextElementSibling && !$('input,select', s)) s.remove(); });
 
     /* key prompts, bottom right: the form's buttons (A, X, Y), the message's links, and B to go back */
     var keys = el('div', 'keys pn-keys'), letters = ['A', 'X', 'Y'], k = 0;
