@@ -779,12 +779,11 @@ html:not(.is-index) #innerwrapper{padding:0 4vw 40px}
 .pn .pn-row.pn-wide>.pn-r.pn-left:has(input[type=checkbox]){padding:10px 20px;background:var(--frame),rgba(8,9,7,.8)}
 
 /* ===== THE ASSIGNMENT CARD: the board footer and Jcink's Board Message. A dark slab between two rough white rules
-   that run past its sides, a white tag on the top rule, one line in capitals, an inked stamp on the corner ===== */
+   as wide as the slab, a white tag on the top rule, one line in capitals, an inked stamp on the corner ===== */
 .card{position:relative;z-index:1;max-width:920px;margin:84px auto 60px;padding:54px 56px 46px;background:rgba(4,5,3,.88);box-shadow:0 0 60px rgba(0,0,0,.45);color:#f1efe8;font-family:var(--ui);text-align:center}
-.card::before,.card::after,.news::before,.news::after{content:"";position:absolute;left:-38px;right:-38px;height:6px;pointer-events:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 6' preserveAspectRatio='none'><path d='M0 2.3L44 1.7L95 2.5L160 1.4L231 2.2L300 1.3L352 2.4L400 1.9L400 4.5L338 4.1L262 4.8L190 4L118 4.7L61 4.1L0 4.6Z' fill='%23d9d7cf'/><path d='M80 2.6h9M214 3.1h5M330 2.8h12' stroke='%23080907' stroke-width='.8'/></svg>") 0 0/100% 100% no-repeat}
+.card::before,.card::after,.news::before,.news::after{content:"";position:absolute;left:0;right:0;height:6px;pointer-events:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 6' preserveAspectRatio='none'><path d='M0 2.3L44 1.7L95 2.5L160 1.4L231 2.2L300 1.3L352 2.4L400 1.9L400 4.5L338 4.1L262 4.8L190 4L118 4.7L61 4.1L0 4.6Z' fill='%23d9d7cf'/><path d='M80 2.6h9M214 3.1h5M330 2.8h12' stroke='%23080907' stroke-width='.8'/></svg>") 0 0/100% 100% no-repeat}
 .card::before,.news::before{top:-3px}
 .card::after,.news::after{bottom:-3px}
-.news::before,.news::after{left:-22px;right:-22px}
 .card-tag{position:absolute;left:50%;top:0;z-index:2;max-width:calc(100% - 40px);padding:8px 18px 7px;transform:translate(-50%,-50%);background:#f1efe8;color:#0b0b0a;font:600 19px/1.1 var(--ui);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .card-line{margin:0;color:#f6f4ee;font:500 clamp(20px,2.3vw,30px)/1.45 var(--ui);letter-spacing:.06em;text-transform:uppercase;overflow-wrap:anywhere;text-wrap:balance}
 .card-note{max-width:62ch;margin:18px auto 0;color:#a9a79d;font:400 14px/1.6 var(--ui)}
@@ -826,7 +825,6 @@ a.stamp-x:hover,a.stamp-x:focus-visible{color:#7be055;transform:rotate(-3deg)}
 
 @media (max-width:760px){
   .card{margin:60px 10px 48px;padding:42px 18px 40px}
-  .card::before,.card::after{left:-10px;right:-10px}
   .card-tag{padding:7px 12px 6px;font-size:15px}
   .card-line{font-size:19px}
   .foot .card-line{font-size:13px}
