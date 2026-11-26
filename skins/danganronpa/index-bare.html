@@ -100,7 +100,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .f-count{margin:8px 0 0;font:400 11px var(--hud);text-transform:uppercase;color:var(--dim);display:flex;gap:18px}
 .f-count b{font-size:14px;color:#fff;font-weight:700}
 .f-sub,.f-mod{font-size:14px;color:var(--dim);margin-top:6px}
-.f-sub i{font-style:normal}
 
 .cat{margin:0 0 30px}
 .pic{position:relative;aspect-ratio:16/10;margin:0 0 12px;overflow:hidden;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='2' cy='2' r='1.3' fill='%23fff' fill-opacity='.09'/%3E%3Ccircle cx='6' cy='6' r='1.3' fill='%23fff' fill-opacity='.09'/%3E%3C/svg%3E"),radial-gradient(ellipse at 60% 40%,#4b1758,#200826 75%);background-size:8px 8px,auto;border:2px solid rgba(255,255,255,.14)}
@@ -109,10 +108,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .plan .side{fill:#3c3644}
 .plan .hall,.plan .room{fill:#c9c6d0;stroke:#fff;stroke-width:2.2;stroke-linejoin:round}
 .plan .room{fill:#b9b5c2}
-.plan .room.sel{fill:#ffd6ec;stroke:var(--acc);stroke-width:5}
-.plan .stairs{fill:#c8136a;stroke:#fff;stroke-width:2}
-.plan .step{stroke:#fff;stroke-width:3}
-.cross-x,.cross-y,.pin,.go{display:none}
+/* a label on every room: number and name, and the room's link */
+.tag{position:absolute;z-index:2;display:flex;align-items:center;gap:6px;max-width:150px;padding:2px 8px 2px 2px;transform:translate(-50%,-40%);background:rgba(0,0,0,.86);border:1px solid rgba(255,255,255,.55);color:#fff;font:700 12px/1.2 var(--sans);text-decoration:none}
+.tag b{flex:none;min-width:20px;padding:2px 3px 1px;background:#fff;color:#000;font:700 11px var(--hud);text-align:center}
+.tag.unread b{background:var(--acc);color:var(--acc-ink)}
+.tag span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.tag em{display:none}
+.num{display:inline-block;min-width:24px;margin-right:12px;padding:3px 4px 2px;background:#fff;color:#000;font:700 12px var(--hud);text-align:center;vertical-align:3px}
+.forum-new-post .num{background:var(--acc);color:var(--acc-ink)}
+.info .num{display:none}
+/* subforums: rows under their forum */
+.subrow{position:relative;display:block;padding:7px 16px 7px 50px;background:rgba(22,20,28,.94);border-bottom:1px solid rgba(0,0,0,.7);color:#bdbac8;font-size:16px;text-decoration:none}
+.subrow::before{content:'';position:absolute;left:26px;top:0;height:50%;width:12px;border-left:2px solid var(--acc);border-bottom:2px solid var(--acc)}
+.subrow:hover,.subrow:focus-visible{background:var(--acc);color:var(--acc-ink)}
+.subrow:hover::before,.subrow:focus-visible::before{border-color:var(--acc-ink)}
+.cross-x,.cross-y,.pin{display:none}
 .info{display:none}
 
 @media (min-width:900px){
@@ -129,19 +139,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   html.tabs .forum.on{margin-left:-22px;padding-left:38px;background:var(--acc)}
   html.tabs .forum.on .f-name a{color:var(--acc-ink)}
   html.tabs .forum.on .new{background:#000;color:var(--acc)}
-  html.tabs .cross-x,html.tabs .cross-y,html.tabs .pin,html.tabs .go{display:block}
-  html.tabs .info{display:block;position:relative;margin:-58px 0 0 44px;padding:18px 24px 20px;background:rgba(6,5,9,.95);border-top:3px solid var(--acc);box-shadow:0 14px 34px rgba(0,0,0,.55)}
+  html.tabs .cross-x,html.tabs .cross-y,html.tabs .pin{display:block}
+  html.tabs .num{display:none}
+  html.tabs .plan .room.sel{fill:#ffd6ec;stroke:var(--acc);stroke-width:5}
+  html.tabs .tag:hover{border-color:var(--acc)}
+  html.tabs .tag.on{z-index:3;background:var(--acc);border-color:#fff;color:var(--acc-ink);box-shadow:0 0 0 2px #000}
+  html.tabs .tag.on b{background:#000;color:var(--acc)}
+  html.tabs .tag.on em{display:inline-flex;align-items:center;gap:4px;margin-left:2px;font:400 15px/1 'Bowlby One',var(--sans);font-style:normal;color:#000}
+  html.tabs .info{display:block;position:relative;margin:-22px 0 0 44px;padding:18px 24px 20px;background:rgba(6,5,9,.95);border-top:3px solid var(--acc);box-shadow:0 14px 34px rgba(0,0,0,.55)}
   .cross-x,.cross-y{position:absolute;background:var(--acc);opacity:.75;box-shadow:0 0 8px var(--acc);pointer-events:none}
   .cross-x{left:0;right:0;height:2px;top:var(--y)}
   .cross-y{top:0;bottom:0;width:2px;left:var(--x)}
   .pin{position:absolute;left:var(--x);top:var(--y);width:44px;height:70px;transform:translate(-50%,-100%);pointer-events:none}
   .pin::before{content:'';position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,var(--acc) 0 5px,#fff 6px 11px,var(--acc) 12px 15px,rgba(255,255,255,.9) 16px);box-shadow:0 0 0 3px var(--acc),0 0 14px var(--acc)}
   .pin::after{content:'';position:absolute;left:20px;top:46px;width:4px;height:24px;background:var(--acc)}
-  .move .cross-x,.move .cross-y,.move .pin,.move .go{transition:top .25s,left .25s,right .25s}
-  .go{position:absolute;left:calc(var(--x) + 30px);top:calc(var(--y) + 6px);display:flex;align-items:center;gap:10px;padding:5px 16px 5px 10px;background:var(--acc);color:#000;font:400 26px/1 'Bowlby One',var(--sans);text-decoration:none;-webkit-text-stroke:1px #fff;box-shadow:0 0 0 2px #000}
-  .go.left{left:auto;right:calc(100% - var(--x) + 30px)}
-  .go .k{-webkit-text-stroke:0;color:#000;font-size:20px}
-  .go:hover,.go:focus-visible{background:#fff}
+  .move .cross-x,.move .cross-y,.move .pin{transition:top .25s,left .25s,right .25s}
   .i-title{margin:0 0 12px;padding-bottom:10px;font:500 30px/1.25 var(--sans);border-bottom:2px solid;border-image:linear-gradient(90deg,var(--acc),transparent 80%) 1}
   .i-title a{text-decoration:none}
   .info .f-desc{font-size:18px;line-height:1.6}
@@ -153,8 +165,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .side{display:none}
 @media (min-width:900px){html.tabs .side{display:block}}
 .stack{display:flex;flex-direction:column-reverse;align-items:center;padding:26px 18px 20px;background:rgba(0,0,0,.6);border:2px solid rgba(255,255,255,.1);border-top:3px solid var(--acc)}
-.plate{position:relative;width:74%;height:38px;margin-top:-6px;border:2px solid rgba(255,255,255,.55);background:rgba(110,106,122,.72);transform:skewX(-42deg) scaleY(.9);cursor:pointer;color:#fff;transition:background .15s,transform .15s}
-.plate span{display:block;transform:skewX(42deg);font:700 11px var(--hud);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 26px}
+.plate{position:relative;width:84%;height:38px;margin-top:-6px;border:2px solid rgba(255,255,255,.55);background:rgba(110,106,122,.72);transform:skewX(-42deg) scaleY(.9);cursor:pointer;color:#fff;transition:background .15s,transform .15s}
+.plate span{display:block;transform:skewX(42deg);font:700 14px var(--sans);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 30px}
 .plate:hover{background:rgba(170,166,182,.8)}
 .plate.on{background:var(--acc);border-color:#fff;z-index:1}
 .plate.unread::after{content:'';position:absolute;right:10px;top:12px;width:9px;height:9px;background:#fff;box-shadow:0 0 0 2px var(--acc)}
@@ -282,6 +294,8 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
   .brand{font-size:22px}
   .menu a{padding:4px 7px;font-size:12px}
   .cat-bar .cap{display:none}
+  .tag{padding:2px;gap:0}
+  .tag span{display:none}
   .cat-body{display:flex;flex-direction:column}
   .view{order:-1}
   .cat-bar a{font-size:21px}
@@ -531,13 +545,10 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
     function iso(x, y) { return [(x - y) * 0.866 * U, (x + y) * 0.5 * U]; }
     function plate(x, y, w, h, cls) { var p = [iso(x, y), iso(x + w, y), iso(x + w, y + h), iso(x, y + h)]; parts.push({ p: p, c: cls }); return p; }
     plate(0, 0, W, 1, 'hall'); plate(0, H - 1, W, 1, 'hall'); plate(0, 0, 1, H, 'hall'); plate(W - 1, 0, 1, H, 'hall');
-    plate(W * .45, 1, .9, H - 2, 'hall');
-    plate(-1.6, H * .5 - .6, 1.6, 1.4, 'stairs');
     var top = Math.ceil(n / 2), xs = function (k, of) { return 1.4 + (W - 3.4) * (of > 1 ? k / (of - 1) : .5); };
     for (var i = 0; i < n; i++) {
       var onTop = i < top, k = onTop ? i : i - top, of = onTop ? top : n - top, x = xs(k, of), out = (k % 2 === 0);
       var w = 2 + R() * .4, h = 1.6 + R() * .3, y = onTop ? (out ? -h - .1 : 1.15) : (out ? H + .1 : H - 1.15 - h);
-      if (!out && Math.abs(x + w / 2 - (W * .45 + .45)) < 1.6) x += 1.8;
       var p = plate(x, y, w, h, 'room');
       rooms.push(iso(x + w / 2, y + h / 2));
       parts[parts.length - 1].i = i;
@@ -567,10 +578,16 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
     cats.forEach(function (c, ci) {
       screen.appendChild(c);
       var id = (c.id.match(/\d+/) || [])[0], rows = $$('.forum', c), info = $('.info', c), pic = $('.pic', c);
-      rows.forEach(function (f) {
+      rows.forEach(function (f, n) {
+        $('.f-name', f).insertAdjacentHTML('afterbegin', '<span class="num" aria-hidden="true">' + (n + 1) + '</span>');
         ['.f-desc', '.f-sub', '.f-mod'].forEach(function (s) { var e = $(s, f); if (e && !txt(e)) e.remove(); });
         var l = $('.f-last', f); if (l && !$('.f-topic a', l)) l.remove();
-        var s = $('.f-sub', f); if (s) s.insertAdjacentHTML('afterbegin', '<i>Also: </i>');
+        var s = $('.f-sub', f);
+        if (s) {
+          var subs = el('div', 'subs');
+          $$('a', s).forEach(function (a) { var b = el('a', 'subrow', esc(txt(a))); b.href = a.getAttribute('href'); b.setAttribute('aria-label', txt(a) + ' (in ' + txt($('.f-name a', f)) + ')'); subs.appendChild(b); });
+          f.parentNode.insertBefore(subs, f.nextSibling); s.remove();
+        }
         if (f.classList.contains('forum-new-post')) $('.f-name', f).insertAdjacentHTML('beforeend', '<span class="new">New</span>');
         if (f.classList.contains('redirect')) $('.f-name', f).insertAdjacentHTML('beforeend', '<span class="ext" aria-label="(leaves the board)">&#8599;</span>');
       });
@@ -578,7 +595,14 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
       var map = null;
       if (CFG.images[id]) { pic.classList.add('own'); pic.style.backgroundImage = 'url("' + CFG.images[id] + '")'; }
       else { map = drawMap(rows.length, hash(txt($('.cat-bar', c))) + ci); pic.innerHTML = map.svg; pic.style.aspectRatio = map.ratio.toFixed(3); }
-      pic.insertAdjacentHTML('beforeend', '<i class="cross-x"></i><i class="cross-y"></i><i class="pin"></i><a class="go" href="#"><i class="k k-x" aria-hidden="true"></i>GO!</a>');
+      pic.insertAdjacentHTML('beforeend', '<i class="cross-x"></i><i class="cross-y"></i><i class="pin"></i>');
+      var tags = map ? rows.map(function (f, n) {
+        var a = $('.f-name a', f), t = el('a', 'tag' + (f.classList.contains('forum-new-post') ? ' unread' : ''), '<b>' + (n + 1) + '</b><span>' + esc(txt(a)) + '</span><em><i class="k k-x" aria-hidden="true"></i>GO!</em>');
+        t.href = a ? a.getAttribute('href') : '#'; t.setAttribute('aria-label', txt(a)); t.tabIndex = -1;
+        t.style.left = map.rooms[n].x + '%'; t.style.top = map.rooms[n].y + '%';
+        t.addEventListener('mouseenter', function () { show(f); });
+        pic.appendChild(t); return t;
+      }) : [];
       /* the category's switcher arrows */
       var bar = $('.cat-bar', c);
       bar.insertAdjacentHTML('afterbegin', '<button type="button" class="cap" data-step="-1" aria-label="Previous category">L1</button>');
@@ -588,6 +612,7 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
       /* its plate in the category stack */
       var unread = rows.some(function (f) { return f.classList.contains('forum-new-post'); });
       var pl = el('button', 'plate' + (unread ? ' unread' : ''), '<span>' + esc(txt($('.cat-bar a', c))) + '</span>');
+      pl.title = txt($('.cat-bar a', c));
       pl.type = 'button'; pl.onclick = function () { pick(ci, true); }; stack.appendChild(pl);
 
       function show(f) {
@@ -595,11 +620,10 @@ form.system tr.on .pair label:has(input:checked){background:#000;color:var(--acc
         var i = rows.indexOf(f), a = $('.f-name a', f);
         info.innerHTML = '';
         var h = el('h3', 'i-title'); h.innerHTML = $('.f-name', f).innerHTML; info.appendChild(h);
-        ['.f-desc', '.f-last', '.f-count', '.f-sub', '.f-mod'].forEach(function (s) { var e = $(s, f); if (e) info.appendChild(e.cloneNode(true)); });
-        var go = $('.go', pic); go.href = a ? a.getAttribute('href') : '#'; go.setAttribute('aria-label', 'Go to ' + txt(a));
+        ['.f-desc', '.f-last', '.f-count', '.f-mod'].forEach(function (s) { var e = $(s, f); if (e) info.appendChild(e.cloneNode(true)); });
         var pt = map ? map.rooms[i] : { x: 74, y: 78 };
         pic.style.setProperty('--x', pt.x + '%'); pic.style.setProperty('--y', pt.y + '%');
-        go.classList.toggle('left', pt.x > 70);
+        tags.forEach(function (t, k) { t.classList.toggle('on', k === i); });
         $$('polygon.room', pic).forEach(function (p) { p.classList.toggle('sel', +p.dataset.i === i); });
       }
       rows.forEach(function (f) { f.addEventListener('mouseenter', function () { show(f); }); f.addEventListener('focusin', function () { show(f); }); });
