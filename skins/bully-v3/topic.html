@@ -20,7 +20,7 @@ a{color:inherit}h1,h2,h3,p,ul,figure{margin:0}ul{padding:0;list-style:none}
 a:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 #shoutbox{display:none!important}.is-index #navi{display:none}
-#jcink-top{background:var(--navy2);padding:10px 0;max-width:100%;overflow-x:auto}#jcink-top #submenu,#jcink-top #userlinks,#jcink-top #logostrip{display:none}#jcink-top table{max-width:100%}
+#jcink-top{background:var(--navy2);padding:10px 0;max-width:100%;overflow-x:auto}#jcink-top #submenu,#jcink-top #userlinks,#jcink-top #logostrip{display:none}#jcink-top td.row4{background:none;border:0;padding:0}#jcink-top table{max-width:100%}
 
 /* gold type: wide serif, dark outline */
 .gold{color:var(--gold2)}
@@ -1119,6 +1119,20 @@ function expMenu(id) { var itm = document.getElementById(id); if (itm && itm.sty
   var L = {};
 
   /* Jcink sometimes prints whitespace or &nbsp; inside an "empty" tag */
+  /* a user-bar link: Jcink prints "3 New Messages" and "Alerts (2)"; the skin shows "Messenger" and "Alerts" with a count */
+  L.userLink = function (s) {
+    var t = String(s == null ? '' : s).replace(/\s+/g, ' ').trim(), m = t.match(/^(\d+) New Messages?$/i);
+    if (m) return { label: 'Messenger', count: +m[1] };
+    m = t.match(/^(.*?)\s*\((\d+)\)$/);
+    return m ? { label: m[1], count: +m[2] } : { label: t, count: null };
+  };
+  /* Jcink's own separators in the topic list ("Important Topics", "Forum Topics") as Bully's headings */
+  L.subhead = function (s) {
+    var t = String(s == null ? '' : s);
+    if (/announce/i.test(t)) return { cls: 'reg-sub anno', label: 'Announcements' };
+    if (/important|pinned/i.test(t)) return { cls: 'reg-sub pinned', label: 'Pinned' };
+    return { cls: 'reg-sub', label: 'Topics' };
+  };
   L.isBlankText = function (s) {
     return !String(s == null ? '' : s).replace(/&nbsp;/gi, '').replace(/[\s\u00a0]+/g, '');
   };
@@ -1227,11 +1241,24 @@ function expMenu(id) { var itm = document.getElementById(id); if (itm && itm.sty
 
   $$('#shoutbox').forEach(function (s) { s.remove(); });
 
+  /* Jcink's board header: the menu and account links are rebuilt from it; what's left is the free-board ad. With no
+     ad in it (an ad-free board, or an ad blocker) the strip would be empty, so it's hidden */
+  function tidyHeader() {
+    var top = $('#jcink-top');
+    if (!top) return;
+    var left = top.cloneNode(true);
+    $$('#submenu, #userlinks, #logostrip, script, noscript, style', left).forEach(function (n) { n.parentNode.removeChild(n); });
+    if (!$('img, iframe, ins, object, embed, video', left) && L.isBlankText(left.textContent)) top.hidden = true;
+  }
+  tidyHeader();
+
   /* ---------- forum rows, on every page ---------- */
   $$('.cat .forum').forEach(function (f) {
     ['.f-desc', '.f-sub', '.f-mod'].forEach(function (s) { var e = $(s, f); if (e && L.isBlankText(e.innerHTML)) e.remove(); });
     var l = $('.f-last', f); if (l && !$('a', l)) l.remove();
-    var sub = $('.f-sub', f); if (sub) sub.insertAdjacentHTML('afterbegin', '<i>Also: </i>');
+    /* with no subforums Jcink still prints an empty <span class="subforums"> */
+    var sub = $('.f-sub', f);
+    if (sub && !$('a', sub)) sub.remove(); else if (sub) sub.insertAdjacentHTML('afterbegin', '<i>Also: </i>');
     if (f.classList.contains('forum-new-post')) $('.f-name', f).insertAdjacentHTML('beforeend', ' <span class="tag">new<span class="vh"> posts</span></span>');
   });
   /* last poster's avatar; initials when there is none or it fails to load */
@@ -1254,10 +1281,14 @@ function expMenu(id) { var itm = document.getElementById(id); if (itm && itm.sty
     var ul = $('#userlinks'), out = /act=Login&CODE=03|log ?out/i;
     if (!ul) return null;
     var me = $('a[href*="showuser="]', ul);
-    var links = $$('a', ul).filter(function (a) { return a !== me; }).sort(function (a, b) { return out.test(a.href + txt(a)) - out.test(b.href + txt(b)); });
+    /* the links, not the hidden "Recent Alerts" box Jcink keeps beside Alerts (its [x], View All, Mark All Read) */
+    var links = $$('a', ul).filter(function (a) { return a !== me && !a.closest('#recent-alerts'); }).sort(function (a, b) { return out.test(a.href + txt(a)) - out.test(b.href + txt(b)); });
     return { me: me, links: links, select: $('select', ul) };
   }
-  function linkEl(a) { var b = el('a', '', L.escapeHtml(txt(a)).replace(/\((\d+)\)/, '<i>$1</i>')); b.href = a.getAttribute('href'); return b; }
+  function linkEl(a) {
+    var u = L.userLink(txt(a)), b = el('a', '', L.escapeHtml(u.label) + (u.count ? ' <i>' + u.count + '</i>' : ''));
+    b.href = a.getAttribute('href'); return b;
+  }
 
   /* ---------- categories (index and category pages): picture, burgundy panel ---------- */
   var cats = $$('#innerwrapper .cat');
@@ -1358,6 +1389,14 @@ function expMenu(id) { var itm = document.getElementById(id); if (itm && itm.sty
     /* the legend: every mark says what it is on hover and to screen readers, and new topics are labelled */
     $$('.wrapmini').forEach(function (x) { x.remove(); });
 
+    /* Jcink prints its own separators inside the topic rows as table rows; outside a table only their bold text
+       survives, between the rows ("Important Topics", "Forum Topics"). Each becomes the register's heading */
+    $$('.trow', list).map(function (t) { return t.parentNode; }).filter(function (p, i, a) { return a.indexOf(p) === i; }).forEach(function (box) {
+      [].slice.call(box.children).forEach(function (n) {
+        if (!/^(B|STRONG)$/.test(n.tagName) || $('a, input', n) || L.isBlankText(n.textContent)) return;
+        var s = L.subhead(txt(n)); box.replaceChild(el('h3', s.cls, L.escapeHtml(s.label)), n);
+      });
+    });
     /* list headings with nothing under them go (Jcink can print a heading for an empty group) */
     $$('.reg-sub, .topic-title-row', list).forEach(function (h) {
       var n = h.nextElementSibling;

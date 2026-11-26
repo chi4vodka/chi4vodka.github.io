@@ -304,7 +304,7 @@ input[type=submit],input[type=button],input[type=reset]{padding:4px 12px;margin:
 .news .card-tag{font-size:15px}
 .news .card-line{display:block;font-size:clamp(17px,1.6vw,22px);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:5px}
 .news:hover .card-line,.news:focus-visible .card-line{text-decoration-color:currentColor}
-#jcink-top{position:relative;z-index:1;background:#0b0c08;padding:10px 0;max-width:100%;overflow-x:auto}#jcink-top #submenu,#jcink-top #userlinks,#jcink-top #logostrip{display:none}#jcink-top table{max-width:100%}
+#jcink-top{position:relative;z-index:1;background:#0b0c08;padding:10px 0;max-width:100%;overflow-x:auto}#jcink-top #submenu,#jcink-top #userlinks,#jcink-top #logostrip{display:none}#jcink-top td.row4{background:none;border:0;padding:0}#jcink-top table{max-width:100%}
 
 /* film strip separators */
 .strip{height:40px;background:repeating-linear-gradient(90deg,transparent 0 12px,#bdb9a8 12px 22px,transparent 22px 34px) 0 8px/100% 7px no-repeat,repeating-linear-gradient(90deg,transparent 0 12px,#bdb9a8 12px 22px,transparent 22px 34px) 0 25px/100% 7px no-repeat,#0a0b08;opacity:.85}
@@ -1242,6 +1242,22 @@ a.e-date:hover{color:var(--red);text-decoration:underline}
   };
 
   /* Jcink sometimes prints whitespace or &nbsp; inside an "empty" tag */
+  /* a post button's kind; Jcink's Edit is a quick-edit link (onclick SKIFS.quickEdit.edit) where quick edit is on */
+  L.buttonKind = function (href, onclick) {
+    var h = String(href || ''), o = String(onclick || '');
+    if (/delete_post|CODE=04/.test(h)) return 'del';
+    if (/CODE=08/.test(h) || /quickEdit\.edit/.test(o)) return 'edit';
+    if (/CODE=06/.test(h)) return 'quote';
+    if (/act=report/i.test(h)) return 'report';
+    return 'other';
+  };
+  /* a user-bar link: Jcink prints "3 New Messages" and "Alerts (2)"; the skin shows "Messenger" and "Alerts" with a count */
+  L.userLink = function (s) {
+    var t = String(s == null ? '' : s).replace(/\s+/g, ' ').trim(), m = t.match(/^(\d+) New Messages?$/i);
+    if (m) return { label: 'Messenger', count: +m[1] };
+    m = t.match(/^(.*?)\s*\((\d+)\)$/);
+    return m ? { label: m[1], count: +m[2] } : { label: t, count: null };
+  };
   L.isBlankText = function (s) {
     return !String(s == null ? '' : s).replace(/&nbsp;/gi, '').replace(/[\s\u00a0]+/g, '');
   };
@@ -1456,7 +1472,9 @@ var OutlastSettings = {
     $$('.forum').forEach(function (f) {
       ['.f-desc', '.f-sub', '.f-mod'].forEach(function (s) { var e = $(s, f); if (e && L.isBlankText(e.innerHTML)) e.remove(); });
       var l = $('.f-last', f); if (l && !$('a', l)) l.remove();
-      var sub = $('.f-sub', f); if (sub) sub.insertAdjacentHTML('afterbegin', '<i>Also: </i>');
+      /* with no subforums Jcink still prints an empty <span class="subforums"> */
+      var sub = $('.f-sub', f);
+      if (sub && !$('a', sub)) sub.remove(); else if (sub) sub.insertAdjacentHTML('afterbegin', '<i>Also: </i>');
       if (f.classList.contains('forum-new-post')) $('.f-name', f).insertAdjacentHTML('beforeend', '<span class="vh"> (new posts)</span>');
     });
   }
@@ -1470,6 +1488,16 @@ var OutlastSettings = {
     $$('img.f-av').forEach(function (img) { if (L.isBlankAvatar(img.getAttribute('src')) || (img.complete && !img.naturalWidth)) initials(img); });
   }
 
+  /* ---------- Jcink's board header: the tabs and player are rebuilt from it; what's left is the free-board ad.
+     With no ad in it (an ad-free board, or an ad blocker) the strip would be empty, so it's hidden ---------- */
+  function tidyHeader() {
+    var top = $('#jcink-top');
+    if (!top) return;
+    var left = top.cloneNode(true);
+    $$('#submenu, #userlinks, #logostrip, script, noscript, style', left).forEach(function (n) { n.parentNode.removeChild(n); });
+    if (!$('img, iframe, ins, object, embed, video', left) && L.isBlankText(left.textContent)) top.hidden = true;
+  }
+
   /* ---------- tabs and the player block, from Jcink's own links (members and guests) ---------- */
   function buildTabs(tabs, current) {
     $$('#submenu a').forEach(function (a, i) { var b = el('a', i === current ? 'on' : '', L.escapeHtml(txt(a))); b.href = a.getAttribute('href'); tabs.appendChild(b); });
@@ -1480,9 +1508,10 @@ var OutlastSettings = {
     var me = $('a[href*="showuser="]', ul), out = /act=Login&CODE=03|log ?out/i;
     var who = el('div', 'who'); who.appendChild(el('b', '', L.escapeHtml(me ? txt(me) : 'Visitor')));
     var list = el('ul');
-    $$('a', ul).sort(function (a, b) { return out.test(a.href + txt(a)) - out.test(b.href + txt(b)); }).forEach(function (a) {
+    /* the links, not the hidden "Recent Alerts" box Jcink keeps beside Alerts (its [x], View All, Mark All Read) */
+    $$('a', ul).filter(function (a) { return !a.closest('#recent-alerts'); }).sort(function (a, b) { return out.test(a.href + txt(a)) - out.test(b.href + txt(b)); }).forEach(function (a) {
       if (a === me) return;
-      var li = el('li'), b = el('a', '', L.escapeHtml(txt(a)).replace(/\((\d+)\)/, '<i>$1</i>'));
+      var u = L.userLink(txt(a)), li = el('li'), b = el('a', '', L.escapeHtml(u.label) + (u.count ? ' <i>' + u.count + '</i>' : ''));
       b.href = a.getAttribute('href'); li.appendChild(b); list.appendChild(li);
     });
     who.appendChild(list); pl.appendChild(who);
@@ -1861,8 +1890,7 @@ var OutlastSettings = {
     if (top && !blank(top)) {
       var stamps = el('div', 'e-stamps'); moveKids(top, stamps);
       $$('a', stamps).forEach(function (a) {
-        var h = a.getAttribute('href') || '';
-        a.classList.add(/delete_post|CODE=04/.test(h) ? 'st-del' : /CODE=08/.test(h) ? 'st-edit' : /CODE=06/.test(h) ? 'st-quote' : 'st-other');
+        a.classList.add('st-' + L.buttonKind(a.getAttribute('href'), a.getAttribute('onclick')));
       });
       head.appendChild(stamps);
     }
@@ -2034,6 +2062,17 @@ var OutlastSettings = {
   }
 
   /* ---------- forum view: the game's terminal. Subforum tiles beside task rows, pages as a tab strip ---------- */
+  /* Jcink prints its own section separators inside the topic rows ("Important Topics", "Forum Topics") as table rows;
+     outside a table only their bold text survives, between the rows. Each becomes the skin's section heading */
+  function topicSeparators(list) {
+    $$('.trow', list).map(function (r) { return r.parentNode; }).filter(function (p, i, a) { return a.indexOf(p) === i; }).forEach(function (box) {
+      [].slice.call(box.children).forEach(function (n) {
+        if (!/^(B|STRONG)$/.test(n.tagName) || $('a, input', n) || L.isBlankText(n.textContent)) return;
+        box.replaceChild(el('div', 'topic-title-row', esc(txt(n))), n);
+      });
+    });
+  }
+
   function initForum() {
     var list = $('#topic-list');
     if (!list) return;
@@ -2047,6 +2086,7 @@ var OutlastSettings = {
       if ($('.st-lock', r) || (pre && /moved/i.test(txt(pre)))) r.classList.add('dim');
       var pg = $('.tr-pages', r); if (pg) $$('*', pg).concat([pg]).forEach(function (n) { [].slice.call(n.childNodes).forEach(function (t) { if (t.nodeType === 3) t.nodeValue = t.nodeValue.replace(/[()]/g, ''); }); });
     });
+    topicSeparators(list);
     $$('.topic-title-row', list).forEach(function (h) { var n = h.nextElementSibling; if (!n || !n.classList.contains('trow')) h.remove(); });
 
     /* subforums (Jcink prints them first, with the category and forum row templates): the tiles on the left */
@@ -2423,6 +2463,7 @@ var OutlastSettings = {
   ready(function () {
     $$('#shoutbox').forEach(function (s) { s.remove(); });
     tidyRows();
+    tidyHeader();
     fixAvatars();
     if (root.classList.contains('is-index')) { initIndex(); initCorridor(); initNightVision(); } else { markSolo(); initInner(); if ($('#board-message')) initNotice(); else if (L.isTopic(location.search)) initTopic(); else if (L.isForum(location.search)) initForum(); else if (L.isPanel(location.search)) initPanel(); }
     initSubjects();
